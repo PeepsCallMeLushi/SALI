@@ -2,7 +2,6 @@ package pt.sali.sali.model;
 
 public class FarmaFluido {
 
-	private String id;
 	private String hora;
 	private String fluido;
 	private String dose;
@@ -10,7 +9,6 @@ public class FarmaFluido {
 	
 	public FarmaFluido(String hora, String fluido, String dose, String via) {
 		super();
-		this.id = null;
 		this.hora = hora;
 		this.fluido = fluido;
 		this.dose = dose;
@@ -47,10 +45,6 @@ public class FarmaFluido {
 
 	public void setVia(String via) {
 		this.via = via;
-	}
-
-	public String getId() {
-		return id;
 	}
 
 }

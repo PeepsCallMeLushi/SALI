@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Avaliacao {
 
-	private String id;
 	private ArrayList<Sintoma> sintomas;
 	private ArrayList<String> antecedentesPessoais;
 	private ArrayList<Farmaco> habitosFarmacologicos;
@@ -13,7 +12,6 @@ public class Avaliacao {
 	
 	public Avaliacao() {
 		super();
-		this.id = null;
 		this.sintomas = new ArrayList<>();
 		this.antecedentesPessoais = new ArrayList<>();
 		this.habitosFarmacologicos = new ArrayList<>();
@@ -61,8 +59,4 @@ public class Avaliacao {
 		this.danos = danos;
 	}
 
-	public String getId() {
-		return id;
-	}
-	
 }

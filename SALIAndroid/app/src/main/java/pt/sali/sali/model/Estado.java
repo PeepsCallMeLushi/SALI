@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Estado {
 
-	private String id;
 	private String horas;
 	private ArrayList<Glasgow> glasgow;
 	private Double freqVentil;
@@ -22,7 +21,6 @@ public class Estado {
 			Double pressArtSistolica, Double pressArtDiastolica, String pele, String pupilas, String monitor,
 			String ecg, Double sao2, Double glicemia) {
 		super();
-		this.id = null;
 		this.horas = horas;
 		this.glasgow = new ArrayList<>();
 		this.freqVentil = freqVentil;
@@ -135,10 +133,6 @@ public class Estado {
 
 	public void setGlicemia(Double glicemia) {
 		this.glicemia = glicemia;
-	}
-
-	public String getId() {
-		return id;
 	}
 
 }

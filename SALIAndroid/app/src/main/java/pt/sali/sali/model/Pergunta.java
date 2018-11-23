@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public class Pergunta {
 
-	private String id;
 	private String pergunta;
 	private String tipoDeResposta;
 	private ArrayList<String> resposta;
 	
 	public Pergunta(String pergunta, String tipoDeResposta) {
 		super();
-		this.id = null;
 		this.pergunta = pergunta;
 		this.tipoDeResposta = tipoDeResposta;
 		this.resposta = new ArrayList<>();
@@ -44,9 +42,4 @@ public class Pergunta {
 	public void setResposta(ArrayList<String> resposta) {
 		this.resposta = resposta;
 	}
-
-	public String getId() {
-		return id;
-	}
-
 }

@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public class Dano {
 
-	private String id;
 	private String parteDanificada;
 	private ArrayList<String> estados;
 	
 	public Dano(String parteDanificada) {
 		super();
-		this.id = null;
 		this.parteDanificada = parteDanificada;
 		this.estados = new ArrayList<>();
 	}
@@ -33,10 +31,6 @@ public class Dano {
 
 	public void setEstados(ArrayList<String> estados) {
 		this.estados = estados;
-	}
-
-	public String getId() {
-		return id;
 	}
 
 }

@@ -2,13 +2,11 @@ package pt.sali.sali.model;
 
 public class Equipa {
 
-	private String id;
 	private Utilizador medico;
 	private Utilizador enfermeiro;
 	
-	public Equipa(String id, Utilizador medico, Utilizador enfermeiro) {
+	public Equipa(Utilizador medico, Utilizador enfermeiro) {
 		super();
-		this.id = id;
 		this.medico = medico;
 		this.enfermeiro = enfermeiro;
 	}
@@ -32,9 +30,4 @@ public class Equipa {
 	public void setEnfermeiro(Utilizador enfermeiro) {
 		this.enfermeiro = enfermeiro;
 	}
-
-	public String getId() {
-		return id;
-	}
-
 }

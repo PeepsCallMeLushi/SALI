@@ -26,5 +26,4 @@ public class Farmaco {
 	public String getId() {
 		return id;
 	}
-
 }
