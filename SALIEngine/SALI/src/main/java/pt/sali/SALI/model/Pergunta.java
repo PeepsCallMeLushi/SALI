@@ -24,7 +24,6 @@ public class Pergunta {
 		super();
 	}
 
-
 	public String getPergunta() {
 		return pergunta;
 	}

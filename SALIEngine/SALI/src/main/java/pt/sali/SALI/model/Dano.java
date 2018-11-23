@@ -18,6 +18,10 @@ public class Dano {
 		this.estados = estados;
 	}
 
+	public Dano() {
+		super();
+	}
+
 	public String getParteDanificada() {
 		return parteDanificada;
 	}

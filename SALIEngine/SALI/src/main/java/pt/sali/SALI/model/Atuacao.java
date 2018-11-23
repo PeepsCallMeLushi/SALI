@@ -12,9 +12,9 @@ public class Atuacao {
 	@Id
 	private String id;
 	private ArrayList<String> acao;
-	@JsonProperty
-	private boolean comAmbulancia;
-	@JsonProperty
-	private boolean comMedico;
-	
+	private Transporte transporte;
+	private String Destino;
+	private String naoTransporte;
+	private String evolucao;
+		
 }
