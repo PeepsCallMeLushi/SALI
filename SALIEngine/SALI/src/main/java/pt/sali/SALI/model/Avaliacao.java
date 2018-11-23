@@ -2,12 +2,8 @@ package pt.sali.SALI.model;
 
 import java.util.ArrayList;
 
-import org.springframework.data.annotation.Id;
-
 public class Avaliacao {
 	
-	@Id
-	private String id;
 	private ArrayList<Sintoma> sintomas;
 	private ArrayList<String> antecedentesPessoais;
 	private ArrayList<Farmaco> habitosFarmacologicos;
@@ -16,7 +12,6 @@ public class Avaliacao {
 	
 	public Avaliacao() {
 		super();
-		this.id = null;
 		this.sintomas = new ArrayList<>();
 		this.antecedentesPessoais = new ArrayList<>();
 		this.habitosFarmacologicos = new ArrayList<>();
@@ -62,10 +57,5 @@ public class Avaliacao {
 
 	public void setDanos(ArrayList<Dano> danos) {
 		this.danos = danos;
-	}
-
-	public String getId() {
-		return id;
-	}
-	
+	}	
 }

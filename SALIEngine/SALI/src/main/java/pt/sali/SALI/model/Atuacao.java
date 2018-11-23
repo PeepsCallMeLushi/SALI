@@ -2,12 +2,8 @@ package pt.sali.SALI.model;
 
 import java.util.ArrayList;
 
-import org.springframework.data.annotation.Id;
-
 public class Atuacao {
-	
-	@Id
-	private String id;
+
 	private ArrayList<String> acao;
 	private Transporte transporte;
 	private String destino;
@@ -18,7 +14,6 @@ public class Atuacao {
 	public Atuacao(Transporte transporte, String destino, String naoTransporte,
 			String evolucao) {
 		super();
-		this.id = null;
 		this.acao = new ArrayList<>();
 		this.transporte = transporte;
 		this.destino = destino;
@@ -78,9 +73,4 @@ public class Atuacao {
 	public void setAdministrados(ArrayList<FarmaFluido> administrados) {
 		this.administrados = administrados;
 	}
-
-	public String getId() {
-		return id;
-	}
-	
 }

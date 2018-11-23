@@ -6,15 +6,17 @@ public class Utilizador {
 	
 	@Id
 	private String id;
+	private String nome;
 	private String login;
 	private String password;
 	private Role role;
 	private String identificador;
 	private Token token;
 	
-	public Utilizador(String login, String password, Role role, String identificador) {
+	public Utilizador(String nome, String login, String password, Role role, String identificador) {
 		super();
 		this.id = null;
+		this.nome = nome;
 		this.login = login;
 		this.password = password;
 		this.role = role;
@@ -24,6 +26,14 @@ public class Utilizador {
 
 	public Utilizador() {
 		super();
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getLogin() {

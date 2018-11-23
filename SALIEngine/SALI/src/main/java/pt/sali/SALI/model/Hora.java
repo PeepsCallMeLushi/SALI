@@ -1,11 +1,7 @@
 package pt.sali.SALI.model;
 
-import org.springframework.data.annotation.Id;
-
 public class Hora {
 	
-	@Id
-	private String id;
 	private String chegada;
 	private String local;
 	private String saida;
@@ -14,7 +10,6 @@ public class Hora {
 	
 	public Hora(String chegada, String local, String saida, String establecimento, String disponivel) {
 		super();
-		this.id = null;
 		this.chegada = chegada;
 		this.local = local;
 		this.saida = saida;
@@ -64,10 +59,5 @@ public class Hora {
 
 	public void setDisponivel(String disponivel) {
 		this.disponivel = disponivel;
-	}
-
-	public String getId() {
-		return id;
-	}
-	
+	}	
 }

@@ -42,6 +42,7 @@ public class HCFarmaco {
 		return answer;
 	}
 	
+	@RequestMapping("/list")
 	public ResponseEntity<List<Farmaco>> listarAllFarmacos (){
 		
 		return new ResponseEntity<List<Farmaco>>(iFarmaco.findAll(), HttpStatus.OK);
