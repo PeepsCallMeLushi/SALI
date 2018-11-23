@@ -14,12 +14,12 @@ public class Ocorrencia {
 	private ArrayList<String> incidente;
 	private int nmrVitimas;
 	private String local;
-	private String freguesia;
+	private Freguesia freguesia;
 	private ArrayList<Utente> utentes;
 	private Equipa equipa;
 	
 	public Ocorrencia(String tipoViaturaAssistencia, Date data, int nmrVitimas,
-			String local, String freguesia, Equipa equipa) {
+			String local, Freguesia freguesia, Equipa equipa) {
 		super();
 		this.id = null;
 		this.tipoViaturaAssistencia = tipoViaturaAssistencia;
@@ -76,11 +76,11 @@ public class Ocorrencia {
 		this.local = local;
 	}
 
-	public String getFreguesia() {
+	public Freguesia getFreguesia() {
 		return freguesia;
 	}
 
-	public void setFreguesia(String freguesia) {
+	public void setFreguesia(Freguesia freguesia) {
 		this.freguesia = freguesia;
 	}
 
