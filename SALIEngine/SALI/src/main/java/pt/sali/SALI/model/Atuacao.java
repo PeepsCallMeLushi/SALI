@@ -13,7 +13,7 @@ public class Atuacao {
 	private String destino;
 	private String naoTransporte;
 	private String evolucao;
-	private ArrayList<FarmaFluidos> administrados;
+	private ArrayList<FarmaFluido> administrados;
 	
 	public Atuacao(Transporte transporte, String destino, String naoTransporte,
 			String evolucao) {
@@ -71,11 +71,11 @@ public class Atuacao {
 		this.evolucao = evolucao;
 	}
 
-	public ArrayList<FarmaFluidos> getAdministrados() {
+	public ArrayList<FarmaFluido> getAdministrados() {
 		return administrados;
 	}
 
-	public void setAdministrados(ArrayList<FarmaFluidos> administrados) {
+	public void setAdministrados(ArrayList<FarmaFluido> administrados) {
 		this.administrados = administrados;
 	}
 

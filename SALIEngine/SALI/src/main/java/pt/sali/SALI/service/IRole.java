@@ -2,8 +2,8 @@ package pt.sali.SALI.service;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import pt.sali.SALI.model.Sintoma;
+import pt.sali.SALI.model.Role;
 
-public interface ISintoma extends MongoRepository<Sintoma, String> {
+public interface IRole extends MongoRepository<Role, String> {
 
 }

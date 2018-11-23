@@ -1,5 +1,9 @@
 package pt.sali.SALI.service;
 
-public interface IFarmaco {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import pt.sali.SALI.model.Farmaco;
+
+public interface IFarmaco extends MongoRepository<Farmaco, String> {
 
 }

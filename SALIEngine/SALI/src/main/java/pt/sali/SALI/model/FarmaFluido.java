@@ -2,7 +2,7 @@ package pt.sali.SALI.model;
 
 import org.springframework.data.annotation.Id;
 
-public class FarmaFluidos {
+public class FarmaFluido {
 	
 	@Id
 	private String id;
@@ -11,7 +11,7 @@ public class FarmaFluidos {
 	private String dose;
 	private String via;
 	
-	public FarmaFluidos(String hora, String fluido, String dose, String via) {
+	public FarmaFluido(String hora, String fluido, String dose, String via) {
 		super();
 		this.id = null;
 		this.hora = hora;

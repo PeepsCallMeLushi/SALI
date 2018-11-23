@@ -7,13 +7,13 @@ public class Role {
 	@Id
 	private String id;
 	private String nome;
-	private String decricao;
+	private String descricao;
 	
-	public Role(String nome, String decricao) {
+	public Role(String nome, String descricao) {
 		super();
 		this.id = null;
 		this.nome = nome;
-		this.decricao = decricao;
+		this.descricao = descricao;
 	}
 
 	public Role() {
@@ -28,12 +28,12 @@ public class Role {
 		this.nome = nome;
 	}
 
-	public String getDecricao() {
-		return decricao;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDecricao(String decricao) {
-		this.decricao = decricao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getId() {
