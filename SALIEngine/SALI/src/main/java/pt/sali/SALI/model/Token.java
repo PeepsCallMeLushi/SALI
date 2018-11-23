@@ -1,17 +1,12 @@
 package pt.sali.SALI.model;
 
-import org.springframework.data.annotation.Id;
-
 public class Token {
 	
-	@Id
-	private String id;
 	private String token;
 	private int expiracao;
 	
 	public Token(String token, int expiracao) {
 		super();
-		this.id = null;
 		this.token = token;
 		this.expiracao = expiracao;
 	}
@@ -35,9 +30,4 @@ public class Token {
 	public void setExpiracao(int expiracao) {
 		this.expiracao = expiracao;
 	}
-
-	public String getId() {
-		return id;
-	}
-
 }

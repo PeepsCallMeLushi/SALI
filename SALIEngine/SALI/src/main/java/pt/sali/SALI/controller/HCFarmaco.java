@@ -42,6 +42,7 @@ public class HCFarmaco {
 		return answer;
 	}
 	
+	@RequestMapping("/list")
 	public ResponseEntity<List<Farmaco>> listarAllFarmacos (){
 		
 		return new ResponseEntity<List<Farmaco>>(iFarmaco.findAll(), HttpStatus.OK);
@@ -54,7 +55,7 @@ public class HCFarmaco {
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<Farmaco> deleteUsers(@RequestBody Farmaco f){
+	public ResponseEntity<Farmaco> deleteFarmaco(@RequestBody Farmaco f){
 		iFarmaco.delete(f);
 		return new ResponseEntity<Farmaco>(f, HttpStatus.OK);
 	}

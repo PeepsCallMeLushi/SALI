@@ -56,7 +56,7 @@ public class HCUtilizador {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<Utilizador> deleteUsers(@RequestBody Utilizador u){
+	public ResponseEntity<Utilizador> deleteUtilizador(@RequestBody Utilizador u){
 		iUtilizador.delete(u);
 		return new ResponseEntity<Utilizador>(u, HttpStatus.OK);
 	}

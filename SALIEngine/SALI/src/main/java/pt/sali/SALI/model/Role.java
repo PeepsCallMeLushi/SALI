@@ -20,6 +20,10 @@ public class Role {
 		super();
 	}
 
+	public String getId() {
+		return id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -35,9 +39,4 @@ public class Role {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public String getId() {
-		return id;
-	}
-
 }
