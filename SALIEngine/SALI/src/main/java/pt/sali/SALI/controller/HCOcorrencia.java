@@ -8,7 +8,7 @@ import pt.sali.SALI.service.ISOcorrencia;
 
 @RestController
 @RequestMapping("/ocorrencia")
-public class RCOcorrencia {
+public class HCOcorrencia {
 	
 	@Autowired
 	ISOcorrencia isOcorrencia;
