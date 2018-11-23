@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import org.springframework.data.annotation.Id;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 public class Atuacao {
 	
 	@Id

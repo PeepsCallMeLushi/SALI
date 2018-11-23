@@ -43,5 +43,15 @@ public class Sintoma {
 	public String getId() {
 		return id;
 	}
+
+	public String getMetodologia() {
+		return metodologia;
+	}
+
+	public void setMetodologia(String metodologia) {
+		this.metodologia = metodologia;
+	}
+	
+	
 	
 }
