@@ -15,6 +15,10 @@ public class Token {
 		this.token = token;
 		this.expiracao = expiracao;
 	}
+	
+	public Token() {
+		super();
+	}
 
 	public String getToken() {
 		return token;

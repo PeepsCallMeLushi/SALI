@@ -6,10 +6,10 @@ public class Equipa {
 	
 	@Id
 	private String id;
-	private Profissional medico;
-	private Profissional enfermeiro;
+	private Utilizador medico;
+	private Utilizador enfermeiro;
 	
-	public Equipa(String id, Profissional medico, Profissional enfermeiro) {
+	public Equipa(String id, Utilizador medico, Utilizador enfermeiro) {
 		super();
 		this.id = id;
 		this.medico = medico;
@@ -20,19 +20,19 @@ public class Equipa {
 		super();
 	}
 
-	public Profissional getMedico() {
+	public Utilizador getMedico() {
 		return medico;
 	}
 
-	public void setMedico(Profissional medico) {
+	public void setMedico(Utilizador medico) {
 		this.medico = medico;
 	}
 
-	public Profissional getEnfermeiro() {
+	public Utilizador getEnfermeiro() {
 		return enfermeiro;
 	}
 
-	public void setEnfermeiro(Profissional enfermeiro) {
+	public void setEnfermeiro(Utilizador enfermeiro) {
 		this.enfermeiro = enfermeiro;
 	}
 
