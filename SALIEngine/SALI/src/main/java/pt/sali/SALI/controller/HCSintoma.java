@@ -57,7 +57,7 @@ public class HCSintoma {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<Sintoma> deleteUsers(@RequestBody Sintoma s){
+	public ResponseEntity<Sintoma> deleteSintoma(@RequestBody Sintoma s){
 		iSintoma.delete(s);
 		return new ResponseEntity<Sintoma>(s, HttpStatus.OK);
 	}

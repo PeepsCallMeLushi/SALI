@@ -55,7 +55,7 @@ public class HCFarmaco {
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<Farmaco> deleteUsers(@RequestBody Farmaco f){
+	public ResponseEntity<Farmaco> deleteFarmaco(@RequestBody Farmaco f){
 		iFarmaco.delete(f);
 		return new ResponseEntity<Farmaco>(f, HttpStatus.OK);
 	}

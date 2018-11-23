@@ -56,7 +56,7 @@ public class HCRole {
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<Role> deleteUsers(@RequestBody Role r){
+	public ResponseEntity<Role> deleteRole(@RequestBody Role r){
 		iRole.delete(r);
 		return new ResponseEntity<Role>(r, HttpStatus.OK);
 	}

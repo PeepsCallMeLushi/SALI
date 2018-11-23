@@ -61,13 +61,13 @@ public class HCOcorrencia {
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<Ocorrencia> deleteUsers(@RequestBody Ocorrencia o){
+	public ResponseEntity<Ocorrencia> deleteOcorrencia(@RequestBody Ocorrencia o){
 		iOcorrencia.delete(o);
 		return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
 	}
 	
 	@GetMapping("deleteall")
-	public ResponseEntity<List<Ocorrencia>> deleteallUsers(){
+	public ResponseEntity<List<Ocorrencia>> deleteallOcorrencias(){
 		iOcorrencia.deleteAll();
 		return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
 	}
