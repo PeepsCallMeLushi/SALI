@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pt.sali.SALI.model.Ocorrencia;
+import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IUtilizador;
 
@@ -42,6 +45,7 @@ public class HCUtilizador {
 		return answer;
 	}
 	
+	@GetMapping("/list")
 	public ResponseEntity<List<Utilizador>> listarAllUtilizadores (){
 		
 		return new ResponseEntity<List<Utilizador>>(iUtilizador.findAll(), HttpStatus.OK);
@@ -59,5 +63,21 @@ public class HCUtilizador {
 	public ResponseEntity<Utilizador> deleteUtilizador(@RequestBody Utilizador u){
 		iUtilizador.delete(u);
 		return new ResponseEntity<Utilizador>(u, HttpStatus.OK);
+	}
+	
+	@GetMapping("deleteall")
+	public ResponseEntity<List<Utilizador>> deleteallUtilizador(){
+		iUtilizador.deleteAll();
+		return new ResponseEntity<List<Utilizador>>(iUtilizador.findAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/mock")
+	public void mock() {
+		
+		Role ro = new Role("Enfermeiro", "Vacinas");
+		Utilizador e = new Utilizador("Joao", "69", "69",
+				ro, "69");
+		
+		iUtilizador.save(e);
 	}
 }
