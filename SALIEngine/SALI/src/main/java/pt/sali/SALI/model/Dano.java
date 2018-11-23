@@ -11,11 +11,11 @@ public class Dano {
 	private String parteDanificada;
 	private ArrayList<String> estados;
 	
-	public Dano(String parteDanificada, ArrayList<String> estados) {
+	public Dano(String parteDanificada) {
 		super();
 		this.id = null;
 		this.parteDanificada = parteDanificada;
-		this.estados = estados;
+		this.estados = new ArrayList<>();
 	}
 
 	public Dano() {

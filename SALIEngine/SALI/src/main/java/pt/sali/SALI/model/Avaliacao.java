@@ -14,19 +14,14 @@ public class Avaliacao {
 	private ArrayList<Estado> estado;
 	private ArrayList<Dano> danos;
 	
-	public Avaliacao(ArrayList<Sintoma> sintomas, ArrayList<String> antecedentesPessoais,
-			ArrayList<Farmaco> habitosFarmacologicos, ArrayList<Estado> estado, ArrayList<Dano> danos) {
-		super();
-		this.id = null;
-		this.sintomas = sintomas;
-		this.antecedentesPessoais = antecedentesPessoais;
-		this.habitosFarmacologicos = habitosFarmacologicos;
-		this.estado = estado;
-		this.danos = danos;
-	}
-
 	public Avaliacao() {
 		super();
+		this.id = null;
+		this.sintomas = new ArrayList<>();
+		this.antecedentesPessoais = new ArrayList<>();
+		this.habitosFarmacologicos = new ArrayList<>();
+		this.estado = new ArrayList<>();
+		this.danos = new ArrayList<>();
 	}
 
 	public ArrayList<Sintoma> getSintomas() {

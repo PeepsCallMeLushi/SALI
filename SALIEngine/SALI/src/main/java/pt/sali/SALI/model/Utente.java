@@ -15,8 +15,7 @@ public class Utente {
 	private String observacao;
 	private ArrayList<String> hipotesesDiagnostivas;
 	
-	public Utente(String sexo, Idade idade, Avaliacao avaliacao, Atuacao atuacao, String observacao,
-			ArrayList<String> hipotesesDiagnostivas) {
+	public Utente(String sexo, Idade idade, Avaliacao avaliacao, Atuacao atuacao, String observacao) {
 		super();
 		this.id = null;
 		this.sexo = sexo;
@@ -24,7 +23,7 @@ public class Utente {
 		this.avaliacao = avaliacao;
 		this.atuacao = atuacao;
 		this.observacao = observacao;
-		this.hipotesesDiagnostivas = hipotesesDiagnostivas;
+		this.hipotesesDiagnostivas = new ArrayList<>();
 	}
 
 	public Utente() {

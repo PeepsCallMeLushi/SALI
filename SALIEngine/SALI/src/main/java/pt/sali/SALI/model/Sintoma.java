@@ -12,12 +12,12 @@ public class Sintoma {
 	private String nome;
 	private ArrayList<Pergunta> pergunta;
 	
-	public Sintoma(String metodologia, String nome, ArrayList<Pergunta> pergunta) {
+	public Sintoma(String metodologia, String nome) {
 		super();
 		this.id = null;
 		this.metodologia = metodologia;
 		this.nome = nome;
-		this.pergunta = pergunta;
+		this.pergunta = new ArrayList<>();
 	}
 
 	public Sintoma() {

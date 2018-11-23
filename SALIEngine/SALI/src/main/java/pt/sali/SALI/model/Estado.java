@@ -21,13 +21,13 @@ public class Estado {
 	private Double sao2;
 	private Double glicemia;
 
-	public Estado(String horas, ArrayList<Glasgow> glasgow, Double freqVentil, Double freqPulso,
+	public Estado(String horas, Double freqVentil, Double freqPulso,
 			Double pressArtSistolica, Double pressArtDiastolica, String pele, String pupilas, String monitor,
 			String ecg, Double sao2, Double glicemia) {
 		super();
 		this.id = null;
 		this.horas = horas;
-		this.glasgow = glasgow;
+		this.glasgow = new ArrayList<>();
 		this.freqVentil = freqVentil;
 		this.freqPulso = freqPulso;
 		this.pressArtSistolica = pressArtSistolica;

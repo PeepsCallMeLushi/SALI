@@ -12,16 +12,12 @@ public class Glasgow {
 	private ArrayList<String> verbal;
 	private ArrayList<String> motor;
 	
-	public Glasgow(ArrayList<String> olhos, ArrayList<String> verbal, ArrayList<String> motor) {
-		super();
-		this.id = null;
-		this.olhos = olhos;
-		this.verbal = verbal;
-		this.motor = motor;
-	}
-	
 	public Glasgow() {
 		super();
+		this.id = null;
+		this.olhos = new ArrayList<>();
+		this.verbal = new ArrayList<>();
+		this.motor = new ArrayList<>();
 	}
 
 	public ArrayList<String> getOlhos() {

@@ -12,12 +12,12 @@ public class Pergunta {
 	private String tipoDeResposta;
 	private ArrayList<String> resposta;
 	
-	public Pergunta(String pergunta, String tipoDeResposta, ArrayList<String> resposta) {
+	public Pergunta(String pergunta, String tipoDeResposta) {
 		super();
 		this.id = null;
 		this.pergunta = pergunta;
 		this.tipoDeResposta = tipoDeResposta;
-		this.resposta = resposta;
+		this.resposta = new ArrayList<>();
 	}
 
 	public Pergunta() {
