@@ -23,8 +23,23 @@ public class HCRole {
 	@PostMapping("/add")
 	public String addRole (@RequestBody Role r) {
 		
-		iRole.save(r);
-		return "";
+		String answer="";
+		boolean jaExiste = false;
+		
+		for (Role rl: iRole.findAll()) {
+			if (rl.getNome().compareToIgnoreCase(r.getNome())==0){ 
+				jaExiste = true;
+			}
+		}
+		
+		if (jaExiste == true) {
+			answer = "Role já existente";
+		}else if (jaExiste == false){
+			iRole.save(r);
+			answer = "Role gravado com sucesso";
+		}
+		
+		return answer;
 	}
 	
 	public ResponseEntity<List<Role>> listarAllRoles (){

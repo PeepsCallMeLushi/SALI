@@ -23,8 +23,23 @@ public class HCUtilizador {
 	@PostMapping("/add")
 	public String addUtilizador(@RequestBody Utilizador u) {
 		
-		iUtilizador.save(u);
-		return "";
+		String answer="";
+		boolean jaExiste = false;
+		
+		for (Utilizador ut: iUtilizador.findAll()) {
+			if (ut.getIdentificador().compareToIgnoreCase(u.getIdentificador())==0){ 
+				jaExiste = true;
+			}
+		}
+		
+		if (jaExiste == true) {
+			answer = "Nome de utilizador já existente";
+		}else if (jaExiste == false){
+			iUtilizador.save(u);
+			answer = "Utilizador gravado com sucesso";
+		}
+		
+		return answer;
 	}
 	
 	public ResponseEntity<List<Utilizador>> listarAllUtilizadores (){

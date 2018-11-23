@@ -23,8 +23,23 @@ public class HCSintoma {
 	@PostMapping("/add")
 	public String addSintoma(@RequestBody Sintoma s) {
 		
-		iSintoma.save(s);
-		return "";
+		String answer="";
+		boolean jaExiste = false;
+		
+		for (Sintoma st: iSintoma.findAll()) {
+			if (st.getNome().compareToIgnoreCase(s.getNome())==0){ 
+				jaExiste = true;
+			}
+		}
+		
+		if (jaExiste == true) {
+			answer = "Sintoma já existente";
+		}else if (jaExiste == false){
+			iSintoma.save(s);
+			answer = "Sintoma gravado com sucesso";
+		}
+		
+		return answer;
 	}
 	
 	public ResponseEntity<List<Sintoma>> listarAllSintomas (){
