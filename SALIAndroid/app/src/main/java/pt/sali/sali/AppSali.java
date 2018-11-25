@@ -11,9 +11,14 @@ import pt.sali.sali.model.Farmaco;
 import pt.sali.sali.model.Freguesia;
 import pt.sali.sali.model.Ocorrencia;
 import pt.sali.sali.model.Pergunta;
+import pt.sali.sali.model.Role;
 import pt.sali.sali.model.Utente;
+import pt.sali.sali.model.Utilizador;
 
 public class AppSali extends Application {
+
+    public final static int RIGHT = 1, LEFT= 2,STATIC=0;
+
 
     Ocorrencia o;
     Avaliacao ava;
@@ -22,6 +27,7 @@ public class AppSali extends Application {
     ArrayList<Farmaco> arFarmacos;
     ArrayList<Freguesia> arFreguseias;
     ArrayList<Pergunta> arPerguntas;
+    ArrayList<Utilizador> arUtilizadores;
     Utente u;
 
     @Override
@@ -30,6 +36,15 @@ public class AppSali extends Application {
         arFarmacos = new ArrayList<>();
         arFreguseias = new ArrayList<>();
         arPerguntas = new ArrayList<>();
+        arUtilizadores = new ArrayList<>();
+        loadMockUpData();
+    }
+
+    private void loadMockUpData(){
+        Utilizador m = new Utilizador("João","abc","abc",new Role("Medico","ola"), "123");
+        Utilizador e = new Utilizador("Joana","abc","abc",new Role("Enfermeiro","ola"), "123");
+        arUtilizadores.add(m);
+        arUtilizadores.add(e);
     }
 
     public Ocorrencia getO() {
@@ -94,5 +109,13 @@ public class AppSali extends Application {
 
     public void setU(Utente u) {
         this.u = u;
+    }
+
+    public ArrayList<Utilizador> getArUtilizadores() {
+        return arUtilizadores;
+    }
+
+    public void setArUtilizadores(ArrayList<Utilizador> arUtilizadores) {
+        this.arUtilizadores = arUtilizadores;
     }
 }

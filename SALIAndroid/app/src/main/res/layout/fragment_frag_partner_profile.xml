@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_right"
     tools:context=".fragments.FragPartnerProfile">
 
     <LinearLayout
@@ -10,12 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="25dp">
-        <Spinner
-            android:id="@+id/sp_partner_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></Spinner>
         <ImageView
-            android:layout_marginTop="5dp"
             android:id="@+id/iv_parner_image"
             android:layout_width="128dp"
             android:layout_height="128dp"/>

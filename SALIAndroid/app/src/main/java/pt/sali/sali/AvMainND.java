@@ -10,18 +10,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import pt.sali.sali.fragments.FragOcorrencia;
 import pt.sali.sali.fragments.FragProfileMenu;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class AvMainND extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_av_main_nd);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,6 +43,7 @@ public class AvMainND extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         setFragment(new FragProfileMenu());
+        navigationView.setCheckedItem(R.id.nav_profile);
     }
 
     @Override
@@ -50,7 +59,7 @@ public class AvMainND extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.av_main_nd, menu);
+        //getMenuInflater().inflate(R.menu.av_main_nd, menu);
         return true;
     }
 
@@ -76,9 +85,9 @@ public class AvMainND extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+            setFragment(new FragProfileMenu());
         } else if (id == R.id.nav_ocorrencia) {
-
+            setFragment(new FragOcorrencia());
         } else if (id == R.id.nav_mapa) {
 
         } else if (id == R.id.nav_transferencias) {
