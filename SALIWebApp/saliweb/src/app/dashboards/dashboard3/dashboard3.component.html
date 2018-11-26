@@ -1,0 +1,140 @@
+<income-counter></income-counter>
+<!-- Row -->
+<div class="row">
+    <div class="col-lg-8 col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-wrap">
+                    <div>
+                        <h4 class="card-title">Yearly Earning</h4>
+                    </div>
+                    <div class="ml-auto">
+                        <ul class="list-inline">
+                            <li>
+                                <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>iMac</h6> 
+                            </li>
+                            <li>
+                                <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>iPhone</h6> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType">
+                </canvas>
+            </div>
+        </div>
+        <div class="card card-default">
+            <div class="card-body">
+                <h4 class="card-title">Filterable Table</h4>
+                <h6 class="card-subtitle">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</h6>
+                <div class="table table-responsive smart-table">
+                    <ng2-smart-table [settings]="settings2" [source]="source" class=""></ng2-smart-table>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-5">
+        <!-- Column -->
+        <div class="card card-default">
+            <div class="card-header">
+                <h4 class="card-title m-b-0">Order Stats</h4>
+            </div>
+            <div class="card-body collapse show">
+                <div style="height: 220px">
+                    <x-chartist class="" [data]="donuteChart1.data" [type]="donuteChart1.type" [options]="donuteChart1.options" [responsiveOptions]="donuteChart1.responsiveOptions" [events]="donuteChart1.events"> </x-chartist>
+                </div>
+            </div>
+            <ul class="list-inline m-t-20 text-center">
+                <li >
+                    <h6 class="text-muted"><i class="fa fa-circle text-info"></i> Order</h6>
+                    <h4 class="m-b-0">8500</h4>
+                </li>
+                <li>
+                    <h6 class="text-muted"><i class="fa fa-circle text-danger"></i> Pending</h6>
+                    <h4 class="m-b-0">3630</h4>
+                </li>
+                <li>
+                    <h6 class="text-muted"> <i class="fa fa-circle text-success"></i> Delivered</h6>
+                    <h4 class="m-b-0">4870</h4>
+                </li>
+            </ul>
+        </div>
+        <!-- Column -->
+        <div class="card card-default">
+            <div class="card-header">
+                <h4 class="card-title m-b-0">Offer for you</h4>
+            </div>
+            <div class="card-body collapse show bg-info">
+                <ngb-carousel class="no-control-indicator">
+                    <ng-template ngbSlide>
+                        <div class="">
+                            <i class="fa fa-shopping-cart fa-2x text-white"></i>
+                            <p class="text-white">25th Jan</p>
+                            <h3 class="text-white font-light">Now Get <span class="font-bold">50% Off</span><br>
+                            on buy</h3>
+                            <div class="text-white m-t-20">
+                                <i>- Ecommerce site</i>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div class="">
+                            <i class="fa fa-shopping-cart fa-2x text-white"></i>
+                            <p class="text-white">25th Jan</p>
+                            <h3 class="text-white font-light">Now Get <span class="font-bold">60% Off</span><br>
+                            on buy</h3>
+                            <div class="text-white m-t-20">
+                                <i>- Ecommerce site</i>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div class="">
+                            <i class="fa fa-shopping-cart fa-2x text-white"></i>
+                            <p class="text-white">25th Jan</p>
+                            <h3 class="text-white font-light">Now Get <span class="font-bold">70% Off</span><br>
+                            on buy</h3>
+                            <div class="text-white m-t-20">
+                                <i>- Ecommerce site</i>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+        </div>
+        <!-- Column -->
+        <div class="card card-default">
+            <div class="card-header">
+                <h4 class="card-title m-b-0">Latest Products</h4>
+            </div>
+            <div class="card-body p-0 collapse show text-center">
+                <ngb-carousel class="no-control-indicator">
+                    <ng-template ngbSlide>
+                        <div>
+                            <img src="assets/images/gallery/chair.png" alt="user">
+                            <h4 class="m-b-30">Brand New Product</h4>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div>
+                            <img src="assets/images/gallery/chair2.png" alt="user">
+                            <h4 class="m-b-30">Brand New Product</h4>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div>
+                            <img src="assets/images/gallery/chair3.png" alt="user">
+                            <h4 class="m-b-30">Brand New Product</h4>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div>
+                            <img src="assets/images/gallery/chair4.png" alt="user">
+                            <h4 class="m-b-30">Brand New Product</h4>
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+        </div>
+    </div>
+</div>
