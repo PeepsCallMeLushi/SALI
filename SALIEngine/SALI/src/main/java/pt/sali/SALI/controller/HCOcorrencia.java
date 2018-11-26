@@ -23,7 +23,6 @@ import pt.sali.SALI.model.Freguesia;
 import pt.sali.SALI.model.Glasgow;
 import pt.sali.SALI.model.Idade;
 import pt.sali.SALI.model.Ocorrencia;
-import pt.sali.SALI.model.Pergunta;
 import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Sintoma;
 import pt.sali.SALI.model.Transporte;
@@ -31,6 +30,7 @@ import pt.sali.SALI.model.Utente;
 import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IFreguesia;
 import pt.sali.SALI.service.IOcorrencia;
+import pt.sali.SALI.service.ISintoma;
 
 @RestController
 @RequestMapping("/Ocorrencia")
@@ -40,6 +40,8 @@ public class HCOcorrencia {
 	IOcorrencia iOcorrencia;
 	@Autowired
 	IFreguesia iFreguesia;
+	@Autowired
+	ISintoma iSintoma;
 	
 	@PostMapping("/add")
 	public String addOcorrencia(@RequestBody Ocorrencia o) {
@@ -76,8 +78,7 @@ public class HCOcorrencia {
 	public void addo(){
 		Date d = new Date();
 		Freguesia f = new Freguesia();
-		
-		// TODO
+
 		for (Freguesia fr : iFreguesia.findAll()) {
 			if (fr.getNome().compareTo("Santiago")==0) {
 				f = fr;
@@ -94,18 +95,19 @@ public class HCOcorrencia {
 		System.out.println(f.getNome());
 		Ocorrencia o = new Ocorrencia("Carro", d, 2, 
 				"Santiago",
-				f, eq);
+				f, eq, "PENDENTE");
 		Idade ida = new Idade("11", "1");
 		
 		//AVALIAÇÃO - BEGIN ---------------------------------
 		Avaliacao ava = new Avaliacao();
 		
-		Sintoma sint = new Sintoma("A", "fds...");
-		Pergunta perg = new Pergunta("doi?", "B");
-		perg.getResposta().add("sim");
-		perg.getResposta().add("nao");
-		sint.getPergunta().add(perg);
-		ava.getSintomas().add(sint);
+		Sintoma s = new Sintoma();
+		for (Sintoma si : iSintoma.findAll()) {
+			if (si.getNome().compareTo("DOI BUE") == 0) {
+				s = si;
+			}
+		}
+		ava.getSintomas().add(s);
 		
 		ava.getAntecedentesPessoais().add("fiambre");
 		ava.getAntecedentesPessoais().add("paio");
