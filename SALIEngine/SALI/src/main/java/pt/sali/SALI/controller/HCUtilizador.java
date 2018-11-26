@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.sali.SALI.model.Ocorrencia;
 import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IUtilizador;
@@ -34,7 +33,7 @@ public class HCUtilizador {
 				jaExiste = true;
 			}
 		}
-		
+		 
 		if (jaExiste == true) {
 			answer = "Nome de utilizador já existente";
 		}else if (jaExiste == false){

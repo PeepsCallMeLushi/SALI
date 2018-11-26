@@ -17,9 +17,10 @@ public class Ocorrencia {
 	private Freguesia freguesia;
 	private ArrayList<Utente> utentes;
 	private Equipa equipa;
+	private String estado;
 	
 	public Ocorrencia(String tipoViaturaAssistencia, Date data, int nmrVitimas,
-			String local, Freguesia freguesia, Equipa equipa) {
+			String local, Freguesia freguesia, Equipa equipa, String estado) {
 		super();
 		this.id = null;
 		this.tipoViaturaAssistencia = tipoViaturaAssistencia;
@@ -30,6 +31,7 @@ public class Ocorrencia {
 		this.freguesia = freguesia;
 		this.utentes = new ArrayList<>();
 		this.equipa = equipa;
+		this.estado = estado;
 	}
 
 	public Ocorrencia() {
@@ -104,4 +106,11 @@ public class Ocorrencia {
 		return id;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }

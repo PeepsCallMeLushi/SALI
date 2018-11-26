@@ -28,12 +28,58 @@
                 android:layout_alignParentLeft="true"
                 android:elevation="8dp"
                 app:cardCornerRadius="6dp">
-
                 <TextView
+                    android:id="@+id/tv_veiculo_atual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Veiculo: Carro"/>
+                    android:text="Veículo: Sem Veículo"
+                    android:textColor="@color/colorPrimaryDark"/>
+                    <GridLayout
+                        android:visibility="gone"
+                        android:id="@+id/gl_veiculos_opcoes"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2">
+                        <RadioButton
+                            android:id="@+id/rb_veiculo_ambulancia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Abulancia"
+                            android:layout_columnWeight="1"/>
+                        <RadioButton
+                            android:id="@+id/rb_veiculo_carro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carro"
+                            android:layout_columnWeight="1"/>
+                        <RadioButton
+                            android:id="@+id/rb_veiculo_mota"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mota"
+                            android:layout_columnWeight="1"/>
+                        <RadioButton
+                            android:id="@+id/rb_veiculo_nenhum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sem Veículo"
+                            android:layout_columnWeight="1"/>
+                    </GridLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:foregroundGravity="right"
@@ -50,7 +96,43 @@
                     android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25-11-2018"/>
+                    android:text="25-11-2018"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <LinearLayout
+                    android:id="@+id/ll_date_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <CalendarView
+                        android:id="@+id/calv_ocorrencia_calendario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="15dp">
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CANCELAR"
+                            android:layout_alignParentLeft="true"
+                            android:textColor="@color/colorPrimaryDark"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SUBMETER"
+                            android:layout_alignParentRight="true"
+                            android:textColor="@color/colorPrimaryDark"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+
 
             </androidx.cardview.widget.CardView>
 
@@ -70,12 +152,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Incidentes"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorPrimaryDark"/>
                 <GridLayout
+                    android:id="@+id/gl_incidentes_opcoes"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2">
+                    android:columnCount="2"
+                    android:visibility="gone">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

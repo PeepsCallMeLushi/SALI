@@ -1,0 +1,113 @@
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <!-- You can find this in the dashboard-component -->
+        <project-counter></project-counter>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- chart and stats -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- chart component -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-wrap m-b-30">
+                    <div>
+                        <h4 class="card-title">Monthly Earning</h4> 
+                    </div>
+                    <div class="ml-auto">
+                        <ul class="list-inline">
+                            <li>
+                                <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Sales</h6> 
+                            </li>
+                            <li>
+                                <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>Earning (k)</h6> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="height:350px;">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"> </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- other chart component -->
+    <div class="col-lg-4">
+        <div class="card card-inverse card-info">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center">
+                        <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
+                    <div>
+                        <h3 class="card-title">Sales Analytics</h3>
+                        <h6 class="card-subtitle">March  2017</h6> </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 align-self-center">
+                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>35487</h2>
+                    </div>
+                    <div class="col-6 p-t-10 p-b-20 text-right">
+                        <div class="spark-count" style="height:65px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-inverse card-success">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center">
+                        <h1 class="text-white"><i class="ti-pie-chart"></i></h1>
+                    </div>
+                    <div>
+                        <h3 class="card-title">Bandwidth usage</h3>
+                        <h6 class="card-subtitle">March  2017</h6> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 align-self-center">
+                        <h2 class="font-light text-white">50 GB</h2> 
+                    </div>
+                    <div class="col- ml-auto p-r-20">
+                        <canvas baseChart width="120px" height="120px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [legend]="lineChartLegend" [colors]="[{backgroundColor: ['#1cadbf', '#1f5f67', '#ffffff'], borderColor:['#26dad2', '#26dad2', '#26dad2'] }]"> </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Report and Comments -->
+<!-- ============================================================== -->
+<!-- Row -->
+<div class="row">
+    <div class="col-lg-6">
+        <!-- You can find this in the dashboard-component -->
+        <earning-report></earning-report>
+    </div>
+    <div class="col-lg-6">
+        <!-- You can find this in the dashboard-component -->
+        <recent-comment></recent-comment>
+    </div>
+</div>
+<!-- Row -->
+<!-- ============================================================== -->
+<!-- Carousel widgets --><!-- You can find this in the dashboard-component -->
+<!-- ============================================================== -->
+<social-slider></social-slider>
+<!-- ============================================================== -->
+<!-- Activity widgets --><!-- You can find this in the dashboard-component -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9">
+       <activity-timeline></activity-timeline>
+    </div>
+    <div class="col-lg-4 col-xlg-3">
+        <profile-box></profile-box>
+    </div>
+</div>    
