@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:openDrawer="start">
 
     <include
@@ -21,6 +22,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_av_main_nd"
         app:menu="@menu/activity_av_main_nd_drawer"
-        android:background="@color/colorAccentInvis"/>
+        android:background="@color/colorInvisible"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

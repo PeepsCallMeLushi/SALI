@@ -21,7 +21,7 @@ import android.view.WindowManager;
 public class AvMainND extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class AvMainND extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         setFragment(new FragProfileMenu());
@@ -85,9 +85,13 @@ public class AvMainND extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            setFragment(new FragProfileMenu());
+            if (navigationView.getCheckedItem().getItemId()!=R.id.nav_profile){
+                setFragment(new FragProfileMenu());
+            }
         } else if (id == R.id.nav_ocorrencia) {
-            setFragment(new FragOcorrencia());
+            if (navigationView.getCheckedItem().getItemId()!=R.id.nav_ocorrencia){
+                setFragment(new FragOcorrencia());
+            }
         } else if (id == R.id.nav_mapa) {
 
         } else if (id == R.id.nav_transferencias) {

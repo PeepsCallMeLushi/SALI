@@ -61,6 +61,8 @@ public class FragPartnerProfile extends Fragment {
         ivImagem = v.findViewById(R.id.iv_parner_image);
         toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_spinner);
+
+
         MenuItem item = toolbar.getMenu().findItem(R.id.toolbar_spinner);
         final Spinner spinner = (Spinner) item.getActionView();
         ArrayList<String> arUsers = new ArrayList<>();
