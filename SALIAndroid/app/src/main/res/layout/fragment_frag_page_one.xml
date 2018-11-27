@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="30dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="20dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".fragments.FragPageOne">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:requiresFadingEdge="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:fadingEdgeLength="50dp"
         android:paddingTop="5dp">
 
     <LinearLayout
@@ -23,27 +26,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.cardview.widget.CardView
+                android:id="@+id/carv_ocorrencia_veiculo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:elevation="8dp"
+                android:elevation="10dp"
                 app:cardCornerRadius="6dp">
                 <TextView
-                    android:id="@+id/tv_veiculo_atual"
+                    android:id="@+id/tv_ocorrencia_veiculo_atual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="Veículo: Sem Veículo"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/colorPrimaryDark"
+                    />
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/ll_ocorrencia_veiculos_opcoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                     <GridLayout
-                        android:visibility="gone"
-                        android:id="@+id/gl_veiculos_opcoes"
                         android:layout_margin="10dp"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:columnCount="2">
                         <RadioButton
-                            android:id="@+id/rb_veiculo_ambulancia"
+                            android:id="@+id/rb_ocorrencia_veiculo_ambulancia"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <TextView
@@ -52,7 +61,7 @@
                             android:text="Abulancia"
                             android:layout_columnWeight="1"/>
                         <RadioButton
-                            android:id="@+id/rb_veiculo_carro"
+                            android:id="@+id/rb_ocorrencia_veiculo_carro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <TextView
@@ -61,7 +70,7 @@
                             android:text="Carro"
                             android:layout_columnWeight="1"/>
                         <RadioButton
-                            android:id="@+id/rb_veiculo_mota"
+                            android:id="@+id/rb_ocorrencia_veiculo_mota"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <TextView
@@ -70,7 +79,7 @@
                             android:text="Mota"
                             android:layout_columnWeight="1"/>
                         <RadioButton
-                            android:id="@+id/rb_veiculo_nenhum"
+                            android:id="@+id/rb_ocorrencia_veiculo_nenhum"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"/>
@@ -80,26 +89,49 @@
                             android:text="Sem Veículo"
                             android:layout_columnWeight="1"/>
                     </GridLayout>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp">
+                        <TextView
+                            android:id="@+id/tv_ocorrencia_veiculo_cancelar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CANCELAR"
+                            android:layout_alignParentLeft="true"
+                            android:textColor="@color/colorPrimaryDark"/>
+                        <TextView
+                            android:id="@+id/tv_ocorrencia_veiculo_submeter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SUBMETER"
+                            android:layout_alignParentRight="true"
+                            android:textColor="@color/colorPrimaryDark"/>
+                    </RelativeLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:foregroundGravity="right"
-                android:id="@+id/cv"
+                android:id="@+id/carv_ocorrencia_data"
                 android:background="@color/colorInvisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
+                android:elevation="10dp"
                 app:cardCornerRadius="6dp"
                 android:layout_alignParentRight="true">
 
                 <TextView
-                    android:id="@+id/tv"
+                    android:id="@+id/tv_ocorrencia_data"
                     android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="25-11-2018"
                     android:textColor="@color/colorPrimaryDark"/>
                 <LinearLayout
-                    android:id="@+id/ll_date_picker"
+                    android:id="@+id/ll_ocorrencia_date_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -116,13 +148,14 @@
                         android:layout_marginRight="30dp"
                         android:layout_marginBottom="15dp">
                         <TextView
-
+                            android:id="@+id/tv_ocorrencia_calendario_cancelar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CANCELAR"
                             android:layout_alignParentLeft="true"
                             android:textColor="@color/colorPrimaryDark"/>
                         <TextView
+                            android:id="@+id/tv_ocorrencia_calendario_submeter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="SUBMETER"
@@ -130,47 +163,46 @@
                             android:textColor="@color/colorPrimaryDark"/>
                     </RelativeLayout>
                 </LinearLayout>
-
-
-
-
             </androidx.cardview.widget.CardView>
-
         </RelativeLayout>
         <androidx.cardview.widget.CardView
+            android:id="@+id/carv_ocorrencia_incidente"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="6dp"
-            android:elevation="8dp">
+            android:elevation="10dp">
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incidentes"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimaryDark"/>
             <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ll_ocorrencia_incidentes_opcoes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Incidentes"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"/>
                 <GridLayout
-                    android:id="@+id/gl_incidentes_opcoes"
-                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:visibility="gone">
-                    <RadioButton
+                    android:columnCount="2">
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_veiduasrodas"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="0"/>
+                        android:layout_height="wrap_content"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Veículo de 2 Rodas"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_veiligeiro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -178,7 +210,8 @@
                         android:layout_height="wrap_content"
                         android:text="Veículo Ligeiro"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_maqindus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -186,7 +219,8 @@
                         android:layout_height="wrap_content"
                         android:text="Máquina Industrial"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_veipesado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -194,7 +228,8 @@
                         android:layout_height="wrap_content"
                         android:text="Veículo Pesado"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_comboio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -202,15 +237,17 @@
                         android:layout_height="wrap_content"
                         android:text="Comboio"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_veiagricula"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Veículo Agrículo"
+                        android:text="Veículo Agrícula"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_atropelamento"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -218,15 +255,8 @@
                         android:layout_height="wrap_content"
                         android:text="Atropelamento"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Queda"
-                        android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_armafogo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -234,7 +264,8 @@
                         android:layout_height="wrap_content"
                         android:text="Arma Fogo"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_armabranca"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -242,7 +273,8 @@
                         android:layout_height="wrap_content"
                         android:text="Arma Branca"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_submersao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -250,7 +282,8 @@
                         android:layout_height="wrap_content"
                         android:text="Submersão"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_queimadura"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -258,7 +291,8 @@
                         android:layout_height="wrap_content"
                         android:text="Queimadura"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_intoxicacao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -266,7 +300,8 @@
                         android:layout_height="wrap_content"
                         android:text="Intoxicação"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_parto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -274,7 +309,8 @@
                         android:layout_height="wrap_content"
                         android:text="Trabalho de parto"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_doeca"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
@@ -282,19 +318,148 @@
                         android:layout_height="wrap_content"
                         android:text="Doença"
                         android:layout_columnWeight="1"/>
-                    <RadioButton
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_queda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Queda"
+                        android:layout_columnWeight="1">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_ocorrencia_incidente_queda"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:enabled="false"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <CheckBox
+                        android:id="@+id/rb_ocorrencia_incidente_outra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Outra"
+                        android:layout_columnWeight="1">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_ocorrencia_incidente_outro"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </GridLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/tv_ocorrencia_incidente_cancelar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CANCELAR"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/colorPrimaryDark"/>
+                    <TextView
+                        android:id="@+id/tv_ocorrencia_incidente_submeter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SUBMETER"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/colorPrimaryDark"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Horas"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <LinearLayout
+                    android:id="@+id/ll_ocorrencia_horas"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Outra:"
-                        android:layout_columnWeight="1"/>
+                        android:text="Caminho do Local"
+                        android:layout_gravity="center"/>
+                    <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center">
+                    </TimePicker>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chegada ao Local"
+                        android:layout_gravity="center"/>
+                    <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center">
+                    </TimePicker>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saída do Local"
+                        android:layout_gravity="center"/>
+                    <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center">
+                    </TimePicker>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Establecimento de Saúde"
+                        android:layout_gravity="center"/>
+                    <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center">
+                    </TimePicker>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disponivel"
+                        android:layout_gravity="center"/>
+                    <TimePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center">
+                    </TimePicker>
 
-
-                </GridLayout>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>
