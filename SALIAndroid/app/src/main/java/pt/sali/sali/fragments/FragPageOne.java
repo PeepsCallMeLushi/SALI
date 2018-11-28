@@ -1,6 +1,7 @@
 package pt.sali.sali.fragments;
 
 
+import android.opengl.Visibility;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -37,24 +39,33 @@ import pt.sali.sali.model.Utente;
  */
 public class FragPageOne extends Fragment {
 
+    private final static int NENHUM =0, CHEGADA = 1, CAMINHO = 2, SAIDA = 3, ESTABLECIMENTO = 4, DISPONIVEL = 5;
+
+
     //Funcoes
-    Calendar calendar;
-    SimpleDateFormat simpleDateFormat;
+    private Calendar calendar;
+    private SimpleDateFormat simpleDateFormat;
 
     //Objectos do XML
-    CardView carvData,carvVeiculo, carvIncidente, carvHoras;
-    TextView tvData, tvVeiculoAtual, tvCalAccept, tvCalCancel, tvVeiAccept, tvVeiCancel, tvInciAccept, tvInciCancel;
-    TimePicker timePicker;
-    CalendarView calendarView;
-    LinearLayout llCalendario, llVeiculo, llIncidentes, llHoras, llHorasCaminho, llHorasSaida, llHorasChegada,llHorasEstablecimento, llHorasDisponivel;
-    RadioButton rbAmbulancia, rbCarro, rbMota, rbNenhum;
-    CheckBox rbVeiDuasRodas, rbVeiLigeiro, rbMaqIndus, rbVeiPesa, rbComboio, rbVeiAgro, rbAtropel, rbQueda, rbArmaFogo, rbArmaBranca, rbSubmersao, rbQueima, rbIntox, rbParto, rbDoenca, rbOutra;
-    TextInputEditText etQueda, etOutra;
+    private CardView carvData,carvVeiculo, carvIncidente, carvHoras;
+    private TextView tvData, tvCalAccept, tvCalCancel,
+            tvVeiculoAtual,  tvVeiAccept, tvVeiCancel,
+            tvInciAccept, tvInciCancel,
+            tvChegada, tvChegadaAccept, tvChegadaCancel,
+            tvCaminho, tvCaminhoAccept, tvCaminhoCancel,
+            tvSaida, tvSaidaAccept, tvSaidaCancel,
+            tvEstablecimento, tvEstablecimentoAccept, tvEstablecimentoCancel,
+            tvDisponivel, tvDisponivelAccept, tvDisponivelCancel;
+    private TimePicker tpCaminho, tpChegada, tpSaida, tpEstablecimento,tpDisponivel;
+    private CalendarView calendarView;
+    private LinearLayout llCalendario, llVeiculo, llIncidentes, llHoras, llHorasCaminho, llHorasSaida, llHorasChegada,llHorasEstablecimento, llHorasDisponivel;
+    private RadioButton rbAmbulancia, rbCarro, rbMota, rbNenhum;
+    private CheckBox rbVeiDuasRodas, rbVeiLigeiro, rbMaqIndus, rbVeiPesa, rbComboio, rbVeiAgro, rbAtropel, rbQueda, rbArmaFogo, rbArmaBranca, rbSubmersao, rbQueima, rbIntox, rbParto, rbDoenca, rbOutra;
+    private TextInputEditText etQueda, etOutra;
 
     public FragPageOne() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,6 +90,23 @@ public class FragPageOne extends Fragment {
         tvVeiCancel = v.findViewById(R.id.tv_ocorrencia_veiculo_cancelar);
         tvInciAccept = v.findViewById(R.id.tv_ocorrencia_incidente_submeter);
         tvInciCancel = v.findViewById(R.id.tv_ocorrencia_incidente_cancelar);
+        tvChegada = v.findViewById(R.id.tv_ocorrencia_horasChegada);
+        tvChegadaAccept = v.findViewById(R.id.tv_ocorrencia_horasChegada_submeter);
+        tvChegadaCancel = v.findViewById(R.id.tv_ocorrencia_horasChegada_cancelar);
+        tvCaminho = v.findViewById(R.id.tv_ocorrencia_horasCaminho);
+        tvCaminhoAccept = v.findViewById(R.id.tv_ocorrencia_horasCaminho_submeter);
+        tvCaminhoCancel = v.findViewById(R.id.tv_ocorrencia_horasCaminho_cancelar);
+        tvSaida = v.findViewById(R.id.tv_ocorrencia_horasSaida);
+        tvSaidaAccept = v.findViewById(R.id.tv_ocorrencia_horasSaida_submeter);
+        tvSaidaCancel = v.findViewById(R.id.tv_ocorrencia_horasSaida_cancelar);
+        tvEstablecimento = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento);
+        tvEstablecimentoAccept = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento_submeter);
+        tvEstablecimentoCancel = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento_cancelar);
+        tvDisponivel = v.findViewById(R.id.tv_ocorrencia_horasDisponivel);
+        tvDisponivelAccept = v.findViewById(R.id.tv_ocorrencia_horasDisponivel_submeter);
+        tvDisponivelCancel = v.findViewById(R.id.tv_ocorrencia_horasDisponivel_cancelar);
+
+        tvData.setText(simpleDateFormat.format(calendar.getTime()));
 
         //calendários
         calendarView = v.findViewById(R.id.calv_ocorrencia_calendario);
@@ -122,9 +150,18 @@ public class FragPageOne extends Fragment {
         llHorasEstablecimento = v.findViewById(R.id.ll_ocorrencia_horasEstablecimento);
         llHorasSaida = v.findViewById(R.id.ll_ocorrencia_horasSaida);
 
-        tvData.setText(simpleDateFormat.format(calendar.getTime()));
-        //timePicker = v.findViewById(R.id.tp);
-        //timePicker.setIs24HourView(true);
+        //Time Pickers
+        tpCaminho = v.findViewById(R.id.tp_ocorrencia_horasCaminho);
+        tpChegada = v.findViewById(R.id.tp_ocorrencia_horasChegada);
+        tpSaida = v.findViewById(R.id.tp_ocorrencia_horasSaida);
+        tpDisponivel = v.findViewById(R.id.tp_ocorrencia_horasDisponivel);
+        tpEstablecimento = v.findViewById(R.id.tp_ocorrencia_horasEstablecimento);
+
+        tpCaminho.setIs24HourView(true);
+        tpChegada.setIs24HourView(true);
+        tpSaida.setIs24HourView(true);
+        tpEstablecimento.setIs24HourView(true);
+        tpDisponivel.setIs24HourView(true);
 
         //On Click Listeners
         carvData.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +180,17 @@ public class FragPageOne extends Fragment {
             @Override
             public void onClick(View v) {
                 createIncidenteOptions();
+            }
+        });
+        carvHoras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (llHoras.getVisibility()==View.GONE){
+                    createHorasOptions();
+                } else {
+                    llHoras.setVisibility(View.GONE);
+                }
+
             }
         });
 
@@ -407,6 +455,105 @@ public class FragPageOne extends Fragment {
         });
     }
 
+    private void createHorasOptions(){
+        llHoras.setVisibility(View.VISIBLE);
+        tvCaminho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horasSelector(CAMINHO);
+            }
+        });
+        tvDisponivel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horasSelector(DISPONIVEL);
+            }
+        });
+        tvChegada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horasSelector(CHEGADA);
+            }
+        });
+        tvSaida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horasSelector(SAIDA);
+            }
+        });
+        tvEstablecimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horasSelector(ESTABLECIMENTO);
+            }
+        });
+    }
+
+    private void horasSelector(int selector){
+        switch (selector){
+            case CHEGADA:{
+                horasController(llHorasChegada, tvChegadaAccept, tvChegadaCancel);
+                horasClose(llHorasDisponivel);
+                horasClose(llHorasCaminho);
+                horasClose(llHorasSaida);
+                horasClose(llHorasEstablecimento);
+                break;
+            }
+            case CAMINHO:{
+                horasController(llHorasCaminho, tvCaminhoAccept, tvCaminhoCancel);
+                horasClose(llHorasDisponivel);
+                horasClose(llHorasChegada);
+                horasClose(llHorasSaida);
+                horasClose(llHorasEstablecimento);
+                break;
+            }
+            case SAIDA:{
+                horasController(llHorasSaida, tvSaidaAccept, tvSaidaCancel);
+                horasClose(llHorasDisponivel);
+                horasClose(llHorasCaminho);
+                horasClose(llHorasChegada);
+                horasClose(llHorasEstablecimento);
+                break;
+            }
+            case ESTABLECIMENTO:{
+                horasController(llHorasEstablecimento, tvEstablecimentoAccept, tvEstablecimentoCancel);
+                horasClose(llHorasDisponivel);
+                horasClose(llHorasCaminho);
+                horasClose(llHorasSaida);
+                horasClose(llHorasChegada);
+                break;
+            }
+            case DISPONIVEL:{
+                horasController(llHorasDisponivel, tvDisponivelAccept, tvDisponivelCancel);
+                horasClose(llHorasChegada);
+                horasClose(llHorasCaminho);
+                horasClose(llHorasSaida);
+                horasClose(llHorasEstablecimento);
+                break;
+            }
+        }
+    }
+
+    private void horasController(final LinearLayout linearLayout, TextView textView1, TextView textView2){
+        linearLayout.setVisibility(View.VISIBLE);
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.setVisibility(View.GONE);
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void horasClose(LinearLayout linearLayout){
+        linearLayout.setVisibility(View.GONE);
+    }
+
     public class AAUtente extends RecyclerView.Adapter<AAUtente.VHUtente>{
 
         ArrayList<Utente> dataBank;
@@ -438,4 +585,5 @@ public class FragPageOne extends Fragment {
             }
         }
     }
+
 }
