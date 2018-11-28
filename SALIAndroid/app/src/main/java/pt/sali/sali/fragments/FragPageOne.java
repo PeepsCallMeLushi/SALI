@@ -42,14 +42,15 @@ public class FragPageOne extends Fragment {
     SimpleDateFormat simpleDateFormat;
 
     //Objectos do XML
-    CardView carvData,carvVeiculo, carvIncidente;
-    TextView tvData, tvVeiculoAtual, tvIncidentes, tvCalAccept, tvCalCancel, tvVeiAccept, tvVeiCancel, tvInciAccept, tvInciCancel;
+    CardView carvData,carvVeiculo, carvIncidente, carvHoras;
+    TextView tvData, tvVeiculoAtual, tvCalAccept, tvCalCancel, tvVeiAccept, tvVeiCancel, tvInciAccept, tvInciCancel;
     TimePicker timePicker;
     CalendarView calendarView;
-    LinearLayout llCalendario, llVeiculo, llIncidentes;
+    LinearLayout llCalendario, llVeiculo, llIncidentes, llHoras, llHorasCaminho, llHorasSaida, llHorasChegada,llHorasEstablecimento, llHorasDisponivel;
     RadioButton rbAmbulancia, rbCarro, rbMota, rbNenhum;
     CheckBox rbVeiDuasRodas, rbVeiLigeiro, rbMaqIndus, rbVeiPesa, rbComboio, rbVeiAgro, rbAtropel, rbQueda, rbArmaFogo, rbArmaBranca, rbSubmersao, rbQueima, rbIntox, rbParto, rbDoenca, rbOutra;
     TextInputEditText etQueda, etOutra;
+
     public FragPageOne() {
         // Required empty public constructor
     }
@@ -67,6 +68,7 @@ public class FragPageOne extends Fragment {
         carvData = v.findViewById(R.id.carv_ocorrencia_data);
         carvVeiculo = v.findViewById(R.id.carv_ocorrencia_veiculo);
         carvIncidente = v.findViewById(R.id.carv_ocorrencia_incidente);
+        carvHoras = v.findViewById(R.id.cardv_ocorrencia_horas);
 
         //TextViews
         tvData = v.findViewById(R.id.tv_ocorrencia_data);
@@ -113,6 +115,12 @@ public class FragPageOne extends Fragment {
         llCalendario = v.findViewById(R.id.ll_ocorrencia_date_picker);
         llVeiculo = v.findViewById(R.id.ll_ocorrencia_veiculos_opcoes);
         llIncidentes = v.findViewById(R.id.ll_ocorrencia_incidentes_opcoes);
+        llHoras = v.findViewById(R.id.ll_ocorrencia_horas_opcoes);
+        llHorasCaminho = v.findViewById(R.id.ll_ocorrencia_horasCaminho);
+        llHorasChegada = v.findViewById(R.id.ll_ocorrencia_horasChegada);
+        llHorasDisponivel = v.findViewById(R.id.ll_ocorrencia_horasDisponivel);
+        llHorasEstablecimento = v.findViewById(R.id.ll_ocorrencia_horasEstablecimento);
+        llHorasSaida = v.findViewById(R.id.ll_ocorrencia_horasSaida);
 
         tvData.setText(simpleDateFormat.format(calendar.getTime()));
         //timePicker = v.findViewById(R.id.tp);
