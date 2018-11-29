@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Role;
@@ -50,26 +51,13 @@ public class HCUtilizador {
 		return new ResponseEntity<List<Utilizador>>(iUtilizador.findAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/listMedico")
-	public ResponseEntity<List<Utilizador>> listarMedico (){
+	@GetMapping("/listByRole")
+	public ResponseEntity<List<Utilizador>> listarMedico (@RequestParam ("role") String role){
 		
 		ArrayList<Utilizador> aux = new ArrayList<>();
 		
 		for (Utilizador ut : iUtilizador.findAll()) {
-			if (ut.getRole().getNome().compareTo("Medico") == 0) {
-				aux.add(ut);
-			}
-		}
-			
-		return new ResponseEntity<List<Utilizador>>(aux, HttpStatus.OK);
-	}
-	
-	@GetMapping("/listEnfermeiro")
-	public ResponseEntity<List<Utilizador>> listarEnfermeiro (){
-		ArrayList<Utilizador> aux = new ArrayList<>();
-		
-		for (Utilizador ut : iUtilizador.findAll()) {
-			if (ut.getRole().getNome().compareTo("Medico") == 0) {
+			if (ut.getRole().getNome().compareTo(role) == 0) {
 				aux.add(ut);
 			}
 		}
