@@ -1,25 +1,21 @@
 package pt.sali.sali.fragments;
 
 
-import android.opengl.Visibility;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -51,11 +47,12 @@ public class FragPageOne extends Fragment {
     private TextView tvData, tvCalAccept, tvCalCancel,
             tvVeiculoAtual,  tvVeiAccept, tvVeiCancel,
             tvInciAccept, tvInciCancel,
-            tvChegada, tvChegadaAccept, tvChegadaCancel,
-            tvCaminho, tvCaminhoAccept, tvCaminhoCancel,
-            tvSaida, tvSaidaAccept, tvSaidaCancel,
-            tvEstablecimento, tvEstablecimentoAccept, tvEstablecimentoCancel,
-            tvDisponivel, tvDisponivelAccept, tvDisponivelCancel;
+            tvChegadaAccept, tvChegadaCancel,
+            tvCaminhoAccept, tvCaminhoCancel,
+            tvSaidaAccept, tvSaidaCancel,
+            tvEstablecimentoAccept, tvEstablecimentoCancel,
+            tvDisponivelAccept, tvDisponivelCancel;
+    private Button btChegada, btCaminho, btSaida, btEstablecimento, btDisponivel;
     private TimePicker tpCaminho, tpChegada, tpSaida, tpEstablecimento,tpDisponivel;
     private CalendarView calendarView;
     private LinearLayout llCalendario, llVeiculo, llIncidentes, llHoras, llHorasCaminho, llHorasSaida, llHorasChegada,llHorasEstablecimento, llHorasDisponivel;
@@ -90,26 +87,25 @@ public class FragPageOne extends Fragment {
         tvVeiCancel = v.findViewById(R.id.tv_ocorrencia_veiculo_cancelar);
         tvInciAccept = v.findViewById(R.id.tv_ocorrencia_incidente_submeter);
         tvInciCancel = v.findViewById(R.id.tv_ocorrencia_incidente_cancelar);
-        tvChegada = v.findViewById(R.id.tv_ocorrencia_horasChegada);
         tvChegadaAccept = v.findViewById(R.id.tv_ocorrencia_horasChegada_submeter);
         tvChegadaCancel = v.findViewById(R.id.tv_ocorrencia_horasChegada_cancelar);
-        tvCaminho = v.findViewById(R.id.tv_ocorrencia_horasCaminho);
         tvCaminhoAccept = v.findViewById(R.id.tv_ocorrencia_horasCaminho_submeter);
         tvCaminhoCancel = v.findViewById(R.id.tv_ocorrencia_horasCaminho_cancelar);
-        tvSaida = v.findViewById(R.id.tv_ocorrencia_horasSaida);
         tvSaidaAccept = v.findViewById(R.id.tv_ocorrencia_horasSaida_submeter);
         tvSaidaCancel = v.findViewById(R.id.tv_ocorrencia_horasSaida_cancelar);
-        tvEstablecimento = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento);
         tvEstablecimentoAccept = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento_submeter);
         tvEstablecimentoCancel = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento_cancelar);
-        tvDisponivel = v.findViewById(R.id.tv_ocorrencia_horasDisponivel);
         tvDisponivelAccept = v.findViewById(R.id.tv_ocorrencia_horasDisponivel_submeter);
         tvDisponivelCancel = v.findViewById(R.id.tv_ocorrencia_horasDisponivel_cancelar);
 
         tvData.setText(simpleDateFormat.format(calendar.getTime()));
 
-        //calendários
-        calendarView = v.findViewById(R.id.calv_ocorrencia_calendario);
+        //Buttons
+        btChegada = v.findViewById(R.id.bt_ocorrencia_horasChegada);
+        btCaminho = v.findViewById(R.id.bt_ocorrencia_horasCaminho);
+        btSaida = v.findViewById(R.id.bt_ocorrencia_horasSaida);
+        btEstablecimento = v.findViewById(R.id.bt_ocorrencia_horasEstabelecimento);
+        btDisponivel = v.findViewById(R.id.bt_ocorrencia_horasDisponivel);
 
         //Radio Buttons
         rbAmbulancia = v.findViewById(R.id.rb_ocorrencia_veiculo_ambulancia);
@@ -149,6 +145,9 @@ public class FragPageOne extends Fragment {
         llHorasDisponivel = v.findViewById(R.id.ll_ocorrencia_horasDisponivel);
         llHorasEstablecimento = v.findViewById(R.id.ll_ocorrencia_horasEstablecimento);
         llHorasSaida = v.findViewById(R.id.ll_ocorrencia_horasSaida);
+
+        //Calendar Views
+        calendarView = v.findViewById(R.id.calv_ocorrencia_calendario);
 
         //Time Pickers
         tpCaminho = v.findViewById(R.id.tp_ocorrencia_horasCaminho);
@@ -457,31 +456,31 @@ public class FragPageOne extends Fragment {
 
     private void createHorasOptions(){
         llHoras.setVisibility(View.VISIBLE);
-        tvCaminho.setOnClickListener(new View.OnClickListener() {
+        btCaminho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 horasSelector(CAMINHO);
             }
         });
-        tvDisponivel.setOnClickListener(new View.OnClickListener() {
+        btDisponivel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 horasSelector(DISPONIVEL);
             }
         });
-        tvChegada.setOnClickListener(new View.OnClickListener() {
+        btChegada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 horasSelector(CHEGADA);
             }
         });
-        tvSaida.setOnClickListener(new View.OnClickListener() {
+        btSaida.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 horasSelector(SAIDA);
             }
         });
-        tvEstablecimento.setOnClickListener(new View.OnClickListener() {
+        btEstablecimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 horasSelector(ESTABLECIMENTO);
