@@ -114,7 +114,7 @@ public class FragPartnerProfile extends Fragment {
 
             }
         });
-        Picasso.get().load("https://api.adorable.io/avatars/128/123").into(ivImagem);
+        //Picasso.get().load("https://api.adorable.io/avatars/128/123").into(ivImagem);
         return v;
     }
 }

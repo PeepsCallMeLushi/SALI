@@ -41,7 +41,7 @@ public class FragMyProfile extends Fragment {
         tvProf = v.findViewById(R.id.tv_profile_prof);
         tvEsp = v.findViewById(R.id.tv_profile_esp);
         ivImagem = v.findViewById(R.id.iv_profile_image);
-        Picasso.get().load("https://api.adorable.io/avatars/128/ola+adeus").into(ivImagem);
+        //Picasso.get().load("https://api.adorable.io/avatars/128/ola+adeus").into(ivImagem);
 
         toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.getMenu().clear();

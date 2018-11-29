@@ -1,7 +1,7 @@
 package pt.sali.SALI.controller;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Role;
@@ -44,10 +45,24 @@ public class HCUtilizador {
 		return answer;
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("/listall")
 	public ResponseEntity<List<Utilizador>> listarAllUtilizadores (){
 		
 		return new ResponseEntity<List<Utilizador>>(iUtilizador.findAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/listByRole")
+	public ResponseEntity<List<Utilizador>> listarMedico (@RequestParam ("role") String role){
+		
+		ArrayList<Utilizador> aux = new ArrayList<>();
+		
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getRole().getNome().compareTo(role) == 0) {
+				aux.add(ut);
+			}
+		}
+			
+		return new ResponseEntity<List<Utilizador>>(aux, HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
@@ -73,9 +88,9 @@ public class HCUtilizador {
 	@GetMapping("/mock")
 	public void mock() {
 		
-		Role ro = new Role("Enfermeiro", "Vacinas");
+		Role ro = new Role("Enfermeiro");
 		Utilizador e = new Utilizador("Joao", "69", "69",
-				ro, "69");
+				ro, "69", "Pediatra");
 		
 		iUtilizador.save(e);
 	}

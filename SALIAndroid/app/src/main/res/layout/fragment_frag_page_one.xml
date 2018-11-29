@@ -31,8 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:elevation="10dp"
-                app:cardCornerRadius="6dp">
+                android:elevation="8dp"
+                app:cardCornerRadius="6dp"
+                android:layout_marginBottom="15dp">
                 <TextView
                     android:id="@+id/tv_ocorrencia_veiculo_atual"
                     android:layout_width="wrap_content"
@@ -123,7 +124,7 @@
                 android:background="@color/colorInvisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="10dp"
+                android:elevation="8dp"
                 app:cardCornerRadius="6dp"
                 android:layout_alignParentRight="true">
 
@@ -173,12 +174,11 @@
         <!--INCIDENTES===========================================================================-->
         <androidx.cardview.widget.CardView
             android:id="@+id/carv_ocorrencia_incidente"
-            android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="6dp"
-            android:elevation="10dp">
+            android:elevation="8dp">
             <TextView
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
@@ -387,7 +387,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardv_ocorrencia_horas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            app:cardCornerRadius="6dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -401,18 +403,18 @@
                     android:textColor="@color/colorPrimaryDark"/>
                 <LinearLayout
                     android:id="@+id/ll_ocorrencia_horas_opcoes"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
-                    android:layout_marginBottom="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/bt_ocorrencia_horasCaminho"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Caminho do Local"
-                        android:layout_gravity="center"/>
+                        android:background="#fff"
+                        android:gravity="center"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasCaminho"
                         android:layout_width="match_parent"
@@ -420,7 +422,8 @@
                         android:orientation="vertical"
                         android:visibility="gone">
                         <TimePicker
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tp_ocorrencia_horasCaminho"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:timePickerMode="spinner"
                             android:layout_gravity="center">
@@ -448,12 +451,13 @@
                                 android:textColor="@color/colorPrimaryDark"/>
                         </RelativeLayout>
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/bt_ocorrencia_horasChegada"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#fff"
                         android:text="Chegada ao Local"
-                        android:layout_gravity="center"/>
+                        android:gravity="center"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasChegada"
                         android:layout_width="match_parent"
@@ -461,7 +465,8 @@
                         android:orientation="vertical"
                         android:visibility="gone">
                         <TimePicker
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tp_ocorrencia_horasChegada"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:timePickerMode="spinner"
                             android:layout_gravity="center">
@@ -489,12 +494,13 @@
                                 android:textColor="@color/colorPrimaryDark"/>
                         </RelativeLayout>
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/bt_ocorrencia_horasSaida"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Saída do Local"
-                        android:layout_gravity="center"/>
+                        android:gravity="center"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasSaida"
                         android:layout_width="match_parent"
@@ -502,7 +508,8 @@
                         android:orientation="vertical"
                         android:visibility="gone">
                         <TimePicker
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tp_ocorrencia_horasSaida"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:timePickerMode="spinner"
                             android:layout_gravity="center">
@@ -530,12 +537,13 @@
                                 android:textColor="@color/colorPrimaryDark"/>
                         </RelativeLayout>
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/bt_ocorrencia_horasEstabelecimento"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Establecimento de Saúde"
-                        android:layout_gravity="center"/>
+                        android:gravity="center"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasEstablecimento"
                         android:layout_width="match_parent"
@@ -543,6 +551,7 @@
                         android:orientation="vertical"
                         android:visibility="gone">
                         <TimePicker
+                            android:id="@+id/tp_ocorrencia_horasEstablecimento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:timePickerMode="spinner"
@@ -571,12 +580,13 @@
                                 android:textColor="@color/colorPrimaryDark"/>
                         </RelativeLayout>
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/bt_ocorrencia_horasDisponivel"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Disponivel"
-                        android:layout_gravity="center"/>
+                        android:gravity="center"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasDisponivel"
                         android:layout_width="match_parent"
@@ -584,7 +594,8 @@
                         android:orientation="vertical"
                         android:visibility="gone">
                         <TimePicker
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tp_ocorrencia_horasDisponivel"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:timePickerMode="spinner"
                             android:layout_gravity="center">
@@ -618,6 +629,8 @@
         </androidx.cardview.widget.CardView>
         <!--FIM DAS HORAS========================================================================-->
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ocorrencia_utentes"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
