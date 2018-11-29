@@ -1,0 +1,25 @@
+.human{
+  width: 50%;
+  margin: auto;
+}
+
+.human {
+  fill: #23b5a0;
+/*  stroke: #23b5a0;*/
+  stroke-width:1px;
+
+}
+
+
+
+.xpto{
+  fill: #23b5a0 ;
+/*    stroke: #23b5a0 0.5;*/
+  opacity: 0.5;
+}
+
+.xpto1{
+  fill: #23b5a0;
+/*    stroke: #23b5a0;*/
+  opacity: 0.5;
+}
