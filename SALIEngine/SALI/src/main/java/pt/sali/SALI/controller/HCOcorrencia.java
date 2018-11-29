@@ -3,6 +3,7 @@ package pt.sali.SALI.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Atuacao;
@@ -72,6 +74,17 @@ public class HCOcorrencia {
 	public ResponseEntity<List<Ocorrencia>> deleteallOcorrencias(){
 		iOcorrencia.deleteAll();
 		return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/dynamic")
+	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json){
+	        
+	    Document document = new Document();
+	    document = Document.parse(json);
+	        
+	    List<Ocorrencia> ocorrencias = iOcorrencia.find(document);
+	    
+	    return new ResponseEntity<>(ocorrencias, HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")
