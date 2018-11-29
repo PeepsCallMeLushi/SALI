@@ -100,9 +100,9 @@ public class HCUtilizador {
 	@GetMapping("/mock")
 	public void mock() {
 		
-		Role ro = new Role("Enfermeiro", "Vacinas");
+		Role ro = new Role("Enfermeiro");
 		Utilizador e = new Utilizador("Joao", "69", "69",
-				ro, "69");
+				ro, "69", "Pediatra");
 		
 		iUtilizador.save(e);
 	}
