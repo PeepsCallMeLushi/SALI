@@ -41,8 +41,8 @@ public class AppSali extends Application {
     }
 
     private void loadMockUpData(){
-        Utilizador m = new Utilizador("João","abc","abc",new Role("Medico","ola"), "123");
-        Utilizador e = new Utilizador("Joana","abc","abc",new Role("Enfermeiro","ola"), "123");
+        Utilizador m = new Utilizador("João","abc","abc",new Role("Medico"), "123","ola");
+        Utilizador e = new Utilizador("Joana","abc","abc",new Role("Enfermeiro"), "123","ola");
         arUtilizadores.add(m);
         arUtilizadores.add(e);
     }

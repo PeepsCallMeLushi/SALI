@@ -44,15 +44,16 @@ public class FragPageOne extends Fragment {
 
     //Objectos do XML
     private CardView carvData,carvVeiculo, carvIncidente, carvHoras;
-    private TextView tvData, tvCalAccept, tvCalCancel,
-            tvVeiculoAtual,  tvVeiAccept, tvVeiCancel,
-            tvInciAccept, tvInciCancel,
-            tvChegadaAccept, tvChegadaCancel,
-            tvCaminhoAccept, tvCaminhoCancel,
-            tvSaidaAccept, tvSaidaCancel,
-            tvEstablecimentoAccept, tvEstablecimentoCancel,
-            tvDisponivelAccept, tvDisponivelCancel;
-    private Button btChegada, btCaminho, btSaida, btEstablecimento, btDisponivel;
+    private TextView tvData,
+            tvVeiculoAtual;
+    private Button btChegada, btCaminho, btSaida, btEstablecimento, btDisponivel, btCalAccept, btCalCancel, btVeiAccept, btVeiCancel,
+            btHoras, btIncidentes,
+            btInciAccept, btInciCancel,
+            btChegadaAccept, btChegadaCancel,
+            btCaminhoAccept, btCaminhoCancel,
+            btSaidaAccept, btSaidaCancel,
+            btEstablecimentoAccept, btEstablecimentoCancel,
+            btDisponivelAccept, btDisponivelCancel;
     private TimePicker tpCaminho, tpChegada, tpSaida, tpEstablecimento,tpDisponivel;
     private CalendarView calendarView;
     private LinearLayout llCalendario, llVeiculo, llIncidentes, llHoras, llHorasCaminho, llHorasSaida, llHorasChegada,llHorasEstablecimento, llHorasDisponivel;
@@ -68,6 +69,7 @@ public class FragPageOne extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_frag_page_one, container, false);
+
         calendar = Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -80,32 +82,34 @@ public class FragPageOne extends Fragment {
 
         //TextViews
         tvData = v.findViewById(R.id.tv_ocorrencia_data);
-        tvCalAccept = v.findViewById(R.id.tv_ocorrencia_calendario_submeter);
-        tvCalCancel = v.findViewById(R.id.tv_ocorrencia_calendario_cancelar);
         tvVeiculoAtual = v.findViewById(R.id.tv_ocorrencia_veiculo_atual);
-        tvVeiAccept = v.findViewById(R.id.tv_ocorrencia_veiculo_submeter);
-        tvVeiCancel = v.findViewById(R.id.tv_ocorrencia_veiculo_cancelar);
-        tvInciAccept = v.findViewById(R.id.tv_ocorrencia_incidente_submeter);
-        tvInciCancel = v.findViewById(R.id.tv_ocorrencia_incidente_cancelar);
-        tvChegadaAccept = v.findViewById(R.id.tv_ocorrencia_horasChegada_submeter);
-        tvChegadaCancel = v.findViewById(R.id.tv_ocorrencia_horasChegada_cancelar);
-        tvCaminhoAccept = v.findViewById(R.id.tv_ocorrencia_horasCaminho_submeter);
-        tvCaminhoCancel = v.findViewById(R.id.tv_ocorrencia_horasCaminho_cancelar);
-        tvSaidaAccept = v.findViewById(R.id.tv_ocorrencia_horasSaida_submeter);
-        tvSaidaCancel = v.findViewById(R.id.tv_ocorrencia_horasSaida_cancelar);
-        tvEstablecimentoAccept = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento_submeter);
-        tvEstablecimentoCancel = v.findViewById(R.id.tv_ocorrencia_horasEstabelecimento_cancelar);
-        tvDisponivelAccept = v.findViewById(R.id.tv_ocorrencia_horasDisponivel_submeter);
-        tvDisponivelCancel = v.findViewById(R.id.tv_ocorrencia_horasDisponivel_cancelar);
 
         tvData.setText(simpleDateFormat.format(calendar.getTime()));
 
         //Buttons
+        btCalAccept = v.findViewById(R.id.bt_ocorrencia_calendario_submeter);
+        btCalCancel = v.findViewById(R.id.bt_ocorrencia_calendario_cancelar);
+        btVeiAccept = v.findViewById(R.id.bt_ocorrencia_veiculo_submeter);
+        btVeiCancel = v.findViewById(R.id.bt_ocorrencia_veiculo_cancelar);
         btChegada = v.findViewById(R.id.bt_ocorrencia_horasChegada);
         btCaminho = v.findViewById(R.id.bt_ocorrencia_horasCaminho);
         btSaida = v.findViewById(R.id.bt_ocorrencia_horasSaida);
         btEstablecimento = v.findViewById(R.id.bt_ocorrencia_horasEstabelecimento);
         btDisponivel = v.findViewById(R.id.bt_ocorrencia_horasDisponivel);
+        btInciAccept = v.findViewById(R.id.bt_ocorrencia_incidente_submeter);
+        btInciCancel = v.findViewById(R.id.bt_ocorrencia_incidente_cancelar);
+        btChegadaAccept = v.findViewById(R.id.bt_ocorrencia_horasChegada_submeter);
+        btChegadaCancel = v.findViewById(R.id.bt_ocorrencia_horasChegada_cancelar);
+        btCaminhoAccept = v.findViewById(R.id.bt_ocorrencia_horasCaminho_submeter);
+        btCaminhoCancel = v.findViewById(R.id.bt_ocorrencia_horasCaminho_cancelar);
+        btSaidaAccept = v.findViewById(R.id.bt_ocorrencia_horasSaida_submeter);
+        btSaidaCancel = v.findViewById(R.id.bt_ocorrencia_horasSaida_cancelar);
+        btEstablecimentoAccept = v.findViewById(R.id.bt_ocorrencia_horasEstabelecimento_submeter);
+        btEstablecimentoCancel = v.findViewById(R.id.bt_ocorrencia_horasEstabelecimento_cancelar);
+        btDisponivelAccept = v.findViewById(R.id.bt_ocorrencia_horasDisponivel_submeter);
+        btDisponivelCancel = v.findViewById(R.id.bt_ocorrencia_horasDisponivel_cancelar);
+        btHoras = v.findViewById(R.id.bt_ocorrencia_horas);
+        btIncidentes = v.findViewById(R.id.bt_ocorrencia_incidentes);
 
         //Radio Buttons
         rbAmbulancia = v.findViewById(R.id.rb_ocorrencia_veiculo_ambulancia);
@@ -175,19 +179,29 @@ public class FragPageOne extends Fragment {
                 createVeiculoOptions();
             }
         });
-        carvIncidente.setOnClickListener(new View.OnClickListener() {
+        btIncidentes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createIncidenteOptions();
+                if (llIncidentes.getVisibility()==View.GONE){
+                    createIncidenteOptions();
+                } else {
+                    llIncidentes.setVisibility(View.GONE);
+                }
+
             }
         });
-        carvHoras.setOnClickListener(new View.OnClickListener() {
+        btHoras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (llHoras.getVisibility()==View.GONE){
                     createHorasOptions();
                 } else {
                     llHoras.setVisibility(View.GONE);
+                    llHorasCaminho.setVisibility(View.GONE);
+                    llHorasChegada.setVisibility(View.GONE);
+                    llHorasDisponivel.setVisibility(View.GONE);
+                    llHorasEstablecimento.setVisibility(View.GONE);
+                    llHorasSaida.setVisibility(View.GONE);
                 }
 
             }
@@ -229,7 +243,7 @@ public class FragPageOne extends Fragment {
             }
         });
 
-        tvCalAccept.setOnClickListener(new View.OnClickListener() {
+        btCalAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tvData.setText(simpleDateFormat.format(calendarView.getDate()));
@@ -239,7 +253,7 @@ public class FragPageOne extends Fragment {
             }
         });
 
-        tvCalCancel.setOnClickListener(new View.OnClickListener() {
+        btCalCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tvData.setVisibility(View.VISIBLE);
@@ -298,7 +312,7 @@ public class FragPageOne extends Fragment {
                 }
             }
         });
-        tvVeiAccept.setOnClickListener(new View.OnClickListener() {
+        btVeiAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rbAmbulancia.isChecked()){
@@ -315,7 +329,7 @@ public class FragPageOne extends Fragment {
                 carvData.setVisibility(View.VISIBLE);
             }
         });
-        tvVeiCancel.setOnClickListener(new View.OnClickListener() {
+        btVeiCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tvVeiculoAtual.setVisibility(View.VISIBLE);
@@ -440,13 +454,13 @@ public class FragPageOne extends Fragment {
 
             }
         });
-        tvInciAccept.setOnClickListener(new View.OnClickListener() {
+        btInciAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 llIncidentes.setVisibility(View.GONE);
             }
         });
-        tvInciCancel.setOnClickListener(new View.OnClickListener() {
+        btInciCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 llIncidentes.setVisibility(View.GONE);
@@ -491,7 +505,7 @@ public class FragPageOne extends Fragment {
     private void horasSelector(int selector){
         switch (selector){
             case CHEGADA:{
-                horasController(llHorasChegada, tvChegadaAccept, tvChegadaCancel);
+                horasController(llHorasChegada, btChegadaAccept, btChegadaCancel);
                 horasClose(llHorasDisponivel);
                 horasClose(llHorasCaminho);
                 horasClose(llHorasSaida);
@@ -499,7 +513,7 @@ public class FragPageOne extends Fragment {
                 break;
             }
             case CAMINHO:{
-                horasController(llHorasCaminho, tvCaminhoAccept, tvCaminhoCancel);
+                horasController(llHorasCaminho, btCaminhoAccept, btCaminhoCancel);
                 horasClose(llHorasDisponivel);
                 horasClose(llHorasChegada);
                 horasClose(llHorasSaida);
@@ -507,7 +521,7 @@ public class FragPageOne extends Fragment {
                 break;
             }
             case SAIDA:{
-                horasController(llHorasSaida, tvSaidaAccept, tvSaidaCancel);
+                horasController(llHorasSaida, btSaidaAccept, btSaidaCancel);
                 horasClose(llHorasDisponivel);
                 horasClose(llHorasCaminho);
                 horasClose(llHorasChegada);
@@ -515,7 +529,7 @@ public class FragPageOne extends Fragment {
                 break;
             }
             case ESTABLECIMENTO:{
-                horasController(llHorasEstablecimento, tvEstablecimentoAccept, tvEstablecimentoCancel);
+                horasController(llHorasEstablecimento, btEstablecimentoAccept, btEstablecimentoCancel);
                 horasClose(llHorasDisponivel);
                 horasClose(llHorasCaminho);
                 horasClose(llHorasSaida);
@@ -523,7 +537,7 @@ public class FragPageOne extends Fragment {
                 break;
             }
             case DISPONIVEL:{
-                horasController(llHorasDisponivel, tvDisponivelAccept, tvDisponivelCancel);
+                horasController(llHorasDisponivel, btDisponivelAccept, btDisponivelCancel);
                 horasClose(llHorasChegada);
                 horasClose(llHorasCaminho);
                 horasClose(llHorasSaida);
@@ -533,15 +547,15 @@ public class FragPageOne extends Fragment {
         }
     }
 
-    private void horasController(final LinearLayout linearLayout, TextView textView1, TextView textView2){
+    private void horasController(final LinearLayout linearLayout, Button button1, Button button2){
         linearLayout.setVisibility(View.VISIBLE);
-        textView1.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 linearLayout.setVisibility(View.GONE);
             }
         });
-        textView2.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 linearLayout.setVisibility(View.GONE);

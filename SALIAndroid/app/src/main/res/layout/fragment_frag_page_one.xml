@@ -60,7 +60,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Abulancia"
+                            android:text="Ambulancia"
                             android:layout_columnWeight="1"/>
                         <RadioButton
                             android:id="@+id/rb_ocorrencia_veiculo_carro"
@@ -98,18 +98,20 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginBottom="15dp">
-                        <TextView
-                            android:id="@+id/tv_ocorrencia_veiculo_cancelar"
+                        <Button
+                            android:id="@+id/bt_ocorrencia_veiculo_cancelar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CANCELAR"
                             android:layout_alignParentLeft="true"
+                            android:background="#fff"
                             android:textColor="@color/colorPrimaryDark"/>
-                        <TextView
-                            android:id="@+id/tv_ocorrencia_veiculo_submeter"
+                        <Button
+                            android:id="@+id/bt_ocorrencia_veiculo_submeter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SUBMETER"
+                            android:text="Submeter"
+                            android:background="#fff"
                             android:layout_alignParentRight="true"
                             android:textColor="@color/colorPrimaryDark"/>
                     </RelativeLayout>
@@ -126,7 +128,8 @@
                 android:layout_height="wrap_content"
                 android:elevation="8dp"
                 app:cardCornerRadius="6dp"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="15dp">
 
                 <TextView
                     android:id="@+id/tv_ocorrencia_data"
@@ -136,11 +139,11 @@
                     android:text="25-11-2018"
                     android:textColor="@color/colorPrimaryDark"/>
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/ll_ocorrencia_date_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:orientation="vertical">
                     <CalendarView
                         android:id="@+id/calv_ocorrencia_calendario"
                         android:layout_width="wrap_content"
@@ -149,21 +152,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_marginBottom="15dp">
-                        <TextView
-                            android:id="@+id/tv_ocorrencia_calendario_cancelar"
+                        <Button
+                            android:id="@+id/bt_ocorrencia_calendario_cancelar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CANCELAR"
                             android:layout_alignParentLeft="true"
+                            android:background="#fff"
                             android:textColor="@color/colorPrimaryDark"/>
-                        <TextView
-                            android:id="@+id/tv_ocorrencia_calendario_submeter"
+                        <Button
+                            android:id="@+id/bt_ocorrencia_calendario_submeter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="SUBMETER"
+                            android:background="#fff"
                             android:layout_alignParentRight="true"
                             android:textColor="@color/colorPrimaryDark"/>
                     </RelativeLayout>
@@ -179,22 +184,24 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="6dp"
             android:elevation="8dp">
-            <TextView
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/bt_ocorrencia_incidentes"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Incidentes"
+                android:background="#fff"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp"/>
             <LinearLayout
                 android:visibility="gone"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="35dp"
                 android:id="@+id/ll_ocorrencia_incidentes_opcoes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <GridLayout
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:columnCount="2">
@@ -365,19 +372,23 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginBottom="10dp">
-                    <TextView
-                        android:id="@+id/tv_ocorrencia_incidente_cancelar"
+                    <Button
+                        android:id="@+id/bt_ocorrencia_incidente_cancelar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CANCELAR"
                         android:layout_alignParentLeft="true"
+                        android:background="#fff"
+                        android:textSize="12dp"
                         android:textColor="@color/colorPrimaryDark"/>
-                    <TextView
-                        android:id="@+id/tv_ocorrencia_incidente_submeter"
+                    <Button
+                        android:id="@+id/bt_ocorrencia_incidente_submeter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SUBMETER"
                         android:layout_alignParentRight="true"
+                        android:background="#fff"
+                        android:textSize="12dp"
                         android:textColor="@color/colorPrimaryDark"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -394,32 +405,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_margin="10dp"
+                <Button
+                    android:id="@+id/bt_ocorrencia_horas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Horas"
+                    android:background="#fff"
                     android:gravity="center"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12dp"/>
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/ll_ocorrencia_horas_opcoes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="15dp"
-                    android:visibility="gone">
+                    android:orientation="vertical">
                     <Button
                         android:id="@+id/bt_ocorrencia_horasCaminho"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Caminho do Local"
                         android:background="#fff"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="10dp"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasCaminho"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/colorPrimaryInvis"
                         android:visibility="gone">
                         <TimePicker
                             android:id="@+id/tp_ocorrencia_horasCaminho"
@@ -435,20 +449,22 @@
                             android:layout_marginLeft="35dp"
                             android:layout_marginRight="35dp"
                             android:layout_marginBottom="10dp">
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasCaminho_cancelar"
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasCaminho_cancelar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="CANCELAR"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentLeft="true"
-                                android:textColor="@color/colorPrimaryDark"/>
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasCaminho_submeter"
+                                android:textColor="#fff"/>
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasCaminho_submeter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="SUBMETER"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/colorPrimaryDark"/>
+                                android:textColor="#fff"
+                                android:background="@color/colorPrimaryInvis"/>
                         </RelativeLayout>
                     </LinearLayout>
                     <Button
@@ -457,12 +473,14 @@
                         android:layout_height="wrap_content"
                         android:background="#fff"
                         android:text="Chegada ao Local"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="10dp"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasChegada"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/colorPrimaryInvis"
                         android:visibility="gone">
                         <TimePicker
                             android:id="@+id/tp_ocorrencia_horasChegada"
@@ -478,20 +496,21 @@
                             android:layout_marginLeft="35dp"
                             android:layout_marginRight="35dp"
                             android:layout_marginBottom="10dp">
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasChegada_cancelar"
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasChegada_cancelar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="CANCELAR"
-                                android:layout_alignParentLeft="true"
-                                android:textColor="@color/colorPrimaryDark"/>
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasChegada_submeter"
+                                android:text="Cancelar"
+                                android:background="@color/colorPrimaryInvis"
+                                android:textColor="#fff"/>
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasChegada_submeter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="SUBMETER"
+                                android:text="Submeter"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/colorPrimaryDark"/>
+                                android:textColor="#fff"/>
                         </RelativeLayout>
                     </LinearLayout>
                     <Button
@@ -500,12 +519,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Saída do Local"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="10dp"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasSaida"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/colorPrimaryInvis"
                         android:visibility="gone">
                         <TimePicker
                             android:id="@+id/tp_ocorrencia_horasSaida"
@@ -521,20 +542,22 @@
                             android:layout_marginLeft="35dp"
                             android:layout_marginRight="35dp"
                             android:layout_marginBottom="10dp">
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasSaida_cancelar"
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasSaida_cancelar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="CANCELAR"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentLeft="true"
-                                android:textColor="@color/colorPrimaryDark"/>
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasSaida_submeter"
+                                android:textColor="#fff"/>
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasSaida_submeter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="SUBMETER"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/colorPrimaryDark"/>
+                                android:textColor="#fff"/>
                         </RelativeLayout>
                     </LinearLayout>
                     <Button
@@ -543,12 +566,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Establecimento de Saúde"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="10dp"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasEstablecimento"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/colorPrimaryInvis"
                         android:visibility="gone">
                         <TimePicker
                             android:id="@+id/tp_ocorrencia_horasEstablecimento"
@@ -564,20 +589,22 @@
                             android:layout_marginLeft="35dp"
                             android:layout_marginRight="35dp"
                             android:layout_marginBottom="10dp">
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasEstabelecimento_cancelar"
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasEstabelecimento_cancelar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="CANCELAR"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentLeft="true"
-                                android:textColor="@color/colorPrimaryDark"/>
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasEstabelecimento_submeter"
+                                android:textColor="#fff"/>
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasEstabelecimento_submeter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="SUBMETER"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/colorPrimaryDark"/>
+                                android:textColor="#fff"/>
                         </RelativeLayout>
                     </LinearLayout>
                     <Button
@@ -586,12 +613,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Disponivel"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textSize="10dp"/>
                     <LinearLayout
                         android:id="@+id/ll_ocorrencia_horasDisponivel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/colorPrimaryInvis"
                         android:visibility="gone">
                         <TimePicker
                             android:id="@+id/tp_ocorrencia_horasDisponivel"
@@ -607,33 +636,45 @@
                             android:layout_marginLeft="35dp"
                             android:layout_marginRight="35dp"
                             android:layout_marginBottom="10dp">
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasDisponivel_cancelar"
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasDisponivel_cancelar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="CANCELAR"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentLeft="true"
-                                android:textColor="@color/colorPrimaryDark"/>
-                            <TextView
-                                android:id="@+id/tv_ocorrencia_horasDisponivel_submeter"
+                                android:textColor="#fff"/>
+                            <Button
+                                android:id="@+id/bt_ocorrencia_horasDisponivel_submeter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="SUBMETER"
+                                android:background="@color/colorPrimaryInvis"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/colorPrimaryDark"/>
+                                android:textColor="#fff"/>
                         </RelativeLayout>
                     </LinearLayout>
-
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <!--FIM DAS HORAS========================================================================-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_ocorrencia_utentes"
-            android:layout_marginTop="15dp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Deslize o ecrã para a esquerda\npara adicionar utentes"
+                android:textAlignment="center"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ocorrencia_utentes"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>
