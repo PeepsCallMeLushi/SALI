@@ -1,5 +1,6 @@
 package pt.sali.SALI.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +45,37 @@ public class HCUtilizador {
 		return answer;
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("/listall")
 	public ResponseEntity<List<Utilizador>> listarAllUtilizadores (){
 		
 		return new ResponseEntity<List<Utilizador>>(iUtilizador.findAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/listMedico")
+	public ResponseEntity<List<Utilizador>> listarMedico (){
+		
+		ArrayList<Utilizador> aux = new ArrayList<>();
+		
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getRole().getNome().compareTo("Medico") == 0) {
+				aux.add(ut);
+			}
+		}
+			
+		return new ResponseEntity<List<Utilizador>>(aux, HttpStatus.OK);
+	}
+	
+	@GetMapping("/listEnfermeiro")
+	public ResponseEntity<List<Utilizador>> listarEnfermeiro (){
+		ArrayList<Utilizador> aux = new ArrayList<>();
+		
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getRole().getNome().compareTo("Medico") == 0) {
+				aux.add(ut);
+			}
+		}
+			
+		return new ResponseEntity<List<Utilizador>>(aux, HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
