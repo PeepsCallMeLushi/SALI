@@ -1,5 +1,6 @@
 package pt.sali.SALI.controller;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -73,8 +74,6 @@ public class HCOcorrencia {
 //			}
 //		}
 //		return new ResponseEntity<String>("Erro", HttpStatus.OK);
-		
-		
 	}
 	
 	@PostMapping("/update")

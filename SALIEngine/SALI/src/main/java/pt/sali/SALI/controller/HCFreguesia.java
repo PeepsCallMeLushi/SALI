@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Freguesia;
-import pt.sali.SALI.model.Ocorrencia;
 import pt.sali.SALI.service.IFreguesia;
 
 @RestController

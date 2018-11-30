@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Role;
-import pt.sali.SALI.model.Sintoma;
-import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IRole;
 import pt.sali.SALI.service.IUtilizador;
 

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Pergunta;
 import pt.sali.SALI.model.Sintoma;
-import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.ISintoma;
 import pt.sali.SALI.service.IUtilizador;
 
