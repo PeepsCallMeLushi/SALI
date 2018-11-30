@@ -24,6 +24,7 @@ import pt.sali.SALI.model.Farmaco;
 import pt.sali.SALI.model.Freguesia;
 import pt.sali.SALI.model.Glasgow;
 import pt.sali.SALI.model.Idade;
+import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Ocorrencia;
 import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Sintoma;
@@ -46,45 +47,92 @@ public class HCOcorrencia {
 	ISintoma iSintoma;
 	
 	@PostMapping("/add")
-	public String addOcorrencia(@RequestBody Ocorrencia o) {
+	public String addOcorrencia(@RequestBody Ocorrencia o
+//			, @RequestParam ("tok") String tok
+								) {
 		
-		iOcorrencia.save(o);
-		return "";
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				iOcorrencia.save(o);
+				return "";
+//			}
+//		}
+//		return new String("Erro", HttpStatus.OK);
+		
+		
 	}
 	
 	@GetMapping("list")
-	public ResponseEntity<List<Ocorrencia>> listarAllOcorrencias (){
+	public ResponseEntity<?> listarAllOcorrencias (
+			//@RequestParam ("tok") String tok
+			){
 		
-		return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
+		
+		
 	}
 	
 	@PostMapping("/update")
-	public ResponseEntity<Ocorrencia> updateOcorrencia(@RequestBody Ocorrencia o){
-		iOcorrencia.save(o);
-		return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
+	public ResponseEntity<?> updateOcorrencia(@RequestBody Ocorrencia o
+//			, @RequestParam ("tok") String tok
+														){
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				iOcorrencia.save(o);
+				return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<Ocorrencia> deleteOcorrencia(@RequestBody Ocorrencia o){
-		iOcorrencia.delete(o);
-		return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
+	public ResponseEntity<?> deleteOcorrencia(@RequestBody Ocorrencia o
+//			, @RequestParam ("tok") String tok
+														){
+		
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				iOcorrencia.delete(o);
+				return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
 	}
 	
 	@GetMapping("deleteall")
-	public ResponseEntity<List<Ocorrencia>> deleteallOcorrencias(){
-		iOcorrencia.deleteAll();
-		return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
+	public ResponseEntity<?> deleteallOcorrencias(
+//			@RequestParam ("tok") String tok
+			){
+		
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				iOcorrencia.deleteAll();
+				return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);	
 	}
 	
 	@GetMapping("/dynamic")
-	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json){
-	        
-	    Document document = new Document();
-	    document = Document.parse(json);
-	        
-	    List<Ocorrencia> ocorrencias = iOcorrencia.find(document);
-	    
-	    return new ResponseEntity<>(ocorrencias, HttpStatus.OK);
+	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json
+//			, @RequestParam ("tok") String tok
+											){
+		
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				Document document = new Document();
+			    document = Document.parse(json);
+			    List<Ocorrencia> ocorrencias = iOcorrencia.find(document);
+			    
+			    return new ResponseEntity<>(ocorrencias, HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);  
 	}
 	
 	@GetMapping("/mock")
@@ -98,13 +146,10 @@ public class HCOcorrencia {
 			}
 		}
 		
-		Role r = new Role("Médico");
 		Role ro = new Role("Enfermeiro");
-		Utilizador m = new Utilizador("Joao", "69", "69",
-				r, "69", "Vacinas");
-		Utilizador e = new Utilizador("Joao", "69", "69",
-				ro, "69", "Pediatra");
-		Equipa eq = new Equipa(m, e);
+		Login lo= new Login("ola", "ola");
+		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo);
+		Equipa eq = new Equipa(e, e);
 		System.out.println(f.getNome());
 		Ocorrencia o = new Ocorrencia("Carro", d, 2, 
 				"Santiago",
