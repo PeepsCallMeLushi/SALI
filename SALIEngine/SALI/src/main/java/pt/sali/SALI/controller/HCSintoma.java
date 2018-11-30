@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.model.Pergunta;
 import pt.sali.SALI.model.Sintoma;
 import pt.sali.SALI.service.ISintoma;
+import pt.sali.SALI.service.IUtilizador;
 
 @RestController
 @RequestMapping("/Sintoma")
@@ -21,9 +23,13 @@ public class HCSintoma {
 	
 	@Autowired
 	ISintoma iSintoma;
+	@Autowired
+	IUtilizador iUtilizador;
 	
 	@PostMapping("/add")
-	public String addSintoma(@RequestBody Sintoma s) {
+	public String addSintoma(@RequestBody Sintoma s
+//			, @RequestParam ("tok") String tok
+								) {
 		
 		String answer="";
 		boolean jaExiste = false;
@@ -34,32 +40,60 @@ public class HCSintoma {
 			}
 		}
 		
-		if (jaExiste == true) {
-			answer = "Sintoma já existente";
-		}else if (jaExiste == false){
-			iSintoma.save(s);
-			answer = "Sintoma gravado com sucesso";
-		}
-		
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				if (jaExiste == true) {
+					answer = "Sintoma já existente";
+				}else if (jaExiste == false){
+					iSintoma.save(s);
+					answer = "Sintoma gravado com sucesso";
+				}
+//			}else{
+//				answer = "Erro";
+//			}
+//		}
 		return answer;
 	}
 	
 	@GetMapping("/list")
-	public ResponseEntity<List<Sintoma>> listarAllSintomas (){
+	public ResponseEntity<?> listarAllSintomas (
+//			@RequestParam ("tok") String tok
+			){
 		
-		return new ResponseEntity<List<Sintoma>>(iSintoma.findAll(), HttpStatus.OK);
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				return new ResponseEntity<List<Sintoma>>(iSintoma.findAll(), HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
-	public ResponseEntity<Sintoma> updateSintoma(@RequestBody Sintoma s){
-		iSintoma.save(s);
-		return new ResponseEntity<Sintoma>(s, HttpStatus.OK);
+	public ResponseEntity<?> updateSintoma(@RequestBody Sintoma s
+//			, @RequestParam ("tok") String tok
+													){
+		
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				iSintoma.save(s);
+				return new ResponseEntity<Sintoma>(s, HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<Sintoma> deleteSintoma(@RequestBody Sintoma s){
-		iSintoma.delete(s);
-		return new ResponseEntity<Sintoma>(s, HttpStatus.OK);
+	public ResponseEntity<?> deleteSintoma(@RequestBody Sintoma s
+//			, @RequestParam ("tok") String tok
+			){
+		
+//		for (Utilizador ut : iUtilizador.findAll()) {
+//			if (ut.getToken().getToken().compareTo(tok) == 0) {
+				iSintoma.delete(s);
+				return new ResponseEntity<Sintoma>(s, HttpStatus.OK);
+//			}
+//		}
+//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")

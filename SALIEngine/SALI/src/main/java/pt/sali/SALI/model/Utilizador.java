@@ -7,23 +7,21 @@ public class Utilizador {
 	@Id
 	private String id;
 	private String nome;
-	private String login;
-	private String password;
 	private Role role;
 	private String identificador;
 	private Token token;
 	private String especializacao;
+	private Login login;
 	
-	public Utilizador(String nome, String login, String password, Role role, String identificador, String especializacao) {
+	public Utilizador(String nome, Role role, String identificador, String especializacao, Login login) {
 		super();
 		this.id = null;
 		this.nome = nome;
-		this.login = login;
-		this.password = password;
 		this.role = role;
 		this.identificador = identificador;
 		this.token = null;
 		this.especializacao = especializacao;
+		this.login = login;
 	}
 
 	public Utilizador() {
@@ -36,22 +34,6 @@ public class Utilizador {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Role getRole() {
@@ -89,6 +71,12 @@ public class Utilizador {
 	public void setEspecializacao(String especializacao) {
 		this.especializacao = especializacao;
 	}
-	
-	
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}	
 }
