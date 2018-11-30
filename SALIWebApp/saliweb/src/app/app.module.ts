@@ -41,10 +41,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   imports: [
     CommonModule,
     BrowserModule,
-    BrowserAnimationsModule,   
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot(),  
+    NgbModule.forRoot(),
     PerfectScrollbarModule,
     AppRoutingModule
   ],

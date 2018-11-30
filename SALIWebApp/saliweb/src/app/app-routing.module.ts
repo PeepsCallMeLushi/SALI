@@ -12,6 +12,11 @@ export const routes: Routes = [
     children: [
         { path: '', redirectTo: '/dashboard/main', pathMatch: 'full' },
         { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule' },
+        { path: 'medicos', loadChildren: './medicos/medicos.module#MedicosModule' },
+        { path: 'enfermeiros', loadChildren: './enfermeiros/enfermeiros.module#EnfermeirosModule' },
+        { path: 'adminrh', loadChildren: './adminrh/adminrh.module#AdminrhModule' },
+        { path: 'ocorrencias', loadChildren: './ocorrencias/ocorrencias.module#OcorrenciasModule' },
+        { path: 'inserir', loadChildren: './inserir/inserir.module#InserirModule' },
         { path: 'starter', loadChildren: './starter/starter.module#StarterModule' },
         { path: 'component', loadChildren: './component/component.module#ComponentsModule' },
         { path: 'icons', loadChildren: './icons/icons.module#IconsModule' },
@@ -19,9 +24,6 @@ export const routes: Routes = [
         { path: 'tables', loadChildren: './table/tables.module#TablesModule' },
         { path: 'charts', loadChildren: './charts/charts.module#ChartModule' },
         { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
-        { path: 'extra-component', loadChildren: './extra-component/extra-component.module#ExtraComponentsModule' },
-        { path: 'apps', loadChildren: './apps/apps.module#AppsModule' },
-        { path: 'sample-pages', loadChildren: './sample-pages/sample-pages.module#SamplePagesModule' }
     ]
 },
 {
@@ -43,4 +45,5 @@ export const routes: Routes = [
     imports: [RouterModule.forRoot(routes), NgbModule.forRoot()],
     exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
