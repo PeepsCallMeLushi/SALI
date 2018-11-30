@@ -1,5 +1,6 @@
 package pt.sali.sali;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationView;
@@ -89,9 +90,10 @@ public class AvMainND extends AppCompatActivity
                 setFragment(new FragProfileMenu());
             }
         } else if (id == R.id.nav_ocorrencia) {
-            if (navigationView.getCheckedItem().getItemId()!=R.id.nav_ocorrencia){
-                setFragment(new FragOcorrencia());
-            }
+            //if (navigationView.getCheckedItem().getItemId()!=R.id.nav_ocorrencia){
+                //setFragment(new FragOcorrencia());
+                startActivity(new Intent(getApplicationContext(), AvOcorrencia.class));
+            //}
         } else if (id == R.id.nav_mapa) {
 
         } else if (id == R.id.nav_transferencias) {

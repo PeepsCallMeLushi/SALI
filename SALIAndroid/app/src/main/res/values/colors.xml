@@ -5,4 +5,5 @@
     <color name="colorAccent">#2c8a84</color>
     <color name="colorInvisible">#c8f3f3f3</color>
     <color name="colorAccentInvis">#c846e6db</color>
+    <color name="colorPrimaryInvis">#acd2f7</color>
 </resources>

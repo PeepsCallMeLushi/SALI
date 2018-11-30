@@ -9,8 +9,9 @@ public class Utilizador {
 	private Role role;
 	private String identificador;
 	private Token token;
+	private String comentario;
 	
-	public Utilizador(String nome, String login, String password, Role role, String identificador) {
+	public Utilizador(String nome, String login, String password, Role role, String identificador, String comentario) {
 		super();
 		this.id = null;
 		this.nome = nome;
@@ -19,6 +20,7 @@ public class Utilizador {
 		this.role = role;
 		this.identificador = identificador;
 		this.token = null;
+		this.comentario = comentario;
 	}
 
 	public Utilizador() {
@@ -75,5 +77,17 @@ public class Utilizador {
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 }
