@@ -588,6 +588,11 @@ public class FragPageOne extends Fragment {
         }
 
         @Override
+        public int getItemViewType(int position) {
+            return super.getItemViewType(position);
+        }
+
+        @Override
         public int getItemCount() {
             return dataBank.size();
         }
