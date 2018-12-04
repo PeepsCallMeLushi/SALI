@@ -21,8 +21,6 @@ public class AvOcorrencia extends AppCompatActivity {
 
     ViewPager viewPager;
     WormDotsIndicator dotsIndicator;
-    FragMyProfile fragMyProfile;
-    FragPartnerProfile fragPartnerProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +29,6 @@ public class AvOcorrencia extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_av_ocorrencia);
         setTitle("Nova Ocorrencia");
-
-        fragMyProfile = new FragMyProfile();
-        fragPartnerProfile = new FragPartnerProfile();
         viewPager = (ViewPager) findViewById(R.id.av_vp);
         dotsIndicator = (WormDotsIndicator) findViewById(R.id.dotsindicator);
         viewPager.setAdapter(new FragPageAdapter(getSupportFragmentManager()));

@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="40dp"
-    android:paddingBottom="20dp"
     tools:context=".fragments.FragPageTwo">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,9 +14,10 @@
         android:paddingTop="5dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
+            android:paddingBottom="20dp"
             android:orientation="vertical">
             <!--LOCAL============================================================================-->
             <androidx.cardview.widget.CardView
@@ -165,19 +165,6 @@
             </androidx.cardview.widget.CardView>
             <!--FIM DO SEXO======================================================================-->
             <!--COMEÇO DA AVALIACAO==============================================================-->
-            <androidx.cardview.widget.CardView
-                android:layout_marginBottom="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="10dp"
-                app:cardCornerRadius="6dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Avaliação"
-                    android:layout_margin="10dp"
-                    android:gravity="center"/>
-            </androidx.cardview.widget.CardView>
             <!--SINAIS/ANTECEDENTES/FARMACOS=====================================================-->
             <androidx.cardview.widget.CardView
                 android:layout_marginBottom="15dp"
@@ -190,6 +177,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Avaliação"
+                        android:layout_margin="10dp"
+                        android:gravity="center"/>
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -251,10 +244,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Estados"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        android:gravity="center"/>
                     <Button
                         android:id="@+id/bt_utente_adicionar_estado"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adicionar Estado"
                         android:background="#FFF"
@@ -267,6 +261,25 @@
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
 
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6dp"
+                android:elevation="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Danos"
+                        android:layout_margin="10dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
