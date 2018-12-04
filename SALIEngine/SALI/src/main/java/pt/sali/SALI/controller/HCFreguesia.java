@@ -23,9 +23,7 @@ public class HCFreguesia {
 	IFreguesia iFreguesia;
 	
 	@PostMapping("/add")
-	public String addFreguesia(@RequestBody Freguesia f
-//			, @RequestParam ("tok") String tok
-								) {
+	public String addFreguesia(@RequestBody Freguesia f, @RequestParam ("tok") String tok) {
 		
 		String answer="";
 		boolean jaExiste = false;

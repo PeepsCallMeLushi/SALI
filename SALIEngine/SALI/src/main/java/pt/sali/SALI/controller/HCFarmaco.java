@@ -11,77 +11,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import pt.sali.SALI.functions.FFarmaco;
 import pt.sali.SALI.model.Farmaco;
-import pt.sali.SALI.service.IFarmaco;
 
 @RestController
 @RequestMapping("/Farmaco")
 public class HCFarmaco {
 	
 	@Autowired
-	IFarmaco iFarmaco;
+	FFarmaco ffarmaco;
 	
 	@PostMapping("/add")
-	public String addFarmaco(@RequestBody Farmaco f, 
-								@RequestParam ("tok") String tok) {
+	public String addFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-		String answer="";
-		boolean jaExiste = false;
-		
-		for (Farmaco fm: iFarmaco.findAll()) {
-			if (fm.getNome().compareToIgnoreCase(f.getNome())==0){ 
-				jaExiste = true;
-			}
-		}
-		
-		if (jaExiste == true) {
-			answer = "Fármaco já existente";
-		}else if (jaExiste == false){
-			iFarmaco.save(f);
-			answer = "Fármaco gravado com sucesso";
-		}
-		
-		return answer;
+		return ffarmaco.saveFarmaco(f, tok);
 	}
 	
 	@RequestMapping("/list")
-	public ResponseEntity<?> listarAllFarmacos (
-//			@RequestParam ("tok") String tok
-			){
+	public ResponseEntity<?> listarAllFarmacos (@RequestParam ("tok") String tok){
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				return new ResponseEntity<List<Farmaco>>(iFarmaco.findAll(), HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
+		List<Farmaco> f = ffarmaco.listarFarmaco(tok); 
+		if(f != null) {
+			return new ResponseEntity<>(f, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
-	public ResponseEntity<?> updateFarmaco(@RequestBody Farmaco f
-//			, @RequestParam ("tok") String tok
-													){
+	public ResponseEntity<?> updateFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				iFarmaco.save(f);
-				return new ResponseEntity<Farmaco>(f, HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
+		return new ResponseEntity<>(ffarmaco.updateFarmaco(f, tok), HttpStatus.OK);
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteFarmaco(@RequestBody Farmaco f
-//			, @RequestParam ("tok") String tok
-													){
+	public ResponseEntity<?> deleteFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				iFarmaco.delete(f);
-				return new ResponseEntity<Farmaco>(f, HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);	
+		return new ResponseEntity<>(ffarmaco.deleteFarmaco(f, tok), HttpStatus.OK);
 	}
 }
