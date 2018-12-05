@@ -6,77 +6,74 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pt.sali.SALI.model.Farmaco;
+import pt.sali.SALI.model.Freguesia;
 import pt.sali.SALI.model.Utilizador;
-import pt.sali.SALI.service.IFarmaco;
+import pt.sali.SALI.service.IFreguesia;
 import pt.sali.SALI.service.IUtilizador;
 
-@Service("ffarmaco")
-public class FFarmaco {
-	
+@Service("ffreguesia")
+public class FFreguesia {
 	
 	@Autowired
-	IFarmaco iFarmaco;
+	IFreguesia iFreguesia;
 	
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	
-	public String saveFarmaco(Farmaco f, String tok) {
+	public String saveFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		String answer = "Token não está presente";
 		boolean jaExiste = false;
-			
+		
+		
 		if (u.isPresent()) {
-			for (Farmaco fm: iFarmaco.findAll()) {
-				if (fm.getNome().compareToIgnoreCase(f.getNome())==0){ 
+			for (Freguesia fg: iFreguesia.findAll()) {
+				if (fg.getNome().compareToIgnoreCase(f.getNome())==0){ 
 					jaExiste = true;
 				}
 			}
-			
 			if (jaExiste == true) {
-				answer = "Fármaco já existente";
+				answer = "Freguesia já existente";
 			}else if (jaExiste == false){
-				iFarmaco.save(f);
-				answer = "Fármaco gravado com sucesso";
+				iFreguesia.save(f);
+				answer = "Freguesia gravada com sucesso";
 			}
 		}
-		
 		return answer;
 	}
 	
-	public List<Farmaco> listarFarmaco (String tok) {
-		
+	public List<Freguesia> listarFreguesia (String tok) {
+	
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		
 		if (u.isPresent()) {
-			return iFarmaco.findAll();
+			return iFreguesia.findAll();
 		}else {
 			return null;
 		}
 	}
 	
-	public String updateFarmaco (Farmaco f, String tok) {
+	public String updateFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		String answer = "Token não está presente";
 		
 		if (u.isPresent()) {
-			iFarmaco.save(f);
+			iFreguesia.save(f);
 			answer = "Atualizado com sucesso";
 		}
 		
 		return answer;
 	}
 	
-	public String deleteFarmaco (Farmaco f, String tok) {
+	public String deleteFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		String answer = "Token não está presente";
 		
 		if (u.isPresent()) {
-			iFarmaco.delete(f);
+			iFreguesia.delete(f);
 			answer = "Apagado com sucesso";
 		}
 		
