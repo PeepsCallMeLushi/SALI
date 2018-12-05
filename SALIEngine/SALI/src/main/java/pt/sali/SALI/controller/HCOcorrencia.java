@@ -98,7 +98,7 @@ public class HCOcorrencia {
 		
 		Role ro = new Role("Enfermeiro");
 		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo);
+		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, "");
 		Equipa eq = new Equipa(e, e);
 		System.out.println(f.getNome());
 		Ocorrencia o = new Ocorrencia("Carro", d, 2, 
@@ -142,7 +142,7 @@ public class HCOcorrencia {
 		
 		// ATUAÇÃO - BEGIN ---------------------------------
 		Transporte trans = new Transporte(true, true);
-		Atuacao atu = new Atuacao(trans, "ceu", "sim", "dead");
+		Atuacao atu = new Atuacao(trans, "ceu", "sim", "dead", true);
 		atu.getAcao().add("croissant");
 		atu.getAcao().add("baguete");
 		
