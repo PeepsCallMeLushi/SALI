@@ -232,6 +232,7 @@
             <!--FIM DOS SINAIS/ANTECEDENTES/FARMACOS=============================================-->
             <!--"GLASGOW"========================================================================-->
             <androidx.cardview.widget.CardView
+                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="6dp"

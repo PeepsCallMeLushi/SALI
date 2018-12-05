@@ -1,54 +1,38 @@
 package pt.sali.sali.model;
 
-public class Utilizador {
+public class  Utilizador {
 
 	private String id;
 	private String nome;
-	private String login;
-	private String password;
 	private Role role;
 	private String identificador;
 	private Token token;
-	private String comentario;
-	
-	public Utilizador(String nome, String login, String password, Role role, String identificador, String comentario) {
+	private String especializacao;
+	private Login login;
+	private String estado;
+
+	public Utilizador(String nome, Role role, String identificador, String especializacao, Login login, String estado) {
 		super();
 		this.id = null;
 		this.nome = nome;
-		this.login = login;
-		this.password = password;
 		this.role = role;
 		this.identificador = identificador;
 		this.token = null;
-		this.comentario = comentario;
+		this.especializacao = especializacao;
+		this.login = login;
+		this.estado = estado;
 	}
 
 	public Utilizador() {
 		super();
 	}
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getLogin() {
-		return login;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Role getRole() {
@@ -79,15 +63,27 @@ public class Utilizador {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getEspecializacao() {
+		return especializacao;
 	}
 
-	public String getComentario() {
-		return comentario;
+	public void setEspecializacao(String especializacao) {
+		this.especializacao = especializacao;
 	}
 
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

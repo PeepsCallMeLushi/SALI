@@ -29,6 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:timePickerMode="spinner"/>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,6 +73,11 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="3"/>
             </GridLayout>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,6 +109,11 @@
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </GridLayout>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,6 +145,11 @@
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </GridLayout>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,6 +206,11 @@
                     android:layout_gravity="center"
                     android:layout_columnWeight="1"/>
             </GridLayout>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -242,6 +267,11 @@
                     android:layout_gravity="center"
                     android:layout_columnWeight="1"/>
             </GridLayout>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <GridLayout
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp"
@@ -270,6 +300,11 @@
                     android:layout_columnWeight="1"/>
 
             </GridLayout>
+            <View
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="@color/colorPrimary"/>
             <GridLayout
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp"

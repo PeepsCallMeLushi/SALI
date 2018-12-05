@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -131,6 +132,208 @@
                             android:enabled="false"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+                </GridLayout>
+                <View
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="Fármacos e Fluidos"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TimePicker
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Outra"
+                            android:layout_columnWeight="1">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"/>
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Outra"
+                            android:layout_columnWeight="1">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"/>
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></Spinner>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Ambulância"
+                    android:gravity="center"/>
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Não"
+                        android:gravity="center"
+                        android:layout_columnWeight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim"
+                        android:gravity="center"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_columnWeight="1"/>
+                </GridLayout>
+                <View
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Com Médico"
+                    android:gravity="center"/>
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Não"
+                        android:gravity="center"
+                        android:layout_columnWeight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim"
+                        android:gravity="center"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_columnWeight="1"/>
+                </GridLayout>
+                <View
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:background="@color/colorPrimary"/>
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2">
+                    <RadioButton
+                        android:id="@+id/rb_ocorrencia_veiculo_ambulancia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Abandonou o local"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_ocorrencia_veiculo_carro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Já transportado"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_ocorrencia_veiculo_mota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chamada Falsa"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_ocorrencia_veiculo_nenhum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Morte"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recusa"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Decisão Médica"
+                        android:layout_columnWeight="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Desactivação"
+                        android:layout_columnWeight="1"/>
                 </GridLayout>
             </LinearLayout>
 
