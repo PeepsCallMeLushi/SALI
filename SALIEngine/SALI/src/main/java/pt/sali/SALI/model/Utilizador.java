@@ -12,8 +12,9 @@ public class Utilizador {
 	private Token token;
 	private String especializacao;
 	private Login login;
+	private String estado;
 	
-	public Utilizador(String nome, Role role, String identificador, String especializacao, Login login) {
+	public Utilizador(String nome, Role role, String identificador, String especializacao, Login login, String estado) {
 		super();
 		this.id = null;
 		this.nome = nome;
@@ -22,6 +23,7 @@ public class Utilizador {
 		this.token = null;
 		this.especializacao = especializacao;
 		this.login = login;
+		this.estado = estado;
 	}
 
 	public Utilizador() {
@@ -78,5 +80,13 @@ public class Utilizador {
 
 	public void setLogin(Login login) {
 		this.login = login;
-	}	
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }
