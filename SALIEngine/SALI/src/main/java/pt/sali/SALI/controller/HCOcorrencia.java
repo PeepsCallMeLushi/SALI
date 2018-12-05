@@ -4,7 +4,6 @@ package pt.sali.SALI.controller;
 import java.util.Date;
 import java.util.List;
 
-import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import pt.sali.SALI.functions.FOcorrencia;
 import pt.sali.SALI.model.Atuacao;
 import pt.sali.SALI.model.Avaliacao;
 import pt.sali.SALI.model.Dano;
@@ -47,91 +47,42 @@ public class HCOcorrencia {
 	@Autowired
 	ISintoma iSintoma;
 	
+	@Autowired
+	FOcorrencia focorrencia;
+	
 	@PostMapping("/add")
-	public String addOcorrencia(@RequestBody Ocorrencia o
-//			, @RequestParam ("tok") String tok
-								) {
+	public String addOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				iOcorrencia.save(o);
-				return "";
-//			}
-//		}
-//		return new String("Erro", HttpStatus.OK);
-		
-		
+		return focorrencia.saveOcorrencia(o, tok);
 	}
 	
 	@GetMapping("list")
-	public ResponseEntity<?> listarAllOcorrencias (
-			//@RequestParam ("tok") String tok
-			){
+	public ResponseEntity<?> listarAllOcorrencias (@RequestParam ("tok") String tok){
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
+		List<Ocorrencia> o = focorrencia.listarOcorrencia(tok); 
+		if(o != null) {
+			return new ResponseEntity<>(o, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
-	public ResponseEntity<?> updateOcorrencia(@RequestBody Ocorrencia o
-//			, @RequestParam ("tok") String tok
-														){
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				iOcorrencia.save(o);
-				return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
+	public ResponseEntity<?> updateOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
+		
+		return new ResponseEntity<>(focorrencia.updateOcorrencia(o, tok), HttpStatus.OK);	
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteOcorrencia(@RequestBody Ocorrencia o
-//			, @RequestParam ("tok") String tok
-														){
+	public ResponseEntity<?> deleteOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				iOcorrencia.delete(o);
-				return new ResponseEntity<Ocorrencia>(o, HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);
-	}
-	
-	@GetMapping("deleteall")
-	public ResponseEntity<?> deleteallOcorrencias(
-//			@RequestParam ("tok") String tok
-			){
-		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				iOcorrencia.deleteAll();
-				return new ResponseEntity<List<Ocorrencia>>(iOcorrencia.findAll(), HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);	
+		return new ResponseEntity<>(focorrencia.deleteOcorrencia(o, tok), HttpStatus.OK);
 	}
 	
 	@GetMapping("/dynamic")
-	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json
-//			, @RequestParam ("tok") String tok
-											){
+	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json, @RequestParam ("tok") String tok) { 
 		
-//		for (Utilizador ut : iUtilizador.findAll()) {
-//			if (ut.getToken().getToken().compareTo(tok) == 0) {
-				Document document = new Document();
-			    document = Document.parse(json);
-			    List<Ocorrencia> ocorrencias = iOcorrencia.find(document);
-			    
-			    return new ResponseEntity<>(ocorrencias, HttpStatus.OK);
-//			}
-//		}
-//		return new ResponseEntity<String>("Erro", HttpStatus.OK);  
+		return new ResponseEntity<>(dynamicQuery(json, tok), HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")

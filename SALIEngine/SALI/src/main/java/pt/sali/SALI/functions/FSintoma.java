@@ -6,77 +6,74 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pt.sali.SALI.model.Farmaco;
+import pt.sali.SALI.model.Sintoma;
 import pt.sali.SALI.model.Utilizador;
-import pt.sali.SALI.service.IFarmaco;
+import pt.sali.SALI.service.ISintoma;
 import pt.sali.SALI.service.IUtilizador;
 
-@Service("ffarmaco")
-public class FFarmaco {
-	
+@Service("fsintoma")
+public class FSintoma {
 	
 	@Autowired
-	IFarmaco iFarmaco;
+	ISintoma iSintoma;
 	
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	
-	public String saveFarmaco(Farmaco f, String tok) {
+	public String saveSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		String answer = "Token não está presente";
 		boolean jaExiste = false;
-			
+		
+		
 		if (u.isPresent()) {
-			for (Farmaco fm: iFarmaco.findAll()) {
-				if (fm.getNome().compareToIgnoreCase(f.getNome())==0){ 
+			for (Sintoma rl: iSintoma.findAll()) {
+				if (rl.getNome().compareToIgnoreCase(s.getNome())==0){ 
 					jaExiste = true;
 				}
 			}
-			
 			if (jaExiste == true) {
-				answer = "Fármaco já existente";
+				answer = "Role já existente";
 			}else if (jaExiste == false){
-				iFarmaco.save(f);
-				answer = "Fármaco gravado com sucesso";
+				iSintoma.save(s);
+				answer = "Role gravado com sucesso";
 			}
 		}
-		
 		return answer;
 	}
 	
-	public List<Farmaco> listarFarmaco (String tok) {
-		
+	public List<Sintoma> listarSintoma (String tok) {
+	
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		
 		if (u.isPresent()) {
-			return iFarmaco.findAll();
+			return iSintoma.findAll();
 		}else {
 			return null;
 		}
 	}
 	
-	public String updateFarmaco (Farmaco f, String tok) {
+	public String updateSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		String answer = "Token não está presente";
 		
 		if (u.isPresent()) {
-			iFarmaco.save(f);
+			iSintoma.save(s);
 			answer = "Atualizado com sucesso";
 		}
 		
 		return answer;
 	}
 	
-	public String deleteFarmaco (Farmaco f, String tok) {
+	public String deleteSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
 		String answer = "Token não está presente";
 		
 		if (u.isPresent()) {
-			iFarmaco.delete(f);
+			iSintoma.delete(s);
 			answer = "Apagado com sucesso";
 		}
 		
