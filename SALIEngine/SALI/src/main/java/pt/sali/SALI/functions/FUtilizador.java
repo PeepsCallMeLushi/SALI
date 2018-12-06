@@ -18,10 +18,10 @@ public class FUtilizador {
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	public String saveUtilizador (Utilizador u, String tok) {
+	public int saveUtilizador (Utilizador u, String tok) {
 		
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		int answer = 0;
 		boolean jaExiste = false;
 		
 		
@@ -32,10 +32,10 @@ public class FUtilizador {
 				}
 			}
 			if (jaExiste == true) {
-				answer = "Role já existente";
+				answer = 2;
 			}else if (jaExiste == false){
 				iUtilizador.save(u);
-				answer = "Role gravado com sucesso";
+				answer = 1;
 			}
 		}
 		return answer;
@@ -74,37 +74,34 @@ public class FUtilizador {
 			}
 			return aux;
 		}
-		
 		return aux;
 	}
 	
-	public String updateUtilizador (Utilizador u, String tok) {
+	public boolean updateUtilizador (Utilizador u, String tok) {
 		
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (ut.isPresent()) {
 			iUtilizador.save(u);
-			answer = "Atualizado com sucesso";
+			answer = true;
 		}
-		
 		return answer;
 	}
 	
-	public String deleteUtilizador (Utilizador u, String tok) {
+	public boolean deleteUtilizador (Utilizador u, String tok) {
 		
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (ut.isPresent()) {
 			iUtilizador.delete(u);
-			answer = "Apagado com sucesso";
+			answer = true;
 		}
-		
 		return answer;
 	}
 	
-	public String login (@RequestParam ("username") String username, 
+	/*public String loginSpring (@RequestParam ("username") String username, 
 							@RequestParam ("password") String password) {
 		
 		String answer = "Falhou";
@@ -125,5 +122,27 @@ public class FUtilizador {
 			}
 		}
 		return answer;
+	}*/
+	
+	public Utilizador login (@RequestParam ("username") String username, 
+			@RequestParam ("password") String password) {
+
+		Utilizador u = new Utilizador();
+
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getLogin().getLogin().compareTo(username) == 0) {
+				if (ut.getLogin().getPassword().compareTo(password) == 0) {
+					u = ut;
+					u.getLogin().setPassword("oi");
+	
+					UUID idtoken = UUID.randomUUID();
+					ut.getToken().setToken(idtoken.toString());
+					iUtilizador.save(ut);
+	
+					return u;
+				}
+			}
+		}
+		return u;
 	}
 }

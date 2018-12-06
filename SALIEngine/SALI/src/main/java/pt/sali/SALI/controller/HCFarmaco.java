@@ -24,7 +24,12 @@ public class HCFarmaco {
 	@PostMapping("/add")
 	public String addFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-		return ffarmaco.saveFarmaco(f, tok);
+		if (ffarmaco.saveFarmaco(f, tok) == 0) {
+			return "Token";
+		}else if (ffarmaco.saveFarmaco(f, tok) == 1) {
+			return "Sucesso";
+		}
+		return "Existente";
 	}
 	
 	@RequestMapping("/list")
@@ -34,19 +39,24 @@ public class HCFarmaco {
 		if(f != null) {
 			return new ResponseEntity<>(f, HttpStatus.OK);
 		}
-		
-		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
 	public ResponseEntity<?> updateFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(ffarmaco.updateFarmaco(f, tok), HttpStatus.OK);
+		if (ffarmaco.updateFarmaco(f, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 
 	@PostMapping("/delete")
 	public ResponseEntity<?> deleteFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(ffarmaco.deleteFarmaco(f, tok), HttpStatus.OK);
+		if (ffarmaco.deleteFarmaco(f, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 }

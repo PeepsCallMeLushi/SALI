@@ -16,16 +16,14 @@ public class FFreguesia {
 	
 	@Autowired
 	IFreguesia iFreguesia;
-	
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	public String saveFreguesia (Freguesia f, String tok) {
+	public int saveFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		int answer = 0;
 		boolean jaExiste = false;
-		
 		
 		if (u.isPresent()) {
 			for (Freguesia fg: iFreguesia.findAll()) {
@@ -34,10 +32,10 @@ public class FFreguesia {
 				}
 			}
 			if (jaExiste == true) {
-				answer = "Freguesia já existente";
+				answer = 2;
 			}else if (jaExiste == false){
 				iFreguesia.save(f);
-				answer = "Freguesia gravada com sucesso";
+				answer = 1;
 			}
 		}
 		return answer;
@@ -54,27 +52,27 @@ public class FFreguesia {
 		}
 	}
 	
-	public String updateFreguesia (Freguesia f, String tok) {
+	public boolean updateFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iFreguesia.save(f);
-			answer = "Atualizado com sucesso";
+			answer = true;
 		}
 		
 		return answer;
 	}
 	
-	public String deleteFreguesia (Freguesia f, String tok) {
+	public boolean deleteFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iFreguesia.delete(f);
-			answer = "Apagado com sucesso";
+			answer = true;
 		}
 		
 		return answer;

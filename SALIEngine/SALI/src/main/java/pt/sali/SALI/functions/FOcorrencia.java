@@ -20,19 +20,18 @@ public class FOcorrencia {
 	
 	@Autowired
 	IOcorrencia iOcorrencia;
-	
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	public String saveOcorrencia (Ocorrencia o, String tok) {
+	public int saveOcorrencia (Ocorrencia o, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		int answer = 0;
 		
 		if (u.isPresent()) {
 			iOcorrencia.save(o);
+			answer = 1;
 		}
-		
 		return answer;
 	}
 	
@@ -47,32 +46,32 @@ public class FOcorrencia {
 		}
 	}
 	
-	public String updateOcorrencia (Ocorrencia o, String tok) {
+	public boolean updateOcorrencia (Ocorrencia o, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iOcorrencia.save(o);
-			answer = "Atualizado com sucesso";
+			answer = true;
 		}
-		
 		return answer;
 	}
 	
-	public String deleteOcorrencia (Ocorrencia o, String tok) {
+	public boolean deleteOcorrencia (Ocorrencia o, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iOcorrencia.delete(o);
-			answer = "Apagado com sucesso";
+			answer = true;
 		}
 		
 		return answer;
 	}
 	
+	// TODO
 	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json, @RequestParam ("tok") String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");

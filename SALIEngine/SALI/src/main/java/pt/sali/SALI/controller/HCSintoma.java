@@ -25,7 +25,12 @@ public class HCSintoma {
 	@PostMapping("/add")
 	public String addSintoma(@RequestBody Sintoma s, @RequestParam ("tok") String tok) {
 			
-		return fsintoma.saveSintoma(s, tok);
+		if (fsintoma.saveSintoma(s, tok) == 0) {
+			return "Token";
+		}else if (fsintoma.saveSintoma(s, tok) == 1) {
+			return "Sucesso";
+		}
+		return "Existente";
 	}
 	
 	@GetMapping("/list")
@@ -36,18 +41,24 @@ public class HCSintoma {
 			return new ResponseEntity<>(s, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
 	public ResponseEntity<?> updateSintoma(@RequestBody Sintoma s, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(fsintoma.updateSintoma(s, tok), HttpStatus.OK);	
+		if (fsintoma.updateSintoma(s, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);	
 	}
 	
 	@PostMapping("/delete")
 	public ResponseEntity<?> deleteSintoma(@RequestBody Sintoma s, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(fsintoma.deleteSintoma(s, tok), HttpStatus.OK);	
+		if (fsintoma.deleteSintoma(s, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);	
 	}
 }

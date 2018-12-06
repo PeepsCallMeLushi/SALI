@@ -42,12 +42,11 @@ public class Web {
 	}
 	
 	 // LOGIN ///////////////////////////////////////////////////////////////
-    
 	@GetMapping("/authentication")
 	public String login (@RequestParam ("username") String username, 
                         @RequestParam ("password") String password, 
                         Model m) {
-       futilizador.login(username, password);
+		futilizador.login(username, password);
         return "index.html";
     }
     
@@ -57,7 +56,7 @@ public class Web {
 		return "autherror.html";
 	}
     // LOGIN ///////////////////////////////////////////////////////////////
-
+	
 	
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	@GetMapping("/addUT")
