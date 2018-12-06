@@ -9,6 +9,7 @@ import pt.sali.sali.model.Avaliacao;
 import pt.sali.sali.model.Equipa;
 import pt.sali.sali.model.Farmaco;
 import pt.sali.sali.model.Freguesia;
+import pt.sali.sali.model.Login;
 import pt.sali.sali.model.Ocorrencia;
 import pt.sali.sali.model.Pergunta;
 import pt.sali.sali.model.Role;
@@ -41,10 +42,14 @@ public class AppSali extends Application {
     }
 
     private void loadMockUpData(){
-        Utilizador m = new Utilizador("João","abc","abc",new Role("Medico"), "123","ola");
-        Utilizador e = new Utilizador("Joana","abc","abc",new Role("Enfermeiro"), "123","ola");
+        Utilizador m = new Utilizador("João",new Role("Medico"), "123","ola",new Login("123","123"), "activo");
+        Utilizador m2 = new Utilizador("Pedro",new Role("Medico"), "123","ola",new Login("123","123"), "activo");
+        Utilizador e = new Utilizador("Joana",new Role("Enfermeiro"),"123","ola",new Login("123","123"), "activo");
+        Utilizador e2 = new Utilizador("Maria",new Role("Enfermeiro"),"123","ola",new Login("123","123"), "activo");
         arUtilizadores.add(m);
+        arUtilizadores.add(m2);
         arUtilizadores.add(e);
+        arUtilizadores.add(e2);
     }
 
     public Ocorrencia getO() {
