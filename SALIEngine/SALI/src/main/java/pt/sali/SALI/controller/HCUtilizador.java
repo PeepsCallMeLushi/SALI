@@ -31,7 +31,12 @@ public class HCUtilizador {
 	@PostMapping("/add")
 	public String addUtilizador(@RequestBody Utilizador u, @RequestParam ("tok") String tok) {
 		
-		return futilizador.saveUtilizador(u, tok);
+		if (futilizador.saveUtilizador(u, tok) == 0) {
+			return "Token";
+		}else if (futilizador.saveUtilizador(u, tok) == 1) {
+			return "Sucesso";
+		}
+		return "Existente";
 	}
 	
 	@GetMapping("/listall")
@@ -42,7 +47,7 @@ public class HCUtilizador {
 			return new ResponseEntity<>(u, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@GetMapping("/listByRole")
@@ -58,20 +63,26 @@ public class HCUtilizador {
 	@PostMapping("/update")
 	public ResponseEntity<?> updateUtilizador(@RequestBody Utilizador u, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(futilizador.updateUtilizador(u, tok), HttpStatus.OK);
+		if (futilizador.updateUtilizador(u, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/delete")
 	public ResponseEntity<?> deleteUtilizador(@RequestBody Utilizador u,@RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(futilizador.deleteUtilizador(u, tok), HttpStatus.OK);
+		if (futilizador.deleteUtilizador(u, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@GetMapping("/login")
-	public ResponseEntity<String> login (@RequestParam ("username") String username, 
+	public ResponseEntity<Utilizador> login (@RequestParam ("username") String username, 
 										@RequestParam ("password") String password){
 		
-		return new ResponseEntity<String>(futilizador.login(username, password), HttpStatus.OK);
+		return new ResponseEntity<Utilizador>(futilizador.login(username, password), HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")

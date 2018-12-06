@@ -25,7 +25,12 @@ public class HCFreguesia {
 	@PostMapping("/add")
 	public String addFreguesia(@RequestBody Freguesia f, @RequestParam ("tok") String tok) {
 			
-		return ffreguesia.saveFreguesia(f, tok);
+		if (ffreguesia.saveFreguesia(f, tok) == 0) {
+			return "Token";
+		}else if (ffreguesia.saveFreguesia(f, tok) == 1) {
+			return "Sucesso";
+		}
+		return "Existente";
 	}
 	
 	@GetMapping("/list")
@@ -35,19 +40,24 @@ public class HCFreguesia {
 		if(f != null) {
 			return new ResponseEntity<>(f, HttpStatus.OK);
 		}
-		
-		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
 	public ResponseEntity<?> updateFreguesia(@RequestBody Freguesia f, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(ffreguesia.updateFreguesia(f, tok), HttpStatus.OK);	
+		if (ffreguesia.updateFreguesia(f, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);	
 	}
 	
 	@PostMapping("/delete")
 	public ResponseEntity<?> deleteFreguesias(@RequestBody Freguesia f, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(ffreguesia.deleteFreguesia(f, tok), HttpStatus.OK);	
+		if (ffreguesia.deleteFreguesia(f, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 }

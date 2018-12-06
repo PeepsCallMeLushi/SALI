@@ -16,16 +16,14 @@ public class FSintoma {
 	
 	@Autowired
 	ISintoma iSintoma;
-	
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	public String saveSintoma (Sintoma s, String tok) {
+	public int saveSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		int answer = 0;
 		boolean jaExiste = false;
-		
 		
 		if (u.isPresent()) {
 			for (Sintoma rl: iSintoma.findAll()) {
@@ -34,10 +32,10 @@ public class FSintoma {
 				}
 			}
 			if (jaExiste == true) {
-				answer = "Role já existente";
+				answer = 2;
 			}else if (jaExiste == false){
 				iSintoma.save(s);
-				answer = "Role gravado com sucesso";
+				answer = 1;
 			}
 		}
 		return answer;
@@ -54,29 +52,27 @@ public class FSintoma {
 		}
 	}
 	
-	public String updateSintoma (Sintoma s, String tok) {
+	public boolean updateSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iSintoma.save(s);
-			answer = "Atualizado com sucesso";
+			answer = true;
 		}
-		
 		return answer;
 	}
 	
-	public String deleteSintoma (Sintoma s, String tok) {
+	public boolean deleteSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iSintoma.delete(s);
-			answer = "Apagado com sucesso";
+			answer = true;
 		}
-		
 		return answer;
 	}
 }

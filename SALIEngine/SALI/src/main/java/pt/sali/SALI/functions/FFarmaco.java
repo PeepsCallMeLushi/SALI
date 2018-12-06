@@ -14,18 +14,15 @@ import pt.sali.SALI.service.IUtilizador;
 @Service("ffarmaco")
 public class FFarmaco {
 	
-	
 	@Autowired
 	IFarmaco iFarmaco;
-	
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	
-	public String saveFarmaco(Farmaco f, String tok) {
+	public int saveFarmaco(Farmaco f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		int answer = 0;
 		boolean jaExiste = false;
 			
 		if (u.isPresent()) {
@@ -36,10 +33,10 @@ public class FFarmaco {
 			}
 			
 			if (jaExiste == true) {
-				answer = "Fármaco já existente";
+				answer = 2;
 			}else if (jaExiste == false){
 				iFarmaco.save(f);
-				answer = "Fármaco gravado com sucesso";
+				answer = 1;
 			}
 		}
 		
@@ -57,27 +54,27 @@ public class FFarmaco {
 		}
 	}
 	
-	public String updateFarmaco (Farmaco f, String tok) {
+	public boolean updateFarmaco (Farmaco f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iFarmaco.save(f);
-			answer = "Atualizado com sucesso";
+			answer = true;
 		}
 		
 		return answer;
 	}
 	
-	public String deleteFarmaco (Farmaco f, String tok) {
+	public boolean deleteFarmaco (Farmaco f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iFarmaco.delete(f);
-			answer = "Apagado com sucesso";
+			answer = true;
 		}
 		
 		return answer;

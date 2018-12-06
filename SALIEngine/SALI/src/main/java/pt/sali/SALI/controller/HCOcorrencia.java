@@ -1,6 +1,5 @@
 package pt.sali.SALI.controller;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -46,14 +45,16 @@ public class HCOcorrencia {
 	IFreguesia iFreguesia;
 	@Autowired
 	ISintoma iSintoma;
-	
 	@Autowired
 	FOcorrencia focorrencia;
 	
 	@PostMapping("/add")
 	public String addOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
 		
-		return focorrencia.saveOcorrencia(o, tok);
+		if (focorrencia.saveOcorrencia(o, tok) == 1) {
+			return "Sucesso";
+		}
+		return "Token";
 	}
 	
 	@GetMapping("list")
@@ -64,21 +65,27 @@ public class HCOcorrencia {
 			return new ResponseEntity<>(o, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
 	public ResponseEntity<?> updateOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(focorrencia.updateOcorrencia(o, tok), HttpStatus.OK);	
+		if (focorrencia.updateOcorrencia(o, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);	
 	}
 
 	@PostMapping("/delete")
 	public ResponseEntity<?> deleteOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(focorrencia.deleteOcorrencia(o, tok), HttpStatus.OK);
+		if (focorrencia.deleteOcorrencia(o, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
-	
+	 // TODO
 	@GetMapping("/dynamic")
 	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json, @RequestParam ("tok") String tok) { 
 		

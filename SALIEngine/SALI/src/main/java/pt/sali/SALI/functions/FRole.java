@@ -20,10 +20,10 @@ public class FRole {
 	@Autowired
 	IUtilizador iUtilizador;
 	
-	public String saveRole (Role r, String tok) {
+	public int saveRole (Role r, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		int answer = 0;
 		boolean jaExiste = false;
 		
 		
@@ -34,10 +34,10 @@ public class FRole {
 				}
 			}
 			if (jaExiste == true) {
-				answer = "Role já existente";
+				answer = 2;
 			}else if (jaExiste == false){
 				iRole.save(r);
-				answer = "Role gravado com sucesso";
+				answer = 1;
 			}
 		}
 		return answer;
@@ -54,27 +54,27 @@ public class FRole {
 		}
 	}
 	
-	public String updateRole (Role r, String tok) {
+	public boolean updateRole (Role r, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iRole.save(r);
-			answer = "Atualizado com sucesso";
+			answer = true;
 		}
 		
 		return answer;
 	}
 	
-	public String deleteRole (Role r, String tok) {
+	public boolean deleteRole (Role r, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
-		String answer = "Token não está presente";
+		boolean answer = false;
 		
 		if (u.isPresent()) {
 			iRole.delete(r);
-			answer = "Apagado com sucesso";
+			answer = true;
 		}
 		
 		return answer;

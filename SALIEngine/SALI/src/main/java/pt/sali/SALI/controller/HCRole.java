@@ -24,8 +24,13 @@ public class HCRole {
 	
 	@PostMapping("/add")
 	public String addRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
-			
-		return frole.saveRole(r, tok);
+		
+		if (frole.saveRole(r, tok) == 1) {
+			return "Sucesso";
+		}else if (frole.saveRole(r, tok) == 0) {
+			return "Token";
+		}
+		return "Existe";
 	}
 	
 	@GetMapping("/list")
@@ -36,18 +41,24 @@ public class HCRole {
 			return new ResponseEntity<>(r, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<>("Token não está presente", HttpStatus.OK);
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/update")
 	public ResponseEntity<?> updateRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(frole.updateRole(r, tok), HttpStatus.OK);	
+		if (frole.updateRole(r, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/delete")
 	public ResponseEntity<?> deleteRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
 		
-		return new ResponseEntity<>(frole.deleteRole(r, tok), HttpStatus.OK);	
+		if (frole.deleteRole(r, tok)) {
+			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Token", HttpStatus.OK);	
 	}
 }
