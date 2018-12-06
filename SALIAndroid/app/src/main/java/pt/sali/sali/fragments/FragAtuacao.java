@@ -17,28 +17,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import pt.sali.sali.R;
 
-public class FragEstados extends BottomSheetDialogFragment {
+public class FragAtuacao extends BottomSheetDialogFragment {
 
-    Button btCancel;
+    Button btCancelar;
 
-    public FragEstados() {
+    public FragAtuacao() {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_frag_estados, container, false);
+        return inflater.inflate(R.layout.fragment_frag_atuacao, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btCancel = view.findViewById(R.id.bt_estados_cancel);
+        btCancelar = view.findViewById(R.id.bt_atuacao_cancelar);
 
-        btCancel.setOnClickListener(new View.OnClickListener() {
+        btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragEstados.this.dismiss();
+                FragAtuacao.this.dismiss();
             }
         });
     }
@@ -57,5 +57,4 @@ public class FragEstados extends BottomSheetDialogFragment {
         });
         return dialog;
     }
-
 }
