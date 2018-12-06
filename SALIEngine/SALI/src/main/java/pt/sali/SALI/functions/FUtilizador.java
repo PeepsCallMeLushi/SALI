@@ -120,7 +120,7 @@ public class FUtilizador {
 					ut.getToken().setToken(idtoken.toString());
 					iUtilizador.save(ut);
 					
-					answer = "Sucesso";
+					answer = idtoken.toString();
 				}
 			}
 		}
