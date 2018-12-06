@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pt.sali.SALI.functions.FFarmaco;
 import pt.sali.SALI.functions.FFreguesia;
@@ -40,8 +41,26 @@ public class Web {
 		return "index.html";
 	}
 	
+	 // LOGIN ///////////////////////////////////////////////////////////////
+    
+	@GetMapping("/authentication")
+	public String login (@RequestParam ("username") String username, 
+                        @RequestParam ("password") String password, 
+                        Model m) {
+       futilizador.login(username, password);
+        return "index.html";
+    }
+    
+	@GetMapping("/authentication/error")
+	public String error() {
+	
+		return "autherror.html";
+	}
+    // LOGIN ///////////////////////////////////////////////////////////////
+
+	
 	// UTILIZADORES ////////////////////////////////////////////////////////
-	@GetMapping("/")
+	@GetMapping("/addUT")
 	public String addUT (Model m, Utilizador u, String tok) {
 		
 		m.addAttribute("", futilizador.saveUtilizador(u, tok));
@@ -49,15 +68,15 @@ public class Web {
 		return ".html";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/listUTs")
 	public String listUTs (Model m, String tok) {
 		
-		m.addAttribute("", futilizador.listarAllUtilizador(tok));
+		//m.addAttribute("", futilizador.listarAllUtilizador(tok));
 		
-		return ".html";
+		return "listarusers.html";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/updateUTs")
 	public String updateUTs (Model m, String tok, Utilizador u) {
 		
 		m.addAttribute("", futilizador.updateUtilizador(u, tok));
@@ -65,7 +84,7 @@ public class Web {
 		return ".html";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/deleteUTs")
 	public String deleteUTs (Model m, String tok, Utilizador u) {
 		
 		m.addAttribute("", futilizador.deleteUtilizador(u, tok));
@@ -76,7 +95,7 @@ public class Web {
 	
 	
 	// FARMACO /////////////////////////////////////////////////////////////
-	@GetMapping("/")
+	@GetMapping("/addFarmaco")
 	public String addFarmaco (Model m, String tok, Farmaco f) {
 		
 		m.addAttribute("", ffarmaco.saveFarmaco(f, tok));
@@ -84,7 +103,7 @@ public class Web {
 		return ".html";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/listFarmaco")
 	public String listFarmaco (Model m, String tok) {
 		
 		m.addAttribute("", ffarmaco.listarFarmaco(tok));
@@ -92,7 +111,7 @@ public class Web {
 		return ".html";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/updateFarmaco")
 	public String updateFarmaco (Model m, String tok, Farmaco f) {
 		
 		m.addAttribute("", ffarmaco.updateFarmaco(f, tok));
@@ -100,7 +119,7 @@ public class Web {
 		return ".html";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/deleteFarmaco")
 	public String deleteFarmaco (Model m, String tok, Farmaco f) {
 		
 		m.addAttribute("", ffarmaco.deleteFarmaco(f, tok));
@@ -111,7 +130,7 @@ public class Web {
 	
 	
 	// FREGUESIA /////////////////////////////////////////////////////////
-	@GetMapping("/")													//
+	@GetMapping("/addFreguesia")													//
 	public String addFreguesia (Model m, String tok, Freguesia f) {     //
 																		//
 		m.addAttribute("", ffreguesia.saveFreguesia(f, tok));			//
@@ -119,7 +138,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/listFreguesia")													//
 	public String listFreguesia (Model m, String tok) {					//
 																		//
 		m.addAttribute("", ffreguesia.listarFreguesia(tok));			//
@@ -127,7 +146,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/updateFreguesia")													//
 	public String updateFreguesia (Model m, String tok, Freguesia f) {	//
 																		//
 		m.addAttribute("", ffreguesia.updateFreguesia(f, tok));			//
@@ -135,7 +154,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/deleteFreguesia")													//
 	public String deleteFreguesia (Model m, String tok, Freguesia f) {	//
 																		//
 		m.addAttribute("", ffreguesia.deleteFreguesia(f, tok));			//
@@ -146,7 +165,7 @@ public class Web {
 	
 	
 	// ROLE //////////////////////////////////////////////////////////////
-	@GetMapping("/")													//
+	@GetMapping("/addRole")													//
 	public String addRole (Model m, String tok, Role r) {     			//
 																		//
 		m.addAttribute("", frole.saveRole(r, tok));						//
@@ -154,7 +173,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/listRole")													//
 	public String listRole (Model m, String tok) {						//
 																		//
 		m.addAttribute("", frole.listarRole(tok));						//
@@ -162,7 +181,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/updateRole")													//
 	public String updateRole (Model m, String tok, Role r) {			//
 																		//
 		m.addAttribute("", frole.updateRole(r, tok));					//
@@ -170,7 +189,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/deleteRole")													//
 	public String deleteRole (Model m, String tok, Role r) {			//
 																		//
 		m.addAttribute("", frole.deleteRole(r, tok));					//
@@ -181,7 +200,7 @@ public class Web {
 	
 	
 	// SINTOMA ///////////////////////////////////////////////////////////
-	@GetMapping("/")													//
+	@GetMapping("/addSintoma")													//
 	public String addSintoma (Model m, String tok, Sintoma s) {     	//
 																		//
 		m.addAttribute("", fsintoma.saveSintoma(s, tok));				//
@@ -189,7 +208,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/listSintoma")													//
 	public String listSintoma (Model m, String tok) {					//
 																		//
 		m.addAttribute("", fsintoma.listarSintoma(tok));				//
@@ -197,7 +216,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/updateSintoma")													//
 	public String updateSintoma (Model m, String tok, Sintoma s) {		//
 																		//
 		m.addAttribute("", fsintoma.updateSintoma(s, tok));				//
@@ -205,7 +224,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/deleteSintoma")													//
 	public String deleteSintoma (Model m, String tok, Sintoma s) {		//
 																		//
 		m.addAttribute("", fsintoma.deleteSintoma(s, tok));				//
@@ -216,7 +235,7 @@ public class Web {
 	
 	
 	// OCORRENCIA ////////////////////////////////////////////////////////
-	@GetMapping("/")													//
+	@GetMapping("/addOcorrencia")													//
 	public String addOcorrencia (Model m, String tok, Ocorrencia o) {   //
 																		//
 		m.addAttribute("", focorrencia.saveOcorrencia(o, tok));			//
@@ -224,7 +243,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/listOcorrencia")													//
 	public String listOcorrencia (Model m, String tok) {				//
 																		//
 		m.addAttribute("", focorrencia.listarOcorrencia(tok));			//
@@ -232,7 +251,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/updateOcorrencia")													//
 	public String updateOcorrencia (Model m, String tok, Ocorrencia o) {//
 																		//
 		m.addAttribute("", focorrencia.updateOcorrencia(o, tok));		//
@@ -240,7 +259,7 @@ public class Web {
 		return ".html";													//
 	}																	//
 																		//
-	@GetMapping("/")													//
+	@GetMapping("/deleteOcorrencia")													//
 	public String deleteOcorrencia (Model m, String tok, Ocorrencia o) {//
 																		//
 		m.addAttribute("", focorrencia.deleteOcorrencia(o, tok));		//
