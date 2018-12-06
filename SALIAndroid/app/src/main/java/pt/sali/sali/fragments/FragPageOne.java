@@ -135,10 +135,6 @@ public class FragPageOne extends Fragment {
         rbDoenca = v.findViewById(R.id.rb_ocorrencia_incidente_doeca);
         rbOutra = v.findViewById(R.id.rb_ocorrencia_incidente_outra);
 
-        //Edit Text
-        etQueda = v.findViewById(R.id.et_ocorrencia_incidente_queda);
-        etOutra = v.findViewById(R.id.et_ocorrencia_incidente_outro);
-
         //Layouts
         llCalendario = v.findViewById(R.id.ll_ocorrencia_date_picker);
         llVeiculo = v.findViewById(R.id.ll_ocorrencia_veiculos_opcoes);
@@ -392,12 +388,7 @@ public class FragPageOne extends Fragment {
         rbQueda.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    etQueda.setEnabled(true);
-                }else{
-                    etQueda.setEnabled(false);
-                    etQueda.getText().clear();
-                }
+
             }
         });
         rbArmaFogo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -445,12 +436,7 @@ public class FragPageOne extends Fragment {
         rbOutra.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    etOutra.setEnabled(true);
-                }else{
-                    etOutra.setEnabled(false);
-                    etOutra.getText().clear();
-                }
+
 
             }
         });
