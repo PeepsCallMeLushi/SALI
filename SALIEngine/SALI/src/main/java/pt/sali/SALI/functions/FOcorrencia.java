@@ -17,7 +17,7 @@ import pt.sali.SALI.service.IUtilizador;
 
 @Service("focorrencia")
 public class FOcorrencia {
-
+	
 	@Autowired
 	IOcorrencia iOcorrencia;
 	
