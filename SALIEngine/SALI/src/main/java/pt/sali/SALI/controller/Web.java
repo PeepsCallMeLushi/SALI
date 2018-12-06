@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pt.sali.SALI.functions.FFarmaco;
@@ -41,22 +42,30 @@ public class Web {
 		return "index.html";
 	}
 	
-	 // LOGIN ///////////////////////////////////////////////////////////////
-	@GetMapping("/authentication")
+// LOGIN ///////////////////////////////////////////////////////////////
+
+
+	@GetMapping("/authentication/login")
+	public String login (Model m,@RequestParam(value="erro",defaultValue="0") String erro) {
+		if(erro.equals("1")) {
+			m.addAttribute("mensagemerro","Username ou Password Inválidos");
+		}
+        return "login.html";
+    }
+	
+	@PostMapping("/authentication")
 	public String login (@RequestParam ("username") String username, 
                         @RequestParam ("password") String password, 
                         Model m) {
-		futilizador.login(username, password);
-        return "index.html";
+       if(futilizador.login(username, password) == null) {
+    	   return "redirect:/authentication/login?erro=1";
+       }else {
+    	   return "redirect:/";
+       }
     }
     
-	@GetMapping("/authentication/error")
-	public String error() {
-	
-		return "autherror.html";
-	}
     // LOGIN ///////////////////////////////////////////////////////////////
-	
+		
 	
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	@GetMapping("/addUT")
@@ -72,7 +81,7 @@ public class Web {
 		
 		//m.addAttribute("", futilizador.listarAllUtilizador(tok));
 		
-		return "listarusers.html";
+		return "listausers.html";
 	}
 	
 	@GetMapping("/updateUTs")

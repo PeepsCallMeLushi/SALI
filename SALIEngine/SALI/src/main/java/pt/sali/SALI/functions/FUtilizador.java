@@ -127,22 +127,25 @@ public class FUtilizador {
 	public Utilizador login (@RequestParam ("username") String username, 
 			@RequestParam ("password") String password) {
 
-		Utilizador u = new Utilizador();
+		Optional<Utilizador> u = null;
 
 		for (Utilizador ut : iUtilizador.findAll()) {
 			if (ut.getLogin().getLogin().compareTo(username) == 0) {
 				if (ut.getLogin().getPassword().compareTo(password) == 0) {
-					u = ut;
-					u.getLogin().setPassword("oi");
-	
+					
 					UUID idtoken = UUID.randomUUID();
 					ut.getToken().setToken(idtoken.toString());
 					iUtilizador.save(ut);
-	
-					return u;
+					
+					//TODO
+					u = iUtilizador.findById(ut.getId());
+					
+					u.get().getLogin().setPassword("porra");
+					
+					return u.get();
 				}
 			}
 		}
-		return u;
+		return null;
 	}
 }
