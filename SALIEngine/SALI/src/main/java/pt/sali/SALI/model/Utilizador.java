@@ -16,11 +16,10 @@ public class Utilizador {
 	
 	public Utilizador(String nome, Role role, String identificador, String especializacao, Login login, String estado) {
 		super();
-		this.id = null;
 		this.nome = nome;
 		this.role = role;
 		this.identificador = identificador;
-		this.token = null;
+		this.token = new Token();
 		this.especializacao = especializacao;
 		this.login = login;
 		this.estado = estado;
@@ -28,6 +27,7 @@ public class Utilizador {
 
 	public Utilizador() {
 		super();
+		this.token = new Token();
 	}
 
 	public String getNome() {
