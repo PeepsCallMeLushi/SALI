@@ -21,7 +21,7 @@ public class FFreguesia {
 	
 	public int saveFreguesia (Freguesia f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		int answer = 0;
 		boolean jaExiste = false;
 		
@@ -43,7 +43,7 @@ public class FFreguesia {
 	
 	public List<Freguesia> listarFreguesia (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
 		if (u.isPresent()) {
 			return iFreguesia.findAll();
@@ -54,7 +54,7 @@ public class FFreguesia {
 	
 	public boolean updateFreguesia (Freguesia f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
@@ -67,7 +67,7 @@ public class FFreguesia {
 	
 	public boolean deleteFreguesia (Freguesia f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {

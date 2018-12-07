@@ -21,7 +21,7 @@ public class FSintoma {
 	
 	public int saveSintoma (Sintoma s, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		int answer = 0;
 		boolean jaExiste = false;
 		
@@ -43,7 +43,7 @@ public class FSintoma {
 	
 	public List<Sintoma> listarSintoma (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
 		if (u.isPresent()) {
 			return iSintoma.findAll();
@@ -54,7 +54,7 @@ public class FSintoma {
 	
 	public boolean updateSintoma (Sintoma s, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
@@ -66,7 +66,7 @@ public class FSintoma {
 	
 	public boolean deleteSintoma (Sintoma s, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {

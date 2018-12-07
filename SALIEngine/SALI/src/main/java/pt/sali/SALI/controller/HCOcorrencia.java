@@ -85,11 +85,14 @@ public class HCOcorrencia {
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
-	 // TODO
+
 	@GetMapping("/dynamic")
 	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json, @RequestParam ("tok") String tok) { 
 		
-		return new ResponseEntity<>(dynamicQuery(json, tok), HttpStatus.OK);
+		if (focorrencia.dynamicQueryJ(json, tok) != null) {
+			return new ResponseEntity<>(focorrencia.dynamicQueryJ(json, tok), HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("No match", HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")

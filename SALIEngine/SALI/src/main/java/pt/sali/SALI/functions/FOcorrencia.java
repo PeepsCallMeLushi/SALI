@@ -5,10 +5,7 @@ import java.util.Optional;
 
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import pt.sali.SALI.model.Ocorrencia;
 import pt.sali.SALI.model.Utilizador;
@@ -25,7 +22,7 @@ public class FOcorrencia {
 	
 	public int saveOcorrencia (Ocorrencia o, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		int answer = 0;
 		
 		if (u.isPresent()) {
@@ -37,7 +34,7 @@ public class FOcorrencia {
 	
 	public List<Ocorrencia> listarOcorrencia (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
 		if (u.isPresent()) {
 			return iOcorrencia.findAll();
@@ -48,7 +45,7 @@ public class FOcorrencia {
 	
 	public boolean updateOcorrencia (Ocorrencia o, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
@@ -60,7 +57,7 @@ public class FOcorrencia {
 	
 	public boolean deleteOcorrencia (Ocorrencia o, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
@@ -72,18 +69,17 @@ public class FOcorrencia {
 	}
 	
 	// TODO
-	public ResponseEntity<?> dynamicQuery(@RequestParam ("json") String json, @RequestParam ("tok") String tok) {
+	public List<Ocorrencia> dynamicQueryJ(String json, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
 		if (u.isPresent()) {
 			Document document = new Document();
 		    document = Document.parse(json);
 		    List<Ocorrencia> ocorrencias = iOcorrencia.find(document);
 		    
-		    return new ResponseEntity<>(ocorrencias, HttpStatus.OK);
+		    return ocorrencias;
 		}
-		
-		return new ResponseEntity<String>("Erro", HttpStatus.OK);  
+		return null;  
 	}
 }
