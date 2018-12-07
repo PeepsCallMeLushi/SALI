@@ -318,6 +318,15 @@ public class Web {
 		m.addAttribute("", focorrencia.deleteOcorrencia(o, tok));		
 																		
 		return ".html";													
-	}																	
+	}		
+	
+	@GetMapping("/dynamic")
+	public String dynamicquery (@RequestParam ("json") String json, @RequestParam ("tok") String tok) {
+		
+		if (focorrencia.dynamicQueryJ(json, tok) != null) {
+			return ".html";
+		}
+		return ".html";
+	}
 	// OCORRENCIA ////////////////////////////////////////////////////////
 }

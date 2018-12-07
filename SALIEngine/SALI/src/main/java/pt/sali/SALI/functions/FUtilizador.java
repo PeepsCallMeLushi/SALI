@@ -20,7 +20,7 @@ public class FUtilizador {
 	
 	public int saveUtilizador (Utilizador u, String tok) {
 		
-		Optional<Utilizador> ut = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		int answer = 0;
 		boolean jaExiste = false;
 		
@@ -43,7 +43,7 @@ public class FUtilizador {
 	
 	public List<Utilizador> listarAllUtilizador (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
 		if (u.isPresent()) {
 			ArrayList<Utilizador> aux = new ArrayList<>();
@@ -61,7 +61,7 @@ public class FUtilizador {
 	
 	public List<Utilizador> listarUtilizadorByRole (@RequestParam ("role") String role, @RequestParam ("tok") String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		ArrayList<Utilizador> aux = new ArrayList<>();
 		
 		if (u.isPresent()) {
@@ -79,7 +79,7 @@ public class FUtilizador {
 	
 	public boolean updateUtilizador (Utilizador u, String tok) {
 		
-		Optional<Utilizador> ut = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (ut.isPresent()) {
@@ -91,7 +91,7 @@ public class FUtilizador {
 	
 	public boolean deleteUtilizador (Utilizador u, String tok) {
 		
-		Optional<Utilizador> ut = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (ut.isPresent()) {

@@ -21,7 +21,7 @@ public class FFarmaco {
 	
 	public int saveFarmaco(Farmaco f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		int answer = 0;
 		boolean jaExiste = false;
 			
@@ -45,7 +45,7 @@ public class FFarmaco {
 	
 	public List<Farmaco> listarFarmaco (String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
 		if (u.isPresent()) {
 			return iFarmaco.findAll();
@@ -56,7 +56,7 @@ public class FFarmaco {
 	
 	public boolean updateFarmaco (Farmaco f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
@@ -69,7 +69,7 @@ public class FFarmaco {
 	
 	public boolean deleteFarmaco (Farmaco f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken("tok");
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
