@@ -43,6 +43,17 @@ public class Web {
 	@Autowired
 	IUtilizador iUtilizador;
 	
+	/*
+	 * ERRO 1 = Password ou user name errados
+	 * ERRO 2 = Duplicado
+	 * 
+	 * ERRO 10 = Sucesso
+	 *  
+	 *  
+	 *  TODO - NO TOKEN
+	 *  return "pages-error-403.html";
+	 * */
+	
 	@GetMapping("/")
 	public String home(Model m,@RequestParam (value="tok",defaultValue="0") String tok) {
 		
@@ -83,7 +94,14 @@ public class Web {
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	
 	@GetMapping("/addUT")
-	public String formADD (Model m, Utilizador u, @RequestParam("tok") String tok) {
+	public String formADD (Model m, Utilizador u,
+			@RequestParam("tok") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
+		if(erro.equals("2")) {
+			m.addAttribute("mensagemerro","Utilizador já registado");
+		}else if(erro.equals("10")) {
+			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
+		}
 		m.addAttribute("tok",tok);
 		m.addAttribute("roles",frole.listarRole(tok));
 		return "adduser.html";
@@ -93,21 +111,21 @@ public class Web {
 	public String addUT (@RequestParam("tok") String tok,
 			@ModelAttribute("user") Utilizador u,
 			Model m) {
+		int reposta = futilizador.saveUtilizador(u, tok);
 		
-		if (futilizador.saveUtilizador(u, tok) == 0) {		// TOKEN NÃO PRESENTE
-			return "pages-error-403.html";
-		}else if (futilizador.saveUtilizador(u, tok) == 1) {	// SUCESSO
-			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
-			return "adduser.html?tok="+tok;
+		if (reposta == 0) {	
+			return "pages-error-403.html"; //Erro Token
+		}else if (reposta == 1) {
+			return "redirect:/addUT?tok="+tok+"&erro=10"; //Sucesso
+		}else {
+			return "redirect:/addUT?tok="+tok+"&erro=2"; //Duplicado
 		}
-		m.addAttribute("mensagem","Utilizador já registado");
-		return "adduser.html?tok="+tok;			// JÁ EXISTE
 	}
 	
 	@GetMapping("/listUTs")
 	public String listUTs (Model m, @RequestParam("tok") String tok) {
 		m.addAttribute("tok",tok);
-		m.addAttribute("users", futilizador.listarAllUtilizador(tok));
+		//m.addAttribute("users", futilizador.listarAllUtilizador(tok));
 		
 		return "listausers.html";
 	}

@@ -27,15 +27,17 @@ public class FUtilizador {
 		
 		if (ut.isPresent()) {
 			for (Utilizador uti: iUtilizador.findAll()) {
-				if (uti.getNome().compareToIgnoreCase(u.getNome()) == 0){ 
+				if (uti.getIdentificador().compareToIgnoreCase(u.getIdentificador()) == 0){
 					jaExiste = true;
 				}
 			}
 			if (jaExiste == true) {
 				answer = 2;
+				return answer;
 			}else if (jaExiste == false){
 				iUtilizador.save(u);
 				answer = 1;
+				return answer;
 			}
 		}
 		return answer;

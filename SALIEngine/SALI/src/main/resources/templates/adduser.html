@@ -76,6 +76,13 @@
                   <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+
+                              <div th:if="${mensagemerro != null}">
+                              <h5 class="alert alert-warning" th:text="${mensagemerro}"></h5>
+                              </div>
+                              <div th:if="${mensagemsucess != null}">
+                              <h5 class="alert alert-success" th:text="${mensagemsucess}"></h5>
+                              </div>
                                             <h4 class="card-title">Insere</h4>
                                             <form th:action="@{'/addUT/add?tok=' + ${tok}}" method="POST" class="tab-wizard">
                                                 <div class="vtabs customvtab">
@@ -87,7 +94,6 @@
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="infoPessoal" role="tabpanel">
                                                             <div class="p-20">
-                                                              <h6>Informação Pessoal</h6>
                                                               <section>
                                                                   <div class="row">
                                                                       <div class="col-md-12">
