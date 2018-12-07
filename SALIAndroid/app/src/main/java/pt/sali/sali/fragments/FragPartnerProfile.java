@@ -11,6 +11,7 @@ import androidx.appcompat.widget.MenuPopupWindow;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,9 +69,8 @@ public class FragPartnerProfile extends Fragment {
         ArrayList<String> arUsers = new ArrayList<>();
         arUsers.add("Escolha o seu parceiro parceiro...");
         for (Utilizador u : mApp.getArUtilizadores()){
-            if (u.getRole().getNome()=="Medico"){
                 arUsers.add(u.getNome());
-            }
+
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, arUsers){
             @Override
@@ -106,6 +106,14 @@ public class FragPartnerProfile extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv = (TextView) view;
                 tv.setTextColor(Color.WHITE);
+                if (position!=0) {
+                    mApp.setParceiro(mApp.getArUtilizadores().get(position - 1));
+                    tvNome.setText(mApp.getParceiro().getNome());
+                    tvCedula.setText(mApp.getParceiro().getIdentificador());
+                    tvProf.setText(mApp.getParceiro().getRole().getNome());
+                    tvEsp.setText(mApp.getParceiro().getEspecializacao());
+                    Log.e("ola", "onItemSelected: Nothing selected");
+                }
             }
 
             @Override

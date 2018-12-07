@@ -20,7 +20,8 @@ public class AppSali extends Application {
 
     public final static int RIGHT = 1, LEFT= 2,STATIC=0;
 
-
+    Utilizador user;
+    Utilizador parceiro;
     Ocorrencia o;
     Avaliacao ava;
     Atuacao atu;
@@ -38,18 +39,34 @@ public class AppSali extends Application {
         arFreguseias = new ArrayList<>();
         arPerguntas = new ArrayList<>();
         arUtilizadores = new ArrayList<>();
+        eq = new Equipa();
         loadMockUpData();
     }
 
     private void loadMockUpData(){
-        Utilizador m = new Utilizador("João",new Role("Medico"), "123","ola",new Login("123","123"), "activo");
-        Utilizador m2 = new Utilizador("Pedro",new Role("Medico"), "123","ola",new Login("123","123"), "activo");
-        Utilizador e = new Utilizador("Joana",new Role("Enfermeiro"),"123","ola",new Login("123","123"), "activo");
-        Utilizador e2 = new Utilizador("Maria",new Role("Enfermeiro"),"123","ola",new Login("123","123"), "activo");
-        arUtilizadores.add(m);
-        arUtilizadores.add(m2);
-        arUtilizadores.add(e);
-        arUtilizadores.add(e2);
+
+        Utilizador m = new Utilizador("João",new Role("Medico"), "123","Pediatria",new Login("123","123"), "activo");
+        Utilizador e = new Utilizador("Joana",new Role("Enfermeiro"),"123","Anatesia",new Login("123","123"), "activo");
+
+
+        setUser(m);
+        if (user.getRole().getNome().compareTo("Medico")==0){
+            Utilizador e2 = new Utilizador("Maria",new Role("Enfermeiro"),"456","Vacinação",new Login("456","123"), "activo");
+            Utilizador e3 = new Utilizador("Francisca",new Role("Enfermeiro"),"789","Analises",new Login("456","123"), "activo");
+            arUtilizadores.add(e);
+            arUtilizadores.add(e2);
+            arUtilizadores.add(e3);
+            eq.setMedico(getUser());
+        }else if(user.getRole().getNome().compareTo("Enfermeiro")==0){
+            Utilizador m2 = new Utilizador("Pedro",new Role("Medico"), "456","Genecologia",new Login("123","123"), "activo");
+            Utilizador m3 = new Utilizador("Manuel",new Role("Medico"), "789","Ortopedia",new Login("123","123"), "activo");
+            arUtilizadores.add(m);
+            arUtilizadores.add(m2);
+            arUtilizadores.add(m3);
+            eq.setEnfermeiro(getUser());
+        }
+
+
     }
 
     public Ocorrencia getO() {
@@ -122,5 +139,21 @@ public class AppSali extends Application {
 
     public void setArUtilizadores(ArrayList<Utilizador> arUtilizadores) {
         this.arUtilizadores = arUtilizadores;
+    }
+
+    public Utilizador getUser() {
+        return user;
+    }
+
+    public void setUser(Utilizador user) {
+        this.user = user;
+    }
+
+    public Utilizador getParceiro() {
+        return parceiro;
+    }
+
+    public void setParceiro(Utilizador parceiro) {
+        this.parceiro = parceiro;
     }
 }

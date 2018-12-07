@@ -17,7 +17,7 @@ import pt.sali.sali.R;
  */
 public class FragPageTwo extends Fragment {
 
-    Button btAddEstado, btAddAtuacao;
+    Button btAddEstado, btAddAtuacao, btAddDano;
 
 
     public FragPageTwo() {
@@ -32,6 +32,7 @@ public class FragPageTwo extends Fragment {
         View v = inflater.inflate(R.layout.fragment_frag_page_two, container, false);
         btAddEstado = v.findViewById(R.id.bt_utente_adicionar_estado);
         btAddAtuacao = v.findViewById(R.id.bt_utente_atuacao_add);
+        btAddDano = v.findViewById(R.id.bt_utente_danos_add);
 
         btAddEstado.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,14 @@ public class FragPageTwo extends Fragment {
             public void onClick(View v) {
                 FragAtuacao fragAtuacao = new FragAtuacao();
                 fragAtuacao.show(getActivity().getSupportFragmentManager(), fragAtuacao.getTag());
+            }
+        });
+
+        btAddDano.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragDanos fragDanos = new FragDanos();
+                fragDanos.show(getActivity().getSupportFragmentManager(), fragDanos.getTag());
             }
         });
 

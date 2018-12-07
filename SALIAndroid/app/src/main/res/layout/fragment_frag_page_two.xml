@@ -204,13 +204,11 @@
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
                     <Button
-                        android:layout_width="160dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adicionar atencedente"
                         android:background="#fff"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:layout_gravity="end"
-                        android:textSize="12dp"/>
+                        android:textColor="@color/colorPrimaryDark"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
@@ -252,9 +250,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adicionar Estado"
-                        android:background="#FFF"
-                        android:layout_gravity="end"
-                        android:layout_margin="10dp"/>
+                        android:background="#FFF"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -264,6 +260,7 @@
 
 
             </androidx.cardview.widget.CardView>
+            <!--"DANOS"==========================================================================-->
             <androidx.cardview.widget.CardView
                 android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
@@ -280,7 +277,18 @@
                         android:text="Danos"
                         android:layout_margin="10dp"
                         android:gravity="center"/>
-                    
+                    <Button
+                        android:id="@+id/bt_utente_danos_add"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Adicionar Danos"
+                        android:background="#FFF"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
 
                 </LinearLayout>
 
