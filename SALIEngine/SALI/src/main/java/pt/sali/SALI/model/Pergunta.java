@@ -17,6 +17,7 @@ public class Pergunta {
 
 	public Pergunta() {
 		super();
+		this.resposta = new ArrayList<>();
 	}
 
 	public String getPergunta() {

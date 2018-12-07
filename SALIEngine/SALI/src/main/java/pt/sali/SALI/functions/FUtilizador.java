@@ -27,7 +27,7 @@ public class FUtilizador {
 		
 		if (ut.isPresent()) {
 			for (Utilizador uti: iUtilizador.findAll()) {
-				if (uti.getNome().compareToIgnoreCase(u.getNome())==0){ 
+				if (uti.getNome().compareToIgnoreCase(u.getNome()) == 0){ 
 					jaExiste = true;
 				}
 			}

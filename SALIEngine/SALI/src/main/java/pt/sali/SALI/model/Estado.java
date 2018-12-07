@@ -37,6 +37,7 @@ public class Estado {
 
 	public Estado() {
 		super();
+		this.glasgow = new ArrayList<>();
 	}
 
 	public String getHoras() {

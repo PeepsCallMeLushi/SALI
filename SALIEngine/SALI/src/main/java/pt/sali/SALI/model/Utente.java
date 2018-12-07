@@ -23,6 +23,7 @@ public class Utente {
 
 	public Utente() {
 		super();
+		this.hipotesesDiagnostivas = new ArrayList<>();
 	}
 
 	public String getSexo() {

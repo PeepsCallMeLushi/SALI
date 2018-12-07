@@ -10,7 +10,6 @@ public class Farmaco {
 	
 	public Farmaco(String nome) {
 		super();
-		this.id = null;
 		this.nome = nome;
 	}
 

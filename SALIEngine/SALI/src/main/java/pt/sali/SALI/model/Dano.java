@@ -15,6 +15,7 @@ public class Dano {
 
 	public Dano() {
 		super();
+		this.estados = new ArrayList<>();
 	}
 
 	public String getParteDanificada() {

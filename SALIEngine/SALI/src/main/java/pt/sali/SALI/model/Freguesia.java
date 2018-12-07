@@ -9,7 +9,6 @@ public class Freguesia {
 	private String nome;
 	public Freguesia( String nome) {
 		super();
-		this.id = null;
 		this.nome = nome;
 	}
 	public Freguesia() {
