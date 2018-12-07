@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IUtilizador;
 
@@ -35,6 +36,12 @@ public class FUtilizador {
 				answer = 2;
 				return answer;
 			}else if (jaExiste == false){
+				
+				/*Define o username e a password por default para a cedula inserida*/
+				Login log = new Login(u.getIdentificador(), u.getIdentificador());
+				u.setLogin(log);
+				/***************/
+				
 				iUtilizador.save(u);
 				answer = 1;
 				return answer;

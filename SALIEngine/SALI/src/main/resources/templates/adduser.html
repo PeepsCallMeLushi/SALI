@@ -75,68 +75,81 @@
               <div class="row">
                   <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
+                  <div class="card-body">
 
-                              <div th:if="${mensagemerro != null}">
-                              <h5 class="alert alert-warning" th:text="${mensagemerro}"></h5>
-                              </div>
-                              <div th:if="${mensagemsucess != null}">
-                              <h5 class="alert alert-success" th:text="${mensagemsucess}"></h5>
-                              </div>
-                                            <h4 class="card-title">Insere</h4>
-                                            <form th:action="@{'/addUT/add?tok=' + ${tok}}" method="POST" class="tab-wizard">
-                                                <div class="vtabs customvtab">
-                                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
-                                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#infoPessoal" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="">Pessoal</span> </a> </li>
-                                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#infoProfissional" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="">Profissional</span></a> </li>
-                                                    </ul>
-
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane active" id="infoPessoal" role="tabpanel">
-                                                            <div class="p-20">
-                                                              <section>
-                                                                  <div class="row">
-                                                                      <div class="col-md-12">
-                                                                          <div class="form-group">
-                                                                              <label for="firstName1">Nome</label>
-                                                                              <input type="text" class="form-control" name="nome" id="firstName1">
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </section>
+                    <div th:if="${mensagemerro != null}">
+                    <h5 class="alert alert-warning" th:text="${mensagemerro}"></h5>
+                    </div>
+                    <div th:if="${mensagemsucess != null}">
+                    <h5 class="alert alert-success" th:text="${mensagemsucess}"></h5>
+                    </div>
+                            <h4 class="card-title">Insere</h4>
+                            <form th:action="@{'/addUT/add?tok=' + ${tok}}" method="POST" class="tab-wizard">
+                                <div class="vtabs customvtab">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#infoPessoal" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="">Pessoal</span> </a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#infoProfissional" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="">Profissional</span></a> </li>
+                                    </ul>
+                                          <div class="tab-content">
+                                              <div class="tab-pane active" id="infoPessoal" role="tabpanel">
+                                                  <div class="p-20">
+                                                    <section>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="firstName1">Nome</label>
+                                                                    <input type="text" class="form-control" name="nome" id="firstName1">
+                                                                </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="tab-pane  p-20" id="infoProfissional" role="tabpanel">
-                                                          <div class="form-group">
-                                                              <div class="m-b-10">
-                                                                <div class="form-group">
-                                                                  <label for="exampleFormControlSelect1">Função:</label>
-                                                                  <select class="form-control" name="role">
-                                                                    <option th:each="role: ${roles}" th:value="${role.nome}" th:text="${role.nome}"></option>
-                                                                  </select>
-                                                                </div>
-                                                              </div>
+                                                        <div class="row">
+                                                          <div class="col-sm">
+                                                            <div class="form-group">
+                                                                <label for="firstName1">Username</label>
+                                                                <input type="text" class="form-control" value="Numero da Cedula por defeito" disabled>
+                                                            </div>
                                                           </div>
-                                                              <div class="row">
-                                                                  <div class="col-md-6">
-                                                                      <div class="form-group">
-                                                                          <label>Especialização:</label>
-                                                                          <input type="text" class="form-control" name="especializacao"> </div>
-                                                                  </div>
-                                                                  <div class="col-md-6">
-                                                                      <div class="form-group">
-                                                                          <label>Cédula:</label>
-                                                                          <input type="text" class="form-control" name="identificador">
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                              <input type="submit" class="btn btn-rounded redondoOriginall" value="Submeter">
+                                                          <div class="col-sm">
+                                                            <div class="form-group">
+                                                                <label for="firstName1">Password</label>
+                                                                <input type="text" class="form-control" value="Numero da Cedula por defeito" disabled>
+                                                            </div>
+                                                          </div>
                                                         </div>
+                                                    </section>
+                                                  </div>
+                                              </div>
+
+                                              <div class="tab-pane  p-20" id="infoProfissional" role="tabpanel">
+                                                <div class="form-group">
+                                                    <div class="m-b-10">
+                                                      <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Função:</label>
+                                                        <select class="form-control" name="role.nome">
+                                                          <option th:each="role: ${roles}" th:value="${role.nome}" th:text="${role.nome}"></option>
+                                                        </select>
+                                                      </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Especialização:</label>
+                                                                <input type="text" class="form-control" name="especializacao"> </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Cédula:</label>
+                                                                <input type="text" class="form-control" name="identificador">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="submit" class="btn btn-rounded redondoOriginall" value="Submeter">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
                         </div>
                   </div>
               </div>

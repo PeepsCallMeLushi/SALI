@@ -125,7 +125,8 @@ public class Web {
 	@GetMapping("/listUTs")
 	public String listUTs (Model m, @RequestParam("tok") String tok) {
 		m.addAttribute("tok",tok);
-		//m.addAttribute("users", futilizador.listarAllUtilizador(tok));
+		m.addAttribute("roles",frole.listarRole(tok));
+		m.addAttribute("users", futilizador.listarAllUtilizador(tok));
 		
 		return "listausers.html";
 	}
