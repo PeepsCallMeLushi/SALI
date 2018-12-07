@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -89,19 +90,18 @@ public class Web {
 	}
 	
 	@PostMapping("/addUT/add")
-	public String addUT (Model m, Utilizador u,  @RequestParam("tok") String tok) {
-		
-		m.addAttribute("", futilizador.saveUtilizador(u, tok));
+	public String addUT (@RequestParam("tok") String tok,
+			@ModelAttribute("user") Utilizador u,
+			Model m) {
 		
 		if (futilizador.saveUtilizador(u, tok) == 0) {		// TOKEN NÃO PRESENTE
-			return ".html";
+			return "pages-error-403.html";
 		}else if (futilizador.saveUtilizador(u, tok) == 1) {	// SUCESSO
 			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
 			return "adduser.html?tok="+tok;
 		}
 		m.addAttribute("mensagem","Utilizador já registado");
 		return "adduser.html?tok="+tok;			// JÁ EXISTE
-
 	}
 	
 	@GetMapping("/listUTs")

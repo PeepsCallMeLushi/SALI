@@ -77,7 +77,7 @@
                         <div class="card">
                             <div class="card-body">
                                             <h4 class="card-title">Insere</h4>
-                                            <form th:action="@{/addUT/add}" class="tab-wizard">
+                                            <form th:action="@{'/addUT/add?tok=' + ${tok}}" method="POST" class="tab-wizard">
                                                 <div class="vtabs customvtab">
                                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#infoPessoal" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="">Pessoal</span> </a> </li>
@@ -112,23 +112,20 @@
                                                                 </div>
                                                               </div>
                                                           </div>
-                                                          <section>
                                                               <div class="row">
                                                                   <div class="col-md-6">
                                                                       <div class="form-group">
-                                                                          <label for="jobTitle1">Especialização:</label>
+                                                                          <label>Especialização:</label>
                                                                           <input type="text" class="form-control" name="especializacao"> </div>
                                                                   </div>
                                                                   <div class="col-md-6">
                                                                       <div class="form-group">
-                                                                          <label for="videoUrl1">Cédula:</label>
+                                                                          <label>Cédula:</label>
                                                                           <input type="text" class="form-control" name="identificador">
                                                                       </div>
                                                                   </div>
                                                               </div>
-                                                              <button type="button" class="btn btn-rounded redondoOriginall" data-toggle="tab" role="tab">Submeter</button>
-
-                                                          </section>
+                                                              <input type="submit" class="btn btn-rounded redondoOriginall" value="Submeter">
                                                         </div>
                                                     </div>
                                                 </div>
