@@ -70,9 +70,9 @@ public class HCUtilizador {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteUtilizador(@RequestBody Utilizador u,@RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteUtilizador(@RequestParam("id") String id,@RequestParam ("tok") String tok) {
 		
-		if (futilizador.deleteUtilizador(u, tok)) {
+		if (futilizador.deleteUtilizador(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);

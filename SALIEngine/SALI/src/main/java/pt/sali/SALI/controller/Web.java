@@ -143,9 +143,9 @@ public class Web {
 	}
 	
 	@GetMapping("/deleteUTs")
-	public String deleteUTs (Model m,  @RequestParam("tok") String tok, Utilizador u) {
+	public String deleteUTs (Model m,  @RequestParam("tok") String tok, @RequestParam("id") String id) {
 		
-		m.addAttribute("", futilizador.deleteUtilizador(u, tok));
+		m.addAttribute("", futilizador.deleteUtilizador(id, tok));
 		
 		return ".html";
 	}
