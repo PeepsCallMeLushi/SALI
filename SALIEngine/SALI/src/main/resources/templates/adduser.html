@@ -17,6 +17,7 @@
     <link th:href="@{/plugins/morrisjs/morris.css}" rel="stylesheet">
     <!-- Custom CSS -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style1.css}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link th:href="@{/css/colors/megna.css}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -162,7 +163,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Dashboard</h3>
+                    <h3 class="text-themecolor">Gestão RH > Inserir</h3>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -178,11 +179,67 @@
               <!-- ============================================================== -->
               <div class="row">
                   <div class="col-12">
-                      <div class="card">
-                          <div class="card-body">
-                              This is some text within a card block.
-                          </div>
-                      </div>
+                        <div class="card">
+                            <div class="card-body">
+                                            <h4 class="card-title">Insere</h4>
+                                            <form th:action="@{/addUT/add}" class="tab-wizard">
+                                                <div class="vtabs customvtab">
+                                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#infoPessoal" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="">Pessoal</span> </a> </li>
+                                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#infoProfissional" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="">Profissional</span></a> </li>
+                                                    </ul>
+
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="infoPessoal" role="tabpanel">
+                                                            <div class="p-20">
+                                                              <h6>Informação Pessoal</h6>
+                                                              <section>
+                                                                  <div class="row">
+                                                                      <div class="col-md-12">
+                                                                          <div class="form-group">
+                                                                              <label for="firstName1">Nome</label>
+                                                                              <input type="text" class="form-control" name="nome" id="firstName1">
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </section>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane  p-20" id="infoProfissional" role="tabpanel">
+                                                          <div class="form-group">
+                                                              <div class="m-b-10">
+                                                                <div class="form-group">
+                                                                  <label for="exampleFormControlSelect1">Função:</label>
+                                                                  <select class="form-control" name="role">
+                                                                    <option th:each="role: ${roles}" th:value="${role.nome}" th:text="${role.nome}"></option>
+                                                                  </select>
+                                                                </div>
+                                                              </div>
+                                                          </div>
+                                                          <section>
+                                                              <div class="row">
+                                                                  <div class="col-md-6">
+                                                                      <div class="form-group">
+                                                                          <label for="jobTitle1">Especialização:</label>
+                                                                          <input type="text" class="form-control" name="especializacao"> </div>
+                                                                  </div>
+                                                                  <div class="col-md-6">
+                                                                      <div class="form-group">
+                                                                          <label for="videoUrl1">Cédula:</label>
+                                                                          <input type="text" class="form-control" name="identificador">
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                              <button type="button" class="btn btn-rounded redondoOriginall" data-toggle="tab" role="tab">Submeter</button>
+
+                                                          </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                        </div>
                   </div>
               </div>
               <!-- ============================================================== -->

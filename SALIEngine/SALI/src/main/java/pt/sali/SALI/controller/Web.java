@@ -1,5 +1,7 @@
 package pt.sali.SALI.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import pt.sali.SALI.model.Ocorrencia;
 import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Sintoma;
 import pt.sali.SALI.model.Utilizador;
+import pt.sali.SALI.service.IUtilizador;
 
 @Controller
 public class Web {
@@ -36,10 +39,19 @@ public class Web {
 	@Autowired
 	FSintoma fsintoma;
 	
-	@GetMapping("/")
-	public String home() {
+	@Autowired
+	IUtilizador iUtilizador;
 	
-		return "index.html";
+	@GetMapping("/")
+	public String home(Model m,@RequestParam (value="tok",defaultValue="0") String tok) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		
+		if (u.isPresent()) {
+			m.addAttribute("tok",tok);
+			return "index.html";
+		}else
+			return "pages-error-403.html";
 	}
 	
 // LOGIN ///////////////////////////////////////////////////////////////
@@ -60,7 +72,7 @@ public class Web {
        if(futilizador.login(username, password) == null) {
     	   return "redirect:/authentication/login?erro=1";
        }else {
-    	   return "redirect:/";
+    	   return "redirect:/?tok="+futilizador.login(username, password).getToken().getToken();
        }
     }
     
@@ -70,41 +82,38 @@ public class Web {
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	
 	@GetMapping("/addUT")
-	public String formADD (Model m, Utilizador u, String tok) {
-			
+	public String formADD (Model m, Utilizador u, @RequestParam("tok") String tok) {
+		m.addAttribute("tok",tok);
+		m.addAttribute("roles",frole.listarRole(tok));
 		return "adduser.html";
 	}
 	
-	@GetMapping("/addUT/add")
-	public String addUT (Model m, Utilizador u, String tok) {
-<<<<<<< HEAD
+	@PostMapping("/addUT/add")
+	public String addUT (Model m, Utilizador u,  @RequestParam("tok") String tok) {
 		
 		m.addAttribute("", futilizador.saveUtilizador(u, tok));
 		
-		return "adduser.html";
-=======
-			
 		if (futilizador.saveUtilizador(u, tok) == 0) {		// TOKEN NÃO PRESENTE
 			return ".html";
 		}else if (futilizador.saveUtilizador(u, tok) == 1) {	// SUCESSO
 			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
-			return "adduser.html";
+			return "adduser.html?tok="+tok;
 		}
 		m.addAttribute("mensagem","Utilizador já registado");
-		return "adduser.html";			// JÁ EXISTE
->>>>>>> 6a9eedff201cacd4be4129f482f14a51f27e0e80
+		return "adduser.html?tok="+tok;			// JÁ EXISTE
+
 	}
 	
 	@GetMapping("/listUTs")
-	public String listUTs (Model m, String tok) {
-		
+	public String listUTs (Model m, @RequestParam("tok") String tok) {
+		m.addAttribute("tok",tok);
 		m.addAttribute("users", futilizador.listarAllUtilizador(tok));
 		
 		return "listausers.html";
 	}
 	
 	@GetMapping("/updateUTs")
-	public String updateUTs (Model m, String tok, Utilizador u) {
+	public String updateUTs (Model m,  @RequestParam("tok") String tok, Utilizador u) {
 		
 		m.addAttribute("", futilizador.updateUtilizador(u, tok));
 		
@@ -115,7 +124,7 @@ public class Web {
 	}
 	
 	@GetMapping("/deleteUTs")
-	public String deleteUTs (Model m, String tok, Utilizador u) {
+	public String deleteUTs (Model m,  @RequestParam("tok") String tok, Utilizador u) {
 		
 		m.addAttribute("", futilizador.deleteUtilizador(u, tok));
 		
