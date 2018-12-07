@@ -73,13 +73,13 @@ public class Web {
 		
 		m.addAttribute("", futilizador.saveUtilizador(u, tok));
 		
-		return ".html";
+		return "adduser.html";
 	}
 	
 	@GetMapping("/listUTs")
 	public String listUTs (Model m, String tok) {
 		
-		//m.addAttribute("", futilizador.listarAllUtilizador(tok));
+		m.addAttribute("users", futilizador.listarAllUtilizador(tok));
 		
 		return "listausers.html";
 	}
