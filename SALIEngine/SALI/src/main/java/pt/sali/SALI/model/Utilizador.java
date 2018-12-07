@@ -2,6 +2,8 @@ package pt.sali.SALI.model;
 
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Utilizador {
 	
 	@Id
@@ -12,9 +14,11 @@ public class Utilizador {
 	private Token token;
 	private String especializacao;
 	private Login login;
-	private String estado;
+	@JsonProperty
+	private boolean estado;
 	
-	public Utilizador(String nome, Role role, String identificador, String especializacao, Login login, String estado) {
+	public Utilizador(String nome, Role role, String identificador, 
+			String especializacao, Login login, boolean estado) {
 		super();
 		this.nome = nome;
 		this.role = role;
@@ -22,7 +26,7 @@ public class Utilizador {
 		this.token = new Token();
 		this.especializacao = especializacao;
 		this.login = login;
-		this.estado = "Ativo";
+		this.estado = true;
 	}
 
 	public Utilizador() {
@@ -82,11 +86,11 @@ public class Utilizador {
 		this.login = login;
 	}
 
-	public String getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 }

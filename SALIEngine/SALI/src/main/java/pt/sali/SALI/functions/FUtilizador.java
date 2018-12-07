@@ -39,6 +39,7 @@ public class FUtilizador {
 				
 				/*Define o username e a password por default para a cedula inserida*/
 				Login log = new Login(u.getIdentificador(), u.getIdentificador());
+				u.setEstado(true);
 				u.setLogin(log);
 				/***************/
 				
@@ -58,7 +59,8 @@ public class FUtilizador {
 			ArrayList<Utilizador> aux = new ArrayList<>();
 			
 			for (Utilizador ut : iUtilizador.findAll()) {
-				if (ut.getEstado().equals("Ativo")) {
+				if (ut.getEstado()) {
+					System.out.println("entrei");
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
@@ -123,7 +125,7 @@ public class FUtilizador {
 		if (ut.isPresent()) {
 			for (Utilizador u : iUtilizador.findAll()) {
 				if (u.getId().equals(id)) {
-					u.setEstado("Inativo");
+					u.setEstado(false);
 				}
 			}
 			answer = true;

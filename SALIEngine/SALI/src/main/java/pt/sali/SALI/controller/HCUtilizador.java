@@ -93,7 +93,7 @@ public class HCUtilizador {
 		
 		Role ro = new Role("Enfermeiro");
 		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, "s");
+		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, true);
 		iUtilizador.save(e);
 	}
 }

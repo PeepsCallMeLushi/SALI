@@ -123,10 +123,15 @@ public class Web {
 	}
 	
 	@GetMapping("/listUTs")
-	public String listUTs (Model m, @RequestParam("tok") String tok) {
+	public String listUTs (Model m, @RequestParam("tok") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
 		m.addAttribute("tok",tok);
 		m.addAttribute("roles",frole.listarRole(tok));
 		m.addAttribute("users", futilizador.listarAllUtilizador(tok));
+		
+		if(erro.equals("10")) {
+			m.addAttribute("mensagemsucess","Utilizador removido com sucesso !");
+		}
 		
 		return "listausers.html";
 	}
@@ -134,20 +139,25 @@ public class Web {
 	@GetMapping("/updateUTs")
 	public String updateUTs (Model m,  @RequestParam("tok") String tok, Utilizador u) {
 		
-		m.addAttribute("", futilizador.updateUtilizador(u, tok));
+		//m.addAttribute("", futilizador.updateUtilizador(u, tok));
 		
-		if (futilizador.updateUtilizador(u, tok)) {		// SUCESSO
+		/*if (futilizador.updateUtilizador(u, tok)) {		// SUCESSO
 			return ".html"; 
-		}
+		}*/
 		return ".html";		// TOKEN NÃO PRESENTE
 	}
 	
-	@GetMapping("/deleteUTs")
-	public String deleteUTs (Model m,  @RequestParam("tok") String tok, @RequestParam("id") String id) {
+	@PostMapping("/deleteUTs")
+	public String deleteUTs (Model m,  @RequestParam("tok") String tok,
+		@RequestParam("id") String id) {
 		
-		m.addAttribute("", futilizador.deleteUtilizador(id, tok));
+		if(futilizador.deleteUtilizador(id, tok)==true) {
+			return "redirect:/listUTs?tok="+tok+"&erro=10"; //Sucesso
+		}else {
+			return "redirect:/listUTs?tok="+tok+"&erro=0"; //Erro
+		}
 		
-		return ".html";
+		
 	}
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	
