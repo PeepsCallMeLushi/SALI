@@ -22,7 +22,7 @@ public class Utilizador {
 		this.token = new Token();
 		this.especializacao = especializacao;
 		this.login = login;
-		this.estado = estado;
+		this.estado = "Ativo";
 	}
 
 	public Utilizador() {

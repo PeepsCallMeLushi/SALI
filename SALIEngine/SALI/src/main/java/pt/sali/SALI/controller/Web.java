@@ -145,8 +145,9 @@ public class Web {
 	@GetMapping("/deleteUTs")
 	public String deleteUTs (Model m,  @RequestParam("tok") String tok, @RequestParam("id") String id) {
 		
-			
-		return "redirect:/listUTs?tok="+tok;
+		m.addAttribute("", futilizador.deleteUtilizador(id, tok));
+		
+		return ".html";
 	}
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	

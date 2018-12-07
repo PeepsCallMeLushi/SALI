@@ -58,9 +58,11 @@ public class FUtilizador {
 			ArrayList<Utilizador> aux = new ArrayList<>();
 			
 			for (Utilizador ut : iUtilizador.findAll()) {
-				ut.getLogin().setPassword("oi");
-				ut.getToken().setToken("oi");
-				aux.add(ut);
+				if (ut.getEstado().equals("Ativo")) {
+					ut.getLogin().setPassword("oi");
+					ut.getToken().setToken("oi");
+					aux.add(ut);
+				}
 			}
 			return aux;
 		}else {
@@ -98,13 +100,32 @@ public class FUtilizador {
 		return answer;
 	}
 	
-	public boolean deleteUtilizador (Utilizador u, String tok) {
+	public boolean deleteUtilizador (String id, String tok) {
 		
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (ut.isPresent()) {
-			iUtilizador.delete(u);
+			for (Utilizador u : iUtilizador.findAll()) {
+				if (u.getId().equals(id)) {
+					iUtilizador.delete(u);
+				}
+			}
+			answer = true;
+		}
+		return answer;
+	}
+	public boolean changeEstadoUtilizador (String id, String tok) {
+		
+		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
+		boolean answer = false;
+		
+		if (ut.isPresent()) {
+			for (Utilizador u : iUtilizador.findAll()) {
+				if (u.getId().equals(id)) {
+					u.setEstado("Inativo");
+				}
+			}
 			answer = true;
 		}
 		return answer;
