@@ -87,7 +87,7 @@ public class FUtilizador {
 			}
 			return aux;
 		}
-		return aux;
+		return null;
 	}
 	
 	public boolean updateUtilizador (Utilizador u, String tok) {
