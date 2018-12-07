@@ -29,6 +29,8 @@ public class Atuacao {
 
 	public Atuacao() {
 		super();
+		this.acao = new ArrayList<>();
+		this.administrados = new ArrayList<>();
 	}
 
 	public ArrayList<String> getAcao() {

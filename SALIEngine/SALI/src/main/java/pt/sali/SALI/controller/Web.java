@@ -68,12 +68,24 @@ public class Web {
 		
 	
 	// UTILIZADORES ////////////////////////////////////////////////////////
+	
 	@GetMapping("/addUT")
+	public String formADD (Model m, Utilizador u, String tok) {
+			
+		return "adduser.html";
+	}
+	
+	@GetMapping("/addUT/add")
 	public String addUT (Model m, Utilizador u, String tok) {
-		
-		m.addAttribute("", futilizador.saveUtilizador(u, tok));
-		
-		return ".html";
+			
+		if (futilizador.saveUtilizador(u, tok) == 0) {		// TOKEN NÃO PRESENTE
+			return ".html";
+		}else if (futilizador.saveUtilizador(u, tok) == 1) {	// SUCESSO
+			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
+			return "adduser.html";
+		}
+		m.addAttribute("mensagem","Utilizador já registado");
+		return "adduser.html";			// JÁ EXISTE
 	}
 	
 	@GetMapping("/listUTs")
@@ -89,7 +101,10 @@ public class Web {
 		
 		m.addAttribute("", futilizador.updateUtilizador(u, tok));
 		
-		return ".html";
+		if (futilizador.updateUtilizador(u, tok)) {		// SUCESSO
+			return ".html"; 
+		}
+		return ".html";		// TOKEN NÃO PRESENTE
 	}
 	
 	@GetMapping("/deleteUTs")
@@ -108,7 +123,12 @@ public class Web {
 		
 		m.addAttribute("", ffarmaco.saveFarmaco(f, tok));
 		
-		return ".html";
+		if (ffarmaco.saveFarmaco(f, tok) == 0) {		//	TOKEN NÃO PRESENTE
+			
+		}else if (ffarmaco.saveFarmaco(f, tok) == 1) {	//	SUCESSO
+			
+		}
+		return ".html";		// JÁ EXISTE
 	}
 	
 	@GetMapping("/listFarmaco")
@@ -124,7 +144,10 @@ public class Web {
 		
 		m.addAttribute("", ffarmaco.updateFarmaco(f, tok));
 		
-		return ".html";
+		if (ffarmaco.updateFarmaco(f, tok)) {	// SUCESSO
+			return ".html";
+		}
+		return ".html";		// TOKEN NÃO PRESENTE
 	}
 	
 	@GetMapping("/deleteFarmaco")
@@ -132,147 +155,153 @@ public class Web {
 		
 		m.addAttribute("", ffarmaco.deleteFarmaco(f, tok));
 		
-		return ".html";
+		if (ffarmaco.deleteFarmaco(f, tok)) {	// SUCESSO
+			return ".html";
+		}
+		return ".html";		// TOKEN NÃO PRESENTE
 	}
 	// FARMACO /////////////////////////////////////////////////////////////
 	
 	
-	// FREGUESIA /////////////////////////////////////////////////////////
-	@GetMapping("/addFreguesia")													//
-	public String addFreguesia (Model m, String tok, Freguesia f) {     //
-																		//
-		m.addAttribute("", ffreguesia.saveFreguesia(f, tok));			//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/listFreguesia")													//
-	public String listFreguesia (Model m, String tok) {					//
-																		//
-		m.addAttribute("", ffreguesia.listarFreguesia(tok));			//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/updateFreguesia")													//
-	public String updateFreguesia (Model m, String tok, Freguesia f) {	//
-																		//
-		m.addAttribute("", ffreguesia.updateFreguesia(f, tok));			//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/deleteFreguesia")													//
-	public String deleteFreguesia (Model m, String tok, Freguesia f) {	//
-																		//
-		m.addAttribute("", ffreguesia.deleteFreguesia(f, tok));			//
-																		//
-		return ".html";													//
-	}																	//
+	// FREGUESIA ///////////////////////////////////////////////////////////
+	@GetMapping("/addFreguesia")													
+	public String addFreguesia (Model m, String tok, Freguesia f) {     
+																		
+		m.addAttribute("", ffreguesia.saveFreguesia(f, tok));			
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/listFreguesia")													
+	public String listFreguesia (Model m, String tok) {					
+																		
+		m.addAttribute("", ffreguesia.listarFreguesia(tok));			
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/updateFreguesia")													
+	public String updateFreguesia (Model m, String tok, Freguesia f) {	
+																		
+		//m.addAttribute("", ffreguesia.updateFreguesia(f, tok));
+		
+		if (ffreguesia.updateFreguesia(f, tok)) {
+			return ".html";
+		}
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/deleteFreguesia")													
+	public String deleteFreguesia (Model m, String tok, Freguesia f) {	
+																		
+		m.addAttribute("", ffreguesia.deleteFreguesia(f, tok));			
+																		
+		return ".html";													
+	}																	
 	// FREGUESIA /////////////////////////////////////////////////////////
 	
 	
 	// ROLE //////////////////////////////////////////////////////////////
-	@GetMapping("/addRole")													//
-	public String addRole (Model m, String tok, Role r) {     			//
-																		//
-		m.addAttribute("", frole.saveRole(r, tok));						//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/listRole")													//
-	public String listRole (Model m, String tok) {						//
-																		//
-		m.addAttribute("", frole.listarRole(tok));						//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/updateRole")													//
-	public String updateRole (Model m, String tok, Role r) {			//
-																		//
-		m.addAttribute("", frole.updateRole(r, tok));					//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/deleteRole")													//
-	public String deleteRole (Model m, String tok, Role r) {			//
-																		//
-		m.addAttribute("", frole.deleteRole(r, tok));					//
-																		//
-		return ".html";													//
-	}																	//
+	@GetMapping("/addRole")													
+	public String addRole (Model m, String tok, Role r) {     			
+																		
+		m.addAttribute("", frole.saveRole(r, tok));						
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/listRole")													
+	public String listRole (Model m, String tok) {						
+																		
+		m.addAttribute("", frole.listarRole(tok));						
+																		
+		return ".html";											
+	}																	
+																		
+	@GetMapping("/updateRole")													
+	public String updateRole (Model m, String tok, Role r) {			
+																		
+		m.addAttribute("", frole.updateRole(r, tok));					
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/deleteRole")													
+	public String deleteRole (Model m, String tok, Role r) {			
+																		
+		m.addAttribute("", frole.deleteRole(r, tok));					
+																		
+		return ".html";													
+	}																	
 	// ROLE //////////////////////////////////////////////////////////////
 	
 	
 	// SINTOMA ///////////////////////////////////////////////////////////
-	@GetMapping("/addSintoma")													//
-	public String addSintoma (Model m, String tok, Sintoma s) {     	//
-																		//
-		m.addAttribute("", fsintoma.saveSintoma(s, tok));				//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/listSintoma")													//
-	public String listSintoma (Model m, String tok) {					//
-																		//
-		m.addAttribute("", fsintoma.listarSintoma(tok));				//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/updateSintoma")													//
-	public String updateSintoma (Model m, String tok, Sintoma s) {		//
-																		//
-		m.addAttribute("", fsintoma.updateSintoma(s, tok));				//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/deleteSintoma")													//
-	public String deleteSintoma (Model m, String tok, Sintoma s) {		//
-																		//
-		m.addAttribute("", fsintoma.deleteSintoma(s, tok));				//
-																		//
-		return ".html";													//
-	}																	//
+	@GetMapping("/addSintoma")												
+	public String addSintoma (Model m, String tok, Sintoma s) {     	
+																		
+		m.addAttribute("", fsintoma.saveSintoma(s, tok));				
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/listSintoma")													
+	public String listSintoma (Model m, String tok) {					
+																		
+		m.addAttribute("", fsintoma.listarSintoma(tok));				
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/updateSintoma")													
+	public String updateSintoma (Model m, String tok, Sintoma s) {		
+																		
+		m.addAttribute("", fsintoma.updateSintoma(s, tok));				
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/deleteSintoma")													
+	public String deleteSintoma (Model m, String tok, Sintoma s) {		
+																		
+		m.addAttribute("", fsintoma.deleteSintoma(s, tok));				
+																		
+		return ".html";													
+	}																	
 	// SINTOMA ///////////////////////////////////////////////////////////
 	
 	
 	// OCORRENCIA ////////////////////////////////////////////////////////
-	@GetMapping("/addOcorrencia")													//
-	public String addOcorrencia (Model m, String tok, Ocorrencia o) {   //
-																		//
-		m.addAttribute("", focorrencia.saveOcorrencia(o, tok));			//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/listOcorrencia")													//
-	public String listOcorrencia (Model m, String tok) {				//
-																		//
-		m.addAttribute("", focorrencia.listarOcorrencia(tok));			//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/updateOcorrencia")													//
-	public String updateOcorrencia (Model m, String tok, Ocorrencia o) {//
-																		//
-		m.addAttribute("", focorrencia.updateOcorrencia(o, tok));		//
-																		//
-		return ".html";													//
-	}																	//
-																		//
-	@GetMapping("/deleteOcorrencia")													//
-	public String deleteOcorrencia (Model m, String tok, Ocorrencia o) {//
-																		//
-		m.addAttribute("", focorrencia.deleteOcorrencia(o, tok));		//
-																		//
-		return ".html";													//
-	}																	//
+	@GetMapping("/addOcorrencia")													
+	public String addOcorrencia (Model m, String tok, Ocorrencia o) {   
+																		
+		m.addAttribute("", focorrencia.saveOcorrencia(o, tok));			
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/listOcorrencia")													
+	public String listOcorrencia (Model m, String tok) {				
+																		
+		m.addAttribute("", focorrencia.listarOcorrencia(tok));			
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/updateOcorrencia")													
+	public String updateOcorrencia (Model m, String tok, Ocorrencia o) {
+																		
+		m.addAttribute("", focorrencia.updateOcorrencia(o, tok));		
+																		
+		return ".html";													
+	}																	
+																		
+	@GetMapping("/deleteOcorrencia")													
+	public String deleteOcorrencia (Model m, String tok, Ocorrencia o) {
+																		
+		m.addAttribute("", focorrencia.deleteOcorrencia(o, tok));		
+																		
+		return ".html";													
+	}																	
 	// OCORRENCIA ////////////////////////////////////////////////////////
 }

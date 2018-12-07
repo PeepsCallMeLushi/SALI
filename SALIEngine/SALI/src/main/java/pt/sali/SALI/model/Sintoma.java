@@ -14,7 +14,6 @@ public class Sintoma {
 	
 	public Sintoma(String metodologia, String nome) {
 		super();
-		this.id = null;
 		this.metodologia = metodologia;
 		this.nome = nome;
 		this.pergunta = new ArrayList<>();
@@ -22,6 +21,7 @@ public class Sintoma {
 
 	public Sintoma() {
 		super();
+		this.pergunta = new ArrayList<>();
 	}
 
 	public String getNome() {

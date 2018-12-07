@@ -79,10 +79,13 @@ public class HCUtilizador {
 	}
 	
 	@GetMapping("/login")
-	public ResponseEntity<Utilizador> login (@RequestParam ("username") String username, 
+	public ResponseEntity<?> login (@RequestParam ("username") String username, 
 										@RequestParam ("password") String password){
 		
-		return new ResponseEntity<Utilizador>(futilizador.login(username, password), HttpStatus.OK);
+		if (futilizador.login(username, password) != null) {
+			return new ResponseEntity<Utilizador>(futilizador.login(username, password), HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Erro", HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")
