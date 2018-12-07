@@ -39,10 +39,21 @@ public class HCUtilizador {
 		return "Existente";
 	}
 	
+	@GetMapping("/listactive")
+	public ResponseEntity<?> listarAactiveUtilizadores (@RequestParam ("tok") String tok) {
+		
+		List<Utilizador> u = futilizador.listarActiveUtilizador(tok); 
+		if(u != null) {
+			return new ResponseEntity<>(u, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>("Token", HttpStatus.OK);
+	}
+	
 	@GetMapping("/listall")
 	public ResponseEntity<?> listarAllUtilizadores (@RequestParam ("tok") String tok) {
 		
-		List<Utilizador> u = futilizador.listarAllUtilizador(tok); 
+		List<Utilizador> u = futilizador.listarActiveUtilizador(tok); 
 		if(u != null) {
 			return new ResponseEntity<>(u, HttpStatus.OK);
 		}

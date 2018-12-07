@@ -13,11 +13,6 @@ public class SaliApplication {
 		System.out.println("TINONINONINONINO");
 	}
 	
-	// TODO REST
-	// listar tudo (UTs) (inativo tb)
-	// confirmar: listar by role (só ativos)
-	// login REST
-	
 	// TODO SPRING
 	// nice to have: passar estado UT para String 
 	// list by role (confirmar)

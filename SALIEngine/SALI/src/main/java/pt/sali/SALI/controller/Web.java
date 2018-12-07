@@ -127,7 +127,7 @@ public class Web {
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		m.addAttribute("tok",tok);
 		m.addAttribute("roles",frole.listarRole(tok));
-		m.addAttribute("users", futilizador.listarAllUtilizador(tok));
+		m.addAttribute("users", futilizador.listarActiveUtilizador(tok));
 		
 		if(erro.equals("10")) {
 			m.addAttribute("mensagemsucess","Utilizador removido com sucesso !");

@@ -52,6 +52,25 @@ public class FUtilizador {
 	}
 	
 	public List<Utilizador> listarAllUtilizador (String tok) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		
+		if (u.isPresent()) {
+			ArrayList<Utilizador> aux = new ArrayList<>();
+			
+			for (Utilizador ut : iUtilizador.findAll()) {
+					System.out.println("entrei");
+					ut.getLogin().setPassword("oi");
+					ut.getToken().setToken("oi");
+					aux.add(ut);
+			}
+			return aux;
+		}else {
+			return null;
+		}
+	}
+	
+	public List<Utilizador> listarActiveUtilizador (String tok) {
 	
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		
@@ -72,14 +91,16 @@ public class FUtilizador {
 		}
 	}
 	
-	public List<Utilizador> listarUtilizadorByRole (@RequestParam ("role") String role, @RequestParam ("tok") String tok) {
+	public List<Utilizador> listarUtilizadorByRole (@RequestParam ("role") String role, 
+							@RequestParam ("tok") String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		ArrayList<Utilizador> aux = new ArrayList<>();
 		
 		if (u.isPresent()) {
 			for (Utilizador ut : iUtilizador.findAll()) {
-				if (ut.getRole().getNome().compareTo(role) == 0) {
+				if (ut.getRole().getNome().compareTo(role) == 0 
+						&& ut.getEstado()) {
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
