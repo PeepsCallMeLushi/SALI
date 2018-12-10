@@ -22,33 +22,24 @@ public class FUtilizador {
 	public int saveUtilizador (Utilizador u, String tok) {
 		
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
-		int answer = 0;
-		boolean jaExiste = false;
-		
 		
 		if (ut.isPresent()) {
 			for (Utilizador uti: iUtilizador.findAll()) {
-				if (uti.getIdentificador().compareToIgnoreCase(u.getIdentificador()) == 0){
-					jaExiste = true;
+				if (uti.getIdentificador().equals(u.getIdentificador())){
+					return 2;
+				}else {
+					/*Define o username e a password por default para a cedula inserida*/
+					Login log = new Login(u.getIdentificador(), u.getIdentificador());
+					u.setEstado(true);
+					u.setLogin(log);
+					/***************/
+					
+					iUtilizador.save(u);
+					return 1;
 				}
 			}
-			if (jaExiste == true) {
-				answer = 2;
-				return answer;
-			}else if (jaExiste == false){
-				
-				/*Define o username e a password por default para a cedula inserida*/
-				Login log = new Login(u.getIdentificador(), u.getIdentificador());
-				u.setEstado(true);
-				u.setLogin(log);
-				/***************/
-				
-				iUtilizador.save(u);
-				answer = 1;
-				return answer;
-			}
 		}
-		return answer;
+		return 0;
 	}
 	
 	public List<Utilizador> listarAllUtilizador (String tok) {

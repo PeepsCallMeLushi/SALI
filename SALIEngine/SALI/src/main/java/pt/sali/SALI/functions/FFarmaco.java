@@ -22,25 +22,17 @@ public class FFarmaco {
 	public int saveFarmaco(Farmaco f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		int answer = 0;
-		boolean jaExiste = false;
 			
 		if (u.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
-				if (fm.getNome().compareToIgnoreCase(f.getNome())==0){ 
-					jaExiste = true;
+				if (fm.getNome().equals(f.getNome())){ 
+					return 2;
+				}else {
+					return 1;
 				}
 			}
-			
-			if (jaExiste == true) {
-				answer = 2;
-			}else if (jaExiste == false){
-				iFarmaco.save(f);
-				answer = 1;
-			}
 		}
-		
-		return answer;
+		return 0;
 	}
 	
 	public List<Farmaco> listarFarmaco (String tok) {

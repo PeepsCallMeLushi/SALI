@@ -23,24 +23,17 @@ public class FRole {
 	public int saveRole (Role r, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		int answer = 0;
-		boolean jaExiste = false;
-		
 		
 		if (u.isPresent()) {
 			for (Role rl: iRole.findAll()) {
-				if (rl.getNome().compareToIgnoreCase(r.getNome())==0){ 
-					jaExiste = true;
+				if (rl.getNome().equals(r.getNome())){ 
+					return 2;
+				}else {
+					return 1;
 				}
 			}
-			if (jaExiste == true) {
-				answer = 2;
-			}else if (jaExiste == false){
-				iRole.save(r);
-				answer = 1;
-			}
 		}
-		return answer;
+		return 0;
 	}
 	
 	public List<Role> listarRole (String tok) {
