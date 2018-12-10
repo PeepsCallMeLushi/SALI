@@ -25,11 +25,9 @@ public class FFreguesia {
 		
 		if (u.isPresent()) {
 			for (Freguesia fg: iFreguesia.findAll()) {
-				if (fg.getNome().compareToIgnoreCase(f.getNome()) == 0){ 
-					System.out.println("igual");
+				if (fg.getNome().compareToIgnoreCase(f.getNome()) == 0){
 					return 2;
 				}else {
-					System.out.println("done");
 					iFreguesia.save(f);
 					return 1;
 				}
