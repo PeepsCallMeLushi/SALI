@@ -54,9 +54,9 @@ public class HCFarmaco {
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteFarmaco(@RequestParam("id") String id, @RequestParam ("tok") String tok) {
 		
-		if (ffarmaco.deleteFarmaco(f, tok)) {
+		if (ffarmaco.deleteFarmaco(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);

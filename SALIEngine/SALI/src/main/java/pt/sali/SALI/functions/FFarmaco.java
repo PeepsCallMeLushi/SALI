@@ -64,13 +64,13 @@ public class FFarmaco {
 		return answer;
 	}
 
-	public boolean deleteFarmaco (Farmaco f, String tok) {
+	public boolean deleteFarmaco (String id, String tok) {
 
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 
 		if (u.isPresent()) {
-			iFarmaco.delete(f);
+			iFarmaco.findById(id);
 			answer = true;
 		}
 

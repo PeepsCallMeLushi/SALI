@@ -15,15 +15,15 @@ import pt.sali.SALI.service.IUtilizador;
 
 @Service("futilizador")
 public class FUtilizador {
-	
+
 	@Autowired
 	IUtilizador iUtilizador;
-	
+
 	public int saveUtilizador (Utilizador u, String tok) {
-		
+
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean isEqual = false;
-		
+
 		if (ut.isPresent()) {
 			for (Utilizador uti: iUtilizador.findAll()) {
 				if (uti.getIdentificador().compareToIgnoreCase(u.getIdentificador()) == 0){
@@ -38,21 +38,21 @@ public class FUtilizador {
 				u.setLogin(log);
 				u.setEstado("Ativo");
 				/***************/
-				
+
 				iUtilizador.save(u);
 				return 1;
 			}
 		}
 		return 0;
 	}
-	
+
 	public List<Utilizador> listarAllUtilizador (String tok) {
-		
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		
+
 		if (u.isPresent()) {
 			ArrayList<Utilizador> aux = new ArrayList<>();
-			
+
 			for (Utilizador ut : iUtilizador.findAll()) {
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
@@ -63,15 +63,14 @@ public class FUtilizador {
 			return null;
 		}
 	}
-	
+
 	public List<Utilizador> listarActiveUtilizador (String tok) {
-	
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		
+
 		if (u.isPresent()) {
 			ArrayList<Utilizador> aux = new ArrayList<>();
 			for (Utilizador ut : iUtilizador.findAll()) {
-
 				if (ut.getEstado().compareToIgnoreCase("Ativo") == 0) {
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
@@ -83,16 +82,16 @@ public class FUtilizador {
 			return null;
 		}
 	}
-	
-	public List<Utilizador> listarUtilizadorByRole (@RequestParam ("role") String role, 
+
+	public List<Utilizador> listarUtilizadorByRole (@RequestParam ("role") String role,
 							@RequestParam ("tok") String tok) {
-		
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		ArrayList<Utilizador> aux = new ArrayList<>();
-		
+
 		if (u.isPresent()) {
 			for (Utilizador ut : iUtilizador.findAll()) {
-				if (ut.getRole().getNome().compareTo(role) == 0 
+				if (ut.getRole().getNome().compareTo(role) == 0
 						&& ut.getEstado().equals("Ativo")) {
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
@@ -103,24 +102,24 @@ public class FUtilizador {
 		}
 		return null;
 	}
-	
+
 	public boolean updateUtilizador (Utilizador u, String tok) {
-		
+
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
-		
+
 		if (ut.isPresent()) {
 			iUtilizador.save(u);
 			answer = true;
 		}
 		return answer;
 	}
-	
+
 	public boolean deleteUtilizador (String id, String tok) {
-		
+
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
-		
+
 		if (ut.isPresent()) {
 			for (Utilizador u : iUtilizador.findAll()) {
 				if (u.getId().equals(id)) {
@@ -132,10 +131,10 @@ public class FUtilizador {
 		return answer;
 	}
 	public boolean changeEstadoUtilizador (String id, String tok) {
-		
+
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
-		
+
 		if (ut.isPresent()) {
 			for (Utilizador u : iUtilizador.findAll()) {
 				if (u.getId().equals(id)) {
@@ -146,31 +145,8 @@ public class FUtilizador {
 		}
 		return answer;
 	}
-	
-	/*public String loginSpring (@RequestParam ("username") String username, 
-							@RequestParam ("password") String password) {
-		
-		String answer = "Falhou";
-		Utilizador u = new Utilizador();
-		
-		for (Utilizador ut : iUtilizador.findAll()) {
-			if (ut.getLogin().getLogin().compareTo(username) == 0) {
-				if (ut.getLogin().getPassword().compareTo(password) == 0) {
-					u = ut;
-					u.getLogin().setPassword("oi");
-					
-					UUID idtoken = UUID.randomUUID();
-					ut.getToken().setToken(idtoken.toString());
-					iUtilizador.save(ut);
-					
-					answer = idtoken.toString();
-				}
-			}
-		}
-		return answer;
-	}*/
-	
-	public Utilizador login (@RequestParam ("username") String username, 
+
+	public Utilizador loginUT (@RequestParam ("username") String username,
 			@RequestParam ("password") String password) {
 
 		Optional<Utilizador> u = null;
@@ -178,20 +154,36 @@ public class FUtilizador {
 		for (Utilizador ut : iUtilizador.findAll()) {
 			if (ut.getLogin().getLogin().compareTo(username) == 0) {
 				if (ut.getLogin().getPassword().compareTo(password) == 0) {
-					
+
 					UUID idtoken = UUID.randomUUID();
 					ut.getToken().setToken(idtoken.toString());
 					iUtilizador.save(ut);
 					
-					//TODO
 					u = iUtilizador.findById(ut.getId());
-					
+
 					u.get().getLogin().setPassword("porra");
-					
+
 					return u.get();
 				}
 			}
 		}
 		return null;
+	}
+	
+	public int login (@RequestParam ("username") String username,
+			@RequestParam ("password") String password) {
+
+		int res = 0;
+
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getLogin().getLogin().compareTo(username) == 0) {
+				if (ut.getLogin().getPassword().compareTo(password) == 0) {
+					return 1;
+				}
+				res = 2;
+			}
+			res = 2;
+		}
+		return res;
 	}
 }
