@@ -14,11 +14,11 @@ public class Utilizador {
 	private Token token;
 	private String especializacao;
 	private Login login;
-	@JsonProperty
-	private boolean estado;
+	//@JsonProperty
+	private String estado;
 	
 	public Utilizador(String nome, Role role, String identificador, 
-			String especializacao, Login login, boolean estado) {
+			String especializacao, Login login, String estado) {
 		super();
 		this.nome = nome;
 		this.role = role;
@@ -26,7 +26,7 @@ public class Utilizador {
 		this.token = new Token();
 		this.especializacao = especializacao;
 		this.login = login;
-		this.estado = true;
+		this.estado = estado;
 	}
 
 	public Utilizador() {
@@ -86,11 +86,11 @@ public class Utilizador {
 		this.login = login;
 	}
 
-	public boolean getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 }

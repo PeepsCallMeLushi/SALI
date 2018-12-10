@@ -35,8 +35,8 @@ public class FUtilizador {
 			} else {
 				/*Define o username e a password por default para a cedula inserida*/
 				Login log = new Login(u.getIdentificador(), u.getIdentificador());
-				u.setEstado(true);
 				u.setLogin(log);
+				u.setEstado("Ativo");
 				/***************/
 				
 				iUtilizador.save(u);
@@ -54,7 +54,6 @@ public class FUtilizador {
 			ArrayList<Utilizador> aux = new ArrayList<>();
 			
 			for (Utilizador ut : iUtilizador.findAll()) {
-					System.out.println("entrei");
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
@@ -71,10 +70,8 @@ public class FUtilizador {
 		
 		if (u.isPresent()) {
 			ArrayList<Utilizador> aux = new ArrayList<>();
-			
 			for (Utilizador ut : iUtilizador.findAll()) {
-				if (ut.getEstado()) {
-					System.out.println("entrei");
+				if (ut.getEstado().compareToIgnoreCase("Ativo") == 0) {
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
@@ -95,7 +92,7 @@ public class FUtilizador {
 		if (u.isPresent()) {
 			for (Utilizador ut : iUtilizador.findAll()) {
 				if (ut.getRole().getNome().compareTo(role) == 0 
-						&& ut.getEstado()) {
+						&& ut.getEstado().equals("Ativo")) {
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
@@ -141,7 +138,7 @@ public class FUtilizador {
 		if (ut.isPresent()) {
 			for (Utilizador u : iUtilizador.findAll()) {
 				if (u.getId().equals(id)) {
-					u.setEstado(false);
+					u.setEstado("Inativo");
 				}
 			}
 			answer = true;
