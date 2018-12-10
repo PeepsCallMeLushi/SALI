@@ -164,10 +164,12 @@ public class Web {
 	@PostMapping("/addFarmaco")
 	public String addFarmaco (@ModelAttribute("farmaco") Farmaco f,
 			@RequestParam("tok") String tok) {
+		
+		int awnser =  ffarmaco.saveFarmaco(f, tok);
 			
-		if (ffarmaco.saveFarmaco(f, tok) == 0) {		//	TOKEN NÃO PRESENTE
-		return "pages-error-403.html";	
-		}else if (ffarmaco.saveFarmaco(f, tok) == 1) {	//	SUCESSO
+		if (awnser == 0) {		//	TOKEN NÃO PRESENTE
+			return "pages-error-403.html";	
+		}else if (awnser == 1) {	//	SUCESSO
 			return "redirect:/listFarmaco?tok="+tok+"&erro=10";	
 		}
 		return "redirect:/listFarmaco?tok="+tok+"&erro=2"; // JÁ EXISTE
