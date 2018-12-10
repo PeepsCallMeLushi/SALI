@@ -24,10 +24,12 @@ public class HCSintoma {
 	
 	@PostMapping("/add")
 	public String addSintoma(@RequestBody Sintoma s, @RequestParam ("tok") String tok) {
-			
-		if (fsintoma.saveSintoma(s, tok) == 0) {
+		
+		int status = fsintoma.saveSintoma(s, tok);
+		
+		if (status == 0) {
 			return "Token";
-		}else if (fsintoma.saveSintoma(s, tok) == 1) {
+		}else if (status == 1) {
 			return "Sucesso";
 		}
 		return "Existente";

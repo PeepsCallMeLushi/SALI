@@ -24,13 +24,14 @@ public class HCFreguesia {
 	
 	@PostMapping("/add")
 	public String addFreguesia(@RequestBody Freguesia f, @RequestParam ("tok") String tok) {
-			
-		if (ffreguesia.saveFreguesia(f, tok) == 0) {
+		
+		int status = ffreguesia.saveFreguesia(f, tok);
+		
+		if (status == 0) {
 			return "Token";
-		}else if (ffreguesia.saveFreguesia(f, tok) == 1) {
+		}else if (status == 2) {
 			return "Sucesso";
 		}
-		System.out.println(ffreguesia.saveFreguesia(f, tok) + "debug");
 		return "Existente";
 	}
 	

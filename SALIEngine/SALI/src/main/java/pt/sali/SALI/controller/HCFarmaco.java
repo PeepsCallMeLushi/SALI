@@ -24,9 +24,11 @@ public class HCFarmaco {
 	@PostMapping("/add")
 	public String addFarmaco(@RequestBody Farmaco f, @RequestParam ("tok") String tok) {
 		
-		if (ffarmaco.saveFarmaco(f, tok) == 0) {
+		int status = ffarmaco.saveFarmaco(f, tok);
+		
+		if (status == 0) {
 			return "Token";
-		}else if (ffarmaco.saveFarmaco(f, tok) == 1) {
+		}else if (status == 1) {
 			return "Sucesso";
 		}
 		return "Existente";

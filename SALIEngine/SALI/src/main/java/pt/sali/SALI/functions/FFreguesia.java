@@ -22,18 +22,21 @@ public class FFreguesia {
 	public int saveFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		boolean isEqual = false;
 		
 		if (u.isPresent()) {
 			for (Freguesia fg: iFreguesia.findAll()) {
-				if (fg.getNome().compareToIgnoreCase(f.getNome()) == 0){
-					return 2;
-				}else {
-					iFreguesia.save(f);
-					return 1;
+				if (fg.getNome().compareToIgnoreCase(f.getNome()) == 0) {
+					isEqual = true;
 				}
 			}
+			if (isEqual) {
+				return 1;
+			}else {
+				iFreguesia.save(f);
+				return 2;
+			}
 		}
-		System.out.println("token");
 		return 0;
 	}
 	

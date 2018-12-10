@@ -22,15 +22,19 @@ public class FSintoma {
 	public int saveSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		boolean isEqual = false;
 		
 		if (u.isPresent()) {
 			for (Sintoma rl: iSintoma.findAll()) {
 				if (rl.getNome().compareToIgnoreCase(s.getNome()) == 0){ 
-					return 2;
-				}else {
-					iSintoma.save(s);
-					return 1;
+					isEqual = true;
 				}
+			}
+			if (isEqual) {
+				return 2;
+			}else {
+				iSintoma.save(s);
+				return 1;
 			}
 		}
 		return 0;

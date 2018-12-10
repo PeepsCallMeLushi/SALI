@@ -22,15 +22,19 @@ public class FFarmaco {
 	public int saveFarmaco(Farmaco f, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		boolean isEqual = false;
 			
 		if (u.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
 				if (fm.getNome().compareToIgnoreCase(f.getNome()) == 0){ 
-					return 2;
-				}else {
-					iFarmaco.save(f);
-					return 1;
+					isEqual = true;
 				}
+			}
+			if (isEqual) {
+				return 2;
+			}else {
+				iFarmaco.save(f);
+				return 1;
 			}
 		}
 		return 0;

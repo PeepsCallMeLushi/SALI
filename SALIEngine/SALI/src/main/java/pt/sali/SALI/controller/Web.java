@@ -67,8 +67,6 @@ public class Web {
 	}
 	
 // LOGIN ///////////////////////////////////////////////////////////////
-
-
 	@GetMapping("/authentication/login")
 	public String login (Model m,@RequestParam(value="erro",defaultValue="0") String erro) {
 		if(erro.equals("1")) {
@@ -87,12 +85,10 @@ public class Web {
     	   return "redirect:/?tok="+futilizador.login(username, password).getToken().getToken();
        }
     }
-    
     // LOGIN ///////////////////////////////////////////////////////////////
 		
 	
 	// UTILIZADORES ////////////////////////////////////////////////////////
-	
 	@GetMapping("/addUT")
 	public String formADD (Model m, Utilizador u,
 			@RequestParam("tok") String tok,
