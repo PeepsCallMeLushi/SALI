@@ -23,7 +23,7 @@ public class FFarmaco {
 
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean isEqual = false;
-		iFarmaco.save(f);
+		
 		if (u.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
 				if (fm.getNome().compareToIgnoreCase(f.getNome()) == 0){
@@ -70,7 +70,7 @@ public class FFarmaco {
 		boolean answer = false;
 
 		if (u.isPresent()) {
-			iFarmaco.findById(id);
+			iFarmaco.deleteById(id);
 			answer = true;
 		}
 

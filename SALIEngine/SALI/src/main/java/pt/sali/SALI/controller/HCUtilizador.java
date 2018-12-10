@@ -44,6 +44,7 @@ public class HCUtilizador {
 	public ResponseEntity<?> listarAactiveUtilizadores (@RequestParam ("tok") String tok) {
 		
 		List<Utilizador> u = futilizador.listarActiveUtilizador(tok); 
+		
 		if(u != null) {
 			return new ResponseEntity<>(u, HttpStatus.OK);
 		}
@@ -55,6 +56,7 @@ public class HCUtilizador {
 	public ResponseEntity<?> listarAllUtilizadores (@RequestParam ("tok") String tok) {
 		
 		List<Utilizador> u = futilizador.listarActiveUtilizador(tok); 
+		
 		if(u != null) {
 			return new ResponseEntity<>(u, HttpStatus.OK);
 		}

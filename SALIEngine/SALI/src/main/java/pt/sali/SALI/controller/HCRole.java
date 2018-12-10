@@ -39,6 +39,7 @@ public class HCRole {
 	public ResponseEntity<?> listarAllRole (@RequestParam ("tok") String tok){
 		
 		List<Role> r = frole.listarRole(tok); 
+		
 		if(r != null) {
 			return new ResponseEntity<>(r, HttpStatus.OK);
 		}

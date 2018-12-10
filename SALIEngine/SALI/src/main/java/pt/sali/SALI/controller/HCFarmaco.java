@@ -38,6 +38,7 @@ public class HCFarmaco {
 	public ResponseEntity<?> listarAllFarmacos (@RequestParam ("tok") String tok){
 		
 		List<Farmaco> f = ffarmaco.listarFarmaco(tok); 
+		
 		if(f != null) {
 			return new ResponseEntity<>(f, HttpStatus.OK);
 		}

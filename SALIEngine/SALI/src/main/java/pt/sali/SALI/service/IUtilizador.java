@@ -10,5 +10,6 @@ import pt.sali.SALI.model.Utilizador;
 public interface IUtilizador extends MongoRepository<Utilizador, String> {
 	
 	Optional<Utilizador> findByTokenToken(String token);
+	Optional<Utilizador> findById(String id);
 
 }

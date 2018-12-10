@@ -39,6 +39,7 @@ public class HCSintoma {
 	public ResponseEntity<?> listarAllSintoma (@RequestParam ("tok") String tok){
 		
 		List<Sintoma> s = fsintoma.listarSintoma(tok); 
+		
 		if(s != null) {
 			return new ResponseEntity<>(s, HttpStatus.OK);
 		}

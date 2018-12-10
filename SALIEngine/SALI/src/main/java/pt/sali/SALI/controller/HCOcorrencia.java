@@ -61,6 +61,7 @@ public class HCOcorrencia {
 	public ResponseEntity<?> listarAllOcorrencias (@RequestParam ("tok") String tok){
 		
 		List<Ocorrencia> o = focorrencia.listarOcorrencia(tok); 
+		
 		if(o != null) {
 			return new ResponseEntity<>(o, HttpStatus.OK);
 		}
@@ -95,7 +96,7 @@ public class HCOcorrencia {
 		return new ResponseEntity<String>("No match", HttpStatus.OK);
 	}
 	
-	@GetMapping("/mock")
+	/*@GetMapping("/mock")
 	public void addo(){
 		Date d = new Date();
 		Freguesia f = new Freguesia();
@@ -169,5 +170,5 @@ public class HCOcorrencia {
 		o.getUtentes().add(u);
 		o.getIncidente().add("O vlad nasceu");
 		iOcorrencia.save(o);
-	}
+	}*/
 }
