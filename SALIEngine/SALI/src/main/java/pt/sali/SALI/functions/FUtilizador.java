@@ -182,7 +182,6 @@ public class FUtilizador {
 				}
 				res = 2;
 			}
-			res = 2;
 		}
 		return res;
 	}

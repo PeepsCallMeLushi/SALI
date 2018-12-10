@@ -101,7 +101,7 @@ public class HCUtilizador {
 		} else if (res == 2) {
 			return new ResponseEntity<String>("Login", HttpStatus.OK); // Não tem pass ou user correto
 		}
-		return new ResponseEntity<String>("Conta", HttpStatus.OK); // Não existe a conta
+		return new ResponseEntity<String>("Conta", HttpStatus.OK); // Não existe user
 	}
 	
 	@GetMapping("/mock")
