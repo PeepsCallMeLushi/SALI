@@ -57,9 +57,9 @@ public class HCRole {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteRole(@RequestParam ("id") String id, @RequestParam ("tok") String tok) {
 		
-		if (frole.deleteRole(r, tok)) {
+		if (frole.deleteRole(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);	

@@ -65,13 +65,13 @@ public class FRole {
 		return answer;
 	}
 	
-	public boolean deleteRole (Role r, String tok) {
+	public boolean deleteRole (String id, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
-			iRole.delete(r);
+			iRole.deleteById(id);
 			answer = true;
 		}
 		

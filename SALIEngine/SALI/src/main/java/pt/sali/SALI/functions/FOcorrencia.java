@@ -54,13 +54,13 @@ public class FOcorrencia {
 		return answer;
 	}
 	
-	public boolean deleteOcorrencia (Ocorrencia o, String tok) {
+	public boolean deleteOcorrencia (String id, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
-			iOcorrencia.delete(o);
+			iOcorrencia.deleteById(id);
 			answer = true;
 		}
 		

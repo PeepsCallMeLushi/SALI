@@ -64,13 +64,13 @@ public class FFreguesia {
 		return answer;
 	}
 	
-	public boolean deleteFreguesia (Freguesia f, String tok) {
+	public boolean deleteFreguesia (String id, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
-			iFreguesia.delete(f);
+			iFreguesia.deleteById(id);
 			answer = true;
 		}
 		
