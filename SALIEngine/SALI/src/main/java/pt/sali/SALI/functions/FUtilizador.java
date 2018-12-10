@@ -118,32 +118,26 @@ public class FUtilizador {
 	public boolean deleteUtilizador (String id, String tok) {
 
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
-		boolean answer = false;
 
 		if (ut.isPresent()) {
-			for (Utilizador u : iUtilizador.findAll()) {
-				if (u.getId().equals(id)) {
-					iUtilizador.delete(u);
-				}
-			}
-			answer = true;
+			iUtilizador.deleteById(id);
+			return true;
 		}
-		return answer;
+		return false;
 	}
 	public boolean changeEstadoUtilizador (String id, String tok) {
 
 		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
-		boolean answer = false;
+		Optional<Utilizador> uti = iUtilizador.findById(id);
 
 		if (ut.isPresent()) {
-			for (Utilizador u : iUtilizador.findAll()) {
-				if (u.getId().equals(id)) {
-					u.setEstado("Inativo");
-				}
+			if (uti.isPresent()) {
+				uti.get().setEstado("Inativo");
+				iUtilizador.save(uti.get());
 			}
-			answer = true;
+			return true;
 		}
-		return answer;
+		return false;
 	}
 
 	public Utilizador loginUT (@RequestParam ("username") String username,

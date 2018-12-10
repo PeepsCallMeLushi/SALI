@@ -39,6 +39,7 @@ public class HCFreguesia {
 	public ResponseEntity<?> listarAllFreguesias (@RequestParam ("tok") String tok){
 		
 		List<Freguesia> f = ffreguesia.listarFreguesia(tok);
+		
 		if(f != null) {
 			return new ResponseEntity<>(f, HttpStatus.OK);
 		}
