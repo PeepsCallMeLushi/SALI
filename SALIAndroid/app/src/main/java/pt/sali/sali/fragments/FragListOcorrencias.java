@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import pt.sali.sali.AvOcorrencia;
+import pt.sali.sali.Activities.AvOcorrencia;
 import pt.sali.sali.R;
 
 /**

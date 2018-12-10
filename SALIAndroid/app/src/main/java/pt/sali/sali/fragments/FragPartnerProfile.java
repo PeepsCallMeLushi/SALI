@@ -87,6 +87,7 @@ public class FragPartnerProfile extends Fragment {
                 View view =  super.getDropDownView(position, convertView, parent);
                 view.setBackgroundColor(Color.WHITE);
                 TextView tv = (TextView) view;
+                tv.setTextSize(20);
                 if (position == 0 ){
                     tv.setTextColor(Color.GRAY);
                 }else {

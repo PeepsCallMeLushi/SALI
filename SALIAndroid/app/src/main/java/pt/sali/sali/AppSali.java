@@ -1,6 +1,9 @@
 package pt.sali.sali;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -19,7 +22,11 @@ import pt.sali.sali.model.Utilizador;
 public class AppSali extends Application {
 
     public final static int RIGHT = 1, LEFT= 2,STATIC=0;
+    public final static String KUSER = "kuser", KPARTNER = "kpartner", KOCORRENCIAS ="kocorrencias";
 
+
+    String username;
+    String password;
     Utilizador user;
     Utilizador parceiro;
     Ocorrencia o;
@@ -30,16 +37,21 @@ public class AppSali extends Application {
     ArrayList<Freguesia> arFreguseias;
     ArrayList<Pergunta> arPerguntas;
     ArrayList<Utilizador> arUtilizadores;
+    ArrayList<Ocorrencia> arOcorrencias;
     Utente u;
+    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        o = new Ocorrencia();
         arFarmacos = new ArrayList<>();
         arFreguseias = new ArrayList<>();
         arPerguntas = new ArrayList<>();
         arUtilizadores = new ArrayList<>();
+        arOcorrencias = new ArrayList<>();
         eq = new Equipa();
+        sharedPreferences = this.getSharedPreferences(AppSali.class.getName(),MODE_PRIVATE);
         loadMockUpData();
     }
 
@@ -68,6 +80,34 @@ public class AppSali extends Application {
 
 
     }
+
+    public void saveUtilizador(Utilizador u){
+        String obj = new Gson().toJson(u);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KUSER, obj);
+        editor.commit();
+    }
+
+    public Utilizador loadUtilizador(){
+        String jobj = sharedPreferences.getString(KUSER,"");
+        Utilizador u = new Gson().fromJson(jobj,Utilizador.class);
+        return u;
+    }
+
+    public void savePartner(Utilizador u){
+        String obj = new Gson().toJson(u);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KPARTNER, obj);
+        editor.commit();
+    }
+
+    public Utilizador loadPartner(){
+        String jobj = sharedPreferences.getString(KPARTNER,"");
+        Utilizador u = new Gson().fromJson(jobj,Utilizador.class);
+        return u;
+    }
+
+
 
     public Ocorrencia getO() {
         return o;
@@ -155,5 +195,13 @@ public class AppSali extends Application {
 
     public void setParceiro(Utilizador parceiro) {
         this.parceiro = parceiro;
+    }
+
+    public ArrayList<Ocorrencia> getArOcorrencias() {
+        return arOcorrencias;
+    }
+
+    public void setArOcorrencias(ArrayList<Ocorrencia> arOcorrencias) {
+        this.arOcorrencias = arOcorrencias;
     }
 }

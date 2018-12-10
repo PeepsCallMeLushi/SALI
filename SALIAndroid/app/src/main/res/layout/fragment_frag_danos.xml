@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior=""
     app:cardCornerRadius="6dp"
     android:elevation="8dp">
     <RelativeLayout
@@ -1077,7 +1078,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <Button.
+                <Button
                     android:id="@+id/bt_danos_cancelar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

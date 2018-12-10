@@ -1,4 +1,4 @@
-package pt.sali.sali;
+package pt.sali.sali.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import pt.sali.sali.R;
 import pt.sali.sali.fragments.FragMyProfile;
 import pt.sali.sali.fragments.FragPageOne;
 import pt.sali.sali.fragments.FragPageTwo;
