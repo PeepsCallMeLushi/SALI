@@ -26,9 +26,10 @@ public class FRole {
 		
 		if (u.isPresent()) {
 			for (Role rl: iRole.findAll()) {
-				if (rl.getNome().equals(r.getNome())){ 
+				if (rl.getNome().compareToIgnoreCase(r.getNome()) == 0){ 
 					return 2;
 				}else {
+					iRole.save(r);
 					return 1;
 				}
 			}

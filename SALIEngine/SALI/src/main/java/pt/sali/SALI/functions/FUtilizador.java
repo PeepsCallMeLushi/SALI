@@ -25,7 +25,7 @@ public class FUtilizador {
 		
 		if (ut.isPresent()) {
 			for (Utilizador uti: iUtilizador.findAll()) {
-				if (uti.getIdentificador().equals(u.getIdentificador())){
+				if (uti.getIdentificador().compareToIgnoreCase(u.getIdentificador()) == 0){
 					return 2;
 				}else {
 					/*Define o username e a password por default para a cedula inserida*/

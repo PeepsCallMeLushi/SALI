@@ -25,9 +25,10 @@ public class FSintoma {
 		
 		if (u.isPresent()) {
 			for (Sintoma rl: iSintoma.findAll()) {
-				if (rl.getNome().equals(s.getNome())){ 
+				if (rl.getNome().compareToIgnoreCase(s.getNome()) == 0){ 
 					return 2;
 				}else {
+					iSintoma.save(s);
 					return 1;
 				}
 			}

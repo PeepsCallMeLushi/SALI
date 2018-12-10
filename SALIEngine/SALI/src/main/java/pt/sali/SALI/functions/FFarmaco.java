@@ -25,9 +25,10 @@ public class FFarmaco {
 			
 		if (u.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
-				if (fm.getNome().equals(f.getNome())){ 
+				if (fm.getNome().compareToIgnoreCase(f.getNome()) == 0){ 
 					return 2;
 				}else {
+					iFarmaco.save(f);
 					return 1;
 				}
 			}
