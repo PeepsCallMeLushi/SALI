@@ -146,30 +146,7 @@ public class FUtilizador {
 		return answer;
 	}
 
-	/*public String loginSpring (@RequestParam ("username") String username,
-							@RequestParam ("password") String password) {
-
-		String answer = "Falhou";
-		Utilizador u = new Utilizador();
-
-		for (Utilizador ut : iUtilizador.findAll()) {
-			if (ut.getLogin().getLogin().compareTo(username) == 0) {
-				if (ut.getLogin().getPassword().compareTo(password) == 0) {
-					u = ut;
-					u.getLogin().setPassword("oi");
-
-					UUID idtoken = UUID.randomUUID();
-					ut.getToken().setToken(idtoken.toString());
-					iUtilizador.save(ut);
-
-					answer = idtoken.toString();
-				}
-			}
-		}
-		return answer;
-	}*/
-
-	public Utilizador login (@RequestParam ("username") String username,
+	public Utilizador loginUT (@RequestParam ("username") String username,
 			@RequestParam ("password") String password) {
 
 		Optional<Utilizador> u = null;
@@ -181,8 +158,7 @@ public class FUtilizador {
 					UUID idtoken = UUID.randomUUID();
 					ut.getToken().setToken(idtoken.toString());
 					iUtilizador.save(ut);
-
-					//TODO
+					
 					u = iUtilizador.findById(ut.getId());
 
 					u.get().getLogin().setPassword("porra");
@@ -192,5 +168,22 @@ public class FUtilizador {
 			}
 		}
 		return null;
+	}
+	
+	public int login (@RequestParam ("username") String username,
+			@RequestParam ("password") String password) {
+
+		int res = 0;
+
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getLogin().getLogin().compareTo(username) == 0) {
+				if (ut.getLogin().getPassword().compareTo(password) == 0) {
+					return 1;
+				}
+				res = 2;
+			}
+			res = 2;
+		}
+		return res;
 	}
 }

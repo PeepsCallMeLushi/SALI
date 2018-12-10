@@ -94,10 +94,14 @@ public class HCUtilizador {
 	public ResponseEntity<?> login (@RequestParam ("username") String username, 
 										@RequestParam ("password") String password){
 		
-		if (futilizador.login(username, password) != null) {
-			return new ResponseEntity<Utilizador>(futilizador.login(username, password), HttpStatus.OK);
+		int res = futilizador.login(username, password);
+		
+		if (res == 1) {
+			return new ResponseEntity<Utilizador>(futilizador.loginUT(username, password), HttpStatus.OK);
+		} else if (res == 2) {
+			return new ResponseEntity<String>("Login", HttpStatus.OK); // Não tem pass ou user correto
 		}
-		return new ResponseEntity<String>("Erro", HttpStatus.OK);
+		return new ResponseEntity<String>("Conta", HttpStatus.OK); // Não existe a conta
 	}
 	
 	@GetMapping("/mock")

@@ -79,10 +79,10 @@ public class Web {
 	public String login (@RequestParam ("username") String username, 
                         @RequestParam ("password") String password, 
                         Model m) {
-       if(futilizador.login(username, password) == null) {
+       if(futilizador.loginUT(username, password) == null) {
     	   return "redirect:/authentication/login?erro=1";
        }else {
-    	   return "redirect:/?tok="+futilizador.login(username, password).getToken().getToken();
+    	   return "redirect:/?tok="+futilizador.loginUT(username, password).getToken().getToken();
        }
     }
     // LOGIN ///////////////////////////////////////////////////////////////
@@ -197,11 +197,11 @@ public class Web {
 	}*/
 	
 	@GetMapping("/deleteFarmaco")
-	public String deleteFarmaco (Model m, String tok, Farmaco f) {
+	public String deleteFarmaco (Model m, String tok, String id) {
 		
-		m.addAttribute("", ffarmaco.deleteFarmaco(f, tok));
+		m.addAttribute("", ffarmaco.deleteFarmaco(id, tok));
 		
-		if (ffarmaco.deleteFarmaco(f, tok)) {	// SUCESSO
+		if (ffarmaco.deleteFarmaco(id, tok)) {	// SUCESSO
 			return ".html";
 		}
 		return ".html";		// TOKEN NÃO PRESENTE
