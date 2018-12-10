@@ -23,7 +23,7 @@ public class FFarmaco {
 
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean isEqual = false;
-
+		iFarmaco.save(f);
 		if (u.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
 				if (fm.getNome().compareToIgnoreCase(f.getNome()) == 0){

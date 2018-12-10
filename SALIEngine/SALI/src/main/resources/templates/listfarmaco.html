@@ -97,7 +97,7 @@
                       <thead>
                           <tr>
                             <th>Nome</th>
-                            <th>Acção</th>
+                            <th style="width:25px">Acção</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -116,11 +116,17 @@
                 <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Adicionar Fármaco</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
                             <div class="modal-body">
                                 <form th:action="@{'/addFarmaco?tok=' + ${tok}}" method="POST" class="form-horizontal form-material">
                                     <div class="form-group">
                                         <div class="col-md-12 m-b-20">
-                                            <input type="text" class="form-control" style="margin-top:20%"placeholder="Introduza Fármaco">
+                                            <input type="text" class="form-control" name="nome" style="margin-top:20%"placeholder="Introduza Fármaco">
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-rounded redondoOriginal">Guardar</button>
                                                 <button type="button" class="btn btn-rounded " data-dismiss="modal">Sair</button>

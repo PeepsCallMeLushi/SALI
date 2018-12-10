@@ -17,6 +17,7 @@
     <link th:href="@{/plugins/morrisjs/morris.css}" rel="stylesheet">
     <!-- Custom CSS -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style1.css}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link th:href="@{/css/colors/megna.css}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -87,6 +88,7 @@
                                       <option value="" disabled selected>Procurar por ...</option>
                                       <option th:each="role: ${roles}" th:value="${role.nome}" th:text="${role.nome}"></option>
                                     </select>
+                                    <button type="button" class="btn btn-rounded redondoOriginal" data-toggle="modal" data-target="#add-contact"><i class="mdi mdi-magnify"></i></button>
                                   </div>
 
                                     <table id="myTable" class="table table-bordered table-striped">
