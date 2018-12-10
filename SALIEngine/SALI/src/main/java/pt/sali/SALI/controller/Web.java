@@ -48,6 +48,7 @@ public class Web {
 	 * ERRO 2 = Duplicado
 	 * 
 	 * ERRO 10 = Sucesso
+	 * ERRO 11 = Removido com Sucesso
 	 *  
 	 *  
 	 *  DONT FORGET - NO TOKEN
@@ -125,7 +126,7 @@ public class Web {
 		m.addAttribute("roles",frole.listarRole(tok));
 		m.addAttribute("users", futilizador.listarActiveUtilizador(tok));
 		
-		if(erro.equals("10")) {
+		if(erro.equals("11")) {
 			m.addAttribute("mensagemsucess","Utilizador removido com sucesso !");
 		}
 		
@@ -149,7 +150,7 @@ public class Web {
 		@RequestParam("id") String id) {
 		
 		if(futilizador.deleteUtilizador(id, tok)==true) {
-			return "redirect:/listUTs?tok="+tok+"&erro=10"; //Sucesso
+			return "redirect:/listUTs?tok="+tok+"&erro=11"; //Sucesso
 		}else {
 			return "redirect:/listUTs?tok="+tok+"&erro=0"; //Erro
 		}
@@ -187,31 +188,23 @@ public class Web {
 				m.addAttribute("mensagemerro","Fármaco já se encontra registado");
 			}else if(erro.equals("10")) {
 				m.addAttribute("mensagemsucess","Fármaco registado com sucesso !");
+			}else if (erro.equals("11")) {
+				m.addAttribute("mensagemsucess","Fármaco removido com sucesso !");
 			}
 			return "listfarmaco.html";
 		}
 	}
-	
-	/*@GetMapping("/updateFarmaco")
-	public String updateFarmaco (Model m, String tok, Farmaco f) {
 		
-		m.addAttribute("", ffarmaco.updateFarmaco(f, tok));
-		
-		if (ffarmaco.updateFarmaco(f, tok)) {	// SUCESSO
-			return ".html";
-		}
-		return ".html";		// TOKEN NÃO PRESENTE
-	}*/
-	
 	@PostMapping("/deleteFarmaco")
 	public String deleteFarmaco (Model m,
 			@RequestParam("tok") String tok,
 			@RequestParam("id") String id) {
 				
-		/*if (ffarmaco.deleteFarmaco(id, tok)) {	// SUCESSO
-			return ".html";
-		}*/
+		if (ffarmaco.deleteFarmaco(id, tok)) {	// SUCESSO
+			return "redirect:/listFarmaco?tok="+tok+"&erro=11";
+		}else {
 		return "pages-error-403.html";		// TOKEN NÃO PRESENTE
+		}
 	}
 	// FARMACO /////////////////////////////////////////////////////////////
 	
