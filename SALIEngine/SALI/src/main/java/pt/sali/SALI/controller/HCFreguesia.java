@@ -37,7 +37,7 @@ public class HCFreguesia {
 	@GetMapping("/list")
 	public ResponseEntity<?> listarAllFreguesias (@RequestParam ("tok") String tok){
 		
-		List<Freguesia> f = ffreguesia.listarFreguesia(tok); 
+		List<Freguesia> f = ffreguesia.listarFreguesia(tok);
 		if(f != null) {
 			return new ResponseEntity<>(f, HttpStatus.OK);
 		}
@@ -62,62 +62,90 @@ public class HCFreguesia {
 		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
-	/*@GetMapping("/mock")
+	@GetMapping("/mock")
 	public ResponseEntity<?> mockFreg() {
-		Freguesia ww= new Freguesia ("Alcácer do Sal", "");
-		Freguesia zz= new Freguesia ("Alcochete", "");
-		Freguesia xx= new Freguesia ("Almada", "");
-		Freguesia vv= new Freguesia ("Grândola", "");
-		Freguesia uu= new Freguesia ("Moita", "");
-		Freguesia tt= new Freguesia ("Montijo", "");
-		Freguesia ss= new Freguesia ("Palmela", "");
-		Freguesia rr= new Freguesia ("Santiago do Cacém", "");
-		Freguesia qq= new Freguesia ("Seixal", "");
-		Freguesia pp= new Freguesia ("Sesimbra", "");
-		Freguesia oo= new Freguesia ("Setúbal", "");
-		Freguesia nn= new Freguesia ("Sines", "");
-		Freguesia mm= new Freguesia ("", "");
-		Freguesia ll= new Freguesia ("", "");
-		Freguesia jj= new Freguesia ("", "");
-		Freguesia ii= new Freguesia ("", "");
-		Freguesia hh= new Freguesia ("", "");
-		Freguesia gg= new Freguesia ("", "");
-		Freguesia ff= new Freguesia ("", "");
-		Freguesia ee= new Freguesia ("", "");
-		Freguesia dd= new Freguesia ("", "");
-		Freguesia cc= new Freguesia ("", "");
-		Freguesia bb= new Freguesia ("", "");
-		Freguesia aa= new Freguesia ("", "");
-		Freguesia y= new Freguesia ("", "");
-		Freguesia w= new Freguesia ("", "");
-		Freguesia k= new Freguesia ("", "");
-		Freguesia z= new Freguesia ("", "");
-		Freguesia x= new Freguesia ("", "");
-		Freguesia v= new Freguesia ("", "");
-		Freguesia u= new Freguesia ("", "");
-		Freguesia t= new Freguesia ("", "");
-		Freguesia s= new Freguesia ("", "");
-		Freguesia r= new Freguesia ("", "");
-		Freguesia q= new Freguesia ("", "");
-		Freguesia p= new Freguesia ("", "");
-		Freguesia o= new Freguesia ("", "");
-		Freguesia n= new Freguesia ("", "");
-		Freguesia m= new Freguesia ("", "");
-		Freguesia l= new Freguesia ("", "");
-		Freguesia j= new Freguesia ("", "");
-		Freguesia i= new Freguesia ("", "");
-		Freguesia h= new Freguesia ("", "");
-		Freguesia g= new Freguesia ("", "");
-		Freguesia f= new Freguesia ("", "");
-		Freguesia e= new Freguesia ("", "");
-		Freguesia d= new Freguesia ("", "");
-		Freguesia c = new Freguesia ("", "");
-		Freguesia b = new Freguesia ("", "");
-		Freguesia a = new Freguesia ("", "");
-		Freguesia ab = new Freguesia ("", "");
-		Freguesia ac = new Freguesia ("", "");
-		Freguesia ad = new Freguesia ("", "");
-		Freguesia ae = new Freguesia ("", "");
-		Freguesia af = new Freguesia ("", "");
-	}*/
+		ffreguesia.saveFreguesia(new Freguesia("ALCACER DO SAL (SANTA MARIA DO CASTELO)", "ALCACER DO SAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTA SUSANA", "ALCACER DO SAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALCACER DO SAL (SANTIAGO)", "ALCACER DO SAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("TORRÃO", "ALCACER DO SAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. MARTINHO", "ALCACER DO SAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("COMPORTA", "ALCACER DO SAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALCOCHETE", "ALCOCHETE", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SAMOUCO", "ALCOCHETE", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. FRANCISCO", "ALCOCHETE", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALMADA", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CAPARICA", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("COSTA DA CAPARICA", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("COVA DA PIEDADE", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("TRAFARIA", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CACILHAS", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("PRAGAL", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SOBREDA", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CHARNECA DE CAPARICA", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("LARANJEIRO", "ALMADA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("FEIJO", "ALMADA", ""), "SETUBAL");
+		ffreguesia.saveFreguesia(new Freguesia("BARREIRO", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("LAVRADIO", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("PALHAIS", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTO ANDRE", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("VERDERENA", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALTO DO SEIXALINHO", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTO ANTONIO DA CHARNECA", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("COINA", "BARREIRO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("AZINHEIRA DOS BARROS E S. MAMEDE DO SADÃO", "GRANDOLA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("GRANDOLA", "GRANDOLA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("MELIDES", "GRANDOLA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTA MARGARIDA DA SERRA", "GRANDOLA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CARVALHAL", "GRANDOLA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALHOS VEDROS", "MOITA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("BAIXA DA BANHEIRA", "MOITA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("MOITA", "MOITA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("GAIO-ROSARIO", "MOITA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SARILHOS PEQUENOS", "MOITA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("VALE DA AMOREIRA", "MOITA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CANHA", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("MONTIJO", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTO ISIDRO DE PEGÕES", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SARILHOS GRANDES", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALTO-ESTANQUEIRO-JARDIA", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("PEGÕES", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ATALAIA", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("AFONSOEIRO", "MONTIJO", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("MARATECA", "PALMELA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("PALMELA", "PALMELA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("PINHAL NOVO", "PALMELA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("QUINTA DO ANJO", "PALMELA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("POCEIRÃO", "PALMELA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ABELA", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALVALADE", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CERCAL", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ERMIDAS-SADO", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTA CRUZ", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTIAGO DO CACEM", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SANTO ANDRE", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. BARTOLOMEU DA SERRA", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. DOMINGOS", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. FRANCISCO DA SERRA", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("VALE DE ÁGUA", "SANTIAGO DO CACEM", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ALDEIA DE PAIO PIRES", "SEIXAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("AMORA", "SEIXAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("ARRENTELA", "SEIXAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SEIXAL", "SEIXAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("CORROIOS", "SEIXAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("FERNAO FERRO", "SEIXAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SESIMBRA (CASTELO)", "SESIMBRA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SESIMBRA (SANTIAGO)", "SESIMBRA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("QUINTA DO CONDE", "SESIMBRA", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SETUBAL (NOSSA SENHORA DA ANUNCIADA)", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SETUBAL (SANTA MARIA DA GRAÇA)", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SETUBAL (S. JULIÃO)", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. LOURENÇO", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SETUBAL (S. SEBASTIÃO)", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("S. SIMÃO", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("GAMBIA-PONTES-ALTO DA GUERRA", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SADO", "SETUBAL", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("SINES", "SINES", "SETUBAL"), "");
+		ffreguesia.saveFreguesia(new Freguesia("PORTO COVO", "SINES", "SETUBAL"), "");
+		return new ResponseEntity<String>("freguesias up", HttpStatus.OK);
+	}
 }
