@@ -57,9 +57,9 @@ public class HCSintoma {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteSintoma(@RequestBody Sintoma s, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteSintoma(@RequestParam ("id") String id, @RequestParam ("tok") String tok) {
 		
-		if (fsintoma.deleteSintoma(s, tok)) {
+		if (fsintoma.deleteSintoma(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);	

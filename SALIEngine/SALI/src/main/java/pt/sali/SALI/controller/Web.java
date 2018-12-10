@@ -238,9 +238,9 @@ public class Web {
 	}																	
 																		
 	@GetMapping("/deleteFreguesia")													
-	public String deleteFreguesia (Model m, String tok, Freguesia f) {	
+	public String deleteFreguesia (Model m, String tok, String id) {	
 																		
-		m.addAttribute("", ffreguesia.deleteFreguesia(f, tok));			
+		m.addAttribute("", ffreguesia.deleteFreguesia(id, tok));			
 																		
 		return ".html";													
 	}																	
@@ -273,9 +273,9 @@ public class Web {
 	}																	
 																		
 	@GetMapping("/deleteRole")													
-	public String deleteRole (Model m, String tok, Role r) {			
+	public String deleteRole (Model m, String tok, String id) {			
 																		
-		m.addAttribute("", frole.deleteRole(r, tok));					
+		m.addAttribute("", frole.deleteRole(id, tok));					
 																		
 		return ".html";													
 	}																	
@@ -308,9 +308,9 @@ public class Web {
 	}																	
 																		
 	@GetMapping("/deleteSintoma")													
-	public String deleteSintoma (Model m, String tok, Sintoma s) {		
+	public String deleteSintoma (Model m, String tok, String id) {		
 																		
-		m.addAttribute("", fsintoma.deleteSintoma(s, tok));				
+		m.addAttribute("", fsintoma.deleteSintoma(id, tok));				
 																		
 		return ".html";													
 	}																	
@@ -343,9 +343,9 @@ public class Web {
 	}																	
 																		
 	@GetMapping("/deleteOcorrencia")													
-	public String deleteOcorrencia (Model m, String tok, Ocorrencia o) {
+	public String deleteOcorrencia (Model m, String tok, String id) {
 																		
-		m.addAttribute("", focorrencia.deleteOcorrencia(o, tok));		
+		m.addAttribute("", focorrencia.deleteOcorrencia(id, tok));		
 																		
 		return ".html";													
 	}		

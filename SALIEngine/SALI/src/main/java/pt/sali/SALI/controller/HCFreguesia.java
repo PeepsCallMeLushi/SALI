@@ -56,9 +56,9 @@ public class HCFreguesia {
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteFreguesias(@RequestBody Freguesia f, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteFreguesias(@RequestParam ("id") String id, @RequestParam ("tok") String tok) {
 		
-		if (ffreguesia.deleteFreguesia(f, tok)) {
+		if (ffreguesia.deleteFreguesia(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);

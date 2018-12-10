@@ -1,6 +1,5 @@
 package pt.sali.SALI.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,9 +78,9 @@ public class HCOcorrencia {
 	}
 
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteOcorrencia(@RequestBody Ocorrencia o, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteOcorrencia(@RequestParam ("id") String id, @RequestParam ("tok") String tok) {
 		
-		if (focorrencia.deleteOcorrencia(o, tok)) {
+		if (focorrencia.deleteOcorrencia(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);

@@ -63,13 +63,13 @@ public class FSintoma {
 		return answer;
 	}
 	
-	public boolean deleteSintoma (Sintoma s, String tok) {
+	public boolean deleteSintoma (String id, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
 		
 		if (u.isPresent()) {
-			iSintoma.delete(s);
+			iSintoma.deleteById(id);
 			answer = true;
 		}
 		return answer;
