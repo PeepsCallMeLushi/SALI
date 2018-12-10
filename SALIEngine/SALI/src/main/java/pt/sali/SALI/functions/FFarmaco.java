@@ -34,9 +34,11 @@ public class FFarmaco {
 			
 			if (jaExiste == true) {
 				answer = 2;
+				return answer;
 			}else if (jaExiste == false){
 				iFarmaco.save(f);
 				answer = 1;
+				return answer;
 			}
 		}
 		

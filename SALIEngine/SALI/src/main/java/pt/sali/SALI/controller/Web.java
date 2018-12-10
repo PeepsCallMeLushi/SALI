@@ -50,7 +50,7 @@ public class Web {
 	 * ERRO 10 = Sucesso
 	 *  
 	 *  
-	 *  TODO - NO TOKEN
+	 *  DONT FORGET - NO TOKEN
 	 *  return "pages-error-403.html";
 	 * */
 	
@@ -136,16 +136,17 @@ public class Web {
 		return "listausers.html";
 	}
 	
-	@GetMapping("/updateUTs")
+	/*TODO*/
+	/*@GetMapping("/updateUTs")
 	public String updateUTs (Model m,  @RequestParam("tok") String tok, Utilizador u) {
 		
 		//m.addAttribute("", futilizador.updateUtilizador(u, tok));
 		
 		/*if (futilizador.updateUtilizador(u, tok)) {		// SUCESSO
 			return ".html"; 
-		}*/
+		}
 		return ".html";		// TOKEN NÃO PRESENTE
-	}
+	}*/
 	
 	@PostMapping("/deleteUTs")
 	public String deleteUTs (Model m,  @RequestParam("tok") String tok,
@@ -164,27 +165,31 @@ public class Web {
 	
 	// FARMACO /////////////////////////////////////////////////////////////
 	@GetMapping("/addFarmaco")
-	public String addFarmaco (Model m, String tok, Farmaco f) {
-		
-		m.addAttribute("", ffarmaco.saveFarmaco(f, tok));
-		
+	public String addFarmaco (@ModelAttribute("farmaco") Farmaco f,
+			@RequestParam("tok") String tok) {
+			
 		if (ffarmaco.saveFarmaco(f, tok) == 0) {		//	TOKEN NÃO PRESENTE
-			
+		return "pages-error-403.html";	
 		}else if (ffarmaco.saveFarmaco(f, tok) == 1) {	//	SUCESSO
-			
+			return "redirect:/listfarmaco.htm?tok="+tok+"&erro=10";	
 		}
-		return ".html";		// JÁ EXISTE
+		return "redirect:/listfarmaco.htm?tok="+tok+"&erro=2"; // JÁ EXISTE
 	}
 	
 	@GetMapping("/listFarmaco")
-	public String listFarmaco (Model m, String tok) {
+	public String listFarmaco (Model m,  
+			@RequestParam("tok") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
-		m.addAttribute("", ffarmaco.listarFarmaco(tok));
-		
-		return ".html";
+		if(ffarmaco.listarFarmaco(tok) == null) {
+			return "pages-error-403.html";
+		}else {
+			m.addAttribute("farmacos", ffarmaco.listarFarmaco(tok));
+			return "listfarmaco.html";
+		}
 	}
 	
-	@GetMapping("/updateFarmaco")
+	/*@GetMapping("/updateFarmaco")
 	public String updateFarmaco (Model m, String tok, Farmaco f) {
 		
 		m.addAttribute("", ffarmaco.updateFarmaco(f, tok));
@@ -193,7 +198,7 @@ public class Web {
 			return ".html";
 		}
 		return ".html";		// TOKEN NÃO PRESENTE
-	}
+	}*/
 	
 	@GetMapping("/deleteFarmaco")
 	public String deleteFarmaco (Model m, String tok, Farmaco f) {

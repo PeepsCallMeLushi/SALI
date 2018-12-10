@@ -59,7 +59,6 @@ public class FUtilizador {
 			ArrayList<Utilizador> aux = new ArrayList<>();
 			
 			for (Utilizador ut : iUtilizador.findAll()) {
-					System.out.println("entrei");
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
@@ -79,7 +78,6 @@ public class FUtilizador {
 			
 			for (Utilizador ut : iUtilizador.findAll()) {
 				if (ut.getEstado()) {
-					System.out.println("entrei");
 					ut.getLogin().setPassword("oi");
 					ut.getToken().setToken("oi");
 					aux.add(ut);
