@@ -22,23 +22,22 @@ public class FSintoma {
 	public int saveSintoma (Sintoma s, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		int answer = 0;
-		boolean jaExiste = false;
+		boolean isEqual = false;
 		
 		if (u.isPresent()) {
 			for (Sintoma rl: iSintoma.findAll()) {
-				if (rl.getNome().compareToIgnoreCase(s.getNome())==0){ 
-					jaExiste = true;
+				if (rl.getNome().compareToIgnoreCase(s.getNome()) == 0){ 
+					isEqual = true;
 				}
 			}
-			if (jaExiste == true) {
-				answer = 2;
-			}else if (jaExiste == false){
+			if (isEqual) {
+				return 2;
+			}else {
 				iSintoma.save(s);
-				answer = 1;
+				return 1;
 			}
 		}
-		return answer;
+		return 0;
 	}
 	
 	public List<Sintoma> listarSintoma (String tok) {

@@ -24,16 +24,17 @@ public class HCUtilizador {
 	
 	@Autowired
 	FUtilizador futilizador;
-	
 	@Autowired
 	IUtilizador iUtilizador;		// SOMENTE PARA MOCK UP DATA
 	
 	@PostMapping("/add")
 	public String addUtilizador(@RequestBody Utilizador u, @RequestParam ("tok") String tok) {
 		
-		if (futilizador.saveUtilizador(u, tok) == 0) {
+		int status = futilizador.saveUtilizador(u, tok);
+		
+		if (status == 0) {
 			return "Token";
-		}else if (futilizador.saveUtilizador(u, tok) == 1) {
+		}else if (status == 1) {
 			return "Sucesso";
 		}
 		return "Existente";
@@ -104,7 +105,7 @@ public class HCUtilizador {
 		
 		Role ro = new Role("Enfermeiro");
 		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, true);
+		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, "Ativo");
 		iUtilizador.save(e);
 	}
 }

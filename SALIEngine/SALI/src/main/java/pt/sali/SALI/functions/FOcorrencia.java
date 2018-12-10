@@ -23,13 +23,12 @@ public class FOcorrencia {
 	public int saveOcorrencia (Ocorrencia o, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		int answer = 0;
 		
 		if (u.isPresent()) {
 			iOcorrencia.save(o);
-			answer = 1;
+			return 1;
 		}
-		return answer;
+		return 0;
 	}
 	
 	public List<Ocorrencia> listarOcorrencia (String tok) {

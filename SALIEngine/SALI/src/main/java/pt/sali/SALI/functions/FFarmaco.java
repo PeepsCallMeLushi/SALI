@@ -13,72 +13,67 @@ import pt.sali.SALI.service.IUtilizador;
 
 @Service("ffarmaco")
 public class FFarmaco {
-	
+
 	@Autowired
 	IFarmaco iFarmaco;
 	@Autowired
 	IUtilizador iUtilizador;
-	
+
 	public int saveFarmaco(Farmaco f, String tok) {
-		
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		int answer = 0;
-		boolean jaExiste = false;
-			
+		boolean isEqual = false;
+
 		if (u.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
-				if (fm.getNome().compareToIgnoreCase(f.getNome())==0){ 
-					jaExiste = true;
+				if (fm.getNome().compareToIgnoreCase(f.getNome()) == 0){
+					isEqual = true;
 				}
 			}
-			
-			if (jaExiste == true) {
-				answer = 2;
-				return answer;
-			}else if (jaExiste == false){
+			if (isEqual) {
+				return 2;
+			}else {
 				iFarmaco.save(f);
-				answer = 1;
-				return answer;
+				return 1;
 			}
 		}
-		
-		return answer;
+		return 0;
 	}
-	
+
 	public List<Farmaco> listarFarmaco (String tok) {
-		
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
-		
+
 		if (u.isPresent()) {
 			return iFarmaco.findAll();
 		}else {
 			return null;
 		}
 	}
-	
+
 	public boolean updateFarmaco (Farmaco f, String tok) {
-		
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
-		
+
 		if (u.isPresent()) {
 			iFarmaco.save(f);
 			answer = true;
 		}
-		
+
 		return answer;
 	}
-	
+
 	public boolean deleteFarmaco (Farmaco f, String tok) {
-		
+
 		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
 		boolean answer = false;
-		
+
 		if (u.isPresent()) {
 			iFarmaco.delete(f);
 			answer = true;
 		}
-		
+
 		return answer;
 	}
 }

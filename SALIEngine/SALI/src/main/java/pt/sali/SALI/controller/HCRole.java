@@ -25,9 +25,11 @@ public class HCRole {
 	@PostMapping("/add")
 	public String addRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
 		
-		if (frole.saveRole(r, tok) == 1) {
+		int status = frole.saveRole(r, tok);
+		
+		if (status == 1) {
 			return "Sucesso";
-		}else if (frole.saveRole(r, tok) == 0) {
+		}else if (status == 0) {
 			return "Token";
 		}
 		return "Existe";
