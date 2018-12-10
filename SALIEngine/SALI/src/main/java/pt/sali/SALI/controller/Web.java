@@ -160,16 +160,16 @@ public class Web {
 	
 	
 	// FARMACO /////////////////////////////////////////////////////////////
-	@GetMapping("/addFarmaco")
+	@PostMapping("/addFarmaco")
 	public String addFarmaco (@ModelAttribute("farmaco") Farmaco f,
 			@RequestParam("tok") String tok) {
 			
 		if (ffarmaco.saveFarmaco(f, tok) == 0) {		//	TOKEN NÃO PRESENTE
 		return "pages-error-403.html";	
 		}else if (ffarmaco.saveFarmaco(f, tok) == 1) {	//	SUCESSO
-			return "redirect:/listfarmaco.htm?tok="+tok+"&erro=10";	
+			return "redirect:/listFarmaco?tok="+tok+"&erro=10";	
 		}
-		return "redirect:/listfarmaco.htm?tok="+tok+"&erro=2"; // JÁ EXISTE
+		return "redirect:/listFarmaco?tok="+tok+"&erro=2"; // JÁ EXISTE
 	}
 	
 	@GetMapping("/listFarmaco")
@@ -177,10 +177,17 @@ public class Web {
 			@RequestParam("tok") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
+		m.addAttribute("tok",tok);
+		
 		if(ffarmaco.listarFarmaco(tok) == null) {
 			return "pages-error-403.html";
 		}else {
 			m.addAttribute("farmacos", ffarmaco.listarFarmaco(tok));
+			if(erro.equals("2")) {
+				m.addAttribute("mensagemerro","Fármaco já se encontra registado");
+			}else if(erro.equals("10")) {
+				m.addAttribute("mensagemsucess","Fármaco registado com sucesso !");
+			}
 			return "listfarmaco.html";
 		}
 	}
@@ -196,15 +203,15 @@ public class Web {
 		return ".html";		// TOKEN NÃO PRESENTE
 	}*/
 	
-	@GetMapping("/deleteFarmaco")
-	public String deleteFarmaco (Model m, String tok, Farmaco f) {
-		
-		m.addAttribute("", ffarmaco.deleteFarmaco(f, tok));
-		
-		if (ffarmaco.deleteFarmaco(f, tok)) {	// SUCESSO
+	@PostMapping("/deleteFarmaco")
+	public String deleteFarmaco (Model m,
+			@RequestParam("tok") String tok,
+			@RequestParam("id") String id) {
+				
+		/*if (ffarmaco.deleteFarmaco(id, tok)) {	// SUCESSO
 			return ".html";
-		}
-		return ".html";		// TOKEN NÃO PRESENTE
+		}*/
+		return "pages-error-403.html";		// TOKEN NÃO PRESENTE
 	}
 	// FARMACO /////////////////////////////////////////////////////////////
 	
