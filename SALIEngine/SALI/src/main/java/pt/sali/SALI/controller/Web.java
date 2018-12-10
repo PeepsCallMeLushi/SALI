@@ -284,13 +284,15 @@ public class Web {
 	// ROLE //////////////////////////////////////////////////////////////
 	
 	
-	// SINTOMA ///////////////////////////////////////////////////////////
+	// INCIDENTE  ///////////////////////////////////////////////////////////
 	@GetMapping("/addSintoma")												
-	public String addSintoma (Model m, String tok, Sintoma s) {     	
+	public String addSintoma (Model m,  
+			@RequestParam("tok") String tok,
+			Sintoma s) {     	
+		
+		m.addAttribute("tok",tok);			
 																		
-		m.addAttribute("", fsintoma.saveSintoma(s, tok));				
-																		
-		return ".html";													
+		return "inserirIncidente.html";													
 	}																	
 																		
 	@GetMapping("/listSintoma")													
@@ -316,7 +318,7 @@ public class Web {
 																		
 		return ".html";													
 	}																	
-	// SINTOMA ///////////////////////////////////////////////////////////
+	// INCIDENTE ///////////////////////////////////////////////////////////
 	
 	
 	// OCORRENCIA ////////////////////////////////////////////////////////
