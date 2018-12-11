@@ -59,6 +59,7 @@ public class FUtilizador {
 			for (Utilizador ut : iUtilizador.findAll()) {
 					ut.getLogin().setPassword("oi");
 					ut.getTokenRest().setTokenName("oi");
+					ut.getTokenSpring().setTokenName("oi");
 					aux.add(ut);
 			}
 			return aux;
@@ -78,6 +79,7 @@ public class FUtilizador {
 				if (ut.getEstado().compareToIgnoreCase("Ativo") == 0) {
 					ut.getLogin().setPassword("oi");
 					ut.getTokenRest().setTokenName("oi");
+					ut.getTokenSpring().setTokenName("oi");
 					aux.add(ut);
 				}
 			}
@@ -100,6 +102,7 @@ public class FUtilizador {
 						&& ut.getEstado().equals("Ativo")) {
 					ut.getLogin().setPassword("oi");
 					ut.getTokenRest().setTokenName("oi");
+					ut.getTokenSpring().setTokenName("oi");
 					aux.add(ut);
 				}
 			}
@@ -164,18 +167,18 @@ public class FUtilizador {
 			@RequestParam ("password") String password) {
 
 		Optional<Utilizador> u = null;
-		Optional<Utilizador> user = iUtilizador.findByLoginLogin(username);
-		Optional<Utilizador> pass = iUtilizador.findByLoginPassword(password);
 		
-		if (user.isPresent()) {
-			if (pass.isPresent()) {
-				UUID idtoken = UUID.randomUUID();
-				pass.get().getTokenSpring().setTokenName(idtoken.toString());
-				iUtilizador.save(pass.get());
-				u = iUtilizador.findById(pass.get().getId());
-				u.get().getLogin().setPassword("porra");
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getLogin().getLogin().compareToIgnoreCase(username) == 0) {
+				if (ut.getLogin().getPassword().compareTo(password) == 0) {
+					UUID idtoken = UUID.randomUUID();
+					ut.getTokenSpring().setTokenName(idtoken.toString());
+					iUtilizador.save(ut);
+					u = iUtilizador.findById(ut.getId());
+					u.get().getLogin().setPassword("porra");
 
-				return u.get();
+					return u.get();
+				}
 			}
 		}
 		return null;
@@ -185,18 +188,19 @@ public class FUtilizador {
 			@RequestParam ("password") String password) {
 
 		Optional<Utilizador> u = null;
-		Optional<Utilizador> user = iUtilizador.findByLoginLogin(username);
-		Optional<Utilizador> pass = iUtilizador.findByLoginPassword(password);
 		
-		if (user.isPresent()) {
-			if (pass.isPresent()) {
-				UUID idtoken = UUID.randomUUID();
-				pass.get().getTokenRest().setTokenName(idtoken.toString());
-				iUtilizador.save(pass.get());
-				u = iUtilizador.findById(pass.get().getId());
-				u.get().getLogin().setPassword("porra");
+		for (Utilizador ut : iUtilizador.findAll()) {
+			if (ut.getLogin().getLogin().compareToIgnoreCase(username) == 0) {
+				if (ut.getLogin().getPassword().compareTo(password) == 0) {
+					
+					UUID idtoken = UUID.randomUUID();
+					ut.getTokenRest().setTokenName(idtoken.toString());
+					iUtilizador.save(ut);
+					u = iUtilizador.findById(ut.getId());
+					u.get().getLogin().setPassword("porra");
 
-				return u.get();
+					return u.get();
+				}
 			}
 		}
 		return null;
@@ -225,11 +229,24 @@ public class FUtilizador {
 		u.get().setTokenRest(new Token (null, 0));
 		iUtilizador.save(u.get());
 	}
+	
 	public void logoutSpring (String token) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(token);
 		
 		u.get().setTokenSpring(new Token (null, 0));
 		iUtilizador.save(u.get());
+	}
+	
+	public int alterarPass (String pass, String tok) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
+		
+		if (u.isPresent()) {
+			u.get().getLogin().setPassword(pass);
+			iUtilizador.save(u.get());
+			return 1;
+		}
+		return 2;
 	}
 }
