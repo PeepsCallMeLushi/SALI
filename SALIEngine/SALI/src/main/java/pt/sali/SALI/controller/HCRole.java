@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.functions.FRole;
 import pt.sali.SALI.model.Role;
+import pt.sali.SALI.service.IRole;
 
 @RestController
 @RequestMapping("/Role")
@@ -21,6 +22,8 @@ public class HCRole {
 	
 	@Autowired
 	FRole frole;
+	@Autowired
+	IRole iRole;
 	
 	@PostMapping("/add")
 	public String addRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
@@ -63,5 +66,14 @@ public class HCRole {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);	
+	}
+	
+	@GetMapping("/mock")
+	public ResponseEntity<String> mockup() {
+		
+		iRole.save(new Role ("Médico"));
+		iRole.save(new Role ("Enfermeiro"));
+		
+		return new ResponseEntity<String>("done", HttpStatus.OK);
 	}
 }
