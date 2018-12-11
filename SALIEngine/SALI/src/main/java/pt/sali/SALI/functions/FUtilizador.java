@@ -59,6 +59,7 @@ public class FUtilizador {
 			for (Utilizador ut : iUtilizador.findAll()) {
 					ut.getLogin().setPassword("oi");
 					ut.getTokenRest().setTokenName("oi");
+					ut.getTokenSpring().setTokenName("oi");
 					aux.add(ut);
 			}
 			return aux;
@@ -78,6 +79,7 @@ public class FUtilizador {
 				if (ut.getEstado().compareToIgnoreCase("Ativo") == 0) {
 					ut.getLogin().setPassword("oi");
 					ut.getTokenRest().setTokenName("oi");
+					ut.getTokenSpring().setTokenName("oi");
 					aux.add(ut);
 				}
 			}
@@ -100,6 +102,7 @@ public class FUtilizador {
 						&& ut.getEstado().equals("Ativo")) {
 					ut.getLogin().setPassword("oi");
 					ut.getTokenRest().setTokenName("oi");
+					ut.getTokenSpring().setTokenName("oi");
 					aux.add(ut);
 				}
 			}
