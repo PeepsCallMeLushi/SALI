@@ -120,7 +120,12 @@ public class HCUtilizador {
 		
 		Role ro = new Role("Enfermeiro");
 		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", new Token("1", 1), new Token("1", 1), "Pediatra", lo, "", "Ativo");
+		Utilizador e = new Utilizador("Joao", ro, "69", new Token("1", 1), new Token("1", 1), "Pediatra", lo, "", false,"Ativo");
 		iUtilizador.save(e);
+		
+		Role ror = new Role("Médico");
+		Login lol = new Login("oi", "ola");
+		Utilizador el = new Utilizador("Joao", ror, "69", new Token("1", 1), new Token("1", 1), "Pediatra", lol, "", false,"Ativo");
+		iUtilizador.save(el);
 	}
 }
