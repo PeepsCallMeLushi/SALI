@@ -218,20 +218,18 @@ public class FUtilizador {
 		return res;
 	}
 	
-	public String logoutRest (String id) {
+	public void logoutRest (String id) {
 		
 		Optional<Utilizador> u = iUtilizador.findById(id);
 		
 		u.get().setTokenRest(new Token (null, 0));
-		
-		return "i'm out";
+		iUtilizador.save(u.get());
 	}
-	public String logoutSpring (String id) {
+	public void logoutSpring (String id) {
 		
 		Optional<Utilizador> u = iUtilizador.findById(id);
 		
 		u.get().setTokenSpring(new Token (null, 0));
-		
-		return "i'm out";
+		iUtilizador.save(u.get());
 	}
 }

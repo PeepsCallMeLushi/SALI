@@ -107,6 +107,14 @@ public class HCUtilizador {
 		return new ResponseEntity<String>("Conta", HttpStatus.OK); // Não existe user
 	}
 	
+	@GetMapping("logout")
+	public ResponseEntity<String> logout (@RequestParam ("id") String id) {
+		
+		futilizador.logoutRest(id);
+		
+		return new ResponseEntity<String>("Sucesso", HttpStatus.OK);
+	}
+	
 	@GetMapping("/mock")
 	public void mock() {
 		
