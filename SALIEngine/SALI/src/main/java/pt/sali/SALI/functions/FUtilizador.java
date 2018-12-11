@@ -225,9 +225,9 @@ public class FUtilizador {
 		u.get().setTokenRest(new Token (null, 0));
 		iUtilizador.save(u.get());
 	}
-	public void logoutSpring (String id) {
+	public void logoutSpring (String token) {
 		
-		Optional<Utilizador> u = iUtilizador.findById(id);
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(token);
 		
 		u.get().setTokenSpring(new Token (null, 0));
 		iUtilizador.save(u.get());
