@@ -154,7 +154,7 @@ public class FUtilizador {
 		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
 		if (ut.isPresent() || us.isPresent()) {
-			return ut.get();
+			return us.get();
 		}else {
 			return null;
 		}
