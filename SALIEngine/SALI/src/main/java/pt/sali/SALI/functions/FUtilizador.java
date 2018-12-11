@@ -179,4 +179,15 @@ public class FUtilizador {
 		}
 		return res;
 	}
+	
+	public Utilizador UTbyToken (String tok) {
+		
+		Optional<Utilizador> ut = iUtilizador.findByTokenToken(tok);
+		
+		if (ut.isPresent()) {
+			return ut.get();
+		}else {
+			return null;
+		}
+	}
 }
