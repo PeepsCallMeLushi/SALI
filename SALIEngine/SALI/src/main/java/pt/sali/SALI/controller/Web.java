@@ -62,6 +62,7 @@ public class Web {
 		
 		if (u.isPresent()) {
 			m.addAttribute("tok",tok);
+			m.addAttribute("user",futilizador.UTbyToken(tok));
 			return "index.html";
 		}else
 			return "pages-error-403.html";
@@ -100,6 +101,7 @@ public class Web {
 			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
 		}
 		m.addAttribute("tok",tok);
+		m.addAttribute("user",futilizador.UTbyToken(tok));
 		m.addAttribute("roles",frole.listarRole(tok));
 		return "adduser.html";
 	}
@@ -123,6 +125,7 @@ public class Web {
 	public String listUTs (Model m, @RequestParam("tok") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		m.addAttribute("tok",tok);
+		m.addAttribute("user",futilizador.UTbyToken(tok));
 		m.addAttribute("roles",frole.listarRole(tok));
 		m.addAttribute("users", futilizador.listarActiveUtilizador(tok));
 		
@@ -181,6 +184,7 @@ public class Web {
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
 		m.addAttribute("tok",tok);
+		m.addAttribute("user",futilizador.UTbyToken(tok));
 		
 		if(ffarmaco.listarFarmaco(tok) == null) {
 			return "pages-error-403.html";
@@ -290,7 +294,8 @@ public class Web {
 			@RequestParam("tok") String tok,
 			Sintoma s) {     	
 		
-		m.addAttribute("tok",tok);			
+		m.addAttribute("tok",tok);
+		m.addAttribute("user",futilizador.UTbyToken(tok));
 																		
 		return "inserirIncidente.html";													
 	}																	
