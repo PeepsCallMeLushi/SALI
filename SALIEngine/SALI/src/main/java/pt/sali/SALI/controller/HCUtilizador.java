@@ -56,7 +56,7 @@ public class HCUtilizador {
 	@GetMapping("/listall")
 	public ResponseEntity<?> listarAllUtilizadores (@RequestParam ("tok") String tok) {
 		
-		List<Utilizador> u = futilizador.listarActiveUtilizador(tok); 
+		List<Utilizador> u = futilizador.listarAllUtilizador(tok); 
 		
 		if(u != null) {
 			return new ResponseEntity<>(u, HttpStatus.OK);
@@ -105,6 +105,14 @@ public class HCUtilizador {
 			return new ResponseEntity<String>("Login", HttpStatus.OK); // Não tem pass ou user correto
 		}
 		return new ResponseEntity<String>("Conta", HttpStatus.OK); // Não existe user
+	}
+	
+	@GetMapping("logout")
+	public ResponseEntity<String> logout (@RequestParam ("id") String id) {
+		
+		futilizador.logoutRest(id);
+		
+		return new ResponseEntity<String>("Sucesso", HttpStatus.OK);
 	}
 	
 	@GetMapping("/mock")
