@@ -94,9 +94,9 @@
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a href="#"><i class="ti-settings"></i> Configurações de Conta</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a th:href="@{'/authentication/logout?tok='+${tok}}"><i class="fa fa-power-off"></i> Terminar Sessão</a></li>
                         </ul>
                     </div>
                 </li>

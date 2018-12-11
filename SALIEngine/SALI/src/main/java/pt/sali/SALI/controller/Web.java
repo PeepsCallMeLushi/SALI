@@ -49,8 +49,9 @@ public class Web {
 	 * 
 	 * ERRO 10 = Sucesso
 	 * ERRO 11 = Removido com Sucesso
-	 *  
-	 *  
+	 * ...
+	 * ERRO 19 = Logout Efectuado com Sucesso
+	 * 
 	 *  DONT FORGET - NO TOKEN
 	 *  return "pages-error-403.html";
 	 * */
@@ -72,7 +73,9 @@ public class Web {
 	@GetMapping("/authentication/login")
 	public String login (Model m,@RequestParam(value="erro",defaultValue="0") String erro) {
 		if(erro.equals("1")) {
-			m.addAttribute("mensagemerro","Username ou Password Inválidos");
+			m.addAttribute("mensagemerro","Username ou Password inválidos");
+		}else if(erro.equals("19")) {
+			m.addAttribute("mensagemsucess","Logout efectuado com sucesso");
 		}
         return "login.html";
     }
@@ -86,6 +89,14 @@ public class Web {
        }else {
     	   return "redirect:/?tok="+futilizador.loginSpring(username, password).getTokenSpring().getTokenName();
        }
+    }
+	
+	@GetMapping("/authentication/logout")
+	public String logout (Model m,
+			@RequestParam("tok") String tok) {
+		
+		futilizador.logoutSpring(tok);
+		return "redirect:/authentication/login?erro=19";
     }
     // LOGIN ///////////////////////////////////////////////////////////////
 		
@@ -126,13 +137,11 @@ public class Web {
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		m.addAttribute("tok",tok);
 		m.addAttribute("user",futilizador.UTbyToken(tok));
-		m.addAttribute("roles",frole.listarRole(tok));
 		m.addAttribute("users", futilizador.listarActiveUtilizador(tok));
 		
 		if(erro.equals("11")) {
 			m.addAttribute("mensagemsucess","Utilizador removido com sucesso !");
 		}
-		
 		return "listausers.html";
 	}
 	
@@ -291,14 +300,23 @@ public class Web {
 	// INCIDENTE  ///////////////////////////////////////////////////////////
 	@GetMapping("/addSintoma")												
 	public String addSintoma (Model m,  
-			@RequestParam("tok") String tok,
-			Sintoma s) {     	
+			@RequestParam("tok") String tok) {     	
 		
 		m.addAttribute("tok",tok);
 		m.addAttribute("user",futilizador.UTbyToken(tok));
 																		
 		return "inserirIncidente.html";													
-	}																	
+	}
+	
+	@PostMapping("/addSintoma/add")												
+	public String addS(Model m,
+			@RequestParam("tok") String tok,
+			@ModelAttribute("sintoma") Sintoma s) {     	
+		
+		fsintoma.saveSintoma(s, tok);
+																		
+		return "redirect:/addSintoma?tok="+tok;												
+	}	
 																		
 	@GetMapping("/listSintoma")													
 	public String listSintoma (Model m, String tok) {					
