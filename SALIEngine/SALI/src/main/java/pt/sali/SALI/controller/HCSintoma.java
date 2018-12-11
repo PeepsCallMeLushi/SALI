@@ -82,7 +82,7 @@ public class HCSintoma {
 		pp.setResposta(ars);
 		ArrayList<Pergunta> ar = new ArrayList<>();
 		
-		Sintoma si = new Sintoma ("1", "Dor");
+		Sintoma si = new Sintoma ("1", "Dor", true);
 		si.setPergunta(ar);
 		iSintoma.save(si);
 		

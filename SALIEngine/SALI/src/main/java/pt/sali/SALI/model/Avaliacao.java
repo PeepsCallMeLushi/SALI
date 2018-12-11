@@ -8,7 +8,6 @@ public class Avaliacao {
 	private ArrayList<String> antecedentesPessoais;
 	private ArrayList<Farmaco> habitosFarmacologicos;
 	private ArrayList<Estado> estado;
-	private ArrayList<Dano> danos;
 	
 	public Avaliacao() {
 		super();
@@ -16,7 +15,6 @@ public class Avaliacao {
 		this.antecedentesPessoais = new ArrayList<>();
 		this.habitosFarmacologicos = new ArrayList<>();
 		this.estado = new ArrayList<>();
-		this.danos = new ArrayList<>();
 	}
 
 	public ArrayList<Sintoma> getSintomas() {
@@ -49,13 +47,5 @@ public class Avaliacao {
 
 	public void setEstado(ArrayList<Estado> estado) {
 		this.estado = estado;
-	}
-
-	public ArrayList<Dano> getDanos() {
-		return danos;
-	}
-
-	public void setDanos(ArrayList<Dano> danos) {
-		this.danos = danos;
 	}	
 }
