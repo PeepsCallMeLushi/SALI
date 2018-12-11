@@ -22,9 +22,10 @@ public class FOcorrencia {
 	
 	public int saveOcorrencia (Ocorrencia o, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iOcorrencia.save(o);
 			return 1;
 		}
@@ -33,9 +34,10 @@ public class FOcorrencia {
 	
 	public List<Ocorrencia> listarOcorrencia (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			return iOcorrencia.findAll();
 		}else {
 			return null;
@@ -44,10 +46,11 @@ public class FOcorrencia {
 	
 	public boolean updateOcorrencia (Ocorrencia o, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iOcorrencia.save(o);
 			answer = true;
 		}
@@ -56,10 +59,11 @@ public class FOcorrencia {
 	
 	public boolean deleteOcorrencia (String id, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iOcorrencia.deleteById(id);
 			answer = true;
 		}
@@ -70,9 +74,10 @@ public class FOcorrencia {
 	// TODO
 	public List<Ocorrencia> dynamicQueryJ(String json, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			Document document = new Document();
 		    document = Document.parse(json);
 		    List<Ocorrencia> ocorrencias = iOcorrencia.find(document);

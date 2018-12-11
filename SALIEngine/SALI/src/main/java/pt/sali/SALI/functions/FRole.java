@@ -22,10 +22,11 @@ public class FRole {
 	
 	public int saveRole (Role r, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean isEqual = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			for (Role rl: iRole.findAll()) {
 				if (rl.getNome().compareToIgnoreCase(r.getNome()) == 0){ 
 					isEqual = true;
@@ -43,9 +44,10 @@ public class FRole {
 	
 	public List<Role> listarRole (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			return iRole.findAll();
 		}else {
 			return null;
@@ -54,10 +56,11 @@ public class FRole {
 	
 	public boolean updateRole (Role r, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iRole.save(r);
 			answer = true;
 		}
@@ -67,10 +70,11 @@ public class FRole {
 	
 	public boolean deleteRole (String id, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iRole.deleteById(id);
 			answer = true;
 		}

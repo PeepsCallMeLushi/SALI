@@ -9,20 +9,22 @@ public class Utilizador {
 	private String nome;
 	private Role role;
 	private String identificador;
-	private Token token;
+	private Token tokenRest;
+	private Token tokenSpring;
 	private String especializacao;
 	private Login login;
 	private String foto;
 	//@JsonProperty
 	private String estado;
 	
-	public Utilizador(String nome, Role role, String identificador, 
+	public Utilizador(String nome, Role role, String identificador, Token tokenRest, Token tokenSpring,
 			String especializacao, Login login, String foto, String estado) {
 		super();
 		this.nome = nome;
 		this.role = role;
 		this.identificador = identificador;
-		this.token = new Token();
+		this.tokenRest = new Token();
+		this.tokenSpring = new Token();
 		this.especializacao = especializacao;
 		this.login = login;
 		this.foto = foto;
@@ -31,7 +33,16 @@ public class Utilizador {
 
 	public Utilizador() {
 		super();
-		this.token = new Token();
+		this.tokenRest = new Token();
+		this.tokenSpring = new Token();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -58,16 +69,20 @@ public class Utilizador {
 		this.identificador = identificador;
 	}
 
-	public Token getToken() {
-		return token;
+	public Token getTokenRest() {
+		return tokenRest;
 	}
 
-	public void setToken(Token token) {
-		this.token = token;
+	public void setTokenRest(Token tokenRest) {
+		this.tokenRest = tokenRest;
 	}
 
-	public String getId() {
-		return id;
+	public Token getTokenSpring() {
+		return tokenSpring;
+	}
+
+	public void setTokenSpring(Token tokenSpring) {
+		this.tokenSpring = tokenSpring;
 	}
 
 	public String getEspecializacao() {
@@ -86,19 +101,19 @@ public class Utilizador {
 		this.login = login;
 	}
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public String getFoto() {
 		return foto;
 	}
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }
