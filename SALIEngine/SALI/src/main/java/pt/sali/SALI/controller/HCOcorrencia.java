@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.sali.SALI.functions.FOcorrencia;
 import pt.sali.SALI.model.Atuacao;
 import pt.sali.SALI.model.Avaliacao;
-import pt.sali.SALI.model.Dano;
 import pt.sali.SALI.model.Equipa;
 import pt.sali.SALI.model.Estado;
 import pt.sali.SALI.model.FarmaFluido;

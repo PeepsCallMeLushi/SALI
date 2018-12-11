@@ -78,9 +78,11 @@ public class HCSintoma {
 		ArrayList<String> ars = new ArrayList<>();
 		String s = "Sim", ss = "Não";
 		ars.add(s); ars.add(ss);
+		p.setResposta(ars);
+		pp.setResposta(ars);
 		ArrayList<Pergunta> ar = new ArrayList<>();
 		
-		Sintoma si = new Sintoma ("1", "Dor");
+		Sintoma si = new Sintoma ("1", "Dor", true);
 		si.setPergunta(ar);
 		iSintoma.save(si);
 		

@@ -21,10 +21,11 @@ public class FSintoma {
 	
 	public int saveSintoma (Sintoma s, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean isEqual = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			for (Sintoma rl: iSintoma.findAll()) {
 				if (rl.getNome().compareToIgnoreCase(s.getNome()) == 0){ 
 					isEqual = true;
@@ -42,9 +43,10 @@ public class FSintoma {
 	
 	public List<Sintoma> listarSintoma (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			return iSintoma.findAll();
 		}else {
 			return null;
@@ -53,10 +55,11 @@ public class FSintoma {
 	
 	public boolean updateSintoma (Sintoma s, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iSintoma.save(s);
 			answer = true;
 		}
@@ -65,10 +68,11 @@ public class FSintoma {
 	
 	public boolean deleteSintoma (String id, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iSintoma.deleteById(id);
 			answer = true;
 		}

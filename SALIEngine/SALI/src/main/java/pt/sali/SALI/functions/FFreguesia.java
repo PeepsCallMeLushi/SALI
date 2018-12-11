@@ -21,10 +21,11 @@ public class FFreguesia {
 	
 	public int saveFreguesia (Freguesia f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean isEqual = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			for (Freguesia fg: iFreguesia.findAll()) {
 				if (fg.getNome().compareToIgnoreCase(f.getNome()) == 0) {
 					isEqual = true;
@@ -42,9 +43,10 @@ public class FFreguesia {
 	
 	public List<Freguesia> listarFreguesia (String tok) {
 	
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			return iFreguesia.findAll();
 		}else {
 			return null;
@@ -53,10 +55,11 @@ public class FFreguesia {
 	
 	public boolean updateFreguesia (Freguesia f, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iFreguesia.save(f);
 			answer = true;
 		}
@@ -66,10 +69,11 @@ public class FFreguesia {
 	
 	public boolean deleteFreguesia (String id, String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iFreguesia.deleteById(id);
 			answer = true;
 		}

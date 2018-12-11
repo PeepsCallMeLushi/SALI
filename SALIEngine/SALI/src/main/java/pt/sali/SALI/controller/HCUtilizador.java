@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pt.sali.SALI.functions.FUtilizador;
 import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Role;
+import pt.sali.SALI.model.Token;
 import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IUtilizador;
 
@@ -96,10 +97,10 @@ public class HCUtilizador {
 	public ResponseEntity<?> login (@RequestParam ("username") String username, 
 										@RequestParam ("password") String password){
 		
-		int res = futilizador.login(username, password);
+		int res = futilizador.loginValidacao(username, password);
 		
 		if (res == 1) {
-			return new ResponseEntity<Utilizador>(futilizador.loginUT(username, password), HttpStatus.OK);
+			return new ResponseEntity<Utilizador>(futilizador.loginRest(username, password), HttpStatus.OK);
 		} else if (res == 2) {
 			return new ResponseEntity<String>("Login", HttpStatus.OK); // Não tem pass ou user correto
 		}
@@ -111,7 +112,7 @@ public class HCUtilizador {
 		
 		Role ro = new Role("Enfermeiro");
 		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, "", "Ativo");
+		Utilizador e = new Utilizador("Joao", ro, "69", new Token("1", 1), new Token("1", 1), "Pediatra", lo, "", "Ativo");
 		iUtilizador.save(e);
 	}
 }

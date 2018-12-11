@@ -21,10 +21,11 @@ public class FFarmaco {
 
 	public int saveFarmaco(Farmaco f, String tok) {
 
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean isEqual = false;
 		
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			for (Farmaco fm: iFarmaco.findAll()) {
 				if (fm.getNome().compareToIgnoreCase(f.getNome()) == 0){
 					isEqual = true;
@@ -42,9 +43,10 @@ public class FFarmaco {
 
 	public List<Farmaco> listarFarmaco (String tok) {
 
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			return iFarmaco.findAll();
 		}else {
 			return null;
@@ -53,10 +55,11 @@ public class FFarmaco {
 
 	public boolean updateFarmaco (Farmaco f, String tok) {
 
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iFarmaco.save(f);
 			answer = true;
 		}
@@ -66,10 +69,11 @@ public class FFarmaco {
 
 	public boolean deleteFarmaco (String id, String tok) {
 
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
 		boolean answer = false;
 
-		if (u.isPresent()) {
+		if (ur.isPresent() || us.isPresent()) {
 			iFarmaco.deleteById(id);
 			answer = true;
 		}

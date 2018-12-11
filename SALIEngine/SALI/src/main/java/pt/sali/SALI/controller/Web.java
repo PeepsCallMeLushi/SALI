@@ -58,7 +58,7 @@ public class Web {
 	@GetMapping("/")
 	public String home(Model m,@RequestParam (value="tok",defaultValue="0") String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenToken(tok);
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
 		
 		if (u.isPresent()) {
 			m.addAttribute("tok",tok);
@@ -81,10 +81,10 @@ public class Web {
 	public String login (@RequestParam ("username") String username, 
                         @RequestParam ("password") String password, 
                         Model m) {
-       if(futilizador.loginUT(username, password) == null) {
+       if(futilizador.loginSpring(username, password) == null) {
     	   return "redirect:/authentication/login?erro=1";
        }else {
-    	   return "redirect:/?tok="+futilizador.loginUT(username, password).getToken().getToken();
+    	   return "redirect:/?tok="+futilizador.loginSpring(username, password).getTokenSpring().getTokenName();
        }
     }
     // LOGIN ///////////////////////////////////////////////////////////////

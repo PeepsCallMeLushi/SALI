@@ -2,25 +2,17 @@ package pt.sali.SALI.model;
 
 public class Token {
 	
-	private String token;
+	private String tokenName;
 	private int expiracao;
 	
-	public Token(String token, int expiracao) {
+	public Token(String tokenName, int expiracao) {
 		super();
-		this.token = token;
+		this.tokenName = tokenName;
 		this.expiracao = expiracao;
 	}
 	
 	public Token() {
 		super();
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 
 	public int getExpiracao() {
@@ -29,5 +21,13 @@ public class Token {
 
 	public void setExpiracao(int expiracao) {
 		this.expiracao = expiracao;
+	}
+
+	public String getTokenName() {
+		return tokenName;
+	}
+
+	public void setTokenName(String tokenName) {
+		this.tokenName = tokenName;
 	}
 }
