@@ -56,7 +56,7 @@ public class HCUtilizador {
 	@GetMapping("/listall")
 	public ResponseEntity<?> listarAllUtilizadores (@RequestParam ("tok") String tok) {
 		
-		List<Utilizador> u = futilizador.listarActiveUtilizador(tok); 
+		List<Utilizador> u = futilizador.listarAllUtilizador(tok); 
 		
 		if(u != null) {
 			return new ResponseEntity<>(u, HttpStatus.OK);
