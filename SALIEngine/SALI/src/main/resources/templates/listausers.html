@@ -78,9 +78,7 @@
                               <div class="card-body">
                                 <h4 class="card-title">Lista RH</h4>
 
-                                <div th:if="${mensagemsucess != null}">
-                                <h5 class="alert alert-success" th:text="${mensagemsucess}"></h5>
-                                </div>
+                                <div th:insert="messagefrag.html :: warnings"></div>
 
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">

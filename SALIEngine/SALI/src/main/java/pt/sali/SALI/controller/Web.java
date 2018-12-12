@@ -107,7 +107,7 @@ public class Web {
 			@RequestParam("tok") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		if(erro.equals("2")) {
-			m.addAttribute("mensagemerro","Utilizador já registado");
+			m.addAttribute("mensagemaviso","Utilizador já registado");
 		}else if(erro.equals("10")) {
 			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
 		}
@@ -200,7 +200,7 @@ public class Web {
 		}else {
 			m.addAttribute("farmacos", ffarmaco.listarFarmaco(tok));
 			if(erro.equals("2")) {
-				m.addAttribute("mensagemerro","Fármaco já se encontra registado");
+				m.addAttribute("mensagemaviso","Fármaco já se encontra registado");
 			}else if(erro.equals("10")) {
 				m.addAttribute("mensagemsucess","Fármaco registado com sucesso !");
 			}else if (erro.equals("11")) {
@@ -300,7 +300,14 @@ public class Web {
 	// INCIDENTE  ///////////////////////////////////////////////////////////
 	@GetMapping("/addSintoma")												
 	public String addSintoma (Model m,  
-			@RequestParam("tok") String tok) {     	
+			@RequestParam("tok") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
+		
+		if(erro.equals("2")) {
+			m.addAttribute("mensagemaviso","Sintoma já registado");
+		}else if(erro.equals("10")) {
+			m.addAttribute("mensagemsucess","Sintoma registado com sucesso !");
+		}
 		
 		m.addAttribute("tok",tok);
 		m.addAttribute("user",futilizador.UTbyToken(tok));
@@ -311,19 +318,27 @@ public class Web {
 	@PostMapping("/addSintoma/add")												
 	public String addS(Model m,
 			@RequestParam("tok") String tok,
-			@ModelAttribute("sintoma") Sintoma s) {     	
+			@ModelAttribute("sintoma") Sintoma s) {
 		
-		fsintoma.saveSintoma(s, tok);
-																		
-		return "redirect:/addSintoma?tok="+tok;												
+		int reposta = fsintoma.saveSintoma(s, tok);
+		
+		if (reposta == 0) {	
+			return "pages-error-403.html"; //Erro Token
+		}else if (reposta == 1) {
+			return "redirect:/addSintoma?tok="+tok+"&erro=10"; //Sucesso
+		}else {
+			return "redirect:/addSintoma?tok="+tok+"&erro=2"; //Duplicado
+		}
+																									
 	}	
 																		
 	@GetMapping("/listSintoma")													
-	public String listSintoma (Model m, String tok) {					
+	public String listSintoma (Model m,
+			@RequestParam("tok") String tok) {					
 																		
-		m.addAttribute("", fsintoma.listarSintoma(tok));				
-																		
-		return ".html";													
+		m.addAttribute("incidentes", fsintoma.listarSintoma(tok));				
+		m.addAttribute("user",futilizador.UTbyToken(tok));
+		return "listaIncidente.html";													
 	}																	
 																		
 	@GetMapping("/updateSintoma")													

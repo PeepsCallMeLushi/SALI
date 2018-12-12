@@ -40,12 +40,12 @@
   var number =$("#wint1").val();
   var output='';
 
-  for( var i = 0 ; i<= number; i++){
-    var numeracao = i+1;
-    output+='<label for="behName1">Pergunta nº'+numeracao+'</label><input style="margin:1%" type="text" name="pergunta['+i+'].pergunta" class="form-control required"><br>';
+  for( var i = 1 ; i<= number; i++){
+    var numeracao = i-1;
+    output+='<label for="behName1">Pergunta nº'+i+'</label><input style="margin:1%" type="text" name="pergunta['+numeracao+'].pergunta" class="form-control required"><br>';
 
-    console.log(i);
-    console.log(output);
+    // console.log(i);
+    // console.log(output);
   }
     $("#perg").html(""+output);
     }
@@ -98,6 +98,8 @@
               <!-- Start Page Content -->
               <!-- ============================================================== -->
               <div class="container-fluid">
+
+                <div th:insert="messagefrag.html :: warnings"></div>
 
                 <div class="row" id="validation">
                           <div class="col-12">

@@ -1,0 +1,14 @@
+<div th:fragment="warnings">
+  <div th:if="${mensagemaviso != null}">
+    <h5 class="alert alert-warning" th:text="${mensagemaviso}"></h5>
+  </div>
+  <div th:if="${mensagemerro != null}">
+    <h5 class="alert alert-danger" th:text="${mensagemerro}"></h5>
+  </div>
+  <div th:if="${mensagemsucess != null}">
+    <h5 class="alert alert-success" th:text="${mensagemsucess}"></h5>
+  </div>
+  <div th:if="${mensageminfo != null}">
+    <h5 class="alert alert-info " th:text="${mensageminfo}"></h5>
+  </div>
+</div>

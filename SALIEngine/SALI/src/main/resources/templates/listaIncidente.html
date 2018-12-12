@@ -58,7 +58,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Outros > Fármacos</h3>
+                    <h3 class="text-themecolor">Gestão RH > Listar</h3>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -73,71 +73,46 @@
               <!-- Start Page Content -->
               <!-- ============================================================== -->
               <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
+                  <div class="col-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">Lista RH</h4>
 
-                <div th:insert="messagefrag.html :: warnings"></div>
+                                <div th:insert="messagefrag.html :: warnings"></div>
 
-                <div class="table-responsive">
-                  <center>
-                  <div th:if="${farmacos.isEmpty()}">
-                    <h4>Nao foram encontrados registos</h4>
-                    <br>
-                  </div>
-                </center>
-                <div th:if="${!farmacos.isEmpty()}">
-                  <table id="myTable" class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                            <th>Nome</th>
-                            <th style="width:25px">Acção</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        <tr th:each="farmaco: ${farmacos}">
-                          <td th:text="${farmaco.nome}"></td>
-                          <td>
-                             <form th:action="@{'/deleteFarmaco?tok='+${tok}}" method="POST">
-                                <input type="hidden" name="id" th:value="${farmaco.id}">
-                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-close" aria-hidden="true"></i></button>
-                             </form>
-                          </td>
-                        </tr>
-                      </tbody>
-                  </table>
-                </div>
-                <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Adicionar Fármaco</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <form th:action="@{'/addFarmaco?tok=' + ${tok}}" method="POST" class="form-horizontal form-material">
-                            <div class="form-group">
-                                <div class="col-md-12 m-b-20">
-                                    <input type="text" class="form-control" name="nome" style="margin-top:20%"placeholder="Introduza Fármaco">
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-rounded redondoOriginal">Guardar</button>
-                                    </div>
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                              <th data-sort-initial="true" data-toggle="true">Nome</th>
+                                              <th data-hide="phone, tablet">Metodologia</th>
+                                              <th data-hide="phone, tablet">Nº Perguntas</th>
+                                              <th data-sort-ignore="true" class="min-width">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr th:each="inci: ${incidentes}">
+                                						<td th:text="${inci.nome}"></td>
+                                						<td th:text="${inci.metodologia}"></td>
+                                						<td th:text="${#lists.size(inci.pergunta)}"></td>
+                                            <td>
+                                              <form method="POST">
+                                				          <input type="hidden" name="id" th:value="${user.id}">
+                                				          <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-pencil-alt" aria-hidden="true"></i></button>
+                                				       </form>
+                                               <form  method="POST">
+                                 				          <input type="hidden" name="id" th:value="${user.id}">
+                                 				          <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-close" aria-hidden="true"></i></button>
+                                 				       </form>
+                                            </td>
+                                					</tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
-                    </div>
-                  <br>
-                <br>
-            <button type="button" class="btn btn-rounded redondoOriginal" data-toggle="modal" data-target="#add-contact">Adicionar Fármaco</button>
-        </div>
-    </div>
-  </div>
-</div>
+                  </div>
+              </div>
               <!-- ============================================================== -->
               <!-- End PAge Content -->
               <!-- ============================================================== -->
@@ -145,7 +120,7 @@
 
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
-            <!-- ============================================================== -->
+            <!-- ============================================================== -->>
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -182,6 +157,7 @@
     <script th:src="@{/plugins/morrisjs/morris.min.js}"></script>
     <!-- This is data table -->
     <script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+
     <script>
     $(document).ready(function() {
         $('#myTable').DataTable();
