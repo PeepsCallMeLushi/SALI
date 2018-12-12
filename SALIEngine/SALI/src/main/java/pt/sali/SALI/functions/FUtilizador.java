@@ -192,7 +192,6 @@ public class FUtilizador {
 		for (Utilizador ut : iUtilizador.findAll()) {
 			if (ut.getLogin().getLogin().compareToIgnoreCase(username) == 0) {
 				if (ut.getLogin().getPassword().compareTo(password) == 0) {
-					
 					UUID idtoken = UUID.randomUUID();
 					ut.getTokenRest().setTokenName(idtoken.toString());
 					iUtilizador.save(ut);
@@ -230,15 +229,15 @@ public class FUtilizador {
 		iUtilizador.save(u.get());
 	}
 	
-	public void logoutSpring (String token) {
+	public void logoutSpring (String tok) {
 		
-		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(token);
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
 		
 		u.get().setTokenSpring(new Token (null, 0));
 		iUtilizador.save(u.get());
 	}
 	
-	public int alterarPass (String pass, String tok) {
+	public int alterarPassSpring (String pass, String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
 		
