@@ -12,23 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.sali.SALI.functions.FRole;
-import pt.sali.SALI.model.Role;
-import pt.sali.SALI.service.IRole;
+import pt.sali.SALI.functions.FContacto;
+import pt.sali.SALI.model.Contacto;
+import pt.sali.SALI.service.IContacto;
 
 @RestController
-@RequestMapping("/Role")
-public class HCRole {
-	
+@RequestMapping("/Contacto")
+public class HCContacto {
 	@Autowired
-	FRole frole;
+	FContacto fcontacto;
 	@Autowired
-	IRole iRole;
+	IContacto iContacto;
 	
 	@PostMapping("/add")
-	public String addRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
+	public String addContacto(@RequestBody Contacto r, @RequestParam ("tok") String tok) {
 		
-		int status = frole.saveRole(r, tok);
+		int status = fcontacto.saveContacto(r, tok);
 		
 		if (status == 1) {
 			return "Sucesso";
@@ -39,9 +38,9 @@ public class HCRole {
 	}
 	
 	@GetMapping("/list")
-	public ResponseEntity<?> listarAllRole (@RequestParam ("tok") String tok){
+	public ResponseEntity<?> listarAlContacto (@RequestParam ("tok") String tok){
 		
-		List<Role> r = frole.listarRole(tok); 
+		List<Contacto> r = fcontacto.listarContacto(tok); 
 		
 		if(r != null) {
 			return new ResponseEntity<>(r, HttpStatus.OK);
@@ -51,30 +50,20 @@ public class HCRole {
 	}
 	
 	@PostMapping("/update")
-	public ResponseEntity<?> updateRole(@RequestBody Role r, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> updateContacto(@RequestBody Contacto r, @RequestParam ("tok") String tok) {
 		
-		if (frole.updateRole(r, tok)) {
+		if (fcontacto.updateContacto(r, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteRole(@RequestParam ("id") String id, @RequestParam ("tok") String tok) {
+	public ResponseEntity<?> deleteContacto(@RequestParam ("id") String id, @RequestParam ("tok") String tok) {
 		
-		if (frole.deleteRole(id, tok)) {
+		if (fcontacto.deleteContacto(id, tok)) {
 			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("Token", HttpStatus.OK);	
-	}
-	
-	@GetMapping("/mock")
-	public ResponseEntity<String> mockup() {
-		
-		iRole.save(new Role ("Médico"));
-		iRole.save(new Role ("Enfermeiro"));
-		iRole.save(new Role ("IT"));
-		
-		return new ResponseEntity<String>("done", HttpStatus.OK);
 	}
 }
