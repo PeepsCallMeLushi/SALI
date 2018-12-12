@@ -137,6 +137,11 @@ public class Web {
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		m.addAttribute("tok",tok);
 		m.addAttribute("user",futilizador.UTbyToken(tok));
+		
+		if(futilizador.listarActiveUtilizador(tok)==null) {
+			return "pages-error-403.html"; //Erro Token
+		}
+			
 		m.addAttribute("users", futilizador.listarActiveUtilizador(tok));
 		
 		if(erro.equals("11")) {
@@ -334,11 +339,15 @@ public class Web {
 																		
 	@GetMapping("/listSintoma")													
 	public String listSintoma (Model m,
-			@RequestParam("tok") String tok) {					
-																		
+			@RequestParam("tok") String tok) {
+		
+		if(fsintoma.listarSintoma(tok)==null) {
+			return "pages-error-403.html"; //Erro Token
+		}else {																
 		m.addAttribute("incidentes", fsintoma.listarSintoma(tok));				
 		m.addAttribute("user",futilizador.UTbyToken(tok));
-		return "listaIncidente.html";													
+		return "listaIncidente.html";
+		}
 	}																	
 																		
 	@GetMapping("/updateSintoma")													
