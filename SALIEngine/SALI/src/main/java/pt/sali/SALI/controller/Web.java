@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import pt.sali.SALI.functions.FFarmaco;
 import pt.sali.SALI.functions.FFreguesia;
@@ -16,6 +17,8 @@ import pt.sali.SALI.functions.FOcorrencia;
 import pt.sali.SALI.functions.FRole;
 import pt.sali.SALI.functions.FSintoma;
 import pt.sali.SALI.functions.FUtilizador;
+import pt.sali.SALI.functions.FileHandler;
+import pt.sali.SALI.functions.FileHandler.UploadFileResponse;
 import pt.sali.SALI.model.Farmaco;
 import pt.sali.SALI.model.Freguesia;
 import pt.sali.SALI.model.Ocorrencia;
@@ -27,6 +30,8 @@ import pt.sali.SALI.service.IUtilizador;
 @Controller
 public class Web {
 	
+	@Autowired
+	FileHandler Filehandler;
 	@Autowired
 	FUtilizador futilizador;
 	@Autowired
@@ -120,7 +125,14 @@ public class Web {
 	@PostMapping("/addUT/add")
 	public String addUT (@RequestParam("tok") String tok,
 			@ModelAttribute("user") Utilizador u,
-			Model m) {
+			Model m,
+			@RequestParam("file") MultipartFile img) {
+		
+		
+		UploadFileResponse uplo = Filehandler.saveFile(img);
+		
+		u.setFoto(uplo.getFileDownloadUri());
+		
 		int reposta = futilizador.saveUtilizador(u, tok);
 		
 		if (reposta == 0) {	

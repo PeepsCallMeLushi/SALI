@@ -1,18 +1,31 @@
 package pt.sali.SALI.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import pt.sali.SALI.functions.FUtilizador;
+import pt.sali.SALI.functions.FileHandler;
+import pt.sali.SALI.functions.FileHandler.UploadFileResponse;
 import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Token;
@@ -24,21 +37,66 @@ import pt.sali.SALI.service.IUtilizador;
 public class HCUtilizador {
 	
 	@Autowired
+	FileHandler Filehandler;
+	
+	
+	@Autowired
 	FUtilizador futilizador;
 	@Autowired
 	IUtilizador iUtilizador;		// SOMENTE PARA MOCK UP DATA
 	
+	
+	@PostMapping("/upload")
+	public UploadFileResponse file(@RequestParam ("file") MultipartFile file) {
+		
+		
+		
+		UploadFileResponse u = Filehandler.saveFile(file);
+		
+		System.out.println(u.getFileDownloadUri());
+		
+		return u;
+		
+	}
+	
+
+	@GetMapping("/downloadFile/{fileName:.+}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+        // Load file as Resource
+        Resource resource = Filehandler.getFileByName(fileName);
+        
+        
+
+        // Try to determine file's content type
+        String contentType = null;
+        try {
+            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        } catch (IOException ex) {
+            //logger.info("Could not determine file type.");
+        }
+
+        // Fallback to the default content type if type could not be determined
+        if(contentType == null) {
+            contentType = "application/octet-stream";
+        }
+
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.ACCEPT, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
+    }
+	
+	
 	@PostMapping("/add")
-	public String addUtilizador(@RequestBody Utilizador u, @RequestParam ("tok") String tok) {
+	public ResponseEntity<String> addUtilizador(@RequestBody Utilizador u, @RequestParam ("tok") String tok) {
 		
 		int status = futilizador.saveUtilizador(u, tok);
 		
 		if (status == 0) {
-			return "Token";
+			return new ResponseEntity<String>("Token", HttpStatus.OK);
 		}else if (status == 1) {
-			return "Sucesso";
+			return new ResponseEntity<String>("Sucesso", HttpStatus.OK);
 		}
-		return "Existente";
+		return new ResponseEntity<String>("Existente", HttpStatus.OK);
 	}
 	
 	@GetMapping("/listactive")
