@@ -73,6 +73,7 @@ public class HCRole {
 		
 		iRole.save(new Role ("Médico"));
 		iRole.save(new Role ("Enfermeiro"));
+		iRole.save(new Role ("IT"));
 		
 		return new ResponseEntity<String>("done", HttpStatus.OK);
 	}
