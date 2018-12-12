@@ -93,6 +93,13 @@ public class HCUtilizador {
 		return new ResponseEntity<>("Token", HttpStatus.OK);
 	}
 	
+	@GetMapping("/deleteall")
+	public ResponseEntity<?> deleteAllUtilizador() {
+		
+		iUtilizador.deleteAll();
+		return new ResponseEntity<>("All deleted", HttpStatus.OK);
+	}
+	
 	@GetMapping("/login")
 	public ResponseEntity<?> login (@RequestParam ("username") String username, 
 										@RequestParam ("password") String password){
@@ -118,14 +125,14 @@ public class HCUtilizador {
 	@GetMapping("/mock")
 	public void mock() {
 		
-		Role ro = new Role("Enfermeiro");
-		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", new Token("1", 1), new Token("1", 1), "Pediatra", lo, "", false,"Ativo");
-		iUtilizador.save(e);
+		Role enf = new Role("Enfermeiro");
+		Role med = new Role("Médico");
+		Role it = new Role("IT");
 		
-		Role ror = new Role("Médico");
-		Login lol = new Login("oi", "ola");
-		Utilizador el = new Utilizador("Joao", ror, "69", new Token("1", 1), new Token("1", 1), "Pediatra", lol, "", false,"Ativo");
-		iUtilizador.save(el);
+		iUtilizador.save(new Utilizador("José", enf, "11", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("11", "11"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("Sara", enf, "22", new Token("1", 1), new Token("1", 1), "Pensos", new Login("22", "22"), "", false,"Ativo"));
+		iUtilizador.save(new Utilizador("Sérgio", med, "33", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("33", "33"), "", false,"Ativo"));
+		iUtilizador.save(new Utilizador("Bernardo", med, "44", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("44", "44"), "", false,"Ativo"));
+		iUtilizador.save(new Utilizador("Lobão", it, "55", new Token("1", 1), new Token("1", 1), "Cromo", new Login("55", "55"), "", false,"Ativo"));
 	}
 }

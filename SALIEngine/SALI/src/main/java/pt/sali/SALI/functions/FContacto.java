@@ -13,6 +13,7 @@ import pt.sali.SALI.service.IUtilizador;
 
 @Service("fcontacto")
 public class FContacto {
+	
 	@Autowired
 	IContacto iContacto;	
 	@Autowired
