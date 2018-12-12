@@ -5,11 +5,11 @@ $(".tab-wizard").steps({
     titleTemplate: '<span class="step">#index#</span> #title#',
     labels: {
         finish: "Submit"
-    }, 
+    },
     onFinished: function (event, currentIndex) {
         var form = $(this);
         // Submit form input
-        form.submit();        
+        form.submit();
     }
 });
 
@@ -31,7 +31,8 @@ $(".validation-wizard").steps({
         return form.validate().settings.ignore = ":disabled", form.valid()
     }
     , onFinished: function (event, currentIndex) {
-         swal("Form Submitted!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.");
+      var form = $(this);
+      form.submit();
     }
 }), $(".validation-wizard").validate({
     ignore: "input[type=hidden]"

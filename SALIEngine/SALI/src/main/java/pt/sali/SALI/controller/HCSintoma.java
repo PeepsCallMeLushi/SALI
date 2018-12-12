@@ -81,8 +81,8 @@ public class HCSintoma {
 		p.setResposta(ars);
 		pp.setResposta(ars);
 		ArrayList<Pergunta> ar = new ArrayList<>();
-		
-		Sintoma si = new Sintoma ("1", "Dor", true);
+		ar.add(new Pergunta("Pergunta ?","Consentida"));
+		Sintoma si = new Sintoma ("1", "Dor", true,ar);
 		si.setPergunta(ar);
 		iSintoma.save(si);
 		

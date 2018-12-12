@@ -17,13 +17,13 @@ public class Sintoma {
 	private ArrayList<String> partesAfetadas;
 	private ArrayList<Pergunta> pergunta;
 	
-	public Sintoma(String metodologia, String nome, boolean corpoSelecionado) {
+	public Sintoma(String metodologia, String nome, boolean corpoSelecionado, ArrayList<Pergunta> pergunta) {
 		super();
 		this.metodologia = metodologia;
 		this.nome = nome;
 		this.corpoSelecionado = corpoSelecionado;
 		this.partesAfetadas = new ArrayList<>();
-		this.pergunta = new ArrayList<>();
+		this.pergunta = pergunta;
 	}
 
 	public Sintoma() {

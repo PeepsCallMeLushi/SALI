@@ -36,14 +36,13 @@
 
   function pergunta(){
 
-    var nome = $("#wlastName2").val();
+  var nome = $("#wlastName2").val();
   var number =$("#wint1").val();
   var output='';
 
-  for( var i = 1 ; i<= number; i++){
-    //output+='<input type="text" name="'+nome+'_pergunta'+i+'">';
-
-    output+='<label for="behName1">Pergunta nº'+i+'</label><input style="margin:1%" type="text" name="pergunta.pergunta'+i+'" class="form-control required"><br>';
+  for( var i = 0 ; i<= number; i++){
+    var numeracao = i+1;
+    output+='<label for="behName1">Pergunta nº'+numeracao+'</label><input style="margin:1%" type="text" name="pergunta['+i+'].pergunta" class="form-control required"><br>';
 
     console.log(i);
     console.log(output);
@@ -136,7 +135,6 @@
                                           <!-- Step 2 -->
                                           <h6>Zona Afetada</h6>
                                           <section>
-
                                             <div class="container">
                                             <div class="row">
                                               <div class="col-md-3">
@@ -944,17 +942,16 @@
                                           <section>
                                               <div class="row">
                                                   <div class="col-md-6">
-                                                      <div class="form-group">
-                                                          <label for="wint1">Quantas Perguntas deseja fazer: </label>
-                                                          <input type="number" min="1" class="form-control required" id="wint1">
-                                                          <button style="margin-left:20%; margin:2%;" class="btn btn-outline redondoOriginal" data-toggle="modal" >Criar</button>
+                                                    <label for="wint1">Quantas Perguntas deseja fazer: </label>
+                                                      <div class="input-group">
+                                                          <input type="number" min="1" class="form-control required" id="wint1" style="clear: right;">
+                                                          <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-outline redondoOriginal" data-toggle="modal" onclick="pergunta()" >Gerar</button>
+                                                          </span>
                                                       </div>
-
-                                                      <div class="form-group" id="perg">
-
-                                                      </div>
+                                                      <br>
+                                                      <div class="form-group" id="perg"></div>
                                                   </div>
-
                                                   <div class="col-md-6">
                                                       <div class="form-group" >
 
@@ -1019,6 +1016,7 @@
     <script th:src="@{/plugins/wizard/steps.js}"></script>
     <!-- CorpoHumano -->
     <script th:src="@{/js/corpohumano.js}"></script>
+
 
 </body>
 
