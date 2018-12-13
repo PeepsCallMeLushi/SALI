@@ -39,6 +39,7 @@ public class Utilizador {
 		super();
 		this.tokenRest = new Token();
 		this.tokenSpring = new Token();
+		this.firstLogin = true;
 	}
 
 	public String getId() {

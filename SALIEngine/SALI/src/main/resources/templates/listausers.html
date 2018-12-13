@@ -99,7 +99,7 @@
                                 						<td th:text="${user.especializacao}"></td>
                                             <td>
                                               <form th:action="@{'/updateUTs?tok='+${tok}}" method="POST">
-                                				          <input type="hidden" name="id" th:value="${user.id}">
+                                				          <input type="hidden" name="idusr" th:value="${user.id}">
                                 				          <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-pencil-alt" aria-hidden="true"></i></button>
                                 				       </form>
                                                <form th:action="@{'/deleteUTs?tok='+${tok}}" method="POST">

@@ -77,12 +77,18 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img th:src="${user.foto}" alt="user" class="profile-pic" /></a>
+
+                        <img th:if="${user.foto != null}" th:src="${user.foto}" alt="user" class="profile-pic" />
+                        <img th:if="${user.foto == null}" th:src="@{/images/users/unkown.jpg}" alt="user" class="profile-pic" />
+                      </a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img th:src="${user.foto}" alt="user">
+                                    <div class="u-img">
+                                      <img th:if="${user.foto != null}" th:src="${user.foto}" alt="user" class="profile-pic" />
+                                      <img th:if="${user.foto == null}" th:src="@{/images/users/unkown.jpg}" alt="user" class="profile-pic" />
+
                                     </div>
                                     <div class="u-text">
                                         <h4  th:text="${user.nome}"></h4>

@@ -54,6 +54,7 @@ public class Web {
 	 * 
 	 * ERRO 10 = Sucesso
 	 * ERRO 11 = Removido com Sucesso
+	 * ERRO 12 = Modificado com Sucesso
 	 * ...
 	 * ERRO 19 = Logout Efectuado com Sucesso
 	 * 
@@ -128,9 +129,10 @@ public class Web {
 			Model m,
 			@RequestParam("file") MultipartFile img) {
 		
+		if(img.getSize() > 1) {
 		UploadFileResponse uplo = Filehandler.saveFile(img);
-		
 		u.setFoto(uplo.getFileDownloadUri());
+		}
 		
 		int reposta = futilizador.saveUtilizador(u, tok);
 		
@@ -157,26 +159,62 @@ public class Web {
 		
 		if(erro.equals("11")) {
 			m.addAttribute("mensagemsucess","Utilizador removido com sucesso !");
+		} else if(erro.equals("12")) {
+			m.addAttribute("mensagemaviso","Utilizador modificado com sucesso !");
 		}
 		return "listausers.html";
 	}
+
 	
-	/*TODO*/
-	@GetMapping("/updateUTs")
+	@PostMapping("/updateUTs")
 	public String updateUTs (Model m,  @RequestParam("tok") String tok,
 			@RequestParam("idusr") String id) {
 		
-		return ".html";		// TOKEN NÃO PRESENTE
+		
+		
+		Utilizador user = futilizador.listarUTbyId(id, tok);
+	
+		if(user == null) {
+			return "pages-error-403.html"; // TOKEN NÃO PRESENTE
+		}else {
+			m.addAttribute("tok",tok);
+			
+			//User com login efectuado
+			m.addAttribute("user",futilizador.UTbyToken(tok));
+			
+			//User a ser editado
+			m.addAttribute("useredit", user);
+			
+			m.addAttribute("roles", frole.listarRole(tok));
+			return "edituser.html";		
+		}
+	}
+	
+	@PostMapping("/updateUTs/update")
+	public String updateUT (Model m,
+			@ModelAttribute("user") Utilizador u,
+			@RequestParam("tok") String tok) {
+		
+		/*Isto á partida matem o login e password do user*/
+		Utilizador modelo = futilizador.listarUTbyId(u.getId(), tok);
+		u.setLogin(modelo.getLogin());
+		
+		if(futilizador.updateUtilizador(u, tok)) {
+			return "redirect:/listUTs?tok="+tok+"&erro=12";
+		}else {
+			return "pages-error-403.html";	
+		}
+		
 	}
 	
 	@PostMapping("/deleteUTs")
 	public String deleteUTs (Model m,  @RequestParam("tok") String tok,
 		@RequestParam("id") String id) {
 		
-		if(futilizador.deleteUtilizador(id, tok)==true) {
+		if(futilizador.deleteUtilizador(id, tok)) {
 			return "redirect:/listUTs?tok="+tok+"&erro=11"; //Sucesso
 		}else {
-			return "redirect:/listUTs?tok="+tok+"&erro=0"; //Erro
+			return "pages-error-403.html";	
 		}
 		
 		

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -60,7 +60,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Gestão RH > Inserir</h3>
+                    <h3 class="text-themecolor">Gestão RH > Editar</h3>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -79,11 +79,8 @@
                         <div class="card">
                   <div class="card-body">
 
-                    <div th:insert="messagefrag.html :: warnings"></div>
-
-
-                            <h4 class="card-title">Insere</h4>
-                            <form th:action="@{'/addUT/add?tok=' + ${tok}}" method="POST" enctype="multipart/form-data" class="tab-wizard">
+                            <h4 class="card-title">Editar RH</h4>
+                            <form th:action="@{'/updateUTs/update?tok=' + ${tok}}" method="POST" class="tab-wizard">
                                 <div class="vtabs customvtab">
                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#infoPessoal" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="">Pessoal</span> </a> </li>
@@ -95,12 +92,17 @@
                                                     <section>
                                                         <div class="row">
                                                             <div class="col-md-12">
+                                                              <!-- campos que nao nos podemos esquecer -->
+                                                              <input type="hidden" name="id" th:value="${useredit.id}">
+                                                              <input type="hidden" name="estado" th:value="${useredit.estado}">
                                                                 <div class="form-group">
-                                                                  <label for="input-file-max-fs">Avatar:</label>
-                                                                  <input type="file" id="input-file-max-fs" name='file' accept="image/*" class="dropify" data-max-file-size="2M" data-show-remove="false"/>
+                                                                  <label>Avatar:</label>
+                                                                    <img th:src="${useredit.foto}" class="photoperfil" style="margin-left: 3%;" /></a>
+                                                                    <input type="hidden" name="foto" th:value="${useredit.foto}">
+                                                                    <br>
                                                                     <br>
                                                                   <label for="firstName1">Nome</label>
-                                                                  <input type="text" class="form-control" name="nome" id="firstName1">
+                                                                  <input type="text" class="form-control" name="nome" th:value="${useredit.nome}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -108,13 +110,13 @@
                                                           <div class="col-sm">
                                                             <div class="form-group">
                                                                 <label for="firstName1">Username</label>
-                                                                <input type="text" class="form-control" value="Numero da Cedula por defeito" disabled>
+                                                                <input type="text" class="form-control" th:value="${useredit.login.login}" readonly>
                                                             </div>
                                                           </div>
                                                           <div class="col-sm">
                                                             <div class="form-group">
                                                                 <label for="firstName1">Password</label>
-                                                                <input type="text" class="form-control" value="Numero da Cedula por defeito" disabled>
+                                                                <input type="text" class="form-control" th:value="${useredit.login.password}" >
                                                             </div>
                                                           </div>
                                                         </div>
@@ -128,7 +130,7 @@
                                                       <div class="form-group">
                                                         <label for="exampleFormControlSelect1">Função:</label>
                                                         <select class="form-control" name="role.nome">
-                                                          <option th:each="role: ${roles}" th:value="${role.nome}" th:text="${role.nome}"></option>
+                                                          <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${useredit.role.nome}" th:text="${role.nome}"></option>
                                                         </select>
                                                       </div>
                                                     </div>
@@ -137,12 +139,12 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Especialização:</label>
-                                                                <input type="text" class="form-control" name="especializacao"> </div>
+                                                                <input type="text" class="form-control" th:value="${useredit.especializacao}" name="especializacao"> </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Cédula:</label>
-                                                                <input type="text" class="form-control" name="identificador">
+                                                                <input type="text" class="form-control" th:value="${useredit.identificador}" name="identificador" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -166,7 +168,6 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2017 Admin Press Admin by themedesigner.in </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
