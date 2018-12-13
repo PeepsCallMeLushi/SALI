@@ -128,7 +128,6 @@ public class Web {
 			Model m,
 			@RequestParam("file") MultipartFile img) {
 		
-		
 		UploadFileResponse uplo = Filehandler.saveFile(img);
 		
 		u.setFoto(uplo.getFileDownloadUri());
@@ -358,6 +357,7 @@ public class Web {
 		}else {																
 		m.addAttribute("incidentes", fsintoma.listarSintoma(tok));				
 		m.addAttribute("user",futilizador.UTbyToken(tok));
+		m.addAttribute("tok",tok);
 		return "listaIncidente.html";
 		}
 	}																	

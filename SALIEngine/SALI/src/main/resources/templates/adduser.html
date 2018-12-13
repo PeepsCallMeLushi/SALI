@@ -26,6 +26,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+    <link rel="stylesheet" th:href="@{/plugins/dropify/dist/css/dropify.min.css}">
 </head>
 
 <body class="fix-header fix-sidebar card-no-border logo-center">
@@ -78,8 +80,8 @@
                   <div class="card-body">
 
                     <div th:insert="messagefrag.html :: warnings"></div>
-                    
-                                                            
+
+
                             <h4 class="card-title">Insere</h4>
                             <form th:action="@{'/addUT/add?tok=' + ${tok}}" method="POST" enctype="multipart/form-data" class="tab-wizard">
                                 <div class="vtabs customvtab">
@@ -93,10 +95,12 @@
                                                     <section>
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                            <input type="file" name="file" />
                                                                 <div class="form-group">
-                                                                    <label for="firstName1">Nome</label>
-                                                                    <input type="text" class="form-control" name="nome" id="firstName1">
+                                                                  <label for="input-file-max-fs">Avatar:</label>
+                                                                  <input type="file" id="input-file-max-fs" name='file' class="dropify" data-max-file-size="2M" data-show-remove="false"/>
+                                                                    <br>
+                                                                  <label for="firstName1">Nome</label>
+                                                                  <input type="text" class="form-control" name="nome" id="firstName1">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -200,6 +204,51 @@
     <!--morris JavaScript -->
     <script th:src="@{/plugins/raphael/raphael-min.js}"></script>
     <script th:src="@{/plugins/morrisjs/morris.min.js}"></script>
+
+    <script  th:src="@{/plugins/dropify/dist/js/dropify.min.js}"></script>
+
+    <script>
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+    </script>
 
 </body>
 
