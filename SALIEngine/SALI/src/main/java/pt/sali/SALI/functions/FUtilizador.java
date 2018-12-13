@@ -110,6 +110,19 @@ public class FUtilizador {
 		}
 		return null;
 	}
+	
+	public Utilizador listarUTbyId (@RequestParam ("id") String id, 
+							@RequestParam ("tok") String tok) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
+		
+		if (u.isPresent() || us.isPresent()) {
+			Optional<Utilizador> user = iUtilizador.findById(id);
+			return user.get();
+		}
+		return null;
+	}
 
 	public boolean updateUtilizador (Utilizador u, String tok) {
 
