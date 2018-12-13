@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -49,24 +46,17 @@ public class HCUtilizador {
 	@PostMapping("/upload")
 	public UploadFileResponse file(@RequestParam ("file") MultipartFile file) {
 		
-		
-		
 		UploadFileResponse u = Filehandler.saveFile(file);
-		
-		System.out.println(u.getFileDownloadUri());
-		
-		return u;
-		
+		return u;		
 	}
 	
 
 	@GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+		
         // Load file as Resource
         Resource resource = Filehandler.getFileByName(fileName);
         
-        
-
         // Try to determine file's content type
         String contentType = null;
         try {
@@ -191,6 +181,6 @@ public class HCUtilizador {
 		iUtilizador.save(new Utilizador("Sara", enf, "22", new Token("1", 1), new Token("1", 1), "Pensos", new Login("22", "22"), "", false,"Ativo"));
 		iUtilizador.save(new Utilizador("Sérgio", med, "33", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("33", "33"), "", false,"Ativo"));
 		iUtilizador.save(new Utilizador("Bernardo", med, "44", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("44", "44"), "", false,"Ativo"));
-		iUtilizador.save(new Utilizador("Lobão", it, "55", new Token("1", 1), new Token("1", 1), "Cromo", new Login("55", "55"), "", false,"Ativo"));
+		iUtilizador.save(new Utilizador("Gonçalo", it, "55", new Token("1", 1), new Token("1", 1), "Cromo", new Login("55", "55"), "", false,"Ativo"));
 	}
 }

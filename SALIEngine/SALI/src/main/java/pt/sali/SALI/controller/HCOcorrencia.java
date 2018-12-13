@@ -142,11 +142,6 @@ public class HCOcorrencia {
 		gla.getVerbal().add("4");
 		esta.getGlasgow().add(gla);
 		ava.getEstado().add(esta);
-		
-		Dano dano = new Dano("pila");
-		dano.getEstados().add("partida");
-		dano.getEstados().add("dobrada");
-		ava.getDanos().add(dano);
 		// AVALIAÇÃO - END ---------------------------------
 		
 		// ATUAÇÃO - BEGIN ---------------------------------
