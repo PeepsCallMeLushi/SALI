@@ -70,9 +70,16 @@ public class HCFarmaco {
 	@GetMapping("/mock")
 	public ResponseEntity<String> mockup() {
 		
-		iFarmaco.save(new Farmaco ("Benuron"));
-		iFarmaco.save(new Farmaco ("Brufen"));
-		iFarmaco.save(new Farmaco ("Dildo"));
+		iFarmaco.save(new Farmaco ("Tirofiban"));
+		iFarmaco.save(new Farmaco ("Valepotriatos"));
+		iFarmaco.save(new Farmaco ("Bumetanida"));
+		iFarmaco.save(new Farmaco ("Colestiramina"));
+		iFarmaco.save(new Farmaco ("Donepezil"));
+		iFarmaco.save(new Farmaco ("Feniramina"));
+		iFarmaco.save(new Farmaco ("Hipromelose"));
+		iFarmaco.save(new Farmaco ("Levocabastina"));
+		iFarmaco.save(new Farmaco ("Probucol"));
+		iFarmaco.save(new Farmaco ("Resorcinol"));
 		
 		return new ResponseEntity<String>("done", HttpStatus.OK);
 	}
