@@ -162,16 +162,12 @@ public class Web {
 	}
 	
 	/*TODO*/
-	/*@GetMapping("/updateUTs")
-	public String updateUTs (Model m,  @RequestParam("tok") String tok, Utilizador u) {
+	@GetMapping("/updateUTs")
+	public String updateUTs (Model m,  @RequestParam("tok") String tok,
+			@RequestParam("idusr") String id) {
 		
-		//m.addAttribute("", futilizador.updateUtilizador(u, tok));
-		
-		/*if (futilizador.updateUtilizador(u, tok)) {		// SUCESSO
-			return ".html"; 
-		}
 		return ".html";		// TOKEN NÃO PRESENTE
-	}*/
+	}
 	
 	@PostMapping("/deleteUTs")
 	public String deleteUTs (Model m,  @RequestParam("tok") String tok,
@@ -241,7 +237,7 @@ public class Web {
 	
 	
 	// FREGUESIA ///////////////////////////////////////////////////////////
-	@GetMapping("/addFreguesia")													
+	/*@GetMapping("/addFreguesia")													
 	public String addFreguesia (Model m, String tok, Freguesia f) {     
 																		
 		m.addAttribute("", ffreguesia.saveFreguesia(f, tok));			
@@ -274,7 +270,7 @@ public class Web {
 		m.addAttribute("", ffreguesia.deleteFreguesia(id, tok));			
 																		
 		return ".html";													
-	}																	
+	}*/												
 	// FREGUESIA /////////////////////////////////////////////////////////
 	
 	

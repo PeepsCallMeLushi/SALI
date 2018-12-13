@@ -24,18 +24,18 @@ function Dropify(element, options) {
         errorsPosition: 'overlay',
         allowedFormats: ['portrait', 'square', 'landscape'],
         messages: {
-            'default': 'Drag and drop a file here or click',
-            'replace': 'Drag and drop or click to replace',
-            'remove':  'Remove',
-            'error':   'Ooops, something wrong appended.'
+            'default': 'Arraste um ficheiro ou clique',
+            'replace': 'Arraste um ficheiro ou clique para substituir',
+            'remove':  'Remover',
+            'error':   'Ooops, algo invulgar aconteceu'
         },
         error: {
-            'fileSize': 'The file size is too big ({{ value }} max).',
+            'fileSize': 'A imagem é demasiado grande ({{ value }} maximo).',
             'minWidth': 'The image width is too small ({{ value }}}px min).',
             'maxWidth': 'The image width is too big ({{ value }}}px max).',
             'minHeight': 'The image height is too small ({{ value }}}px min).',
             'maxHeight': 'The image height is too big ({{ value }}px max).',
-            'imageFormat': 'The image format is not allowed ({{ value }} only).'
+            'imageFormat': 'Esse formato não é suportado ({{ value }} apenas.).'
         },
         tpl: {
             wrap:            '<div class="dropify-wrapper"></div>',
@@ -268,7 +268,7 @@ Dropify.prototype.setPreview = function(src)
 
     if (this.isImage() === true) {
         var imgTag = $('<img />').attr('src', src);
-        
+
         if (this.settings.height) {
             imgTag.css("max-height", this.settings.height);
         }
@@ -608,4 +608,3 @@ $.fn[pluginName] = function(options) {
 
     return this;
 };
-
