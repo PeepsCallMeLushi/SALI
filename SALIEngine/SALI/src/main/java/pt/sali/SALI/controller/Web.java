@@ -75,7 +75,7 @@ public class Web {
 			return "pages-error-403.html";
 	}
 	
-// LOGIN ///////////////////////////////////////////////////////////////
+	// LOGIN ///////////////////////////////////////////////////////////////
 	@GetMapping("/authentication/login")
 	public String login (Model m,@RequestParam(value="erro",defaultValue="0") String erro) {
 		if(erro.equals("1")) {
@@ -268,7 +268,7 @@ public class Web {
 		if (ffarmaco.deleteFarmaco(id, tok)) {	// SUCESSO
 			return "redirect:/listFarmaco?tok="+tok+"&erro=11";
 		}else {
-		return "pages-error-403.html";		// TOKEN NÃO PRESENTE
+			return "pages-error-403.html";		// TOKEN NÃO PRESENTE
 		}
 	}
 	// FARMACO /////////////////////////////////////////////////////////////
@@ -389,10 +389,10 @@ public class Web {
 		if(fsintoma.listarSintoma(tok)==null) {
 			return "pages-error-403.html"; //Erro Token
 		}else {																
-		m.addAttribute("incidentes", fsintoma.listarSintoma(tok));				
-		m.addAttribute("user",futilizador.UTbyToken(tok));
-		m.addAttribute("tok",tok);
-		return "listaIncidente.html";
+			m.addAttribute("incidentes", fsintoma.listarSintoma(tok));				
+			m.addAttribute("user",futilizador.UTbyToken(tok));
+			m.addAttribute("tok",tok);
+			return "listaIncidente.html";
 		}
 	}																	
 																		

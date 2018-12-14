@@ -35,11 +35,8 @@ public class FUtilizador {
 			if (isEqual) {
 				return 2;
 			} else {
-				/*Define o username e a password por default para a cedula inserida*/
 				Login log = new Login(u.getIdentificador(), u.getIdentificador());
 				u.setLogin(log);
-				/***************/
-
 				iUtilizador.save(u);
 				return 1;
 			}
@@ -147,6 +144,7 @@ public class FUtilizador {
 		}
 		return false;
 	}
+	
 	public boolean changeEstadoUtilizador (String id, String tok) {
 
 		Optional<Utilizador> ut = iUtilizador.findByTokenRestTokenName(tok);

@@ -14,5 +14,4 @@ public interface IUtilizador extends MongoRepository<Utilizador, String> {
 	Optional<Utilizador> findById(String id);
 	Optional<Utilizador> findByLoginLogin(String user);
 	Optional<Utilizador> findByLoginPassword(String pass);
-
 }

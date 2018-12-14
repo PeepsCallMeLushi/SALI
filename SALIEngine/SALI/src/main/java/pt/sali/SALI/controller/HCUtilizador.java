@@ -35,8 +35,6 @@ public class HCUtilizador {
 	
 	@Autowired
 	FileHandler Filehandler;
-	
-	
 	@Autowired
 	FUtilizador futilizador;
 	@Autowired
@@ -49,7 +47,6 @@ public class HCUtilizador {
 		UploadFileResponse u = Filehandler.saveFile(file);
 		return u;		
 	}
-	
 
 	@GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
@@ -74,7 +71,6 @@ public class HCUtilizador {
                 .header(HttpHeaders.ACCEPT, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
-	
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addUtilizador(@RequestBody Utilizador u, @RequestParam ("tok") String tok) {
