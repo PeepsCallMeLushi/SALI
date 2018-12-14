@@ -175,12 +175,24 @@ public class HCUtilizador {
 		
 		Role enf = new Role("Enfermeiro");
 		Role med = new Role("Médico");
-		Role it = new Role("IT");
+//		Role it = new Role("IT");
 		
 		iUtilizador.save(new Utilizador("José", enf, "11", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("11", "11"), "", false, "Ativo"));
-		iUtilizador.save(new Utilizador("Sara", enf, "22", new Token("1", 1), new Token("1", 1), "Pensos", new Login("22", "22"), "", false,"Ativo"));
-		iUtilizador.save(new Utilizador("Sérgio", med, "33", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("33", "33"), "", false,"Ativo"));
-		iUtilizador.save(new Utilizador("Bernardo", med, "44", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("44", "44"), "", false,"Ativo"));
-		iUtilizador.save(new Utilizador("Gonçalo", it, "55", new Token("1", 1), new Token("1", 1), "Cromo", new Login("55", "55"), "", false,"Ativo"));
+		iUtilizador.save(new Utilizador("Sara", enf, "22", new Token("1", 1), new Token("1", 1), "Pensos", new Login("22", "22"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("Sérgio", med, "33", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("33", "33"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("Bernardo", med, "44", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("44", "44"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("Gonçalo", enf, "55", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("55", "55"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Nilton", enf, "66", new Token("1", 1), new Token("1", 1), "Pensos", new Login("66", "66"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Mirante", enf, "77", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("77", "77"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Vilares", enf, "88", new Token("1", 1), new Token("1", 1), "Pensos", new Login("88", "88"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Maravilha", enf, "99", new Token("1", 1), new Token("1", 1), "Pensos", new Login("99", "99"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Lobo", enf, "aa", new Token("1", 1), new Token("1", 1), "Pensos", new Login("aa", "aa"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Rebelo", med, "bb", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("bb", "bb"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Vlad", med, "cc", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("cc", "cc"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Diogo", med, "dd", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("dd", "dd"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Hugo", med, "ee", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("ee", "ee"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Ana", med, "ff", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("ff", "ff"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Quaresma", med, "gg", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("gg", "gg"), "", true, "Ativo"));
+		iUtilizador.save(new Utilizador("Vicente", enf, "hh", new Token("1", 1), new Token("1", 1), "Pensos", new Login("hh", "hh"), "", true, "Ativo"));
 	}
 }
