@@ -38,7 +38,6 @@ public class FUtilizador {
 				/*Define o username e a password por default para a cedula inserida*/
 				Login log = new Login(u.getIdentificador(), u.getIdentificador());
 				u.setLogin(log);
-				u.setEstado("Ativo");
 				/***************/
 
 				iUtilizador.save(u);
