@@ -6,9 +6,9 @@ File: scss
 */
 
 @import '../variable';
-$themecolor: #009efb;
+$themecolor: #00AB99;
 $themecolor-dark: #028ee1;
-$topbar: #009efb;
+$topbar: #00AB99;
 $sidebar:#272c33;
 $sidebar-text: #798699;
 $sidebar-icons: #798699;
@@ -21,7 +21,7 @@ $topbar-alt: #272c33;
 
 .topbar {
     background: $topbar;
-    
+
     .top-navbar .navbar-header .navbar-brand .dark-logo{
         display: none;
     }
@@ -150,7 +150,7 @@ a.link {
 .mini-sidebar .sidebar-nav #sidebarnav>li>ul{
         background: $sidebar-dark;
     }
-}    
+}
 .sidebar-nav {
     background: $sidebar;
 }
@@ -162,14 +162,14 @@ a.link {
 }
 
 .label-themecolor{
-    background:$themecolor; 
+    background:$themecolor;
 }
 
 .sidebar-nav>ul>li.active>a {
     color: $themecolor;
     border-color: $themecolor;
     i {
-       color: $themecolor; 
+       color: $themecolor;
     }
 }
 
@@ -179,7 +179,7 @@ a.link {
       color: $themecolor;
       i {
         color: $themecolor;
-      }    
+      }
     }
 }
 

@@ -104,7 +104,7 @@ public class Web {
 		futilizador.logoutSpring(tok);
 		return "redirect:/authentication/login?erro=19";
     }
-    // LOGIN ///////////////////////////////////////////////////////////////
+	// LOGIN ///////////////////////////////////////////////////////////////
 		
 	
 	// UTILIZADORES ////////////////////////////////////////////////////////
@@ -112,6 +112,7 @@ public class Web {
 	public String formADD (Model m, Utilizador u,
 			@RequestParam("tok") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
+		
 		if(erro.equals("2")) {
 			m.addAttribute("mensagemaviso","Utilizador já registado");
 		}else if(erro.equals("10")) {
@@ -313,7 +314,7 @@ public class Web {
 	
 	
 	// ROLE //////////////////////////////////////////////////////////////
-	@GetMapping("/addRole")													
+	/*@GetMapping("/addRole")													
 	public String addRole (Model m, String tok, Role r) {     			
 																		
 		m.addAttribute("", frole.saveRole(r, tok));						
@@ -343,7 +344,7 @@ public class Web {
 		m.addAttribute("", frole.deleteRole(id, tok));					
 																		
 		return ".html";													
-	}																	
+	}							*/										
 	// ROLE //////////////////////////////////////////////////////////////
 	
 	
@@ -416,11 +417,34 @@ public class Web {
 	
 	// OCORRENCIA ////////////////////////////////////////////////////////
 	@GetMapping("/addOcorrencia")													
-	public String addOcorrencia (Model m, String tok, Ocorrencia o) {   
-																		
-		m.addAttribute("", focorrencia.saveOcorrencia(o, tok));			
-																		
-		return ".html";													
+	public String addOcorrencia (Model m,  
+			@RequestParam("tok") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
+		
+		if (u.isPresent()) {
+			
+			String role = "";
+			if(u.get().getRole().getNome().compareToIgnoreCase("Medico")==0) {
+				role = "Enfermeiro";
+				System.out.println(role);
+			}else {
+				role = "Medico";
+				System.out.println(role);
+			}
+			System.out.println("deu");
+			
+			m.addAttribute("tok",tok);
+			m.addAttribute("user",futilizador.UTbyToken(tok));
+			m.addAttribute("parceiros",futilizador.listarUtilizadorByRole(role, tok));
+			m.addAttribute("freguesias",ffreguesia.listarFreguesia(tok));
+			m.addAttribute("farmacos",ffarmaco.listarFarmaco(tok));
+			
+			return "addOcorrencia.html";
+		}else
+			return "pages-error-403.html";
+		
 	}																	
 																		
 	@GetMapping("/listOcorrencia")													

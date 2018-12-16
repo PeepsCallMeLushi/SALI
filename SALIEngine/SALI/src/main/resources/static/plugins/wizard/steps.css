@@ -169,7 +169,7 @@ File: css
 }
 
 .wizard-content .wizard>.actions>ul>li>a {
-    background: #009efb ;
+    background: #00AB99;
     color: #fff;
     display: block;
     padding: 7px 12px;
@@ -250,8 +250,8 @@ File: css
 }
 
 .wizard-content .wizard.wizard-notification>.steps>ul>li.current .step {
-    border: 2px solid #009efb ;
-    color: #009efb ;
+    border: 2px solid#00AB99;
+    color:#00AB99;
     line-height: 36px
 }
 

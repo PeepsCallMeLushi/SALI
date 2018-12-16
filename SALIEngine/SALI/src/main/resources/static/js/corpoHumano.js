@@ -36,6 +36,10 @@ $("#dropdownMenu3").click(function(){
   $("#costas").toggle();
 });
 
+$("#dropdownMenu4").click(function(){
+  $("#farmacos").toggle();
+});
+
 
 
 $("#all").click(function(){
@@ -105,8 +109,7 @@ $(".all").click(function(){
      }else{
        $(".st0").addClass("xpto");
 
-     }
-
+       }
 });
 
 $("#cabeca").click(function(){
@@ -126,7 +129,7 @@ $(".cabeca").click(function(){
        $(".st1").addClass("xpto");
        $("#cabeca").attr('checked',true);
      }
-      alert($("#cabeca").val());
+      //alert($("#cabeca").val());
 });
 
 $("#pescoco").click(function(){

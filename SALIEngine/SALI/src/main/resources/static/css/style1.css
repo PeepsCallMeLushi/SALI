@@ -14,7 +14,64 @@
   margin-top: 8%;
 }
 
+.margem2 {
+  margin-top: 6%;
+}
 
+
+
+
+.viaturas{
+ margin-left: 15%;
+}
+
+.olhos{
+ margin-left: 9%;
+}
+
+
+
+
+.icon:hover {
+  opacity: 0.10;
+}
+
+.icon{
+  margin: 20%;
+  padding: 25%;
+  width: 125px;
+  height: 125px;
+}
+
+
+.olho:hover {
+  opacity: 0.10;
+}
+
+
+.olho{
+
+  padding: 10%;
+  width: 90px;
+  height: 55px;
+}
+
+
+.gender:hover {
+  opacity: 0.10;
+}
+
+.gender{
+  margin-top: 20%;
+  padding: 25%;
+  width: 85px;
+  height: 85px;
+}
+
+
+.genero{
+margin-left: 50%;
+}
 /*Corpo Humano*/
 .human{
   width: 600px;
@@ -28,7 +85,17 @@
 
 }
 
+.humans{
+  width: 600px;
+  margin:inherit;;
+}
 
+.humans {
+  fill: #23b5a0;
+/*  stroke: #23b5a0;*/
+  stroke-width:1px;
+
+}
 
 .xpto{
   fill: #23b5a0 ;
@@ -112,7 +179,31 @@
   border: 1px silver solid;
 
 }
+
 .scrollable select{
+  border: 10%;
+}
+
+.scrollableS{
+  overflow: auto;
+  width: 400px; /* adjust this width depending to amount of text to display */
+  height: 100px; /* adjust height depending on number of options to display */
+  border: 1px silver solid;
+
+}
+
+.scrollableS select{
+  border: 10%;
+}
+
+.scrollable2{
+  overflow: auto;
+  width: 500px; /* adjust this width depending to amount of text to display */
+  height: 650px; /* adjust height depending on number of options to display */
+  border: 1px silver solid;
+
+}
+.scrollable2 select{
   border: 10%;
 }
 
@@ -137,4 +228,69 @@
   margin-left: 10px;
   font-family: sans-serif;
   color: #fff;
+}
+
+
+.glasgow{
+  margin-top:10%;
+  margin-bottom: 30%;
+  margin-left:30%;
+}
+
+
+.titulos_glasgow{
+  background-color:#00AB99;
+}
+
+.titulo_letra_glasgow{
+  margin-left:37%;
+  color:#fff;
+  padding:3%;
+}
+
+
+.titulo_letra_sintoma{
+  margin-left:27%;
+  color:#fff;
+  padding:3%;
+}
+
+.drop_occorencia{
+  width: 100%;
+  height:36px;
+  background-color: #00AB99;
+  color:#fff;
+}
+
+.drop_occorencia2{
+  background-color: #00AB99;
+  color:#fff;
+}
+
+
+.cor{
+  color:#00AB99;
+}
+.sinais_sintomas{
+   width: 100%;
+   height:36px;
+   background-color: #00AB99;
+   color:#fff;
+}
+
+.idade{
+  margin-top:13.5%;
+}
+
+
+.sub_titulo_pa{
+  margin-left:32.5%;
+  color:#fff;
+  padding:2%;
+}
+
+.sub_titulo_pele{
+  margin-left:42.5%;
+  color:#fff;
+  padding:2%;
 }
