@@ -88,24 +88,24 @@
                                               <th data-hide="phone, tablet">Credencial</th>
                                               <th data-hide="phone, tablet">Role</th>
                                               <th data-hide="phone, tablet">Especialização</th>
-                                              <th data-sort-ignore="true" class="min-width">Delete</th>
+                                              <th data-sort-ignore="true" class="min-width">Ação</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          <tr th:each="user: ${users}">
-                                						<td th:text="${user.nome}"></td>
-                                						<td th:text="${user.identificador}"></td>
-                                						<td><span class="label label-table label-success" style="background-color: #00AB99;" th:text="${user.role.nome}"></span></td>
-                                						<td th:text="${user.especializacao}"></td>
+                                          <tr th:each="us: ${users}">
+                                						<td th:text="${us.nome}"></td>
+                                						<td th:text="${us.identificador}"></td>
+                                						<td><span class="label label-table label-success" style="background-color: #00AB99;" th:text="${us.role.nome}"></span></td>
+                                						<td th:text="${us.especializacao}"></td>
                                             <td>
-                                              <form th:action="@{'/updateUTs?tok='+${tok}}" method="POST">
-                                				          <input type="hidden" name="idusr" th:value="${user.id}">
-                                				          <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-pencil-alt" aria-hidden="true"></i></button>
-                                				       </form>
-                                               <form th:action="@{'/deleteUTs?tok='+${tok}}" method="POST">
-                                 				          <input type="hidden" name="id" th:value="${user.id}">
-                                 				          <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-close" aria-hidden="true"></i></button>
-                                 				       </form>
+                                                  <a th:href="@{'/updateUTs?tok='+${tok}+'&idusr='+${us.id}}"><button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"><i class="ti-pencil-alt" aria-hidden="true"></i></button></a>
+                                              <!-- Isto impede que o user se apaque a ele mesmo-->
+                                               <div th:if="${user.id} != ${us.id}">
+                                                 <form th:action="@{'/deleteUTs?tok='+${tok}}" method="POST">
+                                   				          <input type="hidden" name="id" th:value="${us.id}">
+                                   				          <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" style="color: red;"><i class="ti-close" aria-hidden="true"></i></button>
+                                   				       </form>
+                                               </div>
                                             </td>
                                 					</tr>
                                         </tbody>

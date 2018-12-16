@@ -171,11 +171,11 @@ public class HCUtilizador {
 		
 		Role enf = new Role("Enfermeiro");
 		Role med = new Role("Médico");
-//		Role it = new Role("IT");
+		Role it = new Role("IT");
 		
-		iUtilizador.save(new Utilizador("José", enf, "11", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("11", "11"), "", false, "Ativo"));
-		iUtilizador.save(new Utilizador("Sara", enf, "22", new Token("1", 1), new Token("1", 1), "Pensos", new Login("22", "22"), "", false, "Ativo"));
-		iUtilizador.save(new Utilizador("Sérgio", med, "33", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("33", "33"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("José", it, "11", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("11", "11"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("Sara", it, "22", new Token("1", 1), new Token("1", 1), "Pensos", new Login("22", "22"), "", false, "Ativo"));
+		iUtilizador.save(new Utilizador("Sérgio", it, "33", new Token("1", 1), new Token("1", 1), "Pediatra", new Login("33", "33"), "", false, "Ativo"));
 		iUtilizador.save(new Utilizador("Bernardo", med, "44", new Token("1", 1), new Token("1", 1), "Otorrinolaringologista", new Login("44", "44"), "", false, "Ativo"));
 		iUtilizador.save(new Utilizador("Gonçalo", enf, "55", new Token("1", 1), new Token("1", 1), "Vacinas", new Login("55", "55"), "", true, "Ativo"));
 		iUtilizador.save(new Utilizador("Nilton", enf, "66", new Token("1", 1), new Token("1", 1), "Pensos", new Login("66", "66"), "", true, "Ativo"));

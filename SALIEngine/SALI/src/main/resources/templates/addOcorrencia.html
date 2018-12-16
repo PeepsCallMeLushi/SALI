@@ -98,9 +98,7 @@ var output='';
       output+='    <td><input type="time"  id="" class="form-control required" /></td>';
       output+='    <td><select class=" cor select2 form-control custom-select ">';
       output+='    <option >Seleccione  </option>';
-      output+='        <option value="carinha">A</option>';
-      output+='        <option value="ambulancia">B</option>';
-      output+='        <option value="moto">V</option>';
+      output+='       <option th:each="farm: ${farmacos}" th:value="${farm.id}" th:text="${farm.nome}"></option>';
       output+='    </select>';
       output+='  </td>';
       output+='    <td>';
@@ -202,10 +200,11 @@ var output='';
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-              <!--- FAZER SCRIPT SE FOR MEDICO : VE LISTA DE ENFERMEIROS, SE FOR ENFERMEIRO VE LISTA DE MEDICOS--->
+                                                        <!--- FAZER SCRIPT SE FOR MEDICO : VE LISTA DE ENFERMEIROS, SE FOR ENFERMEIRO VE LISTA DE MEDICOS--->
                                                       <label for="firstName1">Equipa</label>
                                                       <select class="select2 form-control custom-select drop_occorencia">
-                                                            <option th:each="parceiro: ${parceiros}" th:value="${parceiro.id}" th:text="${parceiro.nome}"></option>
+                                                        <option value="" disabled selected>Selecione o seu Parceiro</option>
+                                                        <option th:each="parceiro: ${parceiros}" th:value="${parceiro.id}" th:text="${parceiro.nome}"></option>
                                                       </select>
                                                     </div>
 
@@ -223,17 +222,13 @@ var output='';
                                                     <label for="">Chegada ao Local</label>
                                                     <input type="time" min="1" class="form-control required" >
                                                 </div>
-
-
-
-
-
-                                                </div>
-                                                <div class="col-md-6">
+                                              </div>
+                                              S
+                                              <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstName1">Incidente</label>
                                                   <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                                  <option>Tipo de Incidente</option>
+                                                      <option value="" disabled selected>Selecione o Tipo de Incidente</option>
                                                       <option value="carinha">Veículo 2 rodas</option>
                                                       <option value="ambulancia">Veículo Ligeiro</option>
                                                       <option value="moto">Máquina Industrial</option>
@@ -306,7 +301,7 @@ var output='';
                                                   <div class="margem">
                                                   <div class="form-group">
                                                       <select class="custom-select form-control" id="Location1" name="location">
-                                                          <option value="">Idade em </option>
+                                                          <option value="" disabled selected>Idade em</option>
                                                           <option value="">Dias</option>
                                                           <option value="">Meses</option>
                                                           <option value="">Anos</option>
@@ -314,25 +309,23 @@ var output='';
                                                   </div>
                                                   </div>
 
-                                                  <div class="form-group">
-                                      <!-- BASE DE DADOS  FALTA SCRIPT-->
+                                                  <!-- Falta auto preencher baseado na freguesia-->
+                                                  <!-- <div class="form-group">
                                                     <label for="firstName1">Concelho</label>
                                                     <select class="select2 form-control custom-select"  style="width: 100%; height:36px;">
                                                     <option >Seleccione o Concelho</option>
                                                         <option value="">Setúbal</option>
                                                         <option value="">Barreiro</option>
                                                     </select>
-                                                  </div>
-                                                  <div class="margem">
-                                  <!-- BASE DE DADOS  FALTA SCRIPT-->
+                                                  </div>--->
+
+                                                    <!-- BASE DE DADOS  FALTA SCRIPT-->
                                                   <div class="form-group">
                                                     <label for="firstName1">Freguesia</label>
-                                                    <select class="select2 form-control custom-select"  style="width: 100%; height:36px;">
-                                                    <option >Seleccione a Freguesia</option>
-                                                        <option value="">Santo Antonio</option>
-                                                        <option value="">Vila-cha</option>
+                                                    <select class="select2 form-control custom-select"  name="reguesia" style="width: 100%; height:36px;">
+                                                    <option value="" disabled selected>Selecione uma Freguesia</option>
+                                                    <option th:each="freg: ${freguesias}" th:value="${freg.id}" th:text="${freg.nome}"></option>
                                                     </select>
-                                                  </div>
                                                   </div>
 
                                                 </div>
@@ -581,10 +574,10 @@ var output='';
 
 
                                                                               </div>
-    <!---<div class="form-check">
-       <input type="checkbox" class="form-check-input" id="all">
-       <label class="form-check-label" for="all">Selecciona Tudo</label>
-    </div>-->
+                                                                        <!---<div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="all">
+                                                                           <label class="form-check-label" for="all">Selecciona Tudo</label>
+                                                                        </div>-->
                                                                       </div>
                                                                   </from>
                                                               </div>

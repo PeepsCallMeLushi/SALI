@@ -63,7 +63,8 @@ public class Web {
 	 * */
 	
 	@GetMapping("/")
-	public String home(Model m,@RequestParam (value="tok",defaultValue="0") String tok) {
+	public String home(Model m,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
 		
@@ -99,7 +100,7 @@ public class Web {
 	
 	@GetMapping("/authentication/logout")
 	public String logout (Model m,
-			@RequestParam("tok") String tok) {
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok) {
 		
 		futilizador.logoutSpring(tok);
 		return "redirect:/authentication/login?erro=19";
@@ -109,23 +110,30 @@ public class Web {
 	
 	// UTILIZADORES ////////////////////////////////////////////////////////
 	@GetMapping("/addUT")
-	public String formADD (Model m, Utilizador u,
-			@RequestParam("tok") String tok,
+	public String formADD (Model m,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
-		if(erro.equals("2")) {
-			m.addAttribute("mensagemaviso","Utilizador já registado");
-		}else if(erro.equals("10")) {
-			m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
-		}
-		m.addAttribute("tok",tok);
-		m.addAttribute("user",futilizador.UTbyToken(tok));
-		m.addAttribute("roles",frole.listarRole(tok));
-		return "adduser.html";
+		Utilizador u = futilizador.UTbyToken(tok);
+		
+		if (u != null) {
+			if(erro.equals("2")) {
+				m.addAttribute("mensagemaviso","Utilizador já registado");
+			}else if(erro.equals("10")) {
+				m.addAttribute("mensagemsucess","Utilizador registado com sucesso !");
+			}
+			m.addAttribute("tok",tok);
+			m.addAttribute("user",u);
+			m.addAttribute("roles",frole.listarRole(tok));
+			return "adduser.html";
+		}else
+			return "pages-error-403.html";
+		
+		
 	}
 	
 	@PostMapping("/addUT/add")
-	public String addUT (@RequestParam("tok") String tok,
+	public String addUT (@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@ModelAttribute("user") Utilizador u,
 			Model m,
 			@RequestParam("file") MultipartFile img) {
@@ -147,7 +155,8 @@ public class Web {
 	}
 	
 	@GetMapping("/listUTs")
-	public String listUTs (Model m, @RequestParam("tok") String tok,
+	public String listUTs (Model m, 
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		m.addAttribute("tok",tok);
 		m.addAttribute("user",futilizador.UTbyToken(tok));
@@ -167,10 +176,10 @@ public class Web {
 	}
 
 	
-	@PostMapping("/updateUTs")
-	public String updateUTs (Model m,  @RequestParam("tok") String tok,
+	@GetMapping("/updateUTs")
+	public String updateUTs (Model m,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam("idusr") String id) {
-		
 		
 		
 		Utilizador user = futilizador.listarUTbyId(id, tok);
@@ -194,7 +203,7 @@ public class Web {
 	@PostMapping("/updateUTs/update")
 	public String updateUT (Model m,
 			@ModelAttribute("user") Utilizador u,
-			@RequestParam("tok") String tok) {
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok) {
 		
 		/*Isto á partida matem o login e password do user*/
 		Utilizador modelo = futilizador.listarUTbyId(u.getId(), tok);
@@ -209,7 +218,8 @@ public class Web {
 	}
 	
 	@PostMapping("/deleteUTs")
-	public String deleteUTs (Model m,  @RequestParam("tok") String tok,
+	public String deleteUTs (Model m, 
+		@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 		@RequestParam("id") String id) {
 		
 		if(futilizador.deleteUtilizador(id, tok)) {
@@ -226,7 +236,7 @@ public class Web {
 	// FARMACO /////////////////////////////////////////////////////////////
 	@PostMapping("/addFarmaco")
 	public String addFarmaco (@ModelAttribute("farmaco") Farmaco f,
-			@RequestParam("tok") String tok) {
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok) {
 		
 		int awnser =  ffarmaco.saveFarmaco(f, tok);
 			
@@ -240,7 +250,7 @@ public class Web {
 	
 	@GetMapping("/listFarmaco")
 	public String listFarmaco (Model m,  
-			@RequestParam("tok") String tok,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
 		m.addAttribute("tok",tok);
@@ -263,7 +273,7 @@ public class Web {
 		
 	@PostMapping("/deleteFarmaco")
 	public String deleteFarmaco (Model m,
-			@RequestParam("tok") String tok,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam("id") String id) {
 				
 		if (ffarmaco.deleteFarmaco(id, tok)) {	// SUCESSO
@@ -351,24 +361,31 @@ public class Web {
 	// INCIDENTE  ///////////////////////////////////////////////////////////
 	@GetMapping("/addSintoma")												
 	public String addSintoma (Model m,  
-			@RequestParam("tok") String tok,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
-		if(erro.equals("2")) {
-			m.addAttribute("mensagemaviso","Sintoma já registado");
-		}else if(erro.equals("10")) {
-			m.addAttribute("mensagemsucess","Sintoma registado com sucesso !");
-		}
+		Utilizador u = futilizador.UTbyToken(tok);
 		
-		m.addAttribute("tok",tok);
-		m.addAttribute("user",futilizador.UTbyToken(tok));
-																		
-		return "inserirIncidente.html";													
+		if (u != null) {
+			if(erro.equals("2")) {
+				m.addAttribute("mensagemaviso","Incidente já se encotnra registado");
+			}else if(erro.equals("10")) {
+				m.addAttribute("mensagemsucess","Incidente registado com sucesso !");
+			}
+			
+			m.addAttribute("tok",tok);
+			m.addAttribute("user",u);
+																			
+			return "inserirIncidente.html";
+		}else
+			return "pages-error-403.html";
+		
+		
 	}
 	
 	@PostMapping("/addSintoma/add")												
 	public String addS(Model m,
-			@RequestParam("tok") String tok,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@ModelAttribute("sintoma") Sintoma s) {
 		
 		int reposta = fsintoma.saveSintoma(s, tok);
@@ -385,11 +402,15 @@ public class Web {
 																		
 	@GetMapping("/listSintoma")													
 	public String listSintoma (Model m,
-			@RequestParam("tok") String tok) {
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
 		if(fsintoma.listarSintoma(tok)==null) {
 			return "pages-error-403.html"; //Erro Token
-		}else {																
+		}else {
+			if (erro.equals("11")) {
+				m.addAttribute("mensagemsucess","Incidente removido com sucesso !");
+			}
 			m.addAttribute("incidentes", fsintoma.listarSintoma(tok));				
 			m.addAttribute("user",futilizador.UTbyToken(tok));
 			m.addAttribute("tok",tok);
@@ -397,20 +418,25 @@ public class Web {
 		}
 	}																	
 																		
-	@GetMapping("/updateSintoma")													
+	/*@GetMapping("/updateSintoma")													
 	public String updateSintoma (Model m, String tok, Sintoma s) {		
 																		
 		m.addAttribute("", fsintoma.updateSintoma(s, tok));				
 																		
 		return ".html";													
-	}																	
+	}*/																	
 																		
-	@GetMapping("/deleteSintoma")													
-	public String deleteSintoma (Model m, String tok, String id) {		
-																		
-		m.addAttribute("", fsintoma.deleteSintoma(id, tok));				
-																		
-		return ".html";													
+	@PostMapping("/deleteSintoma")													
+	public String deleteSintoma (Model m,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
+			@RequestParam("id") String id) {
+		
+		if (fsintoma.deleteSintoma(id, tok)) {	// SUCESSO
+			return "redirect:/listSintoma?tok="+tok+"&erro=11";
+		}else {
+			return "pages-error-403.html";		// TOKEN NÃO PRESENTE
+		}
+																												
 	}																	
 	// INCIDENTE ///////////////////////////////////////////////////////////
 	
@@ -418,22 +444,19 @@ public class Web {
 	// OCORRENCIA ////////////////////////////////////////////////////////
 	@GetMapping("/addOcorrencia")													
 	public String addOcorrencia (Model m,  
-			@RequestParam("tok") String tok,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
 			@RequestParam(value="erro",defaultValue="0") String erro) {
 		
 		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
 		
-		if (u.isPresent()) {
+		if ( u.isPresent()) {
 			
 			String role = "";
-			if(u.get().getRole().getNome().compareToIgnoreCase("Medico")==0) {
+			if(u.get().getRole().getNome().compareToIgnoreCase("Médico")==0) {
 				role = "Enfermeiro";
-				System.out.println(role);
 			}else {
-				role = "Medico";
-				System.out.println(role);
+				role = "Médico";
 			}
-			System.out.println("deu");
 			
 			m.addAttribute("tok",tok);
 			m.addAttribute("user",futilizador.UTbyToken(tok));
@@ -448,11 +471,11 @@ public class Web {
 	}																	
 																		
 	@GetMapping("/listOcorrencia")													
-	public String listOcorrencia (Model m, String tok) {				
+	public String listOcorrencia (Model m, @RequestParam("tok") String tok) {				
 																		
-		m.addAttribute("", focorrencia.listarOcorrencia(tok));			
+		m.addAttribute("ocorrencias", focorrencia.listarOcorrencia(tok));			
 																		
-		return ".html";													
+		return ".html";		
 	}																	
 																		
 	@GetMapping("/updateOcorrencia")													

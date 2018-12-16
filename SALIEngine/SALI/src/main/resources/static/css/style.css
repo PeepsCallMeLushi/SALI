@@ -54,7 +54,7 @@ a.link {
 }
 
 a.link:focus, a.link:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .img-responsive {
@@ -135,7 +135,7 @@ html body .db {
 }
 
 html body blockquote {
-  border-left: 5px solid #1976d2;
+  border-left: 5px solid #00897b;
   border: 1px solid rgba(120, 130, 140, 0.13);
   padding: 15px
 }
@@ -468,7 +468,7 @@ html body .b-all {
 }
 
 .text-info {
-  color: #1976d2 !important
+  color: #00897b !important
 }
 
 .text-inverse {
@@ -496,7 +496,7 @@ html body .text-dark {
 }
 
 html body .text-themecolor {
-  color: #1976d2
+  color: #00897b
 }
 
 .bg-primary {
@@ -508,7 +508,7 @@ html body .text-themecolor {
 }
 
 .bg-info {
-  background-color: #1976d2 !important
+  background-color: #00897b !important
 }
 
 .bg-warning {
@@ -524,7 +524,7 @@ html body .bg-megna {
 }
 
 html body .bg-theme {
-  background-color: #1976d2
+  background-color: #00897b
 }
 
 html body .bg-inverse {
@@ -584,7 +584,7 @@ html body .bg-white {
   font-weight: 400;
   text-align: center;
   border-radius: 100%;
-  background: #1976d2
+  background: #00897b
 }
 
 .round img {
@@ -599,7 +599,7 @@ html body .bg-white {
 }
 
 .round.round-info {
-  background: #1976d2
+  background: #00897b
 }
 
 .round.round-warning {
@@ -640,7 +640,7 @@ html body .bg-white {
 }
 
 .label-info {
-  background-color: #1976d2
+  background-color: #00897b
 }
 
 .label-warning {
@@ -686,7 +686,7 @@ html body .bg-white {
 
 .label-light-info {
   background-color: #cfecfe;
-  color: #1976d2
+  color: #00897b
 }
 
 .label-light-warning {
@@ -749,8 +749,8 @@ html body .bg-white {
 }
 
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-  background-color: #1976d2;
-  border-color: #1976d2
+  background-color: #00897b;
+  border-color: #00897b
 }
 
 .pager li>a, .pager li>span {
@@ -934,7 +934,7 @@ html body .waves-notransition {
 }
 
 .badge-info {
-  background-color: #1976d2
+  background-color: #00897b
 }
 
 .badge-primary {
@@ -1105,15 +1105,15 @@ html body .waves-notransition {
 }
 
 .btn-themecolor, .btn-themecolor.disabled {
-  background: #1976d2;
+  background: #00897b;
   color: #ffffff;
-  border: 1px solid #1976d2
+  border: 1px solid #00897b
 }
 
 .btn-themecolor.disabled:hover, .btn-themecolor:hover {
-  background: #1976d2;
+  background: #00897b;
   opacity: 0.7;
-  border: 1px solid #1976d2
+  border: 1px solid #00897b
 }
 
 .btn-themecolor.active, .btn-themecolor.disabled.active, .btn-themecolor.disabled:active, .btn-themecolor.disabled:focus, .btn-themecolor:active, .btn-themecolor:focus {
@@ -1144,8 +1144,8 @@ html body .waves-notransition {
 }
 
 .btn-info, .btn-info.disabled {
-  background: #1976d2;
-  border: 1px solid #1976d2;
+  background: #00897b;
+  border: 1px solid #00897b;
   -webkit-box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
   box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
   -webkit-transition: 0.2s ease-in;
@@ -1154,8 +1154,8 @@ html body .waves-notransition {
 }
 
 .btn-info.disabled:hover, .btn-info:hover {
-  background: #1976d2;
-  border: 1px solid #1976d2;
+  background: #00897b;
+  border: 1px solid #00897b;
   -webkit-box-shadow: 0 14px 26px -12px rgba(23, 105, 255, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(23, 105, 255, 0.2);
   box-shadow: 0 14px 26px -12px rgba(23, 105, 255, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(23, 105, 255, 0.2)
 }
@@ -1320,9 +1320,9 @@ html body .waves-notransition {
 }
 
 .btn-outline-info {
-  color: #1976d2;
+  color: #00897b;
   background-color: transparent;
-  border-color: #1976d2;
+  border-color: #00897b;
   -webkit-box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
   box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
   -webkit-transition: 0.2s ease-in;
@@ -1331,8 +1331,8 @@ html body .waves-notransition {
 }
 
 .btn-outline-info.focus, .btn-outline-info:focus, .btn-outline-info:hover {
-  background: #1976d2;
-  border-color: #1976d2;
+  background: #00897b;
+  border-color: #00897b;
   color: #ffffff;
   -webkit-box-shadow: 0 14px 26px -12px rgba(23, 105, 255, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(23, 105, 255, 0.2);
   box-shadow: 0 14px 26px -12px rgba(23, 105, 255, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(23, 105, 255, 0.2)
@@ -1702,7 +1702,7 @@ ul.list-style-none li a {
 }
 
 ul.list-style-none li a:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .dropdown-item {
@@ -1918,8 +1918,11 @@ form label {
 }
 
 .topbar .profile-pic {
-  width: 30px;
-  border-radius: 100%
+  /*object-fit: none;*/ /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  width: 35px;
+  border-radius: 100%;
+  height: 35px;
 }
 
 .topbar .dropdown-menu {
@@ -1962,8 +1965,9 @@ form label {
 }
 
 .topbar ul.dropdown-user li .dw-user-box .u-img img {
-  width: 100%;
-  border-radius: 5px
+  width: 75px;
+  border-radius: 100px;
+  height: 75px;
 }
 
 .topbar ul.dropdown-user li .dw-user-box .u-text {
@@ -1999,7 +2003,7 @@ form label {
 
 .topbar ul.dropdown-user li a:hover {
   background: #f2f4f8;
-  color: #1976d2;
+  color: #00897b;
   text-decoration: none
 }
 
@@ -2174,7 +2178,7 @@ form label {
   color: #ffffff;
   text-transform: uppercase;
   font-size: 15px;
-  background: #1976d2
+  background: #00897b
 }
 
 .right-sidebar .rpanel-title span {
@@ -2280,7 +2284,7 @@ ul#themecolors li a.working:before {
 }
 
 .blue-theme {
-  background: #1976d2
+  background: #00897b
 }
 
 .purple-theme {
@@ -2321,11 +2325,11 @@ ul#themecolors li a.working:before {
 
 .blue-dark-theme {
   background: #263238;
-  background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #1976d2 23%, #1976d2 99%);
-  background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #1976d2 23%, #1976d2 99%);
-  background: -webkit-gradient(linear, left top, right top, from(#263238), color-stop(23%, #263238), color-stop(23%, #1976d2), color-stop(99%, #1976d2));
-  background: -o-linear-gradient(left, #263238 0%, #263238 23%, #1976d2 23%, #1976d2 99%);
-  background: linear-gradient(to right, #263238 0%, #263238 23%, #1976d2 23%, #1976d2 99%)
+  background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #00897b 23%, #00897b 99%);
+  background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #00897b 23%, #00897b 99%);
+  background: -webkit-gradient(linear, left top, right top, from(#263238), color-stop(23%, #263238), color-stop(23%, #00897b), color-stop(99%, #00897b));
+  background: -o-linear-gradient(left, #263238 0%, #263238 23%, #00897b 23%, #00897b 99%);
+  background: linear-gradient(to right, #263238 0%, #263238 23%, #00897b 23%, #00897b 99%)
 }
 
 .purple-dark-theme {
@@ -2401,8 +2405,8 @@ ul#themecolors li a.working:before {
 }
 
 .card-info {
-  background: #1976d2;
-  border-color: #1976d2
+  background: #00897b;
+  border-color: #00897b
 }
 
 .card-primary {
@@ -2469,8 +2473,8 @@ ul#themecolors li a.working:before {
 }
 
 .card-info {
-  background: #1976d2;
-  border-color: #1976d2
+  background: #00897b;
+  border-color: #00897b
 }
 
 .card-primary {
@@ -2479,12 +2483,12 @@ ul#themecolors li a.working:before {
 }
 
 .card-outline-info {
-  border-color: #1976d2
+  border-color: #00897b
 }
 
 .card-outline-info .card-header {
-  background: #1976d2;
-  border-color: #1976d2
+  background: #00897b;
+  border-color: #00897b
 }
 
 .card-outline-inverse {
@@ -2567,7 +2571,7 @@ ul.list-icons li a {
 }
 
 ul.list-icons li a:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 ul.list-icons li i {
@@ -2687,7 +2691,7 @@ body .jqstooltip {
 }
 
 .amp-pxl .ct-series-a .ct-bar {
-  stroke: #1976d2
+  stroke: #00897b
 }
 
 .amp-pxl .ct-series-b .ct-bar {
@@ -2716,7 +2720,7 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .stylish-table tbody tr.active, .stylish-table tbody tr:hover {
-  border-left: 4px solid #1976d2
+  border-left: 4px solid #00897b
 }
 
 .stylish-table tbody td {
@@ -2749,12 +2753,12 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .campaign .ct-series-b .ct-area {
-  fill: #1976d2;
+  fill: #00897b;
   fill-opacity: 0.1
 }
 
 .campaign .ct-series-b .ct-line, .campaign .ct-series-b .ct-point {
-  stroke: #1976d2;
+  stroke: #00897b;
   stroke-width: 2px
 }
 
@@ -2773,12 +2777,12 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .campaign2 .ct-series-b .ct-area {
-  fill: #1976d2;
+  fill: #00897b;
   fill-opacity: 0.1
 }
 
 .campaign2 .ct-series-b .ct-line, .campaign2 .ct-series-b .ct-point {
-  stroke: #1976d2;
+  stroke: #00897b;
   stroke-width: 2px
 }
 
@@ -2800,7 +2804,7 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .total-sales .ct-series-a .ct-bar {
-  stroke: #1976d2
+  stroke: #00897b
 }
 
 .total-sales .ct-series-b .ct-bar {
@@ -2824,7 +2828,7 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .ct-chart .ct-series-c .ct-slice-donut {
-  stroke: #1976d2
+  stroke: #00897b
 }
 
 #visitfromworld path.jvectormap-region.jvectormap-element {
@@ -2860,12 +2864,12 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .total-revenue4 .ct-series-a .ct-line {
-  stroke: #1976d2;
+  stroke: #00897b;
   stroke-width: 1px
 }
 
 .total-revenue4 .ct-series-a .ct-point {
-  stroke: #1976d2;
+  stroke: #00897b;
   stroke-width: 5px
 }
 
@@ -2880,7 +2884,7 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .total-revenue4 .ct-series-a .ct-area {
-  fill: #1976d2;
+  fill: #00897b;
   fill-opacity: 0.2
 }
 
@@ -3005,12 +3009,12 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .customtab li a.nav-link.active, .profile-tab li a.nav-link.active {
-  border-bottom: 2px solid #1976d2;
-  color: #1976d2
+  border-bottom: 2px solid #00897b;
+  color: #00897b
 }
 
 .customtab li a.nav-link:hover, .profile-tab li a.nav-link:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
@@ -3028,7 +3032,7 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .bootstrap-select .dropdown-menu li a:focus, .bootstrap-select .dropdown-menu li a:hover {
-  color: #1976d2;
+  color: #00897b;
   background: #f2f4f8
 }
 
@@ -3077,10 +3081,10 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .form-material .form-control, .form-material .form-control.focus, .form-material .form-control:focus {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(rgba(120, 130, 140, 0.13)), to(rgba(120, 130, 140, 0.13)));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(rgba(120, 130, 140, 0.13)), to(rgba(120, 130, 140, 0.13)));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
   border: 0 none;
   border-radius: 0;
   -webkit-box-shadow: none;
@@ -3108,7 +3112,7 @@ html body #visitor .c3-chart-arcs-title {
 }
 
 .form-control-line .form-control:focus {
-  border-bottom: 1px solid #1976d2
+  border-bottom: 1px solid #00897b
 }
 
 .floating-labels .form-group {
@@ -3178,7 +3182,7 @@ html body #visitor .c3-chart-arcs-title {
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #1976d2;
+  background: #00897b;
   -o-transition: 0.2s ease all;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
@@ -3331,11 +3335,11 @@ table th {
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-  background-color: #1976d2
+  background-color: #00897b
 }
 
 .datepicker table tr td.today, .datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:hover, .datepicker table tr td.today:hover {
-  background: #1976d2;
+  background: #00897b;
   color: #ffffff
 }
 
@@ -3379,7 +3383,7 @@ table th {
 }
 
 .icolors>li.info {
-  background: #1976d2
+  background: #00897b
 }
 
 .icolors>li.green {
@@ -3448,7 +3452,7 @@ table th {
 }
 
 .color-table.info-table thead th {
-  background-color: #1976d2;
+  background-color: #00897b;
   color: #ffffff
 }
 
@@ -3506,11 +3510,11 @@ table th {
 }
 
 .color-bordered-table.info-bordered-table {
-  border: 2px solid #1976d2
+  border: 2px solid #00897b
 }
 
 .color-bordered-table.info-bordered-table thead th {
-  background-color: #1976d2;
+  background-color: #00897b;
   color: #ffffff
 }
 
@@ -3620,7 +3624,7 @@ table th {
 }
 
 .full-color-table.full-info-table thead th {
-  background-color: #1976d2;
+  background-color: #00897b;
   border: 0;
   color: #ffffff
 }
@@ -3630,7 +3634,7 @@ table th {
 }
 
 .full-color-table.full-info-table tr:hover {
-  background-color: #1976d2;
+  background-color: #00897b;
   color: #ffffff
 }
 
@@ -3781,7 +3785,7 @@ table th {
 .dt-buttons .dt-button {
   padding: 5px 15px;
   border-radius: 4px;
-  background: #1976d2;
+  background: #00897b;
   color: #ffffff;
   margin-right: 3px
 }
@@ -3800,10 +3804,10 @@ table th {
 
 .dataTables_length select {
   border: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -3816,10 +3820,10 @@ table th {
 
 .dataTables_length select:focus {
   outline: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 100% 2px, 100% 1px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3835,10 +3839,10 @@ table th {
 
 .dataTables_filter input {
   border: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -3855,10 +3859,10 @@ table th {
 
 .dataTables_filter input:focus {
   outline: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 100% 2px, 100% 1px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3915,8 +3919,8 @@ table.dataTable thead .sorting:after {
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
   color: #ffffff !important;
-  border: 1px solid #1976d2;
-  background-color: #1976d2
+  border: 1px solid #00897b;
+  background-color: #00897b
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
@@ -3930,8 +3934,8 @@ table.dataTable thead .sorting:after {
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   color: white;
-  border: 1px solid #1976d2;
-  background-color: #1976d2
+  border: 1px solid #00897b;
+  background-color: #00897b
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {
@@ -3966,16 +3970,16 @@ table.dataTable thead .sorting:after {
 }
 
 .paging_simple_numbers .pagination .paginate_button.active a, .paging_simple_numbers .pagination .paginate_button:hover a {
-  background: #1976d2;
+  background: #00897b;
   color: #ffffff
 }
 
 #demo-show-entries {
   border: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -3989,10 +3993,10 @@ table.dataTable thead .sorting:after {
 
 #demo-show-entries:focus {
   outline: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 100% 2px, 100% 1px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -4003,10 +4007,10 @@ table.dataTable thead .sorting:after {
 
 #demo-input-search2 {
   border: 0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -4024,10 +4028,10 @@ table.dataTable thead .sorting:after {
 
 #demo-input-search2:focus {
   outline: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(#b1b8bb, #b1b8bb);
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(#b1b8bb), to(#b1b8bb));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 100% 2px, 100% 1px;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -4153,7 +4157,7 @@ table.dataTable thead .sorting:after {
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info {
   color: #ffffff;
-  background: #1976d2
+  background: #00897b
 }
 
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success {
@@ -4258,7 +4262,7 @@ table.dataTable thead .sorting:after {
 }
 
 .dp-selected[style] {
-  background-color: #1976d2 !important
+  background-color: #00897b !important
 }
 
 .datepaginator-lg .pagination li a, .datepaginator-sm .pagination li a, .datepaginator .pagination li a {
@@ -4311,7 +4315,7 @@ table.dataTable thead .sorting:after {
 }
 
 .tabs-vertical li .nav-link.active, .tabs-vertical li .nav-link.active:focus, .tabs-vertical li .nav-link:hover {
-  background: #1976d2;
+  background: #00897b;
   border: 0px;
   color: #ffffff
 }
@@ -4319,9 +4323,9 @@ table.dataTable thead .sorting:after {
 .customvtab .tabs-vertical li .nav-link.active, .customvtab .tabs-vertical li .nav-link:focus, .customvtab .tabs-vertical li .nav-link:hover {
   background: #ffffff;
   border: 0px;
-  border-right: 2px solid #1976d2;
+  border-right: 2px solid #00897b;
   margin-right: -1px;
-  color: #1976d2
+  color: #00897b
 }
 
 .tabcontent-border {
@@ -4336,13 +4340,13 @@ table.dataTable thead .sorting:after {
 }
 
 .customtab2 li a.nav-link.active {
-  background: #1976d2;
+  background: #00897b;
   color: #ffffff
 }
 
 .customtab2 li a.nav-link:hover {
   color: #ffffff;
-  background: #1976d2
+  background: #00897b
 }
 
 .progress-bar.active, .progress.active .progress-bar {
@@ -4395,7 +4399,7 @@ table.dataTable thead .sorting:after {
 }
 
 .jq-icon-info {
-  background-color: #1976d2;
+  background-color: #00897b;
   color: #ffffff
 }
 
@@ -4423,8 +4427,8 @@ table.dataTable thead .sorting:after {
 }
 
 .list-group-item.active, .list-group .list-group-item.active:hover {
-  background: #1976d2;
-  border-color: #1976d2
+  background: #00897b;
+  border-color: #00897b
 }
 
 .list-group-item.disabled {
@@ -4464,7 +4468,7 @@ table.dataTable thead .sorting:after {
 }
 
 .el-element-overlay .el-card-item .el-card-content a:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .el-element-overlay .el-card-item .el-overlay-1 {
@@ -4524,8 +4528,8 @@ table.dataTable thead .sorting:after {
 }
 
 .el-element-overlay .el-card-item .el-overlay-1 .el-info>li a:hover {
-  background: #1976d2;
-  border-color: #1976d2
+  background: #00897b;
+  border-color: #00897b
 }
 
 .el-element-overlay .el-card-item .el-overlay {
@@ -4696,7 +4700,7 @@ table.dataTable thead .sorting:after {
 }
 
 .timeline-badge.info {
-  background-color: #1976d2
+  background-color: #00897b
 }
 
 .timeline-title {
@@ -4715,15 +4719,15 @@ table.dataTable thead .sorting:after {
 
 .cd-horizontal-timeline .events a {
   padding-bottom: 6px;
-  color: #1976d2
+  color: #00897b
 }
 
 .cd-horizontal-timeline .events a.selected:after, .cd-horizontal-timeline .filling-line {
-  background: #1976d2
+  background: #00897b
 }
 
 .cd-horizontal-timeline .events a.selected:after {
-  border-color: #1976d2
+  border-color: #00897b
 }
 
 .myadmin-dd .dd-list .dd-item .dd-handle {
@@ -4902,8 +4906,8 @@ table.dataTable thead .sorting:after {
   height: 0;
   content: '';
   border: 30px solid transparent;
-  border-top-color: #1976d2;
-  border-left-color: #1976d2
+  border-top-color: #00897b;
+  border-left-color: #00897b
 }
 
 .ribbon-corner.ribbon-right:before {
@@ -4933,16 +4937,16 @@ table.dataTable thead .sorting:after {
 }
 
 .ribbon-custom {
-  background: #1976d2
+  background: #00897b
 }
 
 .ribbon-bookmark.ribbon-right.ribbon-custom:before {
-  border-right-color: #1976d2;
+  border-right-color: #00897b;
   border-left-color: transparent
 }
 
 .ribbon-bookmark.ribbon-vertical-l.ribbon-custom:before, .ribbon-bookmark.ribbon-vertical-r.ribbon-custom:before {
-  border-right-color: #1976d2;
+  border-right-color: #00897b;
   border-bottom-color: transparent
 }
 
@@ -5015,37 +5019,37 @@ table.dataTable thead .sorting:after {
 }
 
 .ribbon-info {
-  background: #1976d2
+  background: #00897b
 }
 
 .ribbon-bookmark.ribbon-info:before {
-  border-color: #1976d2;
+  border-color: #00897b;
   border-right-color: transparent
 }
 
 .ribbon-bookmark.ribbon-right.ribbon-info:before {
-  border-right-color: #1976d2;
+  border-right-color: #00897b;
   border-left-color: transparent
 }
 
 .ribbon-bookmark.ribbon-vertical-l.ribbon-info:before, .ribbon-bookmark.ribbon-vertical-r.ribbon-info:before {
-  border-right-color: #1976d2;
+  border-right-color: #00897b;
   border-bottom-color: transparent
 }
 
 .ribbon-info.ribbon-corner:before {
-  border-top-color: #1976d2;
-  border-left-color: #1976d2
+  border-top-color: #00897b;
+  border-left-color: #00897b
 }
 
 .ribbon-info.ribbon-corner.ribbon-right:before {
-  border-right-color: #1976d2;
+  border-right-color: #00897b;
   border-left-color: transparent
 }
 
 .ribbon-info.ribbon-corner.ribbon-bottom:before {
   border-top-color: transparent;
-  border-bottom-color: #1976d2
+  border-bottom-color: #00897b
 }
 
 .ribbon-warning {
@@ -5151,8 +5155,8 @@ table.dataTable thead .sorting:after {
 }
 
 #idletimeout {
-  background: #1976d2;
-  border: 3px solid #1976d2;
+  background: #00897b;
+  border: 3px solid #00897b;
   color: #fff;
   font-family: arial, sans-serif;
   text-align: center;
@@ -5347,7 +5351,7 @@ table.dataTable thead .sorting:after {
   bottom: 100%;
   border-radius: 50%;
   text-align: center;
-  background: #1976d2;
+  background: #00897b;
   color: #ffffff;
   opacity: 0;
   margin-bottom: 20px;
@@ -5526,7 +5530,7 @@ table.dataTable thead .sorting:after {
 }
 
 .tooltip-text3 {
-  border-bottom: 10px solid #1976d2;
+  border-bottom: 10px solid #00897b;
   overflow: hidden;
   -webkit-transform: scale3d(0, 1, 1);
   transform: scale3d(0, 1, 1);
@@ -5559,7 +5563,7 @@ table.dataTable thead .sorting:after {
   position: absolute;
   pointer-events: none;
   border-color: transparent;
-  border-top-color: #1976d2;
+  border-top-color: #00897b;
   border-width: 10px;
   margin-left: -10px
 }
@@ -5618,7 +5622,7 @@ table.dataTable thead .sorting:after {
 
 a.mytooltip {
   font-weight: 500;
-  color: #1976d2
+  color: #00897b
 }
 
 .tooltip-effect-7 .tooltip-content2 {
@@ -5777,7 +5781,7 @@ a.mytooltip {
 }
 
 .search-listing li h3 a {
-  color: #1976d2
+  color: #00897b
 }
 
 .search-listing li h3 a:hover {
@@ -5946,10 +5950,10 @@ a.mytooltip {
 .chat-main-box .chat-left-aside .chat-left-inner .form-control {
   height: 60px;
   padding: 15px;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(rgba(120, 130, 140, 0.13)), to(rgba(120, 130, 140, 0.13)));
-  background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
-  background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13))
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00897b), to(#00897b)), -webkit-gradient(linear, left top, left bottom, from(rgba(120, 130, 140, 0.13)), to(rgba(120, 130, 140, 0.13)));
+  background-image: -webkit-linear-gradient(#00897b, #00897b), -webkit-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+  background-image: -o-linear-gradient(#00897b, #00897b), -o-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+  background-image: linear-gradient(#00897b, #00897b), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13))
 }
 
 .chat-main-box .chat-left-aside .chat-left-inner .style-none {
@@ -6023,7 +6027,7 @@ a.mytooltip {
 
 .inbox-panel .list-group .list-group-item.active, .inbox-panel .list-group .list-group-item:hover {
   background: #f2f4f8;
-  border-left: 3px solid #1976d2
+  border-left: 3px solid #00897b
 }
 
 .inbox-center .unread td {
@@ -6104,7 +6108,7 @@ a.mytooltip {
 }
 
 .list-style-none li a:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .list-style-none li a span {
@@ -6151,12 +6155,12 @@ a.mytooltip {
 }
 
 .jsgrid-pager-nav-button a:hover, .jsgrid-pager-page a:hover {
-  background-color: #1976d2;
+  background-color: #00897b;
   color: #ffffff
 }
 
 .jsgrid-pager-current-page {
-  background-color: #1976d2;
+  background-color: #00897b;
   color: #ffffff
 }
 
@@ -6229,11 +6233,11 @@ a.mytooltip {
 }
 
 .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .sidebar-nav ul li a.active i, .sidebar-nav ul li a:hover i {
-  color: #1976d2
+  color: #00897b
 }
 
 .sidebar-nav ul li a.active {
@@ -6278,12 +6282,12 @@ a.mytooltip {
 }
 
 .sidebar-nav>ul>li.active>a {
-  color: #1976d2;
+  color: #00897b;
   font-weight: 500
 }
 
 .sidebar-nav>ul>li.active>a i {
-  color: #1976d2
+  color: #00897b
 }
 
 .sidebar-nav .has-arrow {
@@ -6338,7 +6342,7 @@ a.mytooltip {
   }
 
   .sidebar-nav>ul>li:hover>a, .sidebar-nav>ul>li:hover>a i {
-    color: #1976d2
+    color: #00897b
   }
 
   .sidebar-nav>ul>li:last-child ul {
@@ -6567,7 +6571,7 @@ a.mytooltip {
 .city-weather-days li i {
   display: block;
   font-size: 20px;
-  color: #1976d2
+  color: #00897b
 }
 
 .city-weather-days li h3 {
@@ -6619,7 +6623,7 @@ a.mytooltip {
 }
 
 .comment-footer .action-icons a.active, .comment-footer .action-icons a:hover {
-  color: #1976d2
+  color: #00897b
 }
 
 .todo-list li {
@@ -6973,7 +6977,7 @@ a.mytooltip {
   margin: 1px -1px 0 -1px;
   padding: 5px 5px;
   text-align: center;
-  background: #1976d2
+  background: #00897b
 }
 
 .calendar-event {
@@ -6984,7 +6988,7 @@ a.mytooltip {
   color: #ffffff;
   min-width: 140px;
   text-align: center;
-  background: #1976d2
+  background: #00897b
 }
 
 .calendar-event a {

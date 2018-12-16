@@ -127,12 +127,25 @@
                                               <div class="tab-pane  p-20" id="infoProfissional" role="tabpanel">
                                                 <div class="form-group">
                                                     <div class="m-b-10">
-                                                      <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">Função:</label>
-                                                        <select class="form-control" name="role.nome">
-                                                          <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${useredit.role.nome}" th:text="${role.nome}"></option>
-                                                        </select>
+                                                      <div th:switch="${user.role.nome}">
+                                                        <div th:case="'IT'">
+                                                          <div class="form-group">
+                                                            <label for="exampleFormControlSelect1">Função:</label>
+                                                            <select class="form-control" name="role.nome">
+                                                              <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${useredit.role.nome}" th:text="${role.nome}"></option>
+                                                            </select>
+                                                          </div>
+                                                        </div>
+                                                        <div th:case="*">
+                                                          <div class="form-group">
+                                                            <label for="exampleFormControlSelect1">Função:</label>
+                                                            <select class="form-control" name="role.nome" readonly>
+                                                              <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${useredit.role.nome}" th:text="${role.nome}"></option>
+                                                            </select>
+                                                          </div>
+                                                        </div>
                                                       </div>
+
                                                     </div>
                                                 </div>
                                                     <div class="row">
