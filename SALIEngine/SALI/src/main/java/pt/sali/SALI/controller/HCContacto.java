@@ -19,6 +19,7 @@ import pt.sali.SALI.service.IContacto;
 @RestController
 @RequestMapping("/Contacto")
 public class HCContacto {
+	
 	@Autowired
 	FContacto fcontacto;
 	@Autowired

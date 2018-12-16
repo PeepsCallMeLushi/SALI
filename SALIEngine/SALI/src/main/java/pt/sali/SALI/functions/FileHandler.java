@@ -30,7 +30,6 @@ public class FileHandler {
 
 	@Autowired
 	FileStorageService FileStorageService;
-
 	
 	public Resource getFileByName(String filename) {
 

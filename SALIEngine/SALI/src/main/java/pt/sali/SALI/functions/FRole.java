@@ -16,7 +16,6 @@ public class FRole {
 
 	@Autowired
 	IRole iRole;
-	
 	@Autowired
 	IUtilizador iUtilizador;
 	

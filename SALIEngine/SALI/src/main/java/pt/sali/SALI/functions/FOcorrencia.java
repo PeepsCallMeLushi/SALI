@@ -71,7 +71,6 @@ public class FOcorrencia {
 		return answer;
 	}
 	
-	// TODO
 	public List<Ocorrencia> dynamicQueryJ(String json, String tok) {
 		
 		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
