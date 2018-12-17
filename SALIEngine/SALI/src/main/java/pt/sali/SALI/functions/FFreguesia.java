@@ -53,6 +53,19 @@ public class FFreguesia {
 		}
 	}
 	
+	public Freguesia listarFreguesiaID (String id, String tok) {
+		
+		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
+		Optional<Utilizador> us = iUtilizador.findByTokenSpringTokenName(tok);
+		Optional<Freguesia> fr = iFreguesia.findById(id);
+		
+		if (ur.isPresent() || us.isPresent()) {
+			return fr.get();
+		}else {
+			return null;
+		}
+	}
+	
 	public boolean updateFreguesia (Freguesia f, String tok) {
 		
 		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
