@@ -32,6 +32,11 @@ public class FOcorrencia {
 		return 0;
 	}
 	
+	/*public void saveOcorrenciaRest (Ocorrencia o) {
+		
+		iOcorrencia.save(o);
+	}*/
+	
 	public List<Ocorrencia> listarOcorrencia (String tok) {
 	
 		Optional<Utilizador> ur = iUtilizador.findByTokenRestTokenName(tok);
