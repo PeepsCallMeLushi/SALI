@@ -1,5 +1,9 @@
 package pt.sali.SALI.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,7 @@ import pt.sali.SALI.functions.FSintoma;
 import pt.sali.SALI.functions.FUtilizador;
 import pt.sali.SALI.functions.FileHandler;
 import pt.sali.SALI.functions.FileHandler.UploadFileResponse;
+import pt.sali.SALI.model.Equipa;
 import pt.sali.SALI.model.Farmaco;
 import pt.sali.SALI.model.Freguesia;
 import pt.sali.SALI.model.Ocorrencia;
@@ -179,12 +184,14 @@ public class Web {
 	@GetMapping("/updateUTs")
 	public String updateUTs (Model m,
 			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro,
 			@RequestParam("idusr") String id) {
 		
 		
 		Utilizador user = futilizador.listarUTbyId(id, tok);
 	
 		if(user == null) {
+			System.out.println("User null");
 			return "pages-error-403.html"; // TOKEN NÃO PRESENTE
 		}else {
 			m.addAttribute("tok",tok);
@@ -196,6 +203,9 @@ public class Web {
 			m.addAttribute("useredit", user);
 			
 			m.addAttribute("roles", frole.listarRole(tok));
+			if(erro.equals("12")) {
+				m.addAttribute("mensagemaviso","Utilizador modificado com sucesso !");
+			}
 			return "edituser.html";		
 		}
 	}
@@ -205,12 +215,16 @@ public class Web {
 			@ModelAttribute("user") Utilizador u,
 			@RequestParam(value="tok", required=false,defaultValue="0") String tok) {
 		
-		/*Isto á partida matem o login e password do user*/
+		/*Isto á partida matem o login e password do user assim como os tokens e fotos*/
 		Utilizador modelo = futilizador.listarUTbyId(u.getId(), tok);
 		u.setLogin(modelo.getLogin());
+		u.setTokenRest(modelo.getTokenRest());
+		u.setTokenSpring(modelo.getTokenSpring());
+		u.setFoto(modelo.getFoto());
+		
 		
 		if(futilizador.updateUtilizador(u, tok)) {
-			return "redirect:/listUTs?tok="+tok+"&erro=12";
+			return "redirect:/updateUTs?tok="+tok+"&erro=12&idusr="+modelo.getId();
 		}else {
 			return "pages-error-403.html";	
 		}
@@ -468,7 +482,48 @@ public class Web {
 		}else
 			return "pages-error-403.html";
 		
-	}																	
+	}
+	
+	@PostMapping("/addOcorrencia/add")													
+	public String addOc (Model m, Ocorrencia oc,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
+			@RequestParam("idequipambm2") String idequipambm2,
+			@RequestParam("ocdata") String ocdate,
+			@RequestParam("acfreguesia") String acfreguesia) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
+		
+		if ( u.isPresent()) {
+			
+			Equipa eq = new Equipa();
+			if(u.get().getRole().getNome().equals("Médico")){
+				eq.setMedico(futilizador.UTbyToken(tok));
+				eq.setEnfermeiro(futilizador.listarUTbyId(idequipambm2, tok));
+			}else {
+				eq.setMedico(futilizador.listarUTbyId(idequipambm2, tok));
+				eq.setEnfermeiro(futilizador.UTbyToken(tok));
+			}
+			
+			oc.setEquipa(eq);
+			try {
+
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				Date date = formatter.parse(ocdate);
+				oc.setData(date);
+
+	        } catch (Exception e) {
+	        	oc.setData(null);
+	        	System.out.println(e);
+	        }
+			/*Isto vai buscar a freguesia inteira*/
+			oc.setFreguesia(ffreguesia.listarFreguesiaID(acfreguesia, tok));
+			
+			focorrencia.saveOcorrencia(oc, tok);
+			return "redirect:/addOcorrencia?tok="+tok+"&erro=10";
+		}else
+			return "pages-error-403.html";
+		
+	}	
 																		
 	@GetMapping("/listOcorrencia")													
 	public String listOcorrencia (Model m, @RequestParam("tok") String tok) {				

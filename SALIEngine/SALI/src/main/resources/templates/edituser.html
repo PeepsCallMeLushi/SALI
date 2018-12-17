@@ -79,7 +79,8 @@
                         <div class="card">
                   <div class="card-body">
 
-                            <h4 class="card-title">Editar RH</h4>
+                            <h4 class="card-title">Editar Perfil</h4>
+                            <div th:insert="messagefrag.html :: warnings"></div>
                             <form th:action="@{'/updateUTs/update?tok=' + ${tok}}" method="POST" class="tab-wizard">
                                 <div class="vtabs customvtab">
                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
@@ -132,7 +133,7 @@
                                                           <div class="form-group">
                                                             <label for="exampleFormControlSelect1">Função:</label>
                                                             <select class="form-control" name="role.nome">
-                                                              <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${useredit.role.nome}" th:text="${role.nome}"></option>
+                                                              <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${role.nome} == ${useredit.role.nome}" th:text="${role.nome}"></option>
                                                             </select>
                                                           </div>
                                                         </div>
@@ -140,7 +141,7 @@
                                                           <div class="form-group">
                                                             <label for="exampleFormControlSelect1">Função:</label>
                                                             <select class="form-control" name="role.nome" readonly>
-                                                              <option th:each="role: ${roles}" th:value="${role.nome}" th:selected="${useredit.role.nome}" th:text="${role.nome}"></option>
+                                                              <option th:each="role: ${roles}" th:value="${role.nome}"  th:disabled="${role.nome} != ${useredit.role.nome}" th:selected="${role.nome} == ${useredit.role.nome}" th:text="${role.nome}"></option>
                                                             </select>
                                                           </div>
                                                         </div>

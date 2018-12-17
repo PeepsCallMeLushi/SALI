@@ -36,6 +36,7 @@
     var numberS=0;
     var num=0;
     var numActuacao=0;
+    var numAntecedentes=0;
 
     function saveGlasgow(){
     num += 1;
@@ -80,15 +81,34 @@
       //  document.getElementById("lista_glasgow").delete(g);
     }
 
+    function add_antecedentesPessoais(){
+
+        var output='';
+
+      var ants = "ant"+numAntecedentes;
+
+        output+='<div id="'+ants+'" ><input type="text" name="utentes[0].avaliacao.antecedentesPessoais['+numAntecedentes+']" class="form-control required" /><i style="margin-left:4%" class="mdi mdi-delete"  onClick="delete_antecedentes(\''+ants+'\')"></i></div>';
+        numAntecedentes+=1;
+
+        $("#antecedentes").append(output);
+
+    }
+
+    function delete_antecedentes(an){
+      document.getElementById(an).remove(an);
+        }
+
+
+
     function add_actuacao(){
 
       numActuacao+=1;
-var output='';
+        var output='';
 
       var ids = "zt"+numActuacao;
 
       output+='<tr  id="'+ids+'">';
-      output+='  <td><select class="cor select2 form-control custom-select ">';
+      output+='  <td><select class="cor select2 form-control custom-select " name="">';
       output+='  <option>Seleccione </option>';
       output+='    <option value="carinha">Desobstrução/Aspiração Via area</option>';
       output+='  <option value="ambulancia">Oxigénio</option>';
@@ -168,13 +188,13 @@ var output='';
             <!-- ============================================================== -->
 
             <div class="container-fluid">
-
+              <div th:insert="messagefrag.html :: warnings"></div>
               <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body wizard-content ">
                                     <h4 class="card-title" style="margin-left:90%">Ocorrência</h4>
-                                    <form action="#" class="tab-wizard vertical wizard-circle">
+                                    <form th:action="@{'/addOcorrencia/add?tok=' + ${tok}}" class="tab-wizard vertical wizard-circle" method="post">
                                         <!-- Step 1 -->
                                         <h6>Identificação Geral</h6>
                                         <section>
@@ -197,33 +217,39 @@ var output='';
                                                <img class="icon" th:src="@{/images/icon_viatura/motoLight.png}" id="mota_ic" alt="">
                                              </div>
                                           </div>
+                                          <!-- Input com o valor da viatura-->
+                                          <input type="hidden" name="tipoViaturaAssistencia" id="hiddenviatura">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <!--- FAZER SCRIPT SE FOR MEDICO : VE LISTA DE ENFERMEIROS, SE FOR ENFERMEIRO VE LISTA DE MEDICOS--->
                                                       <label for="firstName1">Equipa</label>
-                                                      <select class="select2 form-control custom-select drop_occorencia">
-                                                        <option value="" disabled selected>Selecione o seu Parceiro</option>
+                                                      <select class="select2 form-control custom-select drop_occorencia" name="idequipambm2">
+                                                        <option disabled selected>Selecione o seu Parceiro</option>
                                                         <option th:each="parceiro: ${parceiros}" th:value="${parceiro.id}" th:text="${parceiro.nome}"></option>
                                                       </select>
                                                     </div>
 
                                                 <div class="margem">
-                                                <div class="form-group">
+                                                <!--<div class="form-group">
                                                     <label for="">Numero de Vitimas</label>
-                                                    <input type="number" min="1" class="form-control required" >
-                                                </div>
+                                                    <input type="number" name="nmrVitimas" min="1" class="form-control required" >
+                                                </div>-->
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Caminho do Local</label>
-                                                    <input type="time" min="1" class="form-control required" >
+                                                    <input type="time" min="1" name="horas.local" class="form-control required" >
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="">Chegada ao Local</label>
-                                                    <input type="time" min="1" class="form-control required" >
+                                                    <label for="">Saída do Local</label>
+                                                    <input type="time" min="1" name="horas.saida" class="form-control required" >
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="">Disponível</label>
+                                                    <input type="time" min="1" name="horas.disponivel" class="form-control required" >
+                                                </div>
+
                                               </div>
-                                              S
                                               <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstName1">Incidente</label>
@@ -247,20 +273,17 @@ var output='';
                                                   <div class="form-group">
             <!--- FAZER VERIFICACAO SE A DATA NAO ULTRAPASSA A DATA ATUAL--->
                                                       <label for="date1">Data</label>
-                                                      <input type="date" class="form-control" id="date1">
+                                                      <input type="date" name="ocdata" class="form-control" id="date1">
                                                   </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="">Saída do Local</label>
-                                                    <input type="time" min="1" class="form-control required" >
+                                                    <label for="">Chegada ao Local</label>
+                                                    <input type="time" min="1" name="horas.chegada" class="form-control required" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Estb. Saúde</label>
-                                                    <input type="time" min="1" class="form-control required" >
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="">Disponível</label>
-                                                    <input type="time" min="1" class="form-control required" >
+                                                    <input type="time" min="1" name="horas.estabelecimento" class="form-control required" >
                                                 </div>
                                                 </div>
                                             </div>
@@ -279,19 +302,20 @@ var output='';
                                             <img class="gender" th:src="@{/images/femeninoLight.png}" id="femenino_ic" alt="Femenino">
                                           </div>
 
+                                          <input type="hidden" name="utentes[0].sexo" id="utentesexo" >
 
                                           </div>
                                           <div class="row">
                                                 <div class="col-md-6">
                                                   <div class="form-group">
                                                     <div class="margem idade" >
-                                                      <input type="number" min="1" class="form-control required" id="wint1" placeholder="Indique a idade da Vitima">
+                                                      <input type="number" name="utentes[0].idade.quantidade" min="1" class="form-control required" id="wint1" placeholder="Indique a idade da Vitima">
                                                         </div>
                                                   </div>
 
                                                   <div class="form-group">
                                                       <label for="">Local</label>
-                                                      <input type="text" placeholder="ex: Rua, Parque, Trabalho ..." class="form-control required" >
+                                                      <input type="text" name="local" placeholder="ex: Rua, Parque, Trabalho ..." class="form-control required" >
                                                   </div>
 
 
@@ -300,11 +324,11 @@ var output='';
                                                   <p>Seleciona o Genero</p>
                                                   <div class="margem">
                                                   <div class="form-group">
-                                                      <select class="custom-select form-control" id="Location1" name="location">
+                                                      <select class="custom-select form-control" id="Location1" name="utentes[0].idade.tipoDeIdade">
                                                           <option value="" disabled selected>Idade em</option>
-                                                          <option value="">Dias</option>
-                                                          <option value="">Meses</option>
-                                                          <option value="">Anos</option>
+                                                          <option value="Dias">Dias</option>
+                                                          <option value="Meses">Meses</option>
+                                                          <option value="Anos">Anos</option>
                                                       </select>
                                                   </div>
                                                   </div>
@@ -322,7 +346,7 @@ var output='';
                                                     <!-- BASE DE DADOS  FALTA SCRIPT-->
                                                   <div class="form-group">
                                                     <label for="firstName1">Freguesia</label>
-                                                    <select class="select2 form-control custom-select"  name="reguesia" style="width: 100%; height:36px;">
+                                                    <select class="select2 form-control custom-select" name="acfreguesia" style="width: 100%; height:36px;">
                                                     <option value="" disabled selected>Selecione uma Freguesia</option>
                                                     <option th:each="freg: ${freguesias}" th:value="${freg.id}" th:text="${freg.nome}"></option>
                                                     </select>
@@ -339,9 +363,23 @@ var output='';
 
                                                   <div class="col-md-12">
                                                   <div class="form-group">
-                                                      <textarea placeholder="Antecedentes Pessoais" name="shortDescription" id="shortDescription1" rows="4" class="form-control"></textarea>
+                                                    <label for="">Antecedentes Pessoais</label>
+                                                    <button type="button" name="" class="mdi mdi-plus" onClick="add_antecedentesPessoais()"></button>
+
+
+
+                                                    <div id="antecedentes">
+
+                                                    </div>
+
+
                                                   </div>
+
                                               </div>
+
+
+
+
 
 
                                                 <!-- FARMACOS QUE VEM DA BASE DE DADOS  FALTA SCRIPT-->
@@ -352,7 +390,7 @@ var output='';
 
                                                         <div class="dropdown-menu scrollable" id="farmacos" >
                                                           <div class="form-check" th:each="farmaco: ${farmacos}">
-                                                             <input type="checkbox"  th:value="${farmaco.id}" class="form-check-input" id="">
+                                                             <input type="checkbox"  th:value="${farmaco.nome}" class="form-check-input">
                                                              <label class="form-check-label" th:text="${farmaco.nome}"></label>
                                                           </div>
 

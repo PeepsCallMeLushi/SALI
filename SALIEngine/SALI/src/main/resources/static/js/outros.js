@@ -55,9 +55,12 @@ function mudaOlho_4(){
 function mudaF(){
   if($('#femenino_ic').attr('src') == '/images/femeninoLight.png'){
     $('#femenino_ic').attr('src','/images/femenino.png');
-        $('#masculino_ic').attr('src','/images/masculinoLight.png');
+    $('#masculino_ic').attr('src','/images/masculinoLight.png');
+
+    $('#utentesexo').attr('value','Femenino');
   }else{
     $('#femenino_ic').attr('src','/images/femeninoLight.png');
+    $('#utentesexo').attr('value','');
   }
 //  console.log($('#carro_ic').val());
 }
@@ -67,8 +70,10 @@ function mudaM(){
   if($('#masculino_ic').attr('src') == '/images/masculinoLight.png'){
     $('#masculino_ic').attr('src','/images/masculino.png');
       $('#femenino_ic').attr('src','/images/femeninoLight.png');
+      $('#utentesexo').attr('value','Masculino');
   }else{
     $('#masculino_ic').attr('src','/images/masculinoLight.png');
+    $('#utentesexo').attr('value','');
   }
 //  console.log($('#carro_ic').val());
 }
@@ -82,8 +87,10 @@ function mudaM(){
           $('#ambulancia_ic').attr('src','/images/icon_viatura/ambulanciaLight.png');
           $('#mota_ic').attr('src','/images/icon_viatura/motoLight.png');
 
+          $('#hiddenviatura').attr('value','Carro');
         }else{
           $('#carro_ic').attr('src','/images/icon_viatura/carroLight.png');
+          $('#hiddenviatura').attr('value','');
         }
       //  console.log($('#carro_ic').val());
       }
@@ -95,9 +102,11 @@ function mudaM(){
           $('#ambulancia_ic').attr('src','/images/icon_viatura/ambulanciaLight.png');
           $('#mota_ic').attr('src','/images/icon_viatura/motoLight.png');
 
+          $('#hiddenviatura').attr('value','Helicopetro');
+
         }else{
           $('#helicoptro_ic').attr('src','/images/icon_viatura/heliLight.png');
-
+          $('#hiddenviatura').attr('value','');
         }
       }
 
@@ -107,8 +116,11 @@ function mudaM(){
           $('#helicoptro_ic').attr('src','/images/icon_viatura/heliLight.png');
           $('#carro_ic').attr('src','/images/icon_viatura/carroLight.png');
           $('#mota_ic').attr('src','/images/icon_viatura/motoLight.png');
+
+          $('#hiddenviatura').attr('value','Ambulância');
         }else{
           $('#ambulancia_ic').attr('src','/images/icon_viatura/ambulanciaLight.png');
+          $('#hiddenviatura').attr('value','');
         }
       }
 
@@ -119,7 +131,10 @@ function mudaM(){
           $('#carro_ic').attr('src','/images/icon_viatura/carroLight.png');
           $('#ambulancia_ic').attr('src','/images/icon_viatura/ambulanciaLight.png');
 
+          $('#hiddenviatura').attr('value','Mota');
+
         }else{
           $('#mota_ic').attr('src','/images/icon_viatura/motoLight.png');
+          $('#hiddenviatura').attr('value','');
         }
       }
