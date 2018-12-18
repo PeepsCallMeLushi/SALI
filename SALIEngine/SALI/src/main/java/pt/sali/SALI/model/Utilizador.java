@@ -21,7 +21,7 @@ public class Utilizador {
 	private String estado;
 	
 	public Utilizador(String nome, Role role, String identificador, Token tokenRest, Token tokenSpring,
-			String especializacao, Login login, String foto, boolean firstLogin, String estado) {
+			String especializacao, Login login, boolean firstLogin, String estado) {
 		super();
 		this.nome = nome;
 		this.role = role;
@@ -30,7 +30,6 @@ public class Utilizador {
 		this.tokenSpring = new Token();
 		this.especializacao = especializacao;
 		this.login = login;
-		this.foto = foto;
 		this.firstLogin = true;
 		this.estado = estado;
 	}
