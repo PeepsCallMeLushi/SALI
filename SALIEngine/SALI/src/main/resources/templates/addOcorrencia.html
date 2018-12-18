@@ -86,8 +86,13 @@
         var output='';
 
       var ants = "ant"+numAntecedentes;
-
-        output+='<div id="'+ants+'" ><input type="text" name="utentes[0].avaliacao.antecedentesPessoais['+numAntecedentes+']" class="form-control required" /><i style="margin-left:4%" class="mdi mdi-delete"  onClick="delete_antecedentes(\''+ants+'\')"></i></div>';
+        output+='<div class="margem" id="'+ants+'">'
+        output+='      <div class="input-group">'
+        output+='          <input type="text" name="utentes[0].avaliacao.antecedentesPessoais['+numAntecedentes+']"  class="form-control required" />'
+        output+='          <span class="input-group-addon"><i style="margin-left:40%;background: firebrick;" class="mdi mdi-delete btn btn-rounded redondoOriginal"  onClick="delete_antecedentes(\''+ants+'\')"></i></span>'
+        output+='      </div>'
+        output+='  </div>'
+        //output+='<div id="'+ants+'" ><input type="text" name="utentes[0].avaliacao.antecedentesPessoais['+numAntecedentes+']" class="form-control required" /><i style="margin-left:4%" class="mdi mdi-delete"  onClick="delete_antecedentes(\''+ants+'\')"></i></div>';
         numAntecedentes+=1;
 
         $("#antecedentes").append(output);
@@ -143,7 +148,7 @@
       output+='        <input type="text"  id="" class="form-control required" placeholder="Via" name="utentes[0].atuacao.administrados['+numActuacao+'].via" />';
       output+='    </td>';
       output+='    <td>';
-      output+='      <button type="button" name="" class="mdi mdi-delete" onclick="delete_actuacao(\''+ids+'\')"></button>';
+      output+='      <button type="button" name="" class="mdi mdi-delete  btn btn-rounded redondoOriginal" style="background: firebrick;" onclick="delete_actuacao(\''+ids+'\')"></button>';
       output+='    </td>';
       output+='  </tr>';
 
@@ -380,7 +385,7 @@
                                                   <div class="col-md-12">
                                                   <div class="form-group">
                                                     <label for="">Antecedentes Pessoais</label>
-                                                    <button type="button" name="" class="mdi mdi-plus" onClick="add_antecedentesPessoais()"></button>
+                                                    <button type="button" name="" class="mdi mdi-plus btn btn-rounded redondoOriginal" onClick="add_antecedentesPessoais()"></button>
 
 
 
@@ -1569,7 +1574,7 @@
                                               <td></td>
                                               <td></td>
                                               <td></td>
-                                              <td><button type="button" name="" class="mdi mdi-plus" onclick="add_actuacao()"></button></td>
+                                              <td><button type="button" name="" class="mdi mdi-plus  btn btn-rounded redondoOriginal" onclick="add_actuacao()"></button></td>
                                             </tr>
                                         </table>
                                     </div>
