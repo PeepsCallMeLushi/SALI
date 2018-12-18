@@ -33,7 +33,7 @@
 
 
 .icon:hover {
-  opacity: 0.10;
+  opacity: 0.30;
 }
 
 .icon{
@@ -45,7 +45,7 @@
 
 
 .olho:hover {
-  opacity: 0.10;
+  opacity: 0.30;
 }
 
 
@@ -58,7 +58,7 @@
 
 
 .gender:hover {
-  opacity: 0.10;
+opacity: 0.30;
 }
 
 .gender{
@@ -293,4 +293,34 @@ margin-left: 50%;
   margin-left:42.5%;
   color:#fff;
   padding:2%;
+}
+
+/*Darshboard*/
+
+.dash1 {
+  color: #3499fb !important
+}
+.dash1-bg {
+  background-color: #3499fb !important
+}
+
+.dash2 {
+  color: #da266c !important
+}
+.dash2-bg {
+  background-color: #da266c !important
+}
+
+.dash3 {
+  color: #7460ee !important
+}
+.dash3-bg {
+  background-color: #7460ee !important
+}
+
+.dash4 {
+  color: #ffb22b !important
+}
+.dash4-bg {
+  background-color: #ffb22b !important
 }

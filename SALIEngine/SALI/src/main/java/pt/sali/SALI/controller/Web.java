@@ -1,9 +1,7 @@
 package pt.sali.SALI.controller;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +23,7 @@ import pt.sali.SALI.functions.FileHandler;
 import pt.sali.SALI.functions.FileHandler.UploadFileResponse;
 import pt.sali.SALI.model.Equipa;
 import pt.sali.SALI.model.Farmaco;
-import pt.sali.SALI.model.Freguesia;
-import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Ocorrencia;
-import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Sintoma;
 import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IUtilizador;
@@ -82,6 +77,17 @@ public class Web {
 			}
 			m.addAttribute("tok",tok);
 			m.addAttribute("user",futilizador.UTbyToken(tok));
+			
+			/*Status*/
+			m.addAttribute("ocorrencias",focorrencia.listarOcorrencia(tok));
+			m.addAttribute("incidentes",fsintoma.listarSintoma(tok));
+			m.addAttribute("farmacos",ffarmaco.listarFarmaco(tok));
+			m.addAttribute("rh",futilizador.listarActiveUtilizador(tok));
+			
+			SimpleDateFormat formatter = new SimpleDateFormat( "yyyy - MM" );
+			String today = formatter.format( new java.util.Date() );
+			m.addAttribute("datenow",today);
+			
 			return "index.html";
 		}else
 			return "pages-error-403.html";
@@ -103,12 +109,10 @@ public class Web {
 				
 				if(erro.equals("3")) {
 					m.addAttribute("mensagemerro","Passwords nao correspondem");
-				}
-				
+				}				
 				return "firstlogin.html";
 			}
 		}
-		
 		return "pages-error-403.html";
 	}
 	
@@ -582,12 +586,20 @@ public class Web {
 	}	
 																		
 	@GetMapping("/listOcorrencia")													
-	public String listOcorrencia (Model m, @RequestParam("tok") String tok) {				
-																		
-		m.addAttribute("ocorrencias", focorrencia.listarOcorrencia(tok));			
-																		
-		return ".html";		
-	}																	
+	public String listOcorrencia (Model m,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
+		
+		if(fsintoma.listarSintoma(tok)==null) {
+			return "pages-error-403.html"; //Erro Token
+		}else {
+			
+			m.addAttribute("ocorrencias", focorrencia.listarOcorrencia(tok));				
+			m.addAttribute("user",futilizador.UTbyToken(tok));
+			m.addAttribute("tok",tok);
+			return "listaOcorrencias.html";
+		}
+	}										
 																		
 	/*@GetMapping("/updateOcorrencia")													
 	public String updateOcorrencia (Model m, String tok, Ocorrencia o) {

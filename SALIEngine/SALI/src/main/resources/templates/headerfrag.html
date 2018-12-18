@@ -96,7 +96,7 @@
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a th:href="@{'/updateUTs?tok='+${tok}+'&idusr='+${user.id}}"><i class="ti-settings"></i> Configurações de Conta</a></li>
+                            <li th:unless="${user.firstLogin} == true"><a th:href="@{'/updateUTs?tok='+${tok}+'&idusr='+${user.id}}"><i class="ti-settings"></i> Configurações de Conta</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a th:href="@{'/authentication/logout?tok='+${tok}}"><i class="fa fa-power-off"></i> Terminar Sessão</a></li>
                         </ul>

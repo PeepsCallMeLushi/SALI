@@ -13,22 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.sali.SALI.functions.FOcorrencia;
-import pt.sali.SALI.model.Atuacao;
-import pt.sali.SALI.model.Avaliacao;
-import pt.sali.SALI.model.Equipa;
-import pt.sali.SALI.model.Estado;
-import pt.sali.SALI.model.FarmaFluido;
-import pt.sali.SALI.model.Farmaco;
-import pt.sali.SALI.model.Freguesia;
-import pt.sali.SALI.model.Glasgow;
-import pt.sali.SALI.model.Idade;
-import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Ocorrencia;
-import pt.sali.SALI.model.Role;
-import pt.sali.SALI.model.Sintoma;
-import pt.sali.SALI.model.Transporte;
-import pt.sali.SALI.model.Utente;
-import pt.sali.SALI.model.Utilizador;
 import pt.sali.SALI.service.IFreguesia;
 import pt.sali.SALI.service.IOcorrencia;
 import pt.sali.SALI.service.ISintoma;
@@ -94,74 +79,4 @@ public class HCOcorrencia {
 		return new ResponseEntity<String>("No match", HttpStatus.OK);
 	}
 	
-	/*@GetMapping("/mock")
-	public void addo(){
-		Date d = new Date();
-		Freguesia f = new Freguesia();
-
-		for (Freguesia fr : iFreguesia.findAll()) {
-			if (fr.getNome().compareTo("Santiago")==0) {
-				f = fr;
-			}
-		}
-		
-		Role ro = new Role("Enfermeiro");
-		Login lo= new Login("ola", "ola");
-		Utilizador e = new Utilizador("Joao", ro, "69", "Pediatra", lo, "Ativo");
-		Equipa eq = new Equipa(e, e);
-		System.out.println(f.getNome());
-		Ocorrencia o = new Ocorrencia("Carro", d, 2, 
-				"Santiago",
-				f, eq, "PENDENTE");
-		Idade ida = new Idade("11", "1");
-		
-		//AVALIAÇÃO - BEGIN ---------------------------------
-		Avaliacao ava = new Avaliacao();
-		
-		Sintoma s = new Sintoma();
-		for (Sintoma si : iSintoma.findAll()) {
-			if (si.getNome().compareTo("DOI BUE") == 0) {
-				s = si;
-			}
-		}
-		ava.getSintomas().add(s);
-		
-		ava.getAntecedentesPessoais().add("fiambre");
-		ava.getAntecedentesPessoais().add("paio");
-		
-		Farmaco farma = new Farmaco("benuron");
-		Farmaco farmac = new Farmaco("benuron");
-		ava.getHabitosFarmacologicos().add(farma);
-		ava.getHabitosFarmacologicos().add(farmac);
-		
-		Estado esta = new Estado("3:40", 2.5, 2.5, 2.5, 2.5,
-				"A", "B", "C", "D", 2.5, 2.5);
-		Glasgow gla = new Glasgow();
-		gla.getOlhos().add("2");
-		gla.getMotor().add("3");
-		gla.getVerbal().add("4");
-		esta.getGlasgow().add(gla);
-		ava.getEstado().add(esta);
-		// AVALIAÇÃO - END ---------------------------------
-		
-		// ATUAÇÃO - BEGIN ---------------------------------
-		Transporte trans = new Transporte(true, true);
-		Atuacao atu = new Atuacao(trans, "ceu", "sim", "dead", true);
-		atu.getAcao().add("croissant");
-		atu.getAcao().add("baguete");
-		
-		FarmaFluido ff = new FarmaFluido("4:60", "5", "5", "5");
-		FarmaFluido fff = new FarmaFluido("4:61", "4", "2", "3");
-		atu.getAdministrados().add(ff);
-		atu.getAdministrados().add(fff);
-		// ATUAÇÃO - END ---------------------------------
-		
-		Utente u = new Utente("muito", ida, ava, atu, "obs");
-		u.getHipotesesDiagnostivas().add("Diarreia");
-		u.getHipotesesDiagnostivas().add("ExtraQueijo");
-		
-		o.getUtentes().add(u);
-		o.getIncidente().add("O vlad nasceu");
-		iOcorrencia.save(o);
-	}*/
 }
