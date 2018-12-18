@@ -101,39 +101,55 @@
 
 
     function add_actuacao(){
-
-      numActuacao+=1;
-        var output='';
-
+      var url = window.location;
+      let params = new URL(url).searchParams;
+      var tokken = params.get('tok');
+      var output='';
       var ids = "zt"+numActuacao;
-
       output+='<tr  id="'+ids+'">';
-      output+='  <td><select class="cor select2 form-control custom-select " name="">';
-      output+='  <option>Seleccione </option>';
-      output+='    <option value="carinha">Desobstrução/Aspiração Via area</option>';
-      output+='  <option value="ambulancia">Oxigénio</option>';
-      output+='  <option value="moto">Ventilação</option>';
+      output+='  <td><select class="cor select2 form-control custom-select " name="utentes[0].atuacao.acao['+numActuacao+']">';
+      output+='  <option disabled>Açao</option>';
+      output+='  <option value="Farmacos e Fluidos">Farmacos e Fluidos</option>';
+      output+='  <option value="Desobstrução/Aspiração">Desobstrução/Aspiração Via area</option>';
+      output+='  <option value="Oxigénio">Oxigénio</option>';
+      output+='  <option value="Ventilação">Ventilação</option>';
       output+='  </select>';
       output+='  </td>';
-      output+='    <td><input type="time"  id="" class="form-control required" /></td>';
-      output+='    <td><select class=" cor select2 form-control custom-select ">';
-      output+='    <option >Seleccione  </option>';
-      output+='       <option th:each="farm: ${farmacos}" th:value="${farm.id}" th:text="${farm.nome}"></option>';
+      output+='  <td><input type="time"  id="" class="form-control required" name="utentes[0].atuacao.administrados['+numActuacao+'].hora" /></td>';
+      output+='  <td><select class=" cor select2 form-control custom-select"  name="utentes[0].atuacao.administrados['+numActuacao+'].fluido" >';
+      output+='  <option disabled>Seleccione  </option>';
+      $.ajax({
+        url:'Farmaco/list',
+        method:'GET',
+        data:{tok:tokken},
+        cache:false,
+        async:false,
+        success:function(data){
+          for (var i = 0; i < data.length; i++) {
+            /*console.log(data[i].id);
+            console.log(data[i].nome);*/
+              output+='<option value="'+data[i].nome+'">'+data[i].nome+'</option>';
+          }
+        },error:function(xhr){
+          console.log(xhr);
+        }
+      });
       output+='    </select>';
       output+='  </td>';
       output+='    <td>';
-      output+='    <input type="number"  id="" class="form-control required" placeholder="Dose"/>';
+      output+='    <input type="number"  id="" class="form-control required" placeholder="Dose" name="utentes[0].atuacao.administrados['+numActuacao+'].dose" />';
       output+='    </td>';
       output+='    <td>';
-      output+='        <input type="text"  id="" class="form-control required" placeholder="Via"/>';
+      output+='        <input type="text"  id="" class="form-control required" placeholder="Via" name="utentes[0].atuacao.administrados['+numActuacao+'].via" />';
       output+='    </td>';
       output+='    <td>';
-      output+='      <button type="button" name="" class="mdi mdi-delete" onclick="delete_actuacao(\''+ids+'\')"></button>';//JUNTAR LETRA E NUMEROS (!!!!!!!!!!)
+      output+='      <button type="button" name="" class="mdi mdi-delete" onclick="delete_actuacao(\''+ids+'\')"></button>';
       output+='    </td>';
       output+='  </tr>';
 
 
     $("#actuacao").append(""+output);
+    numActuacao+=1;
 
     }
 
@@ -390,11 +406,12 @@
 
                                                         <div class="dropdown-menu scrollable" id="farmacos" >
                                                           <div class="form-check" th:each="farmaco: ${farmacos}">
-                                                             <input type="checkbox"  th:value="${farmaco.nome}" class="form-check-input">
-                                                             <label class="form-check-label" th:text="${farmaco.nome}"></label>
+                                                             <input type="checkbox"  th:value="${farmaco.nome}" class="form-check-input" th:id="'hf' + ${farmaco.nome}" onClick="farma(this)">
+                                                             <label th:for="'hf' + ${farmaco.nome}" class="form-check-label" th:text="${farmaco.nome}"></label>
                                                           </div>
 
                                                         </div>
+
                                                       </div>
                                                       <br>
                                                         <br>
@@ -1478,6 +1495,8 @@
                                                                                   </div>
                                                                                   <div class="perguntas_db">
 
+
+
                                                                                   </div>
                                                                             </div>
                                                                     </div>  </div>
@@ -1522,7 +1541,6 @@
 
                                             <div class="row">
                         <!-- column -->
-
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
@@ -1571,7 +1589,7 @@
                                                   <div class="col-md-6">
                                                     <div class="form-group">
                                                       <div class="margem idade" >
-                                                        <input type="text" class="form-control required" id="wint1" placeholder="Destino">
+                                                        <input type="text" class="form-control required" id="wint1" placeholder="Destino" name="utentes[0].atuacao.destino">
                                                     </div>
                                                     <div class="row margem2">
                                                           <div class="col-md-6">
@@ -1579,10 +1597,10 @@
                                                               <div class="margem">
                                                                 <div class="form-group">
                                                                   <p>Ambulância</p>
-                                                                    <select class="custom-select form-control" id="Location1" name="location">
-                                                                        <option value="">Não</option>
-                                                                        <option value="">Sim</option>
-                                                                        <option value="">Com Médico</option>
+                                                                    <select class="custom-select form-control" id="Location1" name="utentes[0].atuacao.ambulanciaNoLocal">
+                                                                        <option value="false">Não</option>
+                                                                        <option value="true">Sim</option>
+                                                                        <!--<option value="">Com Médico</option>-->
                                                                     </select>
                                                                 </div>
                                                               </div>
@@ -1592,11 +1610,10 @@
                                                             <div class="margem">
                                                               <div class="form-group">
                                                                   <p>Hospital</p>
-                                                                  <select class="custom-select form-control" id="Location1" name="location">
-                                                                      <option value="">Urgência</option>
-                                                                      <option value="">UCI</option>
-                                                                      <option value="">Outro Destino</option>
-
+                                                                  <select class="custom-select form-control" id="Location1" name="utentes[0].atuacao.destino">
+                                                                      <option value="Urgência">Urgência</option>
+                                                                      <option value="UCI">UCI</option>
+                                                                      <option value="Outro Destino">Outro Destino</option>
                                                                   </select>
                                                               </div>
                                                             </div>
@@ -1608,14 +1625,15 @@
                                                       <p>Não Transporte</p>
 
                                                       <div class="form-group">
-                                                          <select class="custom-select form-control" id="Location1" name="location">
-                                                              <option value="">Abandonou o Local</option>
-                                                              <option value="">Já Transportado</option>
-                                                              <option value="">Chamada Falsa</option>
-                                                              <option value="">Morte</option>
-                                                              <option value="">Recusa</option>
-                                                              <option value="">Decisão Médica</option>
-                                                              <option value="">Desativação</option>
+                                                          <select class="custom-select form-control" id="Location1" name="utentes[0].atuacao.naoTransporte">
+                                                              <option value="na">n/a</option>
+                                                              <option value="Abandonou o Local">Abandonou o Local</option>
+                                                              <option value="Já Transportado">Já Transportado</option>
+                                                              <option value="Chamada Falsa">Chamada Falsa</option>
+                                                              <option value="Morte">Morte</option>
+                                                              <option value="Recusa">Recusa</option>
+                                                              <option value="Decisão Médica">Decisão Médica</option>
+                                                              <option value="Desativação">Desativação</option>
                                                           </select>
                                                       </div>
 
@@ -1632,21 +1650,21 @@
                                                         <p>Evolução</p>
                                                         <div class="margem">
                                                         <div class="form-group">
-                                                            <select class="custom-select form-control" id="Location1" name="location">
-                                                                <option value="">Piorou</option>
-                                                                <option value="">Melhorou</option>
-                                                                <option value="">Igual</option>
-                                                                <option value="">Óbito</option>
+                                                            <select class="custom-select form-control" id="Location1" name="utentes[0].atuacao.evolucao">
+                                                                <option value="Piorou">Piorou</option>
+                                                                <option value="Melhorou">Melhorou</option>
+                                                                <option value="Manteve">Manteve</option>
+                                                                <option value="Óbito">Óbito</option>
                                                             </select>
                                                         </div>
                                                         </div>
                                                       </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <textarea placeholder="Observações" name="shortDescription" id="shortDescription1" rows="3" class="form-control"></textarea>
+                                                        <textarea placeholder="Observações" id="shortDescription1" rows="3" class="form-control" name="utentes[0].observacao"></textarea>
                                                     </div>
                                                     <div class="form-group">
-                                                        <textarea placeholder="Hipóteses Diagnósticas" name="shortDescription" id="shortDescription1" rows="4" class="form-control"></textarea>
+                                                        <textarea placeholder="Hipóteses Diagnósticas" id="shortDescription1" rows="4" class="form-control"  name="utentes[0].hipotesesDiagnostivas[0]"></textarea>
                                                     </div>
 
                                                   </div>

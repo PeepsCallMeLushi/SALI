@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon.png">
+    <title>SALI</title>
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- morris CSS -->
+    <link th:href="@{/plugins/morrisjs/morris.css}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style1.css}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link th:href="@{/css/colors/megna.css}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border logo-center">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" th:insert="headerfrag.html :: header"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+
+              <!-- ============================================================== -->
+              <!-- Start Page Content -->
+              <!-- ============================================================== -->
+
+                <section id="wrapper">
+                      <div class="login-register" >
+                          <div class="login-box card">
+                          <div class="card-body">
+                              <form class="form-horizontal form-material" id="loginform" th:action="@{'/authentication/fl?tok=' + ${tok}}" method="post">
+                                  <h3 class="box-title m-b-20">Primeiro Login</h3>
+                                  <div th:insert="messagefrag.html :: warnings"></div>
+                                  <p>Como é o seu primeiro Login, é necessario alterar a palavra passe padrão</p>
+                                  <br>
+                                  <div class="form-group ">
+                                    <div class="col-xs-12">
+                                      <input class="form-control" name="pass1" type="password" required="" placeholder="Password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="col-xs-12">
+                                      <input class="form-control" name="pass2" type="password" required="" placeholder="Confirma Password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group text-center m-t-20">
+                                    <div class="col-xs-12">
+                                      <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Submeter</button>
+                                    </div>
+                                  </div>
+                                </form>
+                          </div>
+                        </div>
+                      </div>
+                  </section>
+              <!-- ============================================================== -->
+              <!-- End PAge Content -->
+              <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script th:src="@{/plugins/bootstrap/js/popper.min.js}"></script>
+    <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script th:src="@{/js/jquery.slimscroll.js}"></script>
+    <!--Wave Effects -->
+    <script th:src="@{/js/waves.js}"></script>
+    <!--Menu sidebar -->
+    <script th:src="@{/js/sidebarmenu.js}"></script>
+    <!--stickey kit -->
+    <script th:src="@{/plugins/sticky-kit-master/dist/sticky-kit.min.js}"></script>
+    <!--Custom JavaScript -->
+    <script th:src="@{/js/custom.min.js}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--sparkline JavaScript -->
+    <script th:src="@{/plugins/sparkline/jquery.sparkline.min.js}"></script>
+    <!--morris JavaScript -->
+    <script th:src="@{/plugins/raphael/raphael-min.js}"></script>
+    <script th:src="@{/plugins/morrisjs/morris.min.js}"></script>
+
+</body>
+
+</html>

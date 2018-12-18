@@ -1,3 +1,7 @@
+///FARMACOS
+var icrem=0;
+
+
 
 //MUDA OLHOS
 function mudaOlho_1(){
@@ -36,6 +40,29 @@ function mudaOlho_3(){
     $('#olho3_ic').attr('src','/images/olhos/3Light.png');
   }
 }
+
+function farma(x){
+  var output="";
+  var $this = $(x);
+  var xvalue;
+  var xid = $this.attr('id');
+  var xclass="."+xid;
+ console.log($this.val());
+ console.log(xclass);
+
+    if($this.is(':checked')){
+      console.log("true");
+      xvalue = $this.val();
+      console.log(xvalue);
+      output+='<input type="hidden" name="utentes[0].avaliacao.habitosFarmacologicos['+icrem+'].nome" value="'+xvalue+'" class="'+xid+'">';
+      icrem+=1;
+      $("#farmacos").append(output);
+      }else{
+        console.log("false");
+        $(xclass).remove();
+      }
+}
+
 
 
 function mudaOlho_4(){

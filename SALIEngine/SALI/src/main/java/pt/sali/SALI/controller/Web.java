@@ -26,6 +26,7 @@ import pt.sali.SALI.functions.FileHandler.UploadFileResponse;
 import pt.sali.SALI.model.Equipa;
 import pt.sali.SALI.model.Farmaco;
 import pt.sali.SALI.model.Freguesia;
+import pt.sali.SALI.model.Login;
 import pt.sali.SALI.model.Ocorrencia;
 import pt.sali.SALI.model.Role;
 import pt.sali.SALI.model.Sintoma;
@@ -56,6 +57,7 @@ public class Web {
 	/*
 	 * ERRO 1 = Password ou user name errados
 	 * ERRO 2 = Duplicado
+	 * ERRO 3 = Passords nao correspondem
 	 * 
 	 * ERRO 10 = Sucesso
 	 * ERRO 11 = Removido com Sucesso
@@ -74,6 +76,10 @@ public class Web {
 		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
 		
 		if (u.isPresent()) {
+			if(u.get().isFirstLogin()){
+				m.addAttribute("tok",tok);
+				  return "redirect:/authentication/firstlogin?tok="+tok;
+			}
 			m.addAttribute("tok",tok);
 			m.addAttribute("user",futilizador.UTbyToken(tok));
 			return "index.html";
@@ -82,6 +88,52 @@ public class Web {
 	}
 	
 	// LOGIN ///////////////////////////////////////////////////////////////
+	
+	@GetMapping("/authentication/firstlogin")
+	public String fl(Model m,
+			@RequestParam(value="tok", required=false,defaultValue="0") String tok,
+			@RequestParam(value="erro",defaultValue="0") String erro) {
+		
+		Optional<Utilizador> u = iUtilizador.findByTokenSpringTokenName(tok);
+		
+		if (u.isPresent()) {
+			if(u.get().isFirstLogin()){
+				m.addAttribute("tok",tok);
+				m.addAttribute("user",futilizador.UTbyToken(tok));
+				
+				if(erro.equals("3")) {
+					m.addAttribute("mensagemerro","Passwords nao correspondem");
+				}
+				
+				return "firstlogin.html";
+			}
+		}
+		
+		return "pages-error-403.html";
+	}
+	
+	@PostMapping("/authentication/fl")
+	public String changepwfl (@RequestParam ("pass1") String password1, 
+                        @RequestParam ("pass2") String password2,
+                        @RequestParam(value="tok", required=false,defaultValue="0") String tok,
+                        Model m) {
+		
+       if(password1.equals(password2)) {
+    	   
+    	   Utilizador u = futilizador.UTbyToken(tok);
+
+    	   u.getLogin().setPassword(password1);
+    	   u.setFirstLogin(false);
+    	   
+    	   futilizador.updateUtilizador(u, tok);
+    	   
+    	   return "redirect:/?tok="+tok;
+    	   
+       }else {
+    	   return "redirect:/authentication/firstlogin?tok="+tok+"&erro=3";
+       }
+    }
+	
 	@GetMapping("/authentication/login")
 	public String login (Model m,@RequestParam(value="erro",defaultValue="0") String erro) {
 		if(erro.equals("1")) {
@@ -478,6 +530,10 @@ public class Web {
 			m.addAttribute("freguesias",ffreguesia.listarFreguesia(tok));
 			m.addAttribute("farmacos",ffarmaco.listarFarmaco(tok));
 			
+			if(erro.equals("10")) {
+				m.addAttribute("mensagemsucess","Ocorrência registada com sucesso !");
+			}
+			
 			return "addOcorrencia.html";
 		}else
 			return "pages-error-403.html";
@@ -533,13 +589,13 @@ public class Web {
 		return ".html";		
 	}																	
 																		
-	@GetMapping("/updateOcorrencia")													
+	/*@GetMapping("/updateOcorrencia")													
 	public String updateOcorrencia (Model m, String tok, Ocorrencia o) {
 																		
 		m.addAttribute("", focorrencia.updateOcorrencia(o, tok));		
 																		
 		return ".html";													
-	}																	
+	}*/																	
 																		
 	@GetMapping("/deleteOcorrencia")													
 	public String deleteOcorrencia (Model m, String tok, String id) {
@@ -549,13 +605,13 @@ public class Web {
 		return ".html";													
 	}		
 	
-	@GetMapping("/dynamic")
+	/*@GetMapping("/dynamic")
 	public String dynamicquery (@RequestParam ("json") String json, @RequestParam ("tok") String tok) {
 		
 		if (focorrencia.dynamicQueryJ(json, tok) != null) {
 			return ".html";
 		}
 		return ".html";
-	}
+	}*/
 	// OCORRENCIA ////////////////////////////////////////////////////////
 }

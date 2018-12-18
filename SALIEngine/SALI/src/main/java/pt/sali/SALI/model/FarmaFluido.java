@@ -14,6 +14,12 @@ public class FarmaFluido {
 		this.dose = dose;
 		this.via = via;
 	}
+	
+	public FarmaFluido() {
+		super();
+
+	}
+	
 
 	public String getHora() {
 		return hora;
